@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="nka_net3">
+    <output-path>$PROJECT_DIR$/out/artifacts/nka_net3</output-path>
+    <root id="archive" name="nka_net3.war">
+      <element id="directory" name="WEB-INF">
+        <element id="dir-copy" path="$PROJECT_DIR$/web/target/nka_net3/WEB-INF/classes" />
+        <element id="dir-copy" path="$PROJECT_DIR$/web/target/nka_net3/WEB-INF/lib" />
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/web/target/nka_net3/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

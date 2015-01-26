@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: nla.local.AppTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.858 sec <<< FAILURE!
+testApp(nla.local.AppTest)  Time elapsed: 2.853 sec  <<< ERROR!
+org.hibernate.MappingException: Named query not known: SUBJECT_LT
+	at org.hibernate.impl.AbstractSessionImpl.getNamedQuery(AbstractSessionImpl.java:93)
+	at org.hibernate.impl.SessionImpl.getNamedQuery(SessionImpl.java:1407)
+	at nla.local.dao.BaseDao.getNamedQuery(BaseDao.java:81)
+	at nla.local.services.BaseService.getNamedQuery(BaseService.java:74)
+	at nla.local.services.BaseService$$FastClassBySpringCGLIB$$25979e02.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:708)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:644)
+	at nla.local.services.BaseService$$EnhancerBySpringCGLIB$$d722c193.getNamedQuery(<generated>)
+	at nla.local.AppTest.testApp(AppTest.java:53)
+
