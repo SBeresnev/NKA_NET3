@@ -32,7 +32,8 @@ public class BaseService<T> implements IService<T> {
 
     private  Class<T> type;
 
-    public BaseService() { }
+    private DetachedCriteria query;
+
 
     @Autowired
     public BaseService(Dao<T> baseDao) {
@@ -66,12 +67,15 @@ public class BaseService<T> implements IService<T> {
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-     public List<T> getCriterion(DetachedCriteria crio)
-    {
+    public List<T> getCriterion(DetachedCriteria  dc) {
         List<T> out = null;
+
+        if (dc == null) { dc = getQuery(); }
+        else { setQuery(dc);}
+
         try {
 
-            out = baseDao.getCriterion(crio);
+          out = baseDao.getCriterion(query);
 
         } catch (DaoException e) {
 
@@ -115,4 +119,15 @@ public class BaseService<T> implements IService<T> {
 
     }
 
+    @Override
+    public Class<T> getType()
+    { return  baseDao.getType();}
+
+    public DetachedCriteria getQuery() {
+        return query;
+    }
+
+    public void setQuery(DetachedCriteria query) {
+        this.query = query;
+    }
 }

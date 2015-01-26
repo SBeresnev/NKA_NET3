@@ -1,0 +1,12 @@
+nla\local\dao\exceptions\DaoException.class
+nla\local\pojos\JPerson.class
+nla\local\pojos\PPerson.class
+nla\local\dao\BaseDao.class
+nla\local\dao\Dao.class
+nla\local\pojos\Person.class
+nla\local\pojos\Address.class
+nla\local\util\CustomNamingStrategy.class
+nla\local\pojos\Status.class
+nla\local\pojos\Order.class
+nla\local\pojos\User.class
+nla\local\dao\exceptions\DaoErrorCode.class

@@ -31,6 +31,9 @@ public class PPerson extends Person{
     @Column(name = "DATESTART")
     public Date datestart;
 
+    @Column(name = "ACTUAL")
+    public Integer actual;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ADDRESS_ID")
     public Address address;

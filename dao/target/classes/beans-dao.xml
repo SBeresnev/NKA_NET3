@@ -22,11 +22,8 @@
     </bean>
 
     <bean id="person" class="nla.local.pojos.Person"/>
-
     <bean id="jperson" class="nla.local.pojos.JPerson"/>
-
     <bean id="pperson" class="nla.local.pojos.PPerson" />
-
     <bean id="address" class="nla.local.pojos.Address"/>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

@@ -18,7 +18,9 @@ public interface Dao<T> {
 
     List<T> getAll() throws DaoException;
 
-    void delete(T t) throws DaoException;;
+    void delete(T t) throws DaoException;
 
-    void refresh(T t) throws DaoException;;
+    void refresh(T t) throws DaoException;
+
+    public Class<T>  getType();
 }

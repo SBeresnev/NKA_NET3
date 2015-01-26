@@ -3,11 +3,15 @@ package nla.local.controller;
 /**
  * Created by beresnev on 16.01.2015.
  */
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import nla.local.pojos.JPerson;
+import nla.local.pojos.Person;
 import nla.local.services.IService;
+import nla.local.services.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,15 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class SubjectController {
 
     private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
 
+    @Qualifier("subjectService")
     @Autowired
-    IService<JPerson> jIService;
+    IService<Person> pService;
+
 
     @RequestMapping("/subject")
-    public String greeting(@RequestParam(value="name", defaultValue="World") String name) {
+    public List<JPerson> greeting(@RequestParam(value="name", defaultValue="World") String name) {
 
-        String result="Hello "+name;
+        SubjectService<JPerson> ss = (SubjectService<JPerson>) pService;
+
+        List<JPerson> result= ss.getByFIOType("Иванов", "Иван", "Иванович", null, 1 );
 
         return result;
     }

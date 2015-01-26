@@ -21,7 +21,7 @@ public class Person implements Serializable {
     @Column(name="SUBJECT_ID", unique=true, nullable=false )
     @SequenceGenerator(name="person_seq", sequenceName="SEQ_SUBJECTS_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="person_seq")
-    public Integer subjectId;
+      public Integer subjectId;
 
     @Column(name = "REESTRDATAID")
     public Integer reestrdataID;
