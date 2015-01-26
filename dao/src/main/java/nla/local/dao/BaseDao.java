@@ -36,6 +36,8 @@ public class BaseDao<T> implements Dao<T> {
 
     public BaseDao() { }
 
+    public Class<T>  getType() { return type;}
+
     @Autowired
     public BaseDao(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

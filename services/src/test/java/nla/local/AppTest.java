@@ -8,8 +8,11 @@ import nla.local.pojos.PPerson;
 import nla.local.pojos.Person;
 import nla.local.services.BaseService;
 import nla.local.services.IService;
+import nla.local.services.SubjectService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,8 +21,7 @@ import java.util.List;
 /**
  * Unit test for simple App.
  */
-public class AppTest
-        extends TestCase
+public class AppTest extends TestCase
 {
     /**
      * Create the test case
@@ -42,12 +44,23 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
+    @Qualifier("subjectService")
+    @Autowired
+    IService<Person> pService;
+
     public void testApp()
     {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("beans-services.xml");
 
+        SubjectService<JPerson> ss= (SubjectService<JPerson>)context.getBean("subjectService");
 
+        List<JPerson> result= ss.getByNameType(null, null, 1) ; //getByFIOType("Иванов", "Иван", "Иванович", null, 1 );
+
+        for (JPerson j : result) {
+            System.out.println("Subject type == " + j.unp);
+        }
+       /*
         IService<PPerson> pIService = (BaseService<PPerson>)context.getBean(BaseService.class);
 
         DetachedCriteria query = DetachedCriteria.forClass(PPerson.class).add(Restrictions.eq("subjectType", 2));
@@ -62,7 +75,7 @@ public class AppTest
 
         for (JPerson j : jperson) {
             System.out.println("Subject type === " + j.shortname);
-        }
+        }*/
 
         assertTrue(true);
     }

@@ -1,22 +1,30 @@
 -------------------------------------------------------------------------------
 Test set: nla.local.AppTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.858 sec <<< FAILURE!
-testApp(nla.local.AppTest)  Time elapsed: 2.853 sec  <<< ERROR!
-org.hibernate.MappingException: Named query not known: SUBJECT_LT
-	at org.hibernate.impl.AbstractSessionImpl.getNamedQuery(AbstractSessionImpl.java:93)
-	at org.hibernate.impl.SessionImpl.getNamedQuery(SessionImpl.java:1407)
-	at nla.local.dao.BaseDao.getNamedQuery(BaseDao.java:81)
-	at nla.local.services.BaseService.getNamedQuery(BaseService.java:74)
-	at nla.local.services.BaseService$$FastClassBySpringCGLIB$$25979e02.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:708)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
-	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:644)
-	at nla.local.services.BaseService$$EnhancerBySpringCGLIB$$d722c193.getNamedQuery(<generated>)
-	at nla.local.AppTest.testApp(AppTest.java:53)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.721 sec <<< FAILURE!
+testApp(nla.local.AppTest)  Time elapsed: 2.716 sec  <<< ERROR!
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'subjectService' defined in file [D:\users\beresnev\projects\NKA_NET3\nka_net3\services\target\classes\nla\local\services\SubjectService.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [nla.local.services.SubjectService]: No default constructor found; nested exception is java.lang.NoSuchMethodException: nla.local.services.SubjectService.<init>()
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1076)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1021)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:504)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:703)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+	at nla.local.AppTest.testApp(AppTest.java:48)
+Caused by: org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [nla.local.services.SubjectService]: No default constructor found; nested exception is java.lang.NoSuchMethodException: nla.local.services.SubjectService.<init>()
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:85)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1069)
+	... 41 more
+Caused by: java.lang.NoSuchMethodException: nla.local.services.SubjectService.<init>()
+	at java.lang.Class.getConstructor0(Class.java:2892)
+	at java.lang.Class.getDeclaredConstructor(Class.java:2058)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:80)
+	... 42 more
 

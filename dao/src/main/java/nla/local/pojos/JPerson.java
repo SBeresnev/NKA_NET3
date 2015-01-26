@@ -36,7 +36,7 @@ public class JPerson extends Person{
     @Column(name = "REMARK")
     public String remark;
 
-    @Column(name = "ACTUAL")
+    @Column(name = "ACTUAL",  columnDefinition = "number default 1")
     public Integer actual;
 
     @ManyToOne(fetch = FetchType.LAZY)
