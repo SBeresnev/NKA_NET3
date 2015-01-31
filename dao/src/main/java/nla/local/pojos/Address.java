@@ -1,19 +1,19 @@
 package nla.local.pojos;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by beresnev on 13.01.2015.
  */
 
 @Entity
-@Table(name="V_ADDRESSES")
-
+@Table(name="ADDRESSES")
 public class Address {
 
     @Id
     @Column(name = "ADR_NUM" )
-    public int address_id;
+    public Integer address_id;
 
     @Column(name = "REGION")
     public String region;

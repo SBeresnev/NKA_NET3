@@ -11,8 +11,9 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name="SUBJECTS", schema = "NKA_NET3_DEV")
+@Table(name="SUBJECTS")
 @Inheritance(strategy= InheritanceType.JOINED)
+
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,17 +22,16 @@ public class Person implements Serializable {
     @Column(name="SUBJECT_ID", unique=true, nullable=false )
     @SequenceGenerator(name="person_seq", sequenceName="SEQ_SUBJECTS_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="person_seq")
-      public Integer subjectId;
+    public Integer subjectId;
 
     @Column(name = "REESTRDATAID")
-    public Integer reestrdataID;
+    public Integer reestrdataID ;
 
     @Column(name = "IS_OWNER")
     public Integer isOwner;
 
     @Column(name = "SUBJECT_TYPE" )
     public Integer subjectType;
-
 
     @Override
     public boolean equals(Object o) {

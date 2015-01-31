@@ -5,5 +5,11 @@
       <secret-storage>memory</secret-storage>
       <user-name>NKA_NET3_DEV</user-name>
     </data-source>
+    <data-source name="Oracle -XE TEST_BURAVEL" uuid="171a1c24-32c6-4aaa-acdd-0b3d82340208">
+      <secret-storage>master_key</secret-storage>
+      <user-name>sergei</user-name>
+      <schema-pattern>*.SERGEI *.SYS *.SYSTEM</schema-pattern>
+      <default-schemas>*.SERGEI *.SYS *.SYSTEM</default-schemas>
+    </data-source>
   </component>
 </project>

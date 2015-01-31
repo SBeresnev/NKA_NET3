@@ -1,3 +1,6 @@
-nla\local\services\SubjectService.class
-nla\local\services\BaseService.class
+nla\local\services\util\CriteriaServiceStorage.class
+nla\local\services\impl\SubjectServiceImp.class
+nla\local\services\impl\AddressServiceImp.class
+nla\local\services\ISubjectService.class
+nla\local\services\IAdressService.class
 nla\local\services\IService.class

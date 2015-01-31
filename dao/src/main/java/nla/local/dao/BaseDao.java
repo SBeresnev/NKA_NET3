@@ -22,26 +22,36 @@ import java.util.List;
 public class BaseDao<T> implements Dao<T> {
 
     private static Logger log = Logger.getLogger(BaseDao.class);
-    private SessionFactory sessionFactory;
+
+    private  SessionFactory sessionFactory;
 
     private Class<T> type;
 
     private String typeName;
 
     public BaseDao(Class<T> type) {
-        this.type = type;
-        this.typeName = type.getSimpleName();
-        log.debug(String.format("Created Dao for %s.", typeName));
-    }
 
-    public BaseDao() { }
+        this.type = type;
+
+        this.typeName = type.getSimpleName();
+
+        log.debug(String.format("Created Dao for %s.", typeName));
+
+    }
 
     public Class<T>  getType() { return type;}
 
+    public BaseDao()
+    {
+
+    }
+
     @Autowired
     public BaseDao(SessionFactory sessionFactory) {
+
         this.sessionFactory = sessionFactory;
-    }
+
+  }
 
     public Session getSession() {
         return sessionFactory.getCurrentSession();
@@ -67,6 +77,7 @@ public class BaseDao<T> implements Dao<T> {
         try{
 
             getSession().update(t);
+
             log.info("Update:" + t);
 
         } catch (HibernateException e) {
@@ -81,7 +92,9 @@ public class BaseDao<T> implements Dao<T> {
         try {
 
             List<T> list = getSession().createCriteria(type).list();
+
             log.debug(String.format("Got %d products", list == null ? 0 : list.size()));
+
             return list;
 
         } catch (HibernateException e) {
@@ -93,9 +106,11 @@ public class BaseDao<T> implements Dao<T> {
     public T get(Class<T> clazz, Serializable id) throws DaoException{
 
         log.info("Get:" + id.toString());
+
         try {
 
             log.debug(String.format("Get %s with id=%s.", typeName, id));
+
             return (T) getSession().get(clazz, id);
 
         } catch (HibernateException e) {

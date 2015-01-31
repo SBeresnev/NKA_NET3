@@ -1,27 +1,32 @@
 package nla.local.pojos;
 
-import org.hibernate.annotations.Where;
-import org.hibernate.annotations.WhereJoinTable;
+import org.hibernate.annotations.*;
 import org.springframework.stereotype.Component;
 
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 
-
 @Entity
-@Table(name="SUBJECTSDATA", schema = "NKA_NET3_DEV")
+@Table(name="SUBJECTSDATA")
 @PrimaryKeyJoinColumn(name="SUBJECT_ID")
-public class JPerson extends Person{
+public class JPerson extends Person implements Serializable{
     private static final long serialVersionUID = 3L;
 
-    @Column(name = "FULLNAME")
+    @Column(name= "SUBJECT_DATA_ID")
+    public Integer subjectdataid;
+
+    @Column(name = "FULLNAME", nullable = false)
     public String fullname;
 
     @Column(name = "SHORTNAME")
     public String shortname;
 
-    @Column(name = "REG_NUMBER")
+    @Column(name = "REG_NUMBER", nullable = false)
     public String regNumber;
 
     @Column(name = "UNP")
@@ -39,14 +44,38 @@ public class JPerson extends Person{
     @Column(name = "ACTUAL",  columnDefinition = "number default 1")
     public Integer actual;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ADDRESS_ID")
-    public Address address;
+    @Column(name = "PREV_ADDRESS")
+     public String address;
 
-    public void setSubjectType(Integer subjecttype)
-    {
-        super.subjectType=subjecttype;
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="ADDRESS_ID")
+    public Address address;*/
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JPerson)) return false;
+
+        JPerson person = (JPerson) o;
+
+        if (regNumber != null ? !regNumber.equals(person.regNumber) : person.regNumber != null) return false;
+        if (unp != null ? !unp.equals(person.unp) : person.unp != null) return false;
+
+        return true;
     }
 
+    @Override
+    public int hashCode() {
+        int result = regNumber != null ? regNumber.hashCode() : 0;
+        result = 31 * result + (unp != null ? unp.hashCode() : 0);
+
+        return result;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Fullname" + fullname + "RegNumber: " + regNumber + "UNP: " + unp;
+    }
 
 }

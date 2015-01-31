@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="822258920">
+  <component name="DataSourceManagerImpl" format="xml" hash="3875765474">
     <data-source source="LOCAL" name="Oracle - DEV.MINSK.NCA@172.31.11.190" uuid="e66be0d4-ac97-409e-8dbe-d9d7073be9b0">
       <driver-ref>oracle</driver-ref>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@//172.31.11.190:1521/DEV.MINSK.NCA</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Oracle -XE TEST_BURAVEL" uuid="171a1c24-32c6-4aaa-acdd-0b3d82340208">
+      <driver-ref>oracle</driver-ref>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:sergei/123123@buravel:1521/XE</jdbc-url>
+      <vm-options>-Duser.language=en -Duser.region=us</vm-options>
       <libraries />
     </data-source>
   </component>

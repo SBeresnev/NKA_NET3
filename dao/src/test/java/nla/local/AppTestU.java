@@ -3,9 +3,7 @@ package nla.local;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import nla.local.pojos.Person;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 
 /**
  * Unit test for simple App.

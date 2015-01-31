@@ -5,7 +5,8 @@ nla\local\dao\BaseDao.class
 nla\local\dao\Dao.class
 nla\local\pojos\Person.class
 nla\local\pojos\Address.class
-nla\local\util\CustomNamingStrategy.class
+nla\local\util\DAOUtil.class
+nla\local\util\CodeGenerator.class
 nla\local\pojos\Status.class
 nla\local\pojos\Order.class
 nla\local\pojos\User.class

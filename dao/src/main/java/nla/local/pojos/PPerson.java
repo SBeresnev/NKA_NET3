@@ -1,17 +1,21 @@
 package nla.local.pojos;
 
-import org.hibernate.annotations.FilterDef;
-import org.hibernate.annotations.Where;
+
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name="SUBJECTSDATA" , schema = "NKA_NET3_DEV")
+@Table(name="SUBJECTSDATA")
 @PrimaryKeyJoinColumn(name="SUBJECT_ID" )
-public class PPerson extends Person{
+public class PPerson extends Person implements Serializable{
 
     private static final long serialVersionUID = 2L;
+
+    @Column(name = "SUBJECT_DATA_ID")
+    public Integer subjectdataid;
 
     @Column(name = "FIRSTNAME")
     public String firstname;
@@ -34,8 +38,37 @@ public class PPerson extends Person{
     @Column(name = "ACTUAL")
     public Integer actual;
 
+    @Column(name = "PREV_ADDRESS")
+    public String address;
+
+    /*
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ADDRESS_ID")
-    public Address address;
+    public Address address;*/
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PPerson)) return false;
+
+        PPerson person = (PPerson) o;
+
+        if (personalNumber != null ? !personalNumber.equals(person.personalNumber) : person.personalNumber != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+
+        int result = personalNumber != null ? personalNumber.hashCode() : 0;
+
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return " PersonalNumber: " + personalNumber;
+    }
 }
