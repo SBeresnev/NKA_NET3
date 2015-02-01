@@ -15,33 +15,32 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
 @TransactionConfiguration(defaultRollback = false)
+@Transactional
 public class SubjectTest
 {
 
     @Autowired
-    public ISubjectService<Person> pService;
-
-    @Autowired
-    public ISubjectService<Person> jService;
+    public ISubjectService<Person> sService;
 
     @Autowired
     public CodeGenerator scg;
 
+    @org.junit.Test
     public void SubjectJurTestController() throws DaoException {
         AddJurSubject();
         GetJurSubject();
     }
 
     @org.junit.Test
-    @Transactional
     public void SubjectPhyTestController() throws DaoException {
         AddPhysSubject();
-        //GetPhySubject();
+        GetPhySubject();
     }
 
 
@@ -49,24 +48,51 @@ public class SubjectTest
 
         boolean retval = true;
 
-        JPerson jp = new JPerson();
+       try {
 
-        jp.fullname = "ОАО Валенки";
-        jp.subjectType = 210;
-        jp.actual = 1;
-        jp.regNumber = String.valueOf(123456000);
-        jp.unp = String.valueOf(159357258);
-        jp.bothRegDate = new Date();
-        jService.addSubject(jp);
+            for(int i=0; i<=10; i++) {
+
+                JPerson jp = new JPerson();
+                jp.fullname = "ОАО Валенки"+"_"+i;
+                jp.subjectType = 210;
+                jp.actual = 1;
+                jp.regNumber = String.valueOf(123456000+i);
+                jp.unp = String.valueOf(159357258+i);
+                jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
+                jp.bothRegDate = new Date();
+                sService.addSubject(jp);
+
+            }
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+
+            retval = false;
+        }
+
+        assertTrue(retval);
+
+    }
+
+    public void AddPhysSubject() throws DaoException {
+
+        boolean retval = true;
 
         try {
 
-            for(int i=0; i<=1000; i++) {
+            for(int i=0; i<=10; i++) {
 
-                jp.fullname += "_"+i;
-                jp.regNumber = String.valueOf(123456000+i);
-                jp.unp = String.valueOf(159357258+i);
-                jService.addSubject(jp);
+                PPerson pp = new PPerson();
+
+                pp.surname = "Иван"+"_"+i;
+                pp.firstname = "Иванов"+"_"+i;
+                pp.fathername = "Иванович"+"_"+i;
+                pp.subjectType = 100;
+                pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
+                pp.bothRegDate = new Date();
+                pp.personalNumber = "7159357DB4" +String.valueOf(1000+i);
+                sService.addSubject(pp);
 
             }
 
@@ -86,7 +112,7 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<Person> result_p= pService.findByFIOType("Б", "С", null, null,110);
+        List<Person> result_p= sService.findByFIOType("Ив", "И", null, null,100);
 
         assertTrue(!result_p.isEmpty());
 
@@ -97,7 +123,7 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<Person> result_j= jService.findByNameType("Петр", "", 210);
+        List<Person> result_j= sService.findByNameType("Вал", "", 210);
 
         assertTrue(!result_j.isEmpty());
 
@@ -105,44 +131,6 @@ public class SubjectTest
     }
 
 
-    public void AddPhysSubject() throws DaoException {
-
-        boolean retval = true;
-
-
-        PPerson pp = new PPerson();
-        pp.firstname = "Иван";
-        pp.surname = "Иванов";
-        pp.fathername = "Иванович";
-        pp.subjectType = 100;
-        pp.personalNumber = "7159357DB4";
-        pp.bothRegDate = new Date();
-        pp.subjectdataid = 10;//scg.generate("SEQ_SUBJECTSDATA_ID");
-        pService.addSubject(pp);
-
-       /*
-        try {
-
-            for(int i=0; i<=1000; i++) {
-                PPerson pop = new PPerson();
-
-                pop.surname += "_"+i;
-                pop.firstname += "_"+i;
-                pop.personalNumber = pp.personalNumber +String.valueOf(1000+i);
-                pService.addSubject(pp);
-
-            }
-
-        } catch (DaoException e) {
-
-            e.printStackTrace();
-
-            retval = false;
-        }
-            */
-        assertTrue(retval);
-
-    }
 
 
 }

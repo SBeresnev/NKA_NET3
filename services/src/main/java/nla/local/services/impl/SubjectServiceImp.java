@@ -5,17 +5,13 @@ import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.JPerson;
 import nla.local.pojos.PPerson;
 import nla.local.pojos.Person;
-
 import nla.local.services.ISubjectService;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -116,10 +112,10 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
             query = DetachedCriteria.forClass(PPerson.class)
                     .add(Restrictions.eq("subjectType", subjectType))
-                    .add(Restrictions.eq("actual", 1))
+                    .add(Restrictions.or(Restrictions.eq("actual", 1),Restrictions.isNull("actual")))
                     .add(Restrictions.or(Restrictions.like("surname", "%" + surname + "%"), Restrictions.isNull("surname")))
-                    .add(Restrictions.or(Restrictions.like("firstname","%" + firstname + "%"), Restrictions.isNull("firstname")))
-                    .add(Restrictions.or(Restrictions.like("fathername","%" + fathername + "%"), Restrictions.isNull("fathername")));
+                    .add(Restrictions.or(Restrictions.like("firstname", "%" + firstname + "%"), Restrictions.isNull("firstname")))
+                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%"), Restrictions.isNull("fathername")));
 
             retval = (List<T>) this.findSubject(query);
         }

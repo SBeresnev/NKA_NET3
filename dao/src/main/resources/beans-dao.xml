@@ -25,10 +25,6 @@
          <property name="maxActive" value="10"/>
      </bean>
 
-     <bean id="person" class="nla.local.pojos.Person"/>
-     <bean id="jperson" class="nla.local.pojos.JPerson"/>
-     <bean id="pperson" class="nla.local.pojos.PPerson" />
-
      <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 
          <property name="dataSource" ref="dataSource"/>
