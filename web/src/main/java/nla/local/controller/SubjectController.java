@@ -16,14 +16,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/subject")
+
 public class SubjectController {
 
 
     @Autowired
-    ISubjectService<Person> sService;
+    public ISubjectService<Person> sService;
 
 
-    @RequestMapping(value = "/private/", method = RequestMethod.GET )
+    @RequestMapping(value = "/private", method = RequestMethod.GET )
     public List<Person> getPerson(@RequestParam(value = "name", defaultValue = "") String name,
                                   @RequestParam(value = "number", defaultValue = "") String personalnumber,
                                   @RequestParam(value = "type", defaultValue = "") String type)

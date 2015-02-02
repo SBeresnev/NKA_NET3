@@ -12,6 +12,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -22,6 +23,7 @@ import java.util.List;
  * Created by beresnev on 23.01.2015.
  */
 @Service
+@Transactional
 public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements ISubjectService<T> {
 
     private static Logger log = Logger.getLogger(SubjectServiceImp.class);
