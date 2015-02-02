@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment=" Friday change">
+    <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment=" Monday change">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" afterPath="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" afterPath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nka_net3.iws" />
@@ -46,7 +48,7 @@
         <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="1088">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -64,25 +66,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubjectTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SubjectTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38778222" vertical-offset="694" max-vertical-offset="2006">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="924" max-vertical-offset="1683">
+              <caret line="132" column="81" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
                 <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
-                <element signature="method#GetJurSubject#0;class#SubjectTest#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubjectController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WelcomeController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/WelcomeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+              <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+              <folding>
+                <element signature="e#1138#1139#0" expanded="true" />
+                <element signature="e#1170#1171#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubjectController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="816">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.6998672" vertical-offset="0" max-vertical-offset="753">
+              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -143,6 +158,7 @@
       <list>
         <option value="$PROJECT_DIR$/dao/src/main/resources/beans-dao.xml" />
         <option value="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
       </list>
     </option>
   </component>
@@ -942,7 +958,7 @@
       <workItem from="1422425975497" duration="49878000" />
       <workItem from="1422598696680" duration="25099000" />
       <workItem from="1422718976846" duration="15344000" />
-      <workItem from="1422862757017" duration="4847000" />
+      <workItem from="1422862757017" duration="5275000" />
     </task>
     <task id="LOCAL-00001" summary="Monday change">
       <created>1422288224207</created>
@@ -1142,11 +1158,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422864930171</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary=" Monday change">
+      <created>1422870566038</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1422870566038</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185475000" />
+    <option name="totallyTimeSpent" value="185903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1244,7 +1266,8 @@
     <MESSAGE value=" Thursday change" />
     <MESSAGE value=" Saturday change" />
     <MESSAGE value=" Friday change" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Friday change" />
+    <MESSAGE value=" Monday change" />
+    <option name="LAST_COMMIT_MESSAGE" value=" Monday change" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VssConfiguration">
@@ -1283,7 +1306,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="92" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="93" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1308,8 +1339,8 @@
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
             <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#GetJurSubject#0;class#SubjectTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1382,8 +1413,8 @@
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
             <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#GetJurSubject#0;class#SubjectTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1457,13 +1488,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/WelcomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1661,14 +1685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1173">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1258">
@@ -1681,23 +1697,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/WelcomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="816">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
+          <folding>
+            <element signature="e#1138#1139#0" expanded="true" />
+            <element signature="e#1170#1171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="1088">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38778222" vertical-offset="694" max-vertical-offset="2006">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="924" max-vertical-offset="1683">
+          <caret line="132" column="81" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
             <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#GetJurSubject#0;class#SubjectTest#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6998672" vertical-offset="0" max-vertical-offset="753">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

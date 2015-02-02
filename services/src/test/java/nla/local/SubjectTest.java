@@ -48,13 +48,14 @@ public class SubjectTest
         boolean retval = true;
 
         JPerson jp = new JPerson();
-        jp.fullname = "ОАО Apdate";
+        jp.fullname = "ОАО Update";
         jp.subjectType = 210;
         jp.actual = 1;
         jp.regNumber = String.valueOf(124566000);
         jp.unp = String.valueOf(159777758);
         jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
         jp.bothRegDate = new Date();
+
         sService.addSubject(jp);
 
 
