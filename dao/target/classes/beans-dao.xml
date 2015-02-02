@@ -17,17 +17,13 @@
              <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
              <property name="username" value="NKA_NET3_DEV"/>
              <property name="password" value="123123"/> -->
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521/XE"/>
+        <property name="url" value="jdbc:oracle:thin:@buravel:1521/XE"/>
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="username" value="sergei"/>
         <property name="password" value="123123"/>
          <property name="initialSize" value="5"/>
          <property name="maxActive" value="10"/>
      </bean>
-
-     <bean id="person" class="nla.local.pojos.Person"/>
-     <bean id="jperson" class="nla.local.pojos.JPerson"/>
-     <bean id="pperson" class="nla.local.pojos.PPerson" />
 
      <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 

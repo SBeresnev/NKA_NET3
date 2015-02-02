@@ -91,6 +91,7 @@ public class SubjectTest
                 pp.subjectType = 100;
                 pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
                 pp.bothRegDate = new Date();
+                pp.actual = 1;
                 pp.personalNumber = "7159357DB4" +String.valueOf(1000+i);
                 sService.addSubject(pp);
 
