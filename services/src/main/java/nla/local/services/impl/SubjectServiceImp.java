@@ -37,6 +37,7 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
     }
 
+
     @Override
     public void addSubject(T t) throws DaoException {
 
@@ -48,6 +49,8 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     public void refreshSubject(T t) throws DaoException {
 
             super.update(t);
+
+
 
     };
 

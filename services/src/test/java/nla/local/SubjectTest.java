@@ -58,6 +58,9 @@ public class SubjectTest
 
         sService.addSubject(jp);
 
+        jp.fullname += String.valueOf("12");
+        jp.regNumber = String.valueOf("1245660100");
+        sService.update(jp);
 
 
     }
