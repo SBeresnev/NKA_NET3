@@ -51,7 +51,6 @@ public class PPerson extends Person implements Serializable{
     @JoinColumn(name="ADDRESS_ID")
     public Address address;*/
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

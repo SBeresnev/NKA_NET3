@@ -9,8 +9,6 @@
 
     <modules>
         <module>dao</module>
-        <module>services</module>
-        <module>web</module>
     </modules>
 
     <repositories>

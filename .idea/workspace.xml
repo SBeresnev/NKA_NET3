@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment=" Tuesday change">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml" />
+    <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment="Tuesday change">
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\beans-dao.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\log4j.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\dao\BaseDao.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\dao\Dao.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\dao\exceptions\DaoErrorCode.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\dao\exceptions\DaoException.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\pojos\Address.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\pojos\JPerson.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\pojos\Order.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\pojos\PPerson.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\pojos\Person.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\pojos\Status.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\pojos\User.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\util\CodeGenerator.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\classes\nla\local\util\DAOUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\dao-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\maven-archiver\pom.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\maven-status\maven-compiler-plugin\testCompile\default-testCompile\createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\maven-status\maven-compiler-plugin\testCompile\default-testCompile\inputFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\target\test-classes\nla\local\AppTestU.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\web\src\main\java\util\filters\CORSFilter.java" afterPath="$PROJECT_DIR$/web/src/main/java/nla/local/util/filters/CORSFilter.java" />
     </list>
     <ignored path="nka_net3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,11 +68,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PPerson.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PPerson.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5069357" vertical-offset="380" max-vertical-offset="1173">
-              <caret line="46" column="25" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1156">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#equals#0;class#PPerson#0" expanded="false" />
@@ -103,11 +124,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
-              <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.28419453" vertical-offset="0" max-vertical-offset="816">
+              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -156,10 +177,10 @@
         <option value="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java" />
         <option value="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" />
         <option value="$PROJECT_DIR$/dao/pom.xml" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -175,12 +196,6 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-      </PATH>
       <PATH>
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
@@ -203,6 +218,12 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Lifecycle" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
       </PATH>
     </treeState>
@@ -270,7 +291,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -284,21 +305,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -310,7 +323,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -332,7 +345,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="dao" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -347,58 +360,12 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="nka_net3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nka_net3" />
+              <option name="myItemId" value="local" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nka_net3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nka_net3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nka_net3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nka_net3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
+              <option name="myItemId" value="util" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1013,7 +980,7 @@
       <workItem from="1422718976846" duration="15344000" />
       <workItem from="1422862757017" duration="8546000" />
       <workItem from="1422876315272" duration="733000" />
-      <workItem from="1422962490334" duration="5707000" />
+      <workItem from="1422962490334" duration="6265000" />
     </task>
     <task id="LOCAL-00001" summary="Monday change">
       <created>1422288224207</created>
@@ -1261,11 +1228,17 @@
       <option name="project" value="LOCAL" />
       <updated>1422968731351</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Tuesday change">
+      <created>1422973348801</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1422973348801</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195614000" />
+    <option name="totallyTimeSpent" value="196172000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1290,11 +1263,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46418732" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.046486486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.112432435" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24432433" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31567568" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24432433" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.030270271" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2585288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2585288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1364,7 +1337,8 @@
     <MESSAGE value=" Friday change" />
     <MESSAGE value=" Monday change" />
     <MESSAGE value=" Tuesday change" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Tuesday change" />
+    <MESSAGE value="Tuesday change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tuesday change" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="VssConfiguration">
@@ -1746,14 +1720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
-          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/java/forms/UserForm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
@@ -1814,13 +1780,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5069357" vertical-offset="380" max-vertical-offset="1173">
-          <caret line="46" column="25" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1156">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#equals#0;class#PPerson#0" expanded="false" />
             <element signature="method#hashCode#0;class#PPerson#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28419453" vertical-offset="0" max-vertical-offset="816">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
