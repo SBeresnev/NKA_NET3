@@ -1,4 +1,4 @@
-package util.filters;
+package nla.local.util.filters;
 
 /**
  * Created by belonovich on 03.02.2015.
