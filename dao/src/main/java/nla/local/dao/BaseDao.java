@@ -64,6 +64,7 @@ public class BaseDao<T> implements Dao<T> {
         try{
 
             getSession().save(t);
+
             log.info("Save:" + t);
 
         } catch (HibernateException e) {

@@ -24,11 +24,12 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements ISubjectService<T> {
+public class SubjectServiceImp<T extends Person> extends BaseDao<Person> implements ISubjectService<T> {
 
     private static Logger log = Logger.getLogger(SubjectServiceImp.class);
 
     private DetachedCriteria query;
+
 
     @Autowired
    public SubjectServiceImp(SessionFactory sessionFactory)
@@ -48,7 +49,6 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     @Override
     public void refreshSubject(T t) throws DaoException
     {
-
             super.update(t);
 
     };
@@ -56,7 +56,7 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     @Override
     public List<T> findSubject(DetachedCriteria dc)
     {
-        List<T> out = null;
+        List<Person> out = null;
 
         if (dc == null) { dc = getQuery(); }
         else { setQuery(dc);}
@@ -69,9 +69,16 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             e.printStackTrace();
         }
 
-        return out;
+        return (List<T>) out;
     };
 
+    @Override
+    public void getSubject(Class<T> clazz,Serializable id) throws DaoException
+    {
+
+        super.get((Class<Person>) clazz,id);
+
+    }
     public List<T> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 
@@ -138,20 +145,5 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
         this.query = query;
     }
 
-    public T findSubject(Class<T> clazz, Serializable id)
-    {
-        T retval = null;
-
-        try {
-
-            retval =  super.get(clazz, id);
-
-        } catch (DaoException e) {
-
-            e.printStackTrace();
-        }
-
-        return retval;
-    }
 
 }

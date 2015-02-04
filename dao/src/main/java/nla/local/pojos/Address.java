@@ -1,12 +1,17 @@
 package nla.local.pojos;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by beresnev on 13.01.2015.
  */
 
+/*
+adresses
+ */
 @Entity
 @Table(name="ADDRESSES")
 public class Address {

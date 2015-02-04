@@ -5,11 +5,8 @@ import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.Address;
 import nla.local.services.IAdressService;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import java.util.List;
 
@@ -41,6 +38,7 @@ public class AddressServiceImp extends BaseDao<Address> implements IAdressServic
             out = super.getCriterion(query);
 
         } catch (DaoException e) {
+
             e.printStackTrace();
         }
 

@@ -44,6 +44,7 @@ public class SubjectTest
     }
 
 
+    @org.junit.Test
     public void UpdateJurSubject() throws DaoException {
         boolean retval = true;
 
@@ -60,7 +61,7 @@ public class SubjectTest
 
         jp.fullname += String.valueOf("12");
         jp.regNumber = String.valueOf("1245660100");
-        sService.update(jp);
+        sService.refreshSubject(jp);
 
 
     }

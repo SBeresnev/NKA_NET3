@@ -1,16 +1,18 @@
 package nla.local.services;
 
 import nla.local.dao.exceptions.DaoException;
+import nla.local.pojos.Person;
 import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.List;
 
 
-public interface ISubjectService<T> extends IService<T> {
+public interface ISubjectService<T extends Person> extends IService<Person> {
 
     public void addSubject(T t) throws DaoException;
+
+    public void getSubject(Class<T> clazz,Serializable id) throws DaoException;
 
     public void refreshSubject(T t) throws DaoException;
 
