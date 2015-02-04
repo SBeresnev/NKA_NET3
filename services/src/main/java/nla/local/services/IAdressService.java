@@ -11,4 +11,6 @@ import java.util.List;
 public interface IAdressService extends IService<Address> {
 
     public List findAddress(DetachedCriteria dc);
+
+
 }

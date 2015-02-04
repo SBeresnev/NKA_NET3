@@ -12,7 +12,7 @@ public interface ISubjectService<T extends Person> extends IService<Person> {
 
     public void addSubject(T t) throws DaoException;
 
-    public void getSubject(Class<T> clazz,Serializable id) throws DaoException;
+    public T getSubject(Class<T> clazz,Serializable id) throws DaoException;
 
     public void refreshSubject(T t) throws DaoException;
 

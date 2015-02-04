@@ -20,8 +20,7 @@ public class AddressServiceImp extends BaseDao<Address> implements IAdressServic
 
     private DetachedCriteria query;
 
-    public AddressServiceImp()
-    {
+    public AddressServiceImp() {
 
     }
 

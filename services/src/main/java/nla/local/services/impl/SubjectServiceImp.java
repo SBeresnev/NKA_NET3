@@ -49,7 +49,21 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<Person> impleme
     @Override
     public void refreshSubject(T t) throws DaoException
     {
-            super.update(t);
+        T person = getSubject((Class<T>) t.getClass(),((Person)t).subjectId);
+
+          if(person instanceof PPerson)
+            {
+                ((PPerson) person).actual = 0;
+
+            } else {
+
+                ((JPerson) person).actual = 0;
+
+            }
+
+            super.update(person);
+
+            addSubject(t);
 
     };
 
@@ -63,7 +77,7 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<Person> impleme
 
         try {
 
-            out = super.getCriterion(query);
+            out = (List<Person>) super.getCriterion(query);
 
         } catch (DaoException e) {
             e.printStackTrace();
@@ -73,12 +87,12 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<Person> impleme
     };
 
     @Override
-    public void getSubject(Class<T> clazz,Serializable id) throws DaoException
+    public T getSubject(Class<T> clazz,Serializable id) throws DaoException
     {
-
-        super.get((Class<Person>) clazz,id);
+          return (T) super.get((Class<Person>) clazz,id);
 
     }
+
     public List<T> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 

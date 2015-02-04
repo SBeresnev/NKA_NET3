@@ -14,8 +14,7 @@ abstract person
 
 @Entity
 @Table(name="SUBJECTS")
-@Inheritance(strategy= InheritanceType.JOINED)
-
+//@Inheritance(strategy= InheritanceType.JOINED)
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;

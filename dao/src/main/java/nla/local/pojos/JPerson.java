@@ -3,10 +3,7 @@ package nla.local.pojos;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,12 +13,19 @@ juridical person
 
 @Entity
 @Table(name="SUBJECTSDATA")
-@PrimaryKeyJoinColumn(name="SUBJECT_ID")
+//@PrimaryKeyJoinColumn(name="SUBJECT_ID" )
 public class JPerson extends Person implements Serializable{
     private static final long serialVersionUID = 3L;
 
-    @Column(name= "SUBJECT_DATA_ID")
+    @Id
+    @Column(name="SUBJECT_DATA_ID", unique=true, nullable=false )
+    @SequenceGenerator(name="j_seq", sequenceName="SEQ_SUBJECTSDATA_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="j_seq")
     public Integer subjectdataid;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name="SUBJECT_ID", nullable=false)
+    public Person person;
 
     @Column(name = "FULLNAME", nullable = false)
     public String fullname;

@@ -4,10 +4,7 @@ package nla.local.pojos;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,13 +15,20 @@ get from SUBJECTSDATA
 
 @Entity
 @Table(name="SUBJECTSDATA")
-@PrimaryKeyJoinColumn(name="SUBJECT_ID" )
+//@PrimaryKeyJoinColumn(name="SUBJECT_ID" )
 public class PPerson extends Person implements Serializable{
 
     private static final long serialVersionUID = 2L;
 
-    @Column(name = "SUBJECT_DATA_ID")
+    @Id
+    @Column(name="SUBJECT_DATA_ID", unique=true, nullable=false )
+    @SequenceGenerator(name="p_seq", sequenceName="SEQ_SUBJECTSDATA_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="p_seq")
     public Integer subjectdataid;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name="SUBJECT_ID", nullable=false)
+    public Person person;
 
     @Column(name = "FIRSTNAME")
     public String firstname;
@@ -37,7 +41,6 @@ public class PPerson extends Person implements Serializable{
 
     @Column(name = "BOTH_REG_DATE")
     @JsonSerialize(using= DateSerializer.class)
-    //@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm")
     public Date bothRegDate;
 
     @Column(name = "PERSONAL_NUMBER")
@@ -56,7 +59,8 @@ public class PPerson extends Person implements Serializable{
     /*
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="ADDRESS_ID")
-    public Address address;*/
+    public Address address;
+    */
 
     @Override
     public boolean equals(Object o) {

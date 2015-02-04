@@ -54,16 +54,14 @@ public class SubjectTest
         jp.actual = 1;
         jp.regNumber = String.valueOf(124566000);
         jp.unp = String.valueOf(159777758);
-        jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
+        //jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
         jp.bothRegDate = new Date();
-
         sService.addSubject(jp);
 
-        jp.fullname += String.valueOf("12");
+        jp.fullname  = String.valueOf("12");
         jp.regNumber = String.valueOf("1245660100");
+
         sService.refreshSubject(jp);
-
-
     }
 
     public void AddJurSubject() throws DaoException {
@@ -74,7 +72,13 @@ public class SubjectTest
 
             for(int i=0; i<=10; i++) {
 
+                Person p = new Person();
+
+                p.isOwner = 1;
+                p.subjectType = 210;
+
                 JPerson jp = new JPerson();
+                jp.person = p;
                 jp.fullname = "ОАО Валенки"+"_"+i;
                 jp.subjectType = 210;
                 jp.actual = 1;

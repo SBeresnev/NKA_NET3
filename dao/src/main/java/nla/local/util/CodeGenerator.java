@@ -1,8 +1,7 @@
 package nla.local.util;
 
-import org.hibernate.HibernateException;
 import org.apache.log4j.Logger;
-
+import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  * Created by beresnev on 27.01.2015.
@@ -49,7 +44,29 @@ public class CodeGenerator  {
         } catch (HibernateException e) {
 
             log.error(e);
+
             throw new HibernateException("Unable to generate Code Sequence");
+        }
+
+    }
+
+    public  Serializable generate_obj(String sql) throws HibernateException {
+
+        String conn_str =sql;
+
+        SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(conn_str);
+
+        try {
+
+            Integer ret_val =  ((BigDecimal)query.uniqueResult()).intValue();
+
+            return ret_val;
+
+        } catch (HibernateException e) {
+
+            log.error(e);
+
+            throw new HibernateException("Unable to object generate");
         }
 
     }

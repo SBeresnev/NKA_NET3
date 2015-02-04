@@ -16,8 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/subject")
-
 public class SubjectController {
+
 
 
     @Autowired
