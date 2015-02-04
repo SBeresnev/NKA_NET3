@@ -1,15 +1,15 @@
 package nla.local.pojos;
 
-import org.hibernate.annotations.*;
-import org.springframework.stereotype.Component;
-
-
-import javax.persistence.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
+/*
+juridical person
+*/
 
 @Entity
 @Table(name="SUBJECTSDATA")

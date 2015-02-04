@@ -1,13 +1,15 @@
 package nla.local.pojos;
 
-import org.hibernate.annotations.Where;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 
 /**
  * Created by Serega on 25.09.2014.
+ */
+
+/*
+abstract person
  */
 
 @Entity

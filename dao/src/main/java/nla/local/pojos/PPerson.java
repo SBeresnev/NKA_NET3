@@ -11,6 +11,11 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
+/*
+private person
+get from SUBJECTSDATA
+*/
+
 @Entity
 @Table(name="SUBJECTSDATA")
 @PrimaryKeyJoinColumn(name="SUBJECT_ID" )

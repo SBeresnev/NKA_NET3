@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -67,7 +68,11 @@ public class BaseDao<T> implements Dao<T> {
 
         } catch (HibernateException e) {
 
-            throw new DaoException(e, DaoErrorCode.NKANET_DAO_002, t);
+            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_002, t);
+
+            log.error(dEx.getMessage());
+
+            throw dEx;
         }
 
     }
@@ -82,7 +87,12 @@ public class BaseDao<T> implements Dao<T> {
 
         } catch (HibernateException e) {
 
-            throw new DaoException(e, DaoErrorCode.NKANET_DAO_003, t);
+            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_003, t);
+
+            log.error(dEx.getMessage());
+
+            throw dEx;
+
         }
     }
 
@@ -98,7 +108,13 @@ public class BaseDao<T> implements Dao<T> {
             return list;
 
         } catch (HibernateException e) {
-            throw new DaoException(e, DaoErrorCode.NKANET_DAO_001, typeName);
+
+            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_001, typeName);
+
+            log.error(dEx.getMessage());
+
+            throw dEx;
+
         }
     }
 
@@ -115,7 +131,12 @@ public class BaseDao<T> implements Dao<T> {
 
         } catch (HibernateException e) {
 
-            throw new DaoException(e, DaoErrorCode.NKANET_DAO_000, typeName, id);
+            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_000, typeName, id);
+
+            log.error(dEx.getMessage());
+
+            throw dEx;
+
 
         }
 
@@ -125,13 +146,22 @@ public class BaseDao<T> implements Dao<T> {
     public void delete(T t) throws DaoException {
 
         try {
+
             log.debug(String.format("Delete %s: %s.", typeName, t));
+
             if (t != null) {
                 log.info("Delete:" + t);
                 getSession().delete(t);
             }
         } catch (HibernateException e) {
-            throw new DaoException(e, DaoErrorCode.NKANET_DAO_004, t);
+
+
+            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_004, t);
+
+            log.error(dEx.getMessage());
+
+            throw dEx;
+
         }
     }
 
@@ -140,11 +170,17 @@ public class BaseDao<T> implements Dao<T> {
 
         try {
             log.info("Refresh:" + t);
+
             getSession().refresh(t);
         }
         catch (HibernateException e)
         {
-            throw new DaoException(e, DaoErrorCode.NKANET_DAO_005, typeName);
+            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_006, typeName);
+
+            log.error(dEx.getMessage());
+
+            throw dEx;
+
         }
     }
 
@@ -152,12 +188,19 @@ public class BaseDao<T> implements Dao<T> {
     public List<T> getCriterion(DetachedCriteria crio) throws DaoException {
 
         try {
+
             Criteria cria = crio.getExecutableCriteria(getSession());
+
             return cria.list();
 
         } catch (HibernateException e) {
 
-            throw new DaoException(e, DaoErrorCode.NKANET_DAO_005, typeName);
+            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_005, typeName);
+
+            log.error(dEx.getMessage());
+
+            throw dEx;
+
         }
 
     }

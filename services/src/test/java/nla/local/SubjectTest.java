@@ -40,7 +40,7 @@ public class SubjectTest
     @org.junit.Test
     public void SubjectPhyTestController() throws DaoException {
         AddPhysSubject();
-        GetPhySubject();
+        GetPhysSubject();
     }
 
 
@@ -129,7 +129,7 @@ public class SubjectTest
 
     }
 
-    public void GetPhySubject() {
+    public void GetPhysSubject() {
 
         boolean retval = true;
 

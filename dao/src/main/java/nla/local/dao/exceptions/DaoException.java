@@ -8,6 +8,7 @@ package nla.local.dao.exceptions;
 
 public class DaoException extends Exception {
 
+
     private DaoErrorCode code;
     private Object[] params;
     private String message;
@@ -17,6 +18,7 @@ public class DaoException extends Exception {
 	this.code = code;
 	this.params = params;
 	this.message = String.format(code.toString(), params);
+
     }
 
     public DaoErrorCode getCode() {
