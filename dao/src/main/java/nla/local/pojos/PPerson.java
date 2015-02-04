@@ -3,7 +3,6 @@ package nla.local.pojos;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,14 +37,12 @@ public class PPerson extends Person implements Serializable{
 
     @Column(name = "BOTH_REG_DATE")
     @JsonSerialize(using=DateSerializer.class)
-    @DateTimeFormat(pattern="dd/MM/YY")
     public Date bothRegDate;
 
     @Column(name = "PERSONAL_NUMBER")
     public String personalNumber;
 
     @JsonSerialize(using=DateSerializer.class)
-    @DateTimeFormat(pattern="dd/MM/YY")
     @Column(name = "DATESTART")
     public Date datestart;
 
