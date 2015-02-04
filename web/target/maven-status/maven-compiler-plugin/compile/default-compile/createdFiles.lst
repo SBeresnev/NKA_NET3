@@ -1,3 +1,4 @@
+nla\local\util\filters\CORSFilter.class
 nla\local\controller\AdressController.class
 nla\local\controller\SubjectController.class
 nla\local\controller\WelcomeController.class
