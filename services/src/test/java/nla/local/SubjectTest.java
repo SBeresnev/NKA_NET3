@@ -78,7 +78,7 @@ public class SubjectTest
                 p.subjectType = 210;
 
                 JPerson jp = new JPerson();
-                jp.person = p;
+
                 jp.fullname = "ОАО Валенки"+"_"+i;
                 jp.subjectType = 210;
                 jp.actual = 1;

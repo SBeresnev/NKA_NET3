@@ -24,7 +24,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class SubjectServiceImp<T extends Person> extends BaseDao<Person> implements ISubjectService<T> {
+public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements ISubjectService<T> {
 
     private static Logger log = Logger.getLogger(SubjectServiceImp.class);
 
@@ -49,35 +49,21 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<Person> impleme
     @Override
     public void refreshSubject(T t) throws DaoException
     {
-        T person = getSubject((Class<T>) t.getClass(),((Person)t).subjectId);
-
-          if(person instanceof PPerson)
-            {
-                ((PPerson) person).actual = 0;
-
-            } else {
-
-                ((JPerson) person).actual = 0;
-
-            }
-
-            super.update(person);
-
-            addSubject(t);
+            super.update(t);
 
     };
 
     @Override
     public List<T> findSubject(DetachedCriteria dc)
     {
-        List<Person> out = null;
+        List<T> out = null;
 
         if (dc == null) { dc = getQuery(); }
         else { setQuery(dc);}
 
         try {
 
-            out = (List<Person>) super.getCriterion(query);
+            out = super.getCriterion(query);
 
         } catch (DaoException e) {
             e.printStackTrace();
@@ -89,7 +75,7 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<Person> impleme
     @Override
     public T getSubject(Class<T> clazz,Serializable id) throws DaoException
     {
-          return (T) super.get((Class<Person>) clazz,id);
+          return (T) super.get((Class<T>) clazz,id);
 
     }
 
@@ -99,8 +85,6 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<Person> impleme
         log.info("Get " + " by name. Invoked SubjectService.getByNameType()" );
 
          Type t = getClass().getGenericSuperclass();
-
-        //(Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 
         List<T> retval = new ArrayList<T>();
 

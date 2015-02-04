@@ -23,9 +23,9 @@ public class JPerson extends Person implements Serializable{
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="j_seq")
     public Integer subjectdataid;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    /*@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name="SUBJECT_ID", nullable=false)
-    public Person person;
+    public Person person;*/
 
     @Column(name = "FULLNAME", nullable = false)
     public String fullname;

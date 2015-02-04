@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
-public interface ISubjectService<T extends Person> extends IService<Person> {
+public interface ISubjectService<T extends Person> extends IService<T> {
 
     public void addSubject(T t) throws DaoException;
 
