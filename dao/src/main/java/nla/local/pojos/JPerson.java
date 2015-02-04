@@ -40,6 +40,7 @@ public class JPerson extends Person implements Serializable{
 
     @JsonSerialize(using=DateSerializer.class)
     @Column(name = "BOTH_REG_DATE")
+    //@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm")
     public Date bothRegDate;
 
     @Column(name = "REMARK")
