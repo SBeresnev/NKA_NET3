@@ -37,6 +37,8 @@ public class PPerson extends Person implements Serializable{
     public String fathername;
 
     @Column(name = "BOTH_REG_DATE")
+    @JsonSerialize(using=DateSerializer.class)
+    @DateTimeFormat(pattern="dd/MM/YY")
     public Date bothRegDate;
 
     @Column(name = "PERSONAL_NUMBER")

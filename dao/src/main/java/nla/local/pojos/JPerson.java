@@ -1,5 +1,9 @@
 package nla.local.pojos;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -35,7 +39,9 @@ public class JPerson extends Person implements Serializable{
     @Column(name = "ORG_RIGHT_FORM" )
     public Integer orgRightForm;
 
+    @JsonSerialize(using=DateSerializer.class)
     @Column(name = "BOTH_REG_DATE")
+    @DateTimeFormat(pattern="dd/MM/YY")
     public Date bothRegDate;
 
     @Column(name = "REMARK")
