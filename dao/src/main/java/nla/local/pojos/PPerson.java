@@ -69,4 +69,6 @@ public class PPerson extends Person implements Serializable{
     public String toString() {
         return " PersonalNumber: " + personalNumber;
     }
+
+
 }

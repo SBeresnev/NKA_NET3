@@ -21,6 +21,4 @@ public interface ISubjectService<T> extends IService<T> {
 
     public List<T> findByFIOType(String surname, String firstname  ,String fathername, String personalNumber, Integer subjectType );
 
-
-
 }

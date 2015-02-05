@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by beresnev on 27.01.2015.
@@ -50,7 +51,7 @@ public class CodeGenerator  {
 
     }
 
-    public  Serializable generate_obj(String sql) throws HibernateException {
+    public List<Object> generate_obj(String sql) throws HibernateException {
 
         String conn_str =sql;
 
@@ -58,7 +59,7 @@ public class CodeGenerator  {
 
         try {
 
-            Integer ret_val =  ((BigDecimal)query.uniqueResult()).intValue();
+            List<Object> ret_val = query.list();
 
             return ret_val;
 

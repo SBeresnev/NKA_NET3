@@ -2,13 +2,12 @@ package nla.local.pojos;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Serega on 18.09.2014.
  */
 @Entity
-@Table(name="ORDER_PVT")
+@Table(name="DECL")
 public class Order implements Serializable {
 
     @Id

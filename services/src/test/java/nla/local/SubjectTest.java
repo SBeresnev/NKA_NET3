@@ -36,6 +36,7 @@ public class SubjectTest
 
     @org.junit.Test
     public void SubjectJurTestController() throws DaoException {
+
         AddJurSubject();
         GetJurSubject();
         UpdateJurSubject();
@@ -43,6 +44,7 @@ public class SubjectTest
 
     @org.junit.Test
     public void SubjectPhyTestController() throws DaoException {
+
         AddPhysSubject();
         GetPhysSubject();
         UpdatePhysSubject();
@@ -59,11 +61,11 @@ public class SubjectTest
         for(int i=0; i<=10; i++) {
             JPerson jp = new JPerson();
             jp.fullname = "ОАО Update_" + String.valueOf(i) ;
+            jp.orgRightForm = 1131;
             jp.subjectType = 210;
             jp.actual = 1;
             jp.regNumber = String.valueOf(124566000) + String.valueOf(i);
             jp.unp = String.valueOf(159777758) + String.valueOf(i);
-            jp.subjectdataid = (Integer) scg.generate("SEQ_SUBJECTSDATA_ID");
             jp.bothRegDate = new Date();
             sService.addSubject(jp);
         }
@@ -99,7 +101,6 @@ public class SubjectTest
             pp.fathername = "Обамович"+"_"+i;
             pp.subjectType = 100;
             pp.isOwner = 1;
-            pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
             pp.bothRegDate = new Date();
             pp.datestart = new Date();
             pp.actual = 1;
@@ -134,15 +135,14 @@ public class SubjectTest
 
             for(int i=0; i<=10; i++) {
 
-
                 JPerson jp = new JPerson();
                 jp.isOwner = 1;
                 jp.subjectType = 210;
-                jp.fullname = "ОАО Валенки"+"_"+i;
+                jp.fullname = "Валенки"+"_"+i;
+                jp.orgRightForm = 1132;
                 jp.actual = 1;
                 jp.regNumber = String.valueOf(123456000+i);
                 jp.unp = String.valueOf(159357258+i);
-                jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
                 jp.bothRegDate = new Date();
                 sService.addSubject(jp);
 
@@ -176,7 +176,6 @@ public class SubjectTest
                 pp.fathername = "Иванович"+"_"+i;
                 pp.subjectType = 100;
                 pp.isOwner = 1;
-                pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
                 pp.bothRegDate = new Date();
                 pp.actual = 1;
                 pp.personalNumber = "7159357DB4" +String.valueOf(1000+i);

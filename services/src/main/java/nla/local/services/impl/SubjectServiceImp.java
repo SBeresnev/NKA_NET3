@@ -30,7 +30,6 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
     private DetachedCriteria query;
 
-
     @Autowired
    public SubjectServiceImp(SessionFactory sessionFactory)
     {
@@ -38,22 +37,21 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
     }
 
-
     @Override
-    public void addSubject(T t) throws DaoException {
+    public void addSubject(T t) throws DaoException
+    {
 
          super.add(t);
 
     }
 
     @Override
-    public void getSubject(Class<T> clazz, Serializable id) throws DaoException {
+    public void getSubject(Class<T> clazz, Serializable id) throws DaoException
+    {
 
         super.get(clazz,id);
 
-    }
-
-    ;
+    };
 
     @Override
     public void refreshSubject(T t) throws DaoException
