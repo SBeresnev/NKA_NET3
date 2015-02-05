@@ -1,16 +1,17 @@
 package nla.local.pojos;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import nla.local.pojos.dict.OrgKod;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+
 
 /**
  * Created by Serega on 26.09.2014.
  * officialuser
  */
+
 @Entity
 @Table(name="OFFICIALUSERS" )
 @PrimaryKeyJoinColumn(name="SUBJECT_ID")
@@ -39,8 +40,9 @@ public class OPerson extends Person implements Serializable{
     @Column(name = "DATE_OUT")
     public Date date_out;
 
-    @Column(name = "ORG_KOD")
-    public Integer org_kod;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORG_KOD", nullable = false)
+    public OrgKod org_kod;
 
     @Column(name = "BASE_USER_UID")
     public Integer base_user_uid;
@@ -71,7 +73,7 @@ public class OPerson extends Person implements Serializable{
     @Override
     public String toString() {
 
-        return "user_num: " + user_num + " base_user_uid:" + base_user_uid + " org_kod:" ;
+        return "user_num: " + user_num + " base_user_uid:" + base_user_uid + " org_kod:" + org_kod ;
 
     }
 

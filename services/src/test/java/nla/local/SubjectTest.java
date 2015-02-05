@@ -37,17 +37,17 @@ public class SubjectTest
     @org.junit.Test
     public void SubjectJurTestController() throws DaoException {
 
-        AddJurSubject();
-        GetJurSubject();
+       // AddJurSubject();
+       // GetJurSubject();
         UpdateJurSubject();
     }
 
     @org.junit.Test
     public void SubjectPhyTestController() throws DaoException {
 
-        AddPhysSubject();
-        GetPhysSubject();
-        UpdatePhysSubject();
+      //  AddPhysSubject();
+      //  GetPhysSubject();
+       // UpdatePhysSubject();
 
     }
 
@@ -60,6 +60,7 @@ public class SubjectTest
 
         for(int i=0; i<=10; i++) {
             JPerson jp = new JPerson();
+            jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
             jp.fullname = "ОАО Update_" + String.valueOf(i) ;
             jp.orgRightForm = 1131;
             jp.subjectType = 210;
@@ -95,6 +96,7 @@ public class SubjectTest
         for(int i=0; i<=10; i++) {
 
             PPerson pp = new PPerson();
+            pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
 
             pp.surname = "Дженкинс"+"_"+i;
             pp.firstname = "Владимир"+"_"+i;
@@ -136,6 +138,7 @@ public class SubjectTest
             for(int i=0; i<=10; i++) {
 
                 JPerson jp = new JPerson();
+                jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
                 jp.isOwner = 1;
                 jp.subjectType = 210;
                 jp.fullname = "Валенки"+"_"+i;
@@ -170,7 +173,7 @@ public class SubjectTest
             for(int i=0; i<=10; i++) {
 
                 PPerson pp = new PPerson();
-
+                pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
                 pp.surname = "Иван"+"_"+i;
                 pp.firstname = "Иванов"+"_"+i;
                 pp.fathername = "Иванович"+"_"+i;

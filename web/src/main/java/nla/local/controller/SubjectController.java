@@ -18,11 +18,8 @@ import java.util.List;
 @RequestMapping("/subject")
 public class SubjectController {
 
-
-
     @Autowired
     public ISubjectService<Person> sService;
-
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
     public List<Person> getPerson(@RequestParam(value = "name", defaultValue = "") String name,
@@ -31,8 +28,8 @@ public class SubjectController {
     {
 
 
-        //List<PPerson> result= pService.findByFIOType("Б", "С", null,null,110);
         List<Person> result_p= sService.findByFIOType("Ив", "И", null, null, 100);
+
         return result_p;
     }
 
@@ -42,8 +39,10 @@ public class SubjectController {
                                             @RequestParam(value="type",defaultValue="") String type)
     {
 
-        List<Person> result_p= sService.findByFIOType("Ив", "И", null, null, 100);
+        List<Person> result_p= sService.findByFIOType("Ив", "И", null, null, 210);
+
         return result_p;
+
     }
 
 }
