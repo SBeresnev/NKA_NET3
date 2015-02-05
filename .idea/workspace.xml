@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment="Thursday change">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/target/test-classes/nla/local/SubjectTest.class" afterPath="$PROJECT_DIR$/services/target/test-classes/nla/local/SubjectTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/JPerson.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/JPerson.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java" afterPath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" afterPath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -148,8 +142,8 @@
       <file leaf-file-name="SubjectTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56426734" vertical-offset="343" max-vertical-offset="1122">
-              <caret line="86" column="55" selection-start-line="86" selection-start-column="55" selection-end-line="86" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.49815497" vertical-offset="292" max-vertical-offset="1105">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#SubjectJurTestController#0;class#SubjectTest#0" expanded="false" />
@@ -688,21 +682,21 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="293" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="291" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="292" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="290" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="294" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="292" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="967" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="960" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="293" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="291" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="292" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="290" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="293" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="291" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="968" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="961" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
   <component name="RecentsManager">
@@ -1136,13 +1130,7 @@
       <workItem from="1422862757017" duration="8546000" />
       <workItem from="1422876315272" duration="733000" />
       <workItem from="1422962490334" duration="6940000" />
-      <workItem from="1423031398643" duration="33504000" />
-    </task>
-    <task id="LOCAL-00005" summary=" Tuesday change">
-      <created>1422368380145</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1422368380145</updated>
+      <workItem from="1423031398643" duration="33947000" />
     </task>
     <task id="LOCAL-00006" summary=" Tuesday change">
       <created>1422372233804</created>
@@ -1432,11 +1420,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423117906183</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Thursday change">
+      <created>1423127513136</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1423127513136</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230351000" />
+    <option name="totallyTimeSpent" value="230794000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1461,8 +1455,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2054054" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.046486486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31243244" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12864865" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.09081081" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1881081" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.030270271" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2585288" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1586,7 +1580,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java</url>
-          <line>205</line>
+          <line>201</line>
           <properties />
           <option name="timeStamp" value="99" />
         </line-breakpoint>
@@ -2044,8 +2038,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56426734" vertical-offset="343" max-vertical-offset="1122">
-          <caret line="86" column="55" selection-start-line="86" selection-start-column="55" selection-end-line="86" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.49815497" vertical-offset="292" max-vertical-offset="1105">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#SubjectJurTestController#0;class#SubjectTest#0" expanded="false" />

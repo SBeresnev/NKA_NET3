@@ -137,7 +137,6 @@ public class SubjectTest
                 jp.isOwner = 1;
                 jp.subjectType = 210;
                 jp.fullname = "ОАО Валенки"+"_"+i;
-                jp.subjectType = 210;
                 jp.actual = 1;
                 jp.regNumber = String.valueOf(123456000+i);
                 jp.unp = String.valueOf(159357258+i);
@@ -174,9 +173,7 @@ public class SubjectTest
                 pp.firstname = "Иванов"+"_"+i;
                 pp.fathername = "Иванович"+"_"+i;
                 pp.subjectType = 100;
-
                 pp.isOwner = 1;
-                pp.subjectType = 210;
                 pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
                 pp.bothRegDate = new Date();
                 pp.actual = 1;
