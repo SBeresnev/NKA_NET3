@@ -58,11 +58,11 @@ public class SubjectTest
 
         for(int i=0; i<=10; i++) {
             JPerson jp = new JPerson();
-            jp.fullname = "ОАО Update";
+            jp.fullname = "ОАО Update_" + String.valueOf(i) ;
             jp.subjectType = 210;
             jp.actual = 1;
-            jp.regNumber = String.valueOf(124566000);
-            jp.unp = String.valueOf(159777758);
+            jp.regNumber = String.valueOf(124566000) + String.valueOf(i);
+            jp.unp = String.valueOf(159777758) + String.valueOf(i);
             jp.subjectdataid = (Integer) scg.generate("SEQ_SUBJECTSDATA_ID");
             jp.bothRegDate = new Date();
             sService.addSubject(jp);
@@ -75,7 +75,8 @@ public class SubjectTest
          for(Person p : result_p)
          {
              ((JPerson) p).fullname  += String.valueOf(i);
-             ((JPerson) p).regNumber = String.valueOf("1245660100") + String.valueOf(i);
+             ((JPerson) p).unp +=  String.valueOf(i);
+             ((JPerson) p).regNumber +=  String.valueOf(i);
              sService.refreshSubject(p);
              i++;
          }
@@ -100,13 +101,14 @@ public class SubjectTest
             pp.isOwner = 1;
             pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
             pp.bothRegDate = new Date();
+            pp.datestart = new Date();
             pp.actual = 1;
             pp.personalNumber = "159753DB4" +String.valueOf(1578+i);
             sService.addSubject(pp);
 
         }
 
-        List<Person> result_p= sService.findByFIOType("Ив", "И", null, null, 100);
+        List<Person> result_p= sService.findByFIOType("Дж", "", "Об", "1597", 100);
 
         int i = 0;
 
@@ -217,8 +219,6 @@ public class SubjectTest
 
 
     }
-
-
 
 
 }
