@@ -15,7 +15,7 @@ juridical person
 */
 
 @Entity
-@Table(name="SUBJECTSDATA")
+@Table(name="V_SUBJECTSDATA")
 @PrimaryKeyJoinColumn(name="SUBJECT_ID")
 public class JPerson extends Person implements Serializable{
 

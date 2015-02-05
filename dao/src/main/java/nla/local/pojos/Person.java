@@ -10,7 +10,9 @@ import java.io.Serializable;
 @Table(name="SUBJECTS")
 @Inheritance(strategy= InheritanceType.JOINED)
 public class Person implements Serializable {
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name="SUBJECT_ID", unique=true, nullable=false )
     @SequenceGenerator(name="person_seq", sequenceName="SEQ_SUBJECTS_ID")

@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name="SUBJECTSDATA")
+@Table(name="V_SUBJECTSDATA")
 @PrimaryKeyJoinColumn(name="SUBJECT_ID" )
 public class PPerson extends Person implements Serializable{
     private static final long serialVersionUID = 2L;
