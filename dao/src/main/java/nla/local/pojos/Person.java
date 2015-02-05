@@ -1,24 +1,16 @@
 package nla.local.pojos;
-
 import javax.persistence.*;
 import java.io.Serializable;
-
 
 /**
  * Created by Serega on 25.09.2014.
  */
 
-/*
-abstract person
- */
-
 @Entity
 @Table(name="SUBJECTS")
-//@Inheritance(strategy= InheritanceType.JOINED)
+@Inheritance(strategy= InheritanceType.JOINED)
 public class Person implements Serializable {
-
     private static final long serialVersionUID = 1L;
-
     @Id
     @Column(name="SUBJECT_ID", unique=true, nullable=false )
     @SequenceGenerator(name="person_seq", sequenceName="SEQ_SUBJECTS_ID")
@@ -38,13 +30,9 @@ public class Person implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Person)) return false;
-
         Person person = (Person) o;
-
         if (subjectId != null ? !subjectId.equals(person.reestrdataID) : person.subjectId != null) return false;
         if (reestrdataID != null ? !reestrdataID.equals(person.reestrdataID) : person.reestrdataID != null) return false;
-
-
         return true;
     }
 
@@ -52,7 +40,6 @@ public class Person implements Serializable {
     public int hashCode() {
         int result = subjectId != null ? subjectId.hashCode() : 0;
         result = 31 * result + (reestrdataID != null ? reestrdataID.hashCode() : 0);
-
         return result;
     }
 
@@ -60,5 +47,4 @@ public class Person implements Serializable {
     public String toString() {
         return "Person : id: " + subjectId + " Reestrdate: " + reestrdataID;
     }
-
 }

@@ -44,7 +44,16 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
          super.add(t);
 
-    };
+    }
+
+    @Override
+    public void getSubject(Class<T> clazz, Serializable id) throws DaoException {
+
+
+
+    }
+
+    ;
 
     @Override
     public void refreshSubject(T t) throws DaoException
@@ -72,12 +81,7 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
         return (List<T>) out;
     };
 
-    @Override
-    public T getSubject(Class<T> clazz,Serializable id) throws DaoException
-    {
-          return (T) super.get((Class<T>) clazz,id);
 
-    }
 
     public List<T> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
