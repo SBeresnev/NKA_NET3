@@ -37,17 +37,17 @@ public class SubjectTest
     @org.junit.Test
     public void SubjectJurTestController() throws DaoException {
 
-       // AddJurSubject();
-       // GetJurSubject();
+        AddJurSubject();
+        GetJurSubject();
         UpdateJurSubject();
     }
 
     @org.junit.Test
     public void SubjectPhyTestController() throws DaoException {
 
-      //  AddPhysSubject();
-      //  GetPhysSubject();
-       // UpdatePhysSubject();
+        AddPhysSubject();
+        GetPhysSubject();
+        UpdatePhysSubject();
 
     }
 

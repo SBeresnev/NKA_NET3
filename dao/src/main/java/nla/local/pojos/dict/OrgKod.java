@@ -3,8 +3,7 @@ package nla.local.pojos.dict;
 import org.hibernate.annotations.Entity;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by beresnev on 05.02.2015.
@@ -15,7 +14,9 @@ import javax.persistence.Table;
 @Where(clause = "ANALYTIC_TYPE = 220")
 public class OrgKod {
 
-    @Column( name = "ANALYTIC_CODE")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ANALYTIC_CODE", unique = true, nullable = false)
     Integer code_id;
 
     @Column( name = "ANALYTIC_CODE_NAME")

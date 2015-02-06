@@ -46,7 +46,7 @@ public class JPerson extends Person implements Serializable{
     @Column(name = "REMARK")
     public String remark;
 
-    @Column(name = "ACTUAL", columnDefinition = "number default 1")
+    @Column(name = "ACTUAL")
     public Integer actual;
 
     @Column(name = "PREV_ADDRESS")

@@ -46,10 +46,10 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     }
 
     @Override
-    public void getSubject(Class<T> clazz, Serializable id) throws DaoException
+    public T getSubject(Class<T> clazz, Serializable id) throws DaoException
     {
 
-        super.get(clazz,id);
+        return super.get(clazz,id);
 
     };
 

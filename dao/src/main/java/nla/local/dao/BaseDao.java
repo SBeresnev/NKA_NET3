@@ -55,6 +55,7 @@ public class BaseDao<T> implements Dao<T> {
   }
 
     public Session getSession() {
+
         return sessionFactory.getCurrentSession();
     }
 
