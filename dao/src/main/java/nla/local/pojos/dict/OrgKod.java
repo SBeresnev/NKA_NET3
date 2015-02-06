@@ -1,6 +1,7 @@
 package nla.local.pojos.dict;
 
 import org.hibernate.annotations.Entity;
+import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -11,9 +12,10 @@ import javax.persistence.*;
  */
 
 @Entity
+@Immutable
 @Table(name="ANALYTICCODES")
 @Where(clause = "ANALYTIC_TYPE = 220")
-public class OrgKod implements Dict {
+public class OrgKod extends Dict {
 
     private Integer code_id;
 

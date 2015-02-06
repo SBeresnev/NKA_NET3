@@ -7,18 +7,21 @@ import javax.persistence.Table;
 
 /**
  * Created by beresnev on 13.01.2015.
- */
-
-/*
-adresses
+ * adresses
  */
 @Entity
 @Table(name="ADDRESSES")
 public class Address {
 
     @Id
+    @Column(name = "ADDRESS_ID" )
+    public Integer addressid;
+
     @Column(name = "ADR_NUM" )
-    public Integer address_id;
+    public Integer adrnum;
+
+    @Column(name = "ADR")
+    public String adr;
 
     @Column(name = "REGION")
     public String region;
@@ -26,34 +29,34 @@ public class Address {
     @Column(name = "SUBREGION")
     public String subregion;
 
-    @Column(name = "SELSOVET")
-    public String sovet;
-
     @Column(name = "NP_NAME")
     public String npname;
 
     @Column(name = "NP_TYPE")
     public Integer nptype;
 
-    @Column(name = "IMMOVABLETYPENAME")
-    public String immovabletypename;
+    @Column(name = "SELSOVET")
+    public String selsovet;
 
-    @Column(name = "ELEMENTTYPENAME")
-    public String elementtypename;
+    @Column(name = "STREET_NAME")
+    public String streetName;
 
-    @Column(name = "NUM_HOUSE")
-    public int numHouse;
+    @Column(name = "STREET_TYPE")
+    public String streetType;
 
-    @Column(name = "IND_HOUSE")
-    public String indHouse;
+    @Column(name = "HOUSE_NUM")
+    public int houseNum;
 
-    @Column(name = "NUM_CORP")
-    public int numCorp;
+    @Column(name = "HOUSE_ID")
+    public String houseId;
 
-    @Column(name = "NUM_ROOM")
-    public int numRoom;
+    @Column(name = "CORP_NUM")
+    public int corpNum;
 
-    @Column(name = "IND_ROOM")
-    public String indRoom;
+    @Column(name = "ROOM_NUM")
+    public int roomNum;
+
+    @Column(name = "ROOM_IND")
+    public String roomId;
 
 }

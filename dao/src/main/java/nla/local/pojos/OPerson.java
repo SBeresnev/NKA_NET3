@@ -44,6 +44,11 @@ public class OPerson extends Person implements Serializable{
     @JoinColumn(name = "ORG_KOD", nullable = false)
     public OrgKod org_kod;
 
+    /*
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="ADDRESS_ID")
+    public Address address;*/
+
     @Column(name = "BASE_USER_UID")
     public Integer base_user_uid;
 

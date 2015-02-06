@@ -4,9 +4,13 @@ import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.JPerson;
 import nla.local.pojos.PPerson;
 import nla.local.pojos.Person;
+import nla.local.pojos.dict.OrgKod;
+import nla.local.pojos.dict.SubjectType;
 import nla.local.services.ISubjectService;
+import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.util.CodeGenerator;
 import org.apache.log4j.Logger;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -32,7 +36,25 @@ public class SubjectTest
     public ISubjectService<Person> sService;
 
     @Autowired
+    public DictionaryServiceImp<OrgKod> OrgServ;
+
+    @Autowired
+    public DictionaryServiceImp<SubjectType> SubType;
+
+    @Autowired
     public CodeGenerator scg;
+
+    List<SubjectType> subjectServ;
+    List<OrgKod> orgKods ;
+
+    @Before
+    public void setUp() throws Exception {
+
+        subjectServ = SubType.getAll(SubType.getType());
+
+        orgKods = OrgServ.getAll(OrgServ.getType());
+
+    }
 
     @org.junit.Test
     public void SubjectJurTestController() throws DaoException {
@@ -58,14 +80,12 @@ public class SubjectTest
 
         boolean retval = true;
 
-
-
         for(int i=0; i<=10; i++) {
             JPerson jp = new JPerson();
             jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
             jp.fullname = "ОАО Update_" + String.valueOf(i) ;
-            jp.orgRightForm = 1131;
-            jp.subjectType = 210;
+            jp.orgRightForm = orgKods.get(1);
+            jp.subjectType = subjectServ.get(1);
             jp.actual = 1;
             jp.regNumber = String.valueOf(124566000) + String.valueOf(i);
             jp.unp = String.valueOf(159777758) + String.valueOf(i);
@@ -82,6 +102,10 @@ public class SubjectTest
              ((JPerson) p).fullname  += String.valueOf(i);
              ((JPerson) p).unp +=  String.valueOf(i);
              ((JPerson) p).regNumber +=  String.valueOf(i);
+
+             ((JPerson) p).orgRightForm = orgKods.get(2);
+             ((JPerson) p).subjectType = subjectServ.get(2);
+
              sService.refreshSubject(p);
              i++;
          }
@@ -103,7 +127,7 @@ public class SubjectTest
             pp.surname = "Дженкинс"+"_"+i;
             pp.firstname = "Владимир"+"_"+i;
             pp.fathername = "Обамович"+"_"+i;
-            pp.subjectType = 100;
+            pp.subjectType = subjectServ.get(2);
             pp.isOwner = 1;
             pp.bothRegDate = new Date();
             pp.datestart = new Date();
@@ -142,9 +166,11 @@ public class SubjectTest
                 JPerson jp = new JPerson();
                 jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
                 jp.isOwner = 1;
-                jp.subjectType = 210;
+
+                jp.subjectType = subjectServ.get(2);
+                jp.orgRightForm = orgKods.get(2);
+
                 jp.fullname = "Валенки"+"_"+i;
-                jp.orgRightForm = 1132;
                 jp.actual = 1;
                 jp.regNumber = String.valueOf(123456000+i);
                 jp.unp = String.valueOf(159357258+i);
@@ -179,7 +205,7 @@ public class SubjectTest
                 pp.surname = "Иван"+"_"+i;
                 pp.firstname = "Иванов"+"_"+i;
                 pp.fathername = "Иванович"+"_"+i;
-                pp.subjectType = 100;
+                pp.subjectType = subjectServ.get(1);
                 pp.isOwner = 1;
                 pp.bothRegDate = new Date();
                 pp.actual = 1;
