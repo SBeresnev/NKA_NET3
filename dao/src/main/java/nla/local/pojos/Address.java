@@ -26,11 +26,14 @@ public class Address {
     @Column(name = "SUBREGION")
     public String subregion;
 
-    @Column(name = "SOVET")
+    @Column(name = "SELSOVET")
     public String sovet;
 
-    @Column(name = "NP")
-    public String np;
+    @Column(name = "NP_NAME")
+    public String npname;
+
+    @Column(name = "NP_TYPE")
+    public Integer nptype;
 
     @Column(name = "IMMOVABLETYPENAME")
     public String immovabletypename;

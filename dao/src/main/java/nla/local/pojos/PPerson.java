@@ -28,7 +28,6 @@ public class PPerson extends Person implements Serializable{
     @Column(name = "FATHERNAME")
     public String fathername;
 
-
     @Column(name = "BOTH_REG_DATE")
     public Date bothRegDate;
 

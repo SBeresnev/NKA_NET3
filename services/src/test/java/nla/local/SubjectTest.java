@@ -58,6 +58,8 @@ public class SubjectTest
 
         boolean retval = true;
 
+
+
         for(int i=0; i<=10; i++) {
             JPerson jp = new JPerson();
             jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");

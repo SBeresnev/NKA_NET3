@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment="Friday change">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/SubjectType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/JPerson.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/JPerson.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgKod.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgKod.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java" afterPath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Address.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Address.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/Dao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/Dao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" afterPath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nka_net3.iws" />
@@ -63,8 +62,8 @@
       <file leaf-file-name="PPerson.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1156">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1139">
+              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#equals#0;class#PPerson#0" expanded="false" />
@@ -74,11 +73,25 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="SubjectTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="2873">
+              <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
+                <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SubjectServiceImp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="1207">
+              <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#SubjectServiceImp#0;class#SubjectServiceImp#0" expanded="false" />
@@ -105,26 +118,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubjectController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="JPerson.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/JPerson.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1207">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="58" />
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#equals#0;class#JPerson#0" expanded="false" />
                 <element signature="method#hashCode#0;class#JPerson#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Address.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Address.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.275862" vertical-offset="302" max-vertical-offset="1054">
+              <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,42 +157,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Person.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="816">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#equals#0;class#Person#0" expanded="false" />
-                <element signature="method#hashCode#0;class#Person#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SubjectType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/SubjectType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
-              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#649#650#0" expanded="true" />
-                <element signature="e#741#742#0" expanded="true" />
-                <element signature="e#773#774#0" expanded="true" />
-                <element signature="e#876#877#0" expanded="true" />
-                <element signature="e#914#915#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrgKod.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OrgKod.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgKod.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.69863015" vertical-offset="0" max-vertical-offset="850">
+            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="850">
               <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -194,12 +175,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dict.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java">
+      <file leaf-file-name="BaseDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="3485">
+              <caret line="101" column="40" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="40" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dao.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/Dao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4890411" vertical-offset="0" max-vertical-offset="730">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -227,7 +220,6 @@
         <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/exceptions/DaoException.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Address.java" />
         <option value="$PROJECT_DIR$/dao/pom.xml" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/util/JsonDateSerializer.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/IAdressService.java" />
@@ -237,15 +229,12 @@
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/User.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/OfficialUser.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/OUser.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Order.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/forms/UserForm.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/org_kod.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Org_Kod.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/ISubjectService.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java" />
-        <option value="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/OPerson.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java" />
@@ -255,6 +244,11 @@
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/SubjectType.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgKod.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Address.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" />
+        <option value="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/Dao.java" />
       </list>
     </option>
   </component>
@@ -1271,13 +1265,7 @@
       <workItem from="1422862757017" duration="8546000" />
       <workItem from="1422876315272" duration="733000" />
       <workItem from="1422962490334" duration="6940000" />
-      <workItem from="1423031398643" duration="62943000" />
-    </task>
-    <task id="LOCAL-00011" summary=" Thursday change">
-      <created>1422514542980</created>
-      <option name="number" value="00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1422514542980</updated>
+      <workItem from="1423031398643" duration="65330000" />
     </task>
     <task id="LOCAL-00012" summary=" Thursday change">
       <created>1422514881619</created>
@@ -1567,11 +1555,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423211319392</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Friday change">
+      <created>1423215256561</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1423215256563</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259790000" />
+    <option name="totallyTimeSpent" value="262177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1714,7 +1708,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="108" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="109" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2233,14 +2235,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Address.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="163" max-vertical-offset="1003">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/AddressServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
@@ -2248,34 +2242,6 @@
           <folding>
             <element signature="method#AddressServiceImp#0;class#AddressServiceImp#0" expanded="false" />
             <element signature="method#findAddress#0;class#AddressServiceImp#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/Dao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1443" max-vertical-offset="3485">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="865" max-vertical-offset="2822">
-          <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2288,10 +2254,119 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="816">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#equals#0;class#Person#0" expanded="false" />
+            <element signature="method#hashCode#0;class#Person#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/SubjectType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#649#650#0" expanded="true" />
+            <element signature="e#741#742#0" expanded="true" />
+            <element signature="e#773#774#0" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#914#915#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgKod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="850">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#650#651#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#774#775#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#915#916#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Address.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.275862" vertical-offset="302" max-vertical-offset="1054">
+          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/JPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1207">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#equals#0;class#JPerson#0" expanded="false" />
+            <element signature="method#hashCode#0;class#JPerson#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/OPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1139">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#equals#0;class#OPerson#0" expanded="false" />
+            <element signature="method#hashCode#0;class#OPerson#0" expanded="false" />
+            <element signature="method#toString#0;class#OPerson#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1139">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#equals#0;class#PPerson#0" expanded="false" />
+            <element signature="method#hashCode#0;class#PPerson#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="2873">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
+            <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="1207">
+          <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#SubjectServiceImp#0;class#SubjectServiceImp#0" expanded="false" />
@@ -2315,91 +2390,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/OPerson.java">
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1139">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#equals#0;class#OPerson#0" expanded="false" />
-            <element signature="method#hashCode#0;class#OPerson#0" expanded="false" />
-            <element signature="method#toString#0;class#OPerson#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/JPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1207">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#equals#0;class#JPerson#0" expanded="false" />
-            <element signature="method#hashCode#0;class#JPerson#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="69" max-vertical-offset="816">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#equals#0;class#Person#0" expanded="false" />
-            <element signature="method#hashCode#0;class#Person#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1156">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#equals#0;class#PPerson#0" expanded="false" />
-            <element signature="method#hashCode#0;class#PPerson#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="3485">
+          <caret line="101" column="40" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/SubjectType.java">
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/Dao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.4890411" vertical-offset="0" max-vertical-offset="730">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#773#774#0" expanded="true" />
-            <element signature="e#876#877#0" expanded="true" />
-            <element signature="e#914#915#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgKod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69863015" vertical-offset="0" max-vertical-offset="850">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#620#621#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-            <element signature="e#742#743#0" expanded="true" />
-            <element signature="e#774#775#0" expanded="true" />
-            <element signature="e#877#878#0" expanded="true" />
-            <element signature="e#915#916#0" expanded="true" />
           </folding>
         </state>
       </provider>

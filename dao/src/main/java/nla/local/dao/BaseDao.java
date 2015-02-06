@@ -99,11 +99,11 @@ public class BaseDao<T> implements Dao<T> {
     }
 
     @Override
-    public List<T> getAll() throws DaoException {
+    public List<T> getAll(Class<T> clazz) throws DaoException {
 
         try {
 
-            List<T> list = getSession().createCriteria(type).list();
+            List<T> list = getSession().createCriteria(clazz).list();
 
             log.debug(String.format("Got %d products", list == null ? 0 : list.size()));
 
