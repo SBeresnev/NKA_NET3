@@ -1,4 +1,6 @@
 package nla.local.pojos;
+import nla.local.pojos.dict.SubjectType;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -25,8 +27,9 @@ public class Person implements Serializable {
     @Column(name = "IS_OWNER")
     public Integer isOwner;
 
-    @Column(name = "SUBJECT_TYPE" )
-    public Integer subjectType;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SUBJECT_TYPE", nullable = false)
+    public SubjectType subjectType;
 
     @Override
     public boolean equals(Object o) {
@@ -49,4 +52,5 @@ public class Person implements Serializable {
     public String toString() {
         return "Person : id: " + subjectId + " Reestrdate: " + reestrdataID;
     }
+
 }

@@ -80,7 +80,6 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     };
 
 
-
     public List<T> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 

@@ -7,19 +7,20 @@ import javax.persistence.*;
 
 /**
  * Created by beresnev on 05.02.2015.
- * Organizational structure dictionary
+ * Subject structure dictionary
  */
 
 @Entity
 @Table(name="ANALYTICCODES")
-@Where(clause = "ANALYTIC_TYPE = 220")
-public class OrgKod implements Dict {
+@Where(clause = "ANALYTIC_TYPE = 110")
+public class SubjectType implements Dict {
 
     private Integer code_id;
 
     private String code_name;
 
     private String code_short_name;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

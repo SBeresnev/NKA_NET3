@@ -2,11 +2,9 @@ package nla.local.pojos;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+import nla.local.pojos.dict.OrgKod;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -36,8 +34,9 @@ public class JPerson extends Person implements Serializable{
     @Column(name = "UNP")
     public String unp;
 
-    @Column(name = "ORG_RIGHT_FORM" )
-    public Integer orgRightForm;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORG_RIGHT_FORM", nullable = false)
+    public OrgKod orgRightForm;
 
     @Column(name = "BOTH_REG_DATE")
     @JsonSerialize(using= DateSerializer.class)
