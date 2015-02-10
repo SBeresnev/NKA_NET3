@@ -16,14 +16,6 @@ import javax.persistence.*;
 @Where(clause = "ANALYTIC_TYPE = 200")
 public class StateDict extends Dict{
 
-    private Class my_type = StateDict.class;
-
-    @Override
-    public Class getType()
-    {
-        return my_type;
-
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +27,14 @@ public class StateDict extends Dict{
 
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private String code_short_name;
+
+    @Override
+    public Class getType()
+    {
+        return StateDict.class;
+
+    }
+
 
     @Override
     public Integer getCode_id() {

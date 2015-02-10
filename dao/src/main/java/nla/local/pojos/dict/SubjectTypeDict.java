@@ -18,7 +18,6 @@ import javax.persistence.*;
 @Where(clause = "ANALYTIC_TYPE = 110")
 public class SubjectTypeDict extends Dict {
 
-    private Class my_type = SubjectTypeDict.class;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +33,7 @@ public class SubjectTypeDict extends Dict {
     @Override
     public Class getType()
     {
-        return my_type;
+        return SubjectTypeDict.class;
 
     }
 

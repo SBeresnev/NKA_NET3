@@ -3,12 +3,14 @@ package nla.local.services.impl;
 import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.JPerson;
+import nla.local.pojos.OPerson;
 import nla.local.pojos.PPerson;
 import nla.local.pojos.Person;
 import nla.local.services.ISubjectService;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,10 +82,10 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     };
 
 
-    public List<T> findByNameType(String fullName, String regNumber, Integer subjectType )
+    public List<T> findJurByNameType(String fullName, String regNumber, Integer subjectType )
     {
 
-        log.info("Get " + " by name. Invoked SubjectService.getByNameType()" );
+        log.info("Get " + " by name. Invoked SubjectService.getByNameType" );
 
          Type t = getClass().getGenericSuperclass();
 
@@ -95,8 +97,8 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             fullName = fullName==null? "":fullName;
 
             query = DetachedCriteria.forClass(JPerson.class)
-                    .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber + "%"), Restrictions.isNull("regNumber")))
-                    .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%"), Restrictions.isNull("fullname")))
+                    .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber + "%", MatchMode.ANYWHERE), Restrictions.isNull("regNumber")))
+                    .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%",MatchMode.ANYWHERE), Restrictions.isNull("fullname")))
                     .createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType));;
 
             retval = (List<T>) this.findSubject(query);
@@ -106,10 +108,41 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
         return retval;
     }
 
-    public List<T> findByFIOType(String surname, String firstname, String fathername, String personalNumber, Integer subjectType )
+
+    public List<T> findOffUser(String surname, String firstname, String fathername, String user_num, String orgname )
     {
 
-        log.info("Get " + " by name. Invoked SubjectService.getByFIOType()" );
+        log.info("Get " + " by name. Invoked SubjectService.findOffUser" );
+
+        List<T> retval =  new ArrayList<T>();
+
+        if(surname != null || orgname != null) {
+
+            surname = surname == null ? "":surname;
+            firstname = firstname==null? "":firstname;
+            fathername = fathername == null ? "":fathername;
+            user_num = user_num==null? "":user_num;
+            orgname = orgname == null ? "":orgname;
+
+
+            query = DetachedCriteria.forClass(OPerson.class)
+                    .add(Restrictions.or(Restrictions.like("surname", "%" + surname + "%", MatchMode.ANYWHERE), Restrictions.isNull("surname")))
+                    .add(Restrictions.or(Restrictions.like("firstname", "%" + firstname + "%", MatchMode.ANYWHERE), Restrictions.isNull("firstname")))
+                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%", MatchMode.ANYWHERE), Restrictions.isNull("fathername")))
+                    .add(Restrictions.or(Restrictions.like("user_num", "%" + user_num + "%", MatchMode.ANYWHERE), Restrictions.isNull("user_num")))
+                    .add(Restrictions.or(Restrictions.like("orgname", "%" + orgname + "%", MatchMode.ANYWHERE), Restrictions.isNull("orgname")));
+
+            retval = (List<T>) this.findSubject(query);
+        }
+
+        return retval;
+
+    }
+
+    public List<T> findPhyzByFIOType(String surname, String firstname, String fathername, String personalNumber, Integer subjectType )
+    {
+
+        log.info("Get " + " by name. Invoked SubjectService.getByFIOType" );
 
         List<T> retval =  new ArrayList<T>();
 
@@ -120,9 +153,9 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             fathername = fathername == null ? "":fathername;
 
             query = DetachedCriteria.forClass(PPerson.class)
-                    .add(Restrictions.or(Restrictions.like("surname", "%" + surname + "%"), Restrictions.isNull("surname")))
-                    .add(Restrictions.or(Restrictions.like("firstname", "%" + firstname + "%"), Restrictions.isNull("firstname")))
-                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%"), Restrictions.isNull("fathername")))
+                    .add(Restrictions.or(Restrictions.like("surname", "%" + surname + "%", MatchMode.ANYWHERE), Restrictions.isNull("surname")))
+                    .add(Restrictions.or(Restrictions.like("firstname", "%" + firstname + "%", MatchMode.ANYWHERE), Restrictions.isNull("firstname")))
+                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%", MatchMode.ANYWHERE), Restrictions.isNull("fathername")))
                     .createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType));
 
 

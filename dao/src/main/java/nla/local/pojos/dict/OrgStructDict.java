@@ -17,14 +17,6 @@ import javax.persistence.*;
 @Where(clause = "ANALYTIC_TYPE = 220")
 public class OrgStructDict extends Dict {
 
-    private Class my_type = OrgStructDict.class;
-
-    @Override
-    public Class getType()
-    {
-        return my_type;
-
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,5 +57,12 @@ public class OrgStructDict extends Dict {
     @Override
     public void setCode_short_name(String code_short_name) {
         this.code_short_name = code_short_name;
+    }
+
+    @Override
+    public Class getType()
+    {
+        return OrgStructDict.class;
+
     }
 }

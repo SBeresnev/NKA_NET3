@@ -15,7 +15,6 @@ import javax.persistence.*;
 @Where(clause = "ANALYTIC_TYPE = 300")
 public class TorStructDict extends Dict{
 
-    private Class my_type = TorStructDict.class;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +30,7 @@ public class TorStructDict extends Dict{
     @Override
     public Class getType()
     {
-        return my_type;
+        return TorStructDict.class;
 
     }
 

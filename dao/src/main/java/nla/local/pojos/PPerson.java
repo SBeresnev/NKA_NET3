@@ -2,7 +2,7 @@ package nla.local.pojos;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-import nla.local.pojos.dict.State;
+import nla.local.pojos.dict.StateDict;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,7 +28,7 @@ public class PPerson extends Person implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SITIZENS", nullable = false, referencedColumnName = "ANALYTIC_CODE")
-    public State sitizens;
+    public StateDict sitizens;
 
     @Column(name = "BOTH_REG_DATE")
     public Date bothRegDate;

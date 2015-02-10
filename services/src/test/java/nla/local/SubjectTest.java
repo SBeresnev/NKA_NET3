@@ -44,7 +44,7 @@ public class SubjectTest
     @Autowired
     public CodeGenerator scg;
 
-    private List<SubjectTypeDict> subjectServList;
+    private List<SubjectTypeDict> subjectServDictList;
     private List<OrgStructDict> orgStructDictList;
     private List<StateDict> stateDictList;
     private List<TorStructDict> torStructDictList;
@@ -52,7 +52,7 @@ public class SubjectTest
     @Before
     public void setUp() throws Exception {
 
-        subjectServList = CommonDict.getAll(SubjectTypeDict.class);
+        subjectServDictList = CommonDict.getAll(SubjectTypeDict.class);
 
         orgStructDictList = CommonDict.getAll(OrgStructDict.class);
 
@@ -64,23 +64,23 @@ public class SubjectTest
     }
 
     @org.junit.Test
-    public void SubjectOffTestController() throws DaoException {
+    public void SubjectOffTestController()  {
 
         AddOffSubject();
         GetOffSubject();
         UpdateOffSubject();
     }
 
-    @org.junit.Test
-    public void SubjectJurTestController() throws DaoException {
+    //@org.junit.Test
+    public void SubjectJurTestController() {
 
         AddJurSubject();
         GetJurSubject();
         UpdateJurSubject();
     }
 
-    @org.junit.Test
-    public void SubjectPhyTestController() throws DaoException {
+   // @org.junit.Test
+    public void SubjectPhyTestController(){
 
         AddPhysSubject();
         GetPhysSubject();
@@ -88,42 +88,100 @@ public class SubjectTest
 
     }
 
-    public void AddOffSubject()
-    {
-        log.info("Invoked SubjectTest.AddJurSubject()" );
+    public void AddOffSubject() {
+        log.info("Invoked SubjectTest.AddOffSubject()" );
 
         boolean retval = true;
 
-        for(int i=0; i<10; i++) {
+        try {
 
-            OPerson op = new OPerson();
-            op.subjectType = subjectServ.get(24);
-            op.isOwner = 0;
-            op.name = "Дудка";
-            op.fathername = "Флейтович";
-            op.surname = "Труба";
-            op.org_kod =
+            for (int i = 0; i < 10; i++) {
 
-            jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
-            jp.isOwner = 1;
+                OPerson op = new OPerson();
+                op.subjectType = subjectServDictList.get(24);
+                op.isOwner = 0;
 
-            jp.subjectType = subjectServ.get(9);
-            jp.orgRightForm = orgStruct.get(6);
+                op.name = "Дударык" + String.valueOf(i);
+                op.surname = "Труба" + String.valueOf(i);
+                op.fathername = "Флейтович" + String.valueOf(i);
 
-            jp.fullname = "Валенки"+"_"+i;
-            jp.regNumber = String.valueOf(123456000+i);
-            jp.unp = String.valueOf(159357258+i);
-            jp.bothRegDate = new Date();
-            sService.addSubject(jp);
+                op.org_kod = torStructDictList.get(0);
+                op.orgname = "РУП \"Брестское агентство по государственной регистрации и земельному кадастру\"";
+                sService.addSubject(op);
 
+            }
         }
+            catch (DaoException e) {
+                retval = false;
+                e.printStackTrace();
+            }
 
+        assertTrue(retval);
 
     }
 
-    public void AddJurSubject() throws DaoException {
+    public void GetOffSubject() {
+        log.info("Invoked SubjectTest.GetOffSubject" );
 
-        log.info("Invoked SubjectTest.AddJurSubject()" );
+        List<Person> result_o= sService.findOffUser("Дуд", "", "", null, "Брест");
+
+        assertTrue(!result_o.isEmpty());
+    }
+
+    public void UpdateOffSubject()  {
+
+        log.info("Invoked SubjectTest.UpdateJurSubject" );
+
+        boolean retval = true;
+
+        try {
+
+            for(int i=0; i<10; i++) {
+
+                OPerson op = new OPerson();
+                op.subjectType = subjectServDictList.get(24);
+                op.isOwner = 0;
+
+                op.name = "Петров" + String.valueOf(20+i);
+                op.surname = "Иван" + String.valueOf(20+i);
+                op.fathername = "Артемьевич" + String.valueOf(20+i);
+
+                op.org_kod = torStructDictList.get(0);
+                op.orgname = "РУП \"Брестское агентство по государственной регистрации и земельному кадастру\"";
+                sService.addSubject(op);
+
+            }
+
+            List<Person> result_o= sService.findOffUser(null, "", "Артем", null, "БРЕСТ");
+
+
+            int i = 0;
+
+            for(Person o : result_o)
+            {
+                OPerson op = (OPerson) o;
+                op.name  = "Петров" + String.valueOf(30+i) ;
+                op.surname = "Иван" + String.valueOf(30+i);
+                op.fathername = "Артемьевич" + String.valueOf(30+i);
+
+                sService.refreshSubject(op);
+                i++;
+            }
+
+        } catch (DaoException e) {
+
+            retval = false;
+
+            e.printStackTrace();
+        }
+
+        assertTrue(retval);
+    }
+
+
+    public void AddJurSubject(){
+
+        log.info("Invoked SubjectTest.AddJurSubject" );
 
         boolean retval = true;
 
@@ -135,8 +193,8 @@ public class SubjectTest
                 jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
                 jp.isOwner = 1;
 
-                jp.subjectType = subjectServ.get(9);
-                jp.orgRightForm = orgStruct.get(6);
+                jp.subjectType = subjectServDictList.get(9);
+                jp.orgRightForm = orgStructDictList.get(6);
 
                 jp.fullname = "Валенки"+"_"+i;
                 jp.regNumber = String.valueOf(123456000+i);
@@ -159,29 +217,31 @@ public class SubjectTest
 
     public void GetJurSubject()  {
 
-        log.info("Invoked SubjectTest.GetJurSubject()" );
+        log.info("Invoked SubjectTest.GetJurSubject" );
 
         boolean retval = true;
 
-        List<Person> result_j= sService.findByNameType("Вал", "", subjectServ.get(9).getCode_id());
+        List<Person> result_j= sService.findJurByNameType("Вал", "", subjectServDictList.get(9).getCode_id());
 
         assertTrue(!result_j.isEmpty());
 
 
     }
 
-    public void UpdateJurSubject() throws DaoException {
+    public void UpdateJurSubject()  {
 
-        log.info("Invoked SubjectTest.UpdateJurSubject()" );
+        log.info("Invoked SubjectTest.UpdateJurSubject" );
 
         boolean retval = true;
+
+        try {
 
         for(int i=0; i<10; i++) {
             JPerson jp = new JPerson();
             jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
             jp.fullname = "ОАО Update_" + String.valueOf(i) ;
-            jp.orgRightForm = orgStruct.get(6);
-            jp.subjectType = subjectServ.get(14);
+            jp.orgRightForm = orgStructDictList.get(6);
+            jp.subjectType = subjectServDictList.get(14);
             jp.regNumber = String.valueOf(124566000+i) ;
             jp.unp = String.valueOf(159777758+i);
             jp.bothRegDate = new Date();
@@ -189,28 +249,36 @@ public class SubjectTest
         }
 
 
-        List<Person> result_p= sService.findByNameType("Upd",null,subjectServ.get(9).getCode_id());
+        List<Person> result_p= sService.findJurByNameType("Upd",null,subjectServDictList.get(9).getCode_id());
 
         int i = 10;
 
         for(Person p : result_p)
         {
-            ((JPerson) p).fullname  = "ОАО Update_" + String.valueOf(i) ;
-            ((JPerson) p).unp =  String.valueOf(159777758+i);
-            ((JPerson) p).regNumber =  String.valueOf(124566000+i);
+            JPerson jp = (JPerson) p;
+            jp.fullname  = "ОАО Update_" + String.valueOf(i) ;
+            jp.unp =  String.valueOf(159777758+i);
+            jp.regNumber =  String.valueOf(124566000+i);
 
-            ((JPerson) p).orgRightForm = orgStruct.get(7);
-            ((JPerson) p).subjectType = subjectServ.get(12);
+            jp.orgRightForm = orgStructDictList.get(7);
+            jp.subjectType = subjectServDictList.get(12);
 
             sService.refreshSubject(p);
             i++;
         }
 
+        } catch (DaoException e) {
 
+            retval = false;
+
+            e.printStackTrace();
+        }
+
+        assertTrue(retval);
     }
 
 
-    public void AddPhysSubject() throws DaoException {
+    public void AddPhysSubject() {
 
         log.info("Invoked SubjectTest.AddPhysSubject()" );
 
@@ -225,7 +293,7 @@ public class SubjectTest
                 pp.surname = "Иван"+"_"+i;
                 pp.firstname = "Иванов"+"_"+i;
                 pp.fathername = "Иванович"+"_"+i;
-                pp.subjectType = subjectServ.get(2);
+                pp.subjectType = subjectServDictList.get(2);
                 pp.isOwner = 1;
                 pp.bothRegDate = new Date();
 
@@ -253,19 +321,19 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<Person> result_p = sService.findByFIOType("Ив", "И", null, null,subjectServ.get(2).getCode_id());
+        List<Person> result_p = sService.findPhyzByFIOType("Ив", "И", null, null, subjectServDictList.get(2).getCode_id());
 
         assertTrue(!result_p.isEmpty());
 
     }
 
-    public void UpdatePhysSubject()throws DaoException {
+    public void UpdatePhysSubject() {
 
-        log.info("Invoked SubjectTest.UpdatePhysSubject()" );
-
-
+        log.info("Invoked SubjectTest.UpdatePhysSubject" );
 
         boolean retval = true;
+
+        try {
 
         for(int i=0; i<10; i++) {
 
@@ -275,40 +343,50 @@ public class SubjectTest
             pp.surname = "Дженкинс"+"_"+i;
             pp.firstname = "Владимир"+"_"+i;
             pp.fathername = "Обамович"+"_"+i;
-            pp.subjectType = subjectServ.get(3);
+            pp.subjectType = subjectServDictList.get(3);
             pp.isOwner = 1;
-            pp.sitizens = state.get(2);
+            pp.sitizens = stateDictList.get(2);
             pp.bothRegDate = new Date();
             pp.datestart = new Date();
+
             pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
             pp.personalNumber += String.valueOf(CheckLastNumber(pp.personalNumber));
-            sService.addSubject(pp);
-            //7[0-9]{6}[A-Z]{1}[0-9]{3}[A-Z]{2}[0-9]{1}
 
+            sService.addSubject(pp);
+
+            //7[0-9]{6}[A-Z]{1}[0-9]{3}[A-Z]{2}[0-9]{1}
 
         }
 
-        List<Person> result_p= sService.findByFIOType("Дж", "", "Об", "1597", 110);
+        List<Person> result_p= sService.findPhyzByFIOType("Дж", "", "Об", "1597", 110);
 
         int i = 0;
 
         for(Person p : result_p)
         {
-            ((PPerson) p).surname  += String.valueOf(i);
-            ((PPerson) p).personalNumber = "78"+String.valueOf(6367+i)+"F408AE2";
-            ((PPerson) p).subjectType = subjectServ.get(2);
-            ((PPerson) p).sitizens = state.get(3);
+            PPerson pp = (PPerson) p;
+
+            pp.surname  += String.valueOf(i);
+
+            pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
+            pp.personalNumber += String.valueOf(CheckLastNumber(((PPerson) p).personalNumber));
+
+            pp.subjectType = subjectServDictList.get(2);
+            pp.sitizens = stateDictList.get(3);
 
             sService.refreshSubject(p);
             i++;
+        }
+
+        } catch (DaoException e) {
+            e.printStackTrace();
         }
 
 
     }
 
 
-    public int CheckLastNumber(String str)
-    {
+    public int CheckLastNumber(String str) {
         int v_1 = Integer.valueOf(str.substring(1, 2));
         int v_2 = Integer.valueOf(str.substring(2, 3));
         int v_3 = Integer.valueOf(str.substring(3, 4));
