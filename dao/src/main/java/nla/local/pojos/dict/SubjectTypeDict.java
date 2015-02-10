@@ -1,5 +1,7 @@
 package nla.local.pojos.dict;
 
+
+import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -7,25 +9,34 @@ import javax.persistence.*;
 
 /**
  * Created by beresnev on 05.02.2015.
- * Organizational structure dictionary
+ * Subject structure dictionary
  */
 
 @Entity
+@Immutable
 @Table(name="ANALYTICCODES")
-@Where(clause = "ANALYTIC_TYPE = 220")
-public class OrgKod extends Dict {
+@Where(clause = "ANALYTIC_TYPE = 110")
+public class SubjectTypeDict extends Dict {
 
+    private Class my_type = SubjectTypeDict.class;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANALYTIC_CODE", unique = true, nullable = false)
-    private Integer code_id;
+    private  Integer code_id;
 
     @Column( name = "ANALYTIC_CODE_NAME")
-    private String code_name;
+    private  String code_name;
 
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
-    private String code_short_name;
+    private  String code_short_name;
+
+    @Override
+    public Class getType()
+    {
+        return my_type;
+
+    }
 
     @Override
     public Integer getCode_id() {
@@ -56,4 +67,5 @@ public class OrgKod extends Dict {
     public void setCode_short_name(String code_short_name) {
         this.code_short_name = code_short_name;
     }
+
 }

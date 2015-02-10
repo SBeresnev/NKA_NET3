@@ -1,6 +1,6 @@
 package nla.local.pojos;
 
-import nla.local.pojos.dict.OrgKod;
+import nla.local.pojos.dict.TorStructDict;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  * Created by Serega on 26.09.2014.
- * officialuser
+ * officialuser (представители)
  */
 
 @Entity
@@ -41,16 +41,11 @@ public class OPerson extends Person implements Serializable{
     public Date date_out;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ORG_KOD", nullable = false)
-    public OrgKod org_kod;
+    @JoinColumn(name = "ORG_KOD", referencedColumnName = "ANALYTIC_CODE")
+    public TorStructDict org_kod;
 
-    /*
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ADDRESS_ID")
-    public Address address;*/
-
-    @Column(name = "BASE_USER_UID")
-    public Integer base_user_uid;
+    @Column(name = "PREV_ADDRESS")
+    public String prev_address;
 
     @Override
     public boolean equals(Object o) {
@@ -59,7 +54,6 @@ public class OPerson extends Person implements Serializable{
         if (!(o instanceof OPerson)) return false;
         OPerson person = (OPerson) o;
         if (user_num != null ? !user_num.equals(person.user_num) : person.user_num != null) return false;
-        if (base_user_uid != null ? !base_user_uid.equals(person.base_user_uid) : person.base_user_uid != null) return false;
         if (org_kod != null ? !org_kod.equals(person.org_kod) : person.org_kod != null) return false;
 
         return true;
@@ -69,7 +63,6 @@ public class OPerson extends Person implements Serializable{
     public int hashCode() {
 
         int result = user_num != null ? user_num.hashCode() : 0;
-        result = 31 * result + (base_user_uid != null ? base_user_uid.hashCode() : 0);
         result = 31 * result + (org_kod != null ? org_kod.hashCode() : 0);
 
         return result;
@@ -78,7 +71,7 @@ public class OPerson extends Person implements Serializable{
     @Override
     public String toString() {
 
-        return "user_num: " + user_num + " base_user_uid:" + base_user_uid + " org_kod:" + org_kod ;
+        return "user_num: " + user_num +  " org_kod:" + org_kod ;
 
     }
 

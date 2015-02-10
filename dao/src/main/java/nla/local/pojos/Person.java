@@ -1,5 +1,5 @@
 package nla.local.pojos;
-import nla.local.pojos.dict.SubjectType;
+import nla.local.pojos.dict.SubjectTypeDict;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,7 +29,7 @@ public class Person implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")
-    public SubjectType subjectType;
+    public SubjectTypeDict subjectType;
 
 
     @Override
@@ -79,11 +79,11 @@ public class Person implements Serializable {
         this.isOwner = isOwner;
     }
 
-    public SubjectType getSubjectType() {
+    public SubjectTypeDict getSubjectType() {
         return subjectType;
     }
 
-    public void setSubjectType(SubjectType subjectType) {
+    public void setSubjectType(SubjectTypeDict subjectType) {
         this.subjectType = subjectType;
     }
 }

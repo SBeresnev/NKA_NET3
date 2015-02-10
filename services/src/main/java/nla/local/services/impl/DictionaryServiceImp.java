@@ -1,13 +1,10 @@
 package nla.local.services.impl;
 
 import nla.local.dao.BaseDao;
-import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.Serializable;
 
 /**
  * Created by beresnev on 06.02.2015.
@@ -22,36 +19,35 @@ public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> {
 
     }
 
-    public T get( Class<T> clazz, Serializable id)
+   /* @Override
+    public List<T> getAll(Class<T> dict)
     {
+        Class<Dict> p = dict. //dict.getClass();
         try {
-
-            return super.get(clazz, id);
-
-        } catch (DaoException e) {
+               super.getAll(p);
+            } catch (DaoException e) {
             e.printStackTrace();
         }
 
-        return null;
-    }
+    }*/
 
     @Override
     @Deprecated
-    public void add(T t)
+    public void add(Dict t)
     {}
 
     @Override
     @Deprecated
-    public void update(T t)
+    public void update(Dict t)
     {}
 
     @Override
     @Deprecated
-    public void delete(T t)  {
+    public void delete(Dict t)  {
     }
 
     @Override
     @Deprecated
-    public void refresh(T t) {
+    public void refresh(Dict t) {
     }
 }
