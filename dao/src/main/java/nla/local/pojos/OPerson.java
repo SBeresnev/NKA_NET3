@@ -22,7 +22,7 @@ public class OPerson extends Person implements Serializable{
     @Column(name = "SURNAME")
     public  String surname;
 
-    @Column(name = "NAME")
+    @Column(name = "FIRSTNAME")
     public String firstname;
 
     @Column(name = "FATHERNAME")
