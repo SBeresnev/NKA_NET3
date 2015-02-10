@@ -3,6 +3,8 @@ package nla.local.services.impl;
 import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -13,13 +15,18 @@ import java.io.Serializable;
 @Service
 public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> {
 
-    Class<T> type;
+    @Autowired
+    public DictionaryServiceImp(SessionFactory sessionFactory)
+    {
+        super(sessionFactory);
 
-    public T get( Serializable id)
+    }
+
+    public T get( Class<T> clazz, Serializable id)
     {
         try {
 
-            return super.get(type,id);
+            return super.get(clazz, id);
 
         } catch (DaoException e) {
             e.printStackTrace();

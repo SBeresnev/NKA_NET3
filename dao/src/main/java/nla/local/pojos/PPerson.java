@@ -38,9 +38,6 @@ public class PPerson extends Person implements Serializable{
     @Column(name = "DATESTART")
     public Date datestart;
 
-    @Column(name = "ACTUAL")
-    public Integer actual;
-
     @Column(name = "PREV_ADDRESS")
     public String address;
 

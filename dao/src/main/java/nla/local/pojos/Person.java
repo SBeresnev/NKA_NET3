@@ -21,15 +21,16 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="person_seq")
     public Integer subjectId;
 
-    @Column(name = "REESTRDATAID")
-    public Integer reestrdataID ;
+    @Column(name = "REESTRDATAID", updatable = false, insertable = false)
+    public Integer reestrdataID;
 
     @Column(name = "IS_OWNER")
     public Integer isOwner;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SUBJECT_TYPE", nullable = false)
+    @JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")
     public SubjectType subjectType;
+
 
     @Override
     public boolean equals(Object o) {
@@ -53,4 +54,36 @@ public class Person implements Serializable {
         return "Person : id: " + subjectId + " Reestrdate: " + reestrdataID;
     }
 
+
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public Integer getReestrdataID() {
+        return reestrdataID;
+    }
+
+    public void setReestrdataID(Integer reestrdataID) {
+        this.reestrdataID = reestrdataID;
+    }
+
+    public Integer getIsOwner() {
+        return isOwner;
+    }
+
+    public void setIsOwner(Integer isOwner) {
+        this.isOwner = isOwner;
+    }
+
+    public SubjectType getSubjectType() {
+        return subjectType;
+    }
+
+    public void setSubjectType(SubjectType subjectType) {
+        this.subjectType = subjectType;
+    }
 }

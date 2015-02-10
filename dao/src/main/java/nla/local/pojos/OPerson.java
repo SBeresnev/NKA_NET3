@@ -35,7 +35,7 @@ public class OPerson extends Person implements Serializable{
     public String orgname;
 
     @Column(name = "USER_NUM")
-    public String user_num;
+    public Integer user_num;
 
     @Column(name = "DATE_OUT")
     public Date date_out;

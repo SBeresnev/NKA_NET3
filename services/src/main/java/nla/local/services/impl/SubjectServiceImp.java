@@ -95,10 +95,9 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             fullName = fullName==null? "":fullName;
 
             query = DetachedCriteria.forClass(JPerson.class)
-                    .add(Restrictions.eq("subjectType", subjectType))
-                    .add(Restrictions.eq("actual", 1))
-                    .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber +"%"), Restrictions.isNull("regNumber")))
-                    .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%"), Restrictions.isNull("fullname")));
+                    .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber + "%"), Restrictions.isNull("regNumber")))
+                    .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%"), Restrictions.isNull("fullname")))
+                    .createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType));;
 
             retval = (List<T>) this.findSubject(query);
 
@@ -121,11 +120,11 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             fathername = fathername == null ? "":fathername;
 
             query = DetachedCriteria.forClass(PPerson.class)
-                    .add(Restrictions.eq("subjectType", subjectType))
-                    .add(Restrictions.or(Restrictions.eq("actual", 1),Restrictions.isNull("actual")))
                     .add(Restrictions.or(Restrictions.like("surname", "%" + surname + "%"), Restrictions.isNull("surname")))
                     .add(Restrictions.or(Restrictions.like("firstname", "%" + firstname + "%"), Restrictions.isNull("firstname")))
-                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%"), Restrictions.isNull("fathername")));
+                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%"), Restrictions.isNull("fathername")))
+                    .createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType));
+
 
             retval = (List<T>) this.findSubject(query);
         }

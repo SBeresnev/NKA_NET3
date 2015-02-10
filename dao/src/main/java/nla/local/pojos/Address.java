@@ -42,12 +42,12 @@ public class Address {
     public String streetName;
 
     @Column(name = "STREET_TYPE")
-    public String streetType;
+    public Integer streetType;
 
     @Column(name = "HOUSE_NUM")
     public int houseNum;
 
-    @Column(name = "HOUSE_ID")
+    @Column(name = "HOUSE_IND")
     public String houseId;
 
     @Column(name = "CORP_NUM")

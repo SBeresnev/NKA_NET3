@@ -24,6 +24,7 @@ public class BaseDao<T> implements Dao<T> {
 
     private static Logger log = Logger.getLogger(BaseDao.class);
 
+
     private  SessionFactory sessionFactory;
 
     private Class<T> type;
@@ -127,18 +128,19 @@ public class BaseDao<T> implements Dao<T> {
 
         try {
 
-            log.debug(String.format("Get %s with id=%s.", typeName, id));
+            log.debug(String.format("Get %s with id=%s.", clazz.getCanonicalName() , id));
 
-            return (T) getSession().get(clazz, id);
+            T obj = (T) getSession().get(clazz, id);
+
+            return obj;
 
         } catch (HibernateException e) {
 
-            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_000, typeName, id);
+            DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_000, clazz.getCanonicalName() , id);
 
             log.error(dEx.getMessage());
 
             throw dEx;
-
 
         }
 
