@@ -101,7 +101,7 @@ public class SubjectTest
                 op.subjectType = subjectServDictList.get(24);
                 op.isOwner = 0;
 
-                op.name = "Дударык" + String.valueOf(i);
+                op.firstname = "Дударык" + String.valueOf(i);
                 op.surname = "Труба" + String.valueOf(i);
                 op.fathername = "Флейтович" + String.valueOf(i);
 
@@ -123,7 +123,7 @@ public class SubjectTest
     public void GetOffSubject() {
         log.info("Invoked SubjectTest.GetOffSubject" );
 
-        List<Person> result_o= sService.findOffUser("Дуд", "", "", null, "Брест");
+        List<Person> result_o= sService.findOffUser("Тру", "", "", null, "Брест");
 
         assertTrue(!result_o.isEmpty());
     }
@@ -142,7 +142,7 @@ public class SubjectTest
                 op.subjectType = subjectServDictList.get(24);
                 op.isOwner = 0;
 
-                op.name = "Петров" + String.valueOf(20+i);
+                op.firstname = "Петров" + String.valueOf(20+i);
                 op.surname = "Иван" + String.valueOf(20+i);
                 op.fathername = "Артемьевич" + String.valueOf(20+i);
 
@@ -160,7 +160,7 @@ public class SubjectTest
             for(Person o : result_o)
             {
                 OPerson op = (OPerson) o;
-                op.name  = "Петров" + String.valueOf(30+i) ;
+                op.firstname  = "Петров" + String.valueOf(30+i) ;
                 op.surname = "Иван" + String.valueOf(30+i);
                 op.fathername = "Артемьевич" + String.valueOf(30+i);
 

@@ -126,11 +126,11 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
 
             query = DetachedCriteria.forClass(OPerson.class)
-                    .add(Restrictions.or(Restrictions.like("surname", "%" + surname + "%", MatchMode.ANYWHERE), Restrictions.isNull("surname")))
-                    .add(Restrictions.or(Restrictions.like("firstname", "%" + firstname + "%", MatchMode.ANYWHERE), Restrictions.isNull("firstname")))
-                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%", MatchMode.ANYWHERE), Restrictions.isNull("fathername")))
-                    .add(Restrictions.or(Restrictions.like("user_num", "%" + user_num + "%", MatchMode.ANYWHERE), Restrictions.isNull("user_num")))
-                    .add(Restrictions.or(Restrictions.like("orgname", "%" + orgname + "%", MatchMode.ANYWHERE), Restrictions.isNull("orgname")));
+                    .add(Restrictions.or(Restrictions.like("surname",surname, MatchMode.ANYWHERE), Restrictions.isNull("surname")))
+                    .add(Restrictions.or(Restrictions.like("firstname", firstname , MatchMode.ANYWHERE), Restrictions.isNull("firstname")))
+                    .add(Restrictions.or(Restrictions.like("fathername", fathername, MatchMode.ANYWHERE), Restrictions.isNull("fathername")))
+                    .add(Restrictions.or(Restrictions.like("user_num",  user_num , MatchMode.ANYWHERE), Restrictions.isNull("user_num")))
+                    .add(Restrictions.or(Restrictions.like("orgname", orgname , MatchMode.ANYWHERE), Restrictions.isNull("orgname")));
 
             retval = (List<T>) this.findSubject(query);
         }

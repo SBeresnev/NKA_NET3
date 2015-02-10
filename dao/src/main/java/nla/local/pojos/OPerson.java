@@ -23,7 +23,7 @@ public class OPerson extends Person implements Serializable{
     public  String surname;
 
     @Column(name = "NAME")
-    public String name;
+    public String firstname;
 
     @Column(name = "FATHERNAME")
     public String fathername;
