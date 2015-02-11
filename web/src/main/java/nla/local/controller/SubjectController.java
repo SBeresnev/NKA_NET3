@@ -4,12 +4,15 @@ package nla.local.controller;
  * Created by beresnev on 16.01.2015.
  */
 
+import forms.SearchSubjectForm;
+import forms.SubjectForm;
+import nla.local.dao.exceptions.DaoException;
+import nla.local.pojos.PPerson;
 import nla.local.pojos.Person;
 import nla.local.services.ISubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,26 +25,34 @@ public class SubjectController {
     public ISubjectService<Person> sService;
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public List<Person> getPerson(@RequestParam(value = "name", defaultValue = "") String name,
-                                  @RequestParam(value = "number", defaultValue = "") String personalnumber,
-                                  @RequestParam(value = "type", defaultValue = "") String type)
+    public List<Person> getPerson(SearchSubjectForm searchSubjectForm)
     {
-
-        List<Person> result_p= sService.findPhyzByFIOType("Ив", "И", null, null, 100);
-
+        List<Person> result_p= sService.findByFIOType("", searchSubjectForm.getName(), null, searchSubjectForm.getNumber(), searchSubjectForm.getType());
         return result_p;
     }
 
-    @RequestMapping(value = "/juridical", method = RequestMethod.GET)
-    public List<Person> getJuridicalPerson(@RequestParam(value="name", defaultValue="") String name,
-                                            @RequestParam(value="number",defaultValue="") String regnumber,
-                                            @RequestParam(value="type",defaultValue="") String type)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT )
+    public void updatePerson(SubjectForm subjectForm) throws DaoException
     {
-
-       // List<Person> result_p= sService.findJurByNameType("Ив", "И", null, null, 210);
-
-        return null; //result_p;
-
+         if(subjectForm.getSubjectId() != null) {
+           PPerson pPerson = (PPerson) sService.getSubject(PPerson.class, subjectForm.getSubjectId());
+           sService.refreshSubject(subjectForm.updatePPerson(pPerson));
+       }
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.PUT )
+    public void addPerson(SubjectForm subjectForm) throws DaoException
+    {
+        if(subjectForm.getSubjectId() != null) {
+            PPerson pPerson = (PPerson) sService.getSubject(PPerson.class, subjectForm.getSubjectId());
+            sService.refreshSubject(subjectForm.updatePPerson(pPerson));
+        }
+    }
+
+    @RequestMapping(value = "/juridical", method = RequestMethod.GET)
+    public List<Person> getJuridicalPerson(SearchSubjectForm searchSubjectForm)
+    {
+        List<Person> result_p= sService.findByFIOType("Ив", "И", null, null, 210);
+        return result_p;
+    }
 }

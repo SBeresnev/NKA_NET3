@@ -13,9 +13,7 @@ public class UserForm {
     @Valid
     private Integer personId;
 
-
     private String name;
-
 
     private Integer age;
 
