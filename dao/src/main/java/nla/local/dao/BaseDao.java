@@ -195,7 +195,7 @@ public class BaseDao<T> implements Dao<T> {
 
             Criteria cria = crio.getExecutableCriteria(getSession());
 
-            return cria.list();
+            return  cria.list();
 
         } catch (HibernateException e) {
 

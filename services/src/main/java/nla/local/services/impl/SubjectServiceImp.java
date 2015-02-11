@@ -82,7 +82,7 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     };
 
 
-    public List<T> findJurByNameType(String fullName, String regNumber, Integer subjectType )
+    public List<T> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 
         log.info("Get " + " by name. Invoked SubjectService.getByNameType" );
@@ -97,9 +97,11 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             fullName = fullName==null? "":fullName;
 
             query = DetachedCriteria.forClass(JPerson.class)
-                    .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber + "%", MatchMode.ANYWHERE), Restrictions.isNull("regNumber")))
-                    .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%",MatchMode.ANYWHERE), Restrictions.isNull("fullname")))
-                    .createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType));;
+                    .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber + "%", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("regNumber")))
+                    .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%",MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fullname")));
+
+            query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query;
+
 
             retval = (List<T>) this.findSubject(query);
 
@@ -109,7 +111,7 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     }
 
 
-    public List<T> findOffUser(String surname, String firstname, String fathername, String user_num, String orgname )
+    public List<T> findOffUser(String surname, String firstname, String fathername, Integer user_num, String orgname, Integer subjectType )
     {
 
         log.info("Get " + " by name. Invoked SubjectService.findOffUser" );
@@ -119,27 +121,28 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
         if(surname != null || orgname != null) {
 
             surname = surname == null ? "":surname;
-            firstname = firstname==null? "":firstname;
+            firstname = firstname == null? "":firstname;
             fathername = fathername == null ? "":fathername;
-            user_num = user_num==null? "":user_num;
             orgname = orgname == null ? "":orgname;
 
+             query = DetachedCriteria.forClass(OPerson.class)
+                    .add(Restrictions.or(Restrictions.like("surname", surname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("surname")))
+                    .add(Restrictions.or(Restrictions.like("firstname", firstname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("firstname")))
+                    .add(Restrictions.or(Restrictions.like("fathername", fathername, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fathername")))
+                    .add(Restrictions.or(Restrictions.like("orgname", orgname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("orgname")));
 
-            query = DetachedCriteria.forClass(OPerson.class)
-                    .add(Restrictions.or(Restrictions.like("surname",surname, MatchMode.ANYWHERE), Restrictions.isNull("surname")))
-                    .add(Restrictions.or(Restrictions.like("firstname", firstname , MatchMode.ANYWHERE), Restrictions.isNull("firstname")))
-                    .add(Restrictions.or(Restrictions.like("fathername", fathername, MatchMode.ANYWHERE), Restrictions.isNull("fathername")))
-                    .add(Restrictions.or(Restrictions.like("user_num",  user_num , MatchMode.ANYWHERE), Restrictions.isNull("user_num")))
-                    .add(Restrictions.or(Restrictions.like("orgname", orgname , MatchMode.ANYWHERE), Restrictions.isNull("orgname")));
+            query = user_num != null ? query.add(Restrictions.eq("user_num", user_num)): query;
+            query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query;
 
             retval = (List<T>) this.findSubject(query);
+
         }
 
         return retval;
 
     }
 
-    public List<T> findPhyzByFIOType(String surname, String firstname, String fathername, String personalNumber, Integer subjectType )
+    public List<T> findByFIOType(String surname, String firstname, String fathername, String personalNumber, Integer subjectType )
     {
 
         log.info("Get " + " by name. Invoked SubjectService.getByFIOType" );
@@ -151,12 +154,16 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             surname = surname == null ? "":surname;
             firstname = firstname==null? "":firstname;
             fathername = fathername == null ? "":fathername;
+            personalNumber = personalNumber == null ? "":personalNumber;
 
             query = DetachedCriteria.forClass(PPerson.class)
-                    .add(Restrictions.or(Restrictions.like("surname", "%" + surname + "%", MatchMode.ANYWHERE), Restrictions.isNull("surname")))
-                    .add(Restrictions.or(Restrictions.like("firstname", "%" + firstname + "%", MatchMode.ANYWHERE), Restrictions.isNull("firstname")))
-                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%", MatchMode.ANYWHERE), Restrictions.isNull("fathername")))
-                    .createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType));
+                    .add(Restrictions.or(Restrictions.like("surname", "%" + surname + "%", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("surname")))
+                    .add(Restrictions.or(Restrictions.like("firstname", "%" + firstname + "%", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("firstname")))
+                    .add(Restrictions.or(Restrictions.like("fathername", "%" + fathername + "%", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fathername")))
+                    .add(Restrictions.or(Restrictions.like("personalNumber", "%" + personalNumber + "%", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fathername")))
+                    ;
+
+            query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query;
 
 
             retval = (List<T>) this.findSubject(query);

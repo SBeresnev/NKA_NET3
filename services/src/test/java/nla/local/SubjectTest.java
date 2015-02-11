@@ -63,7 +63,7 @@ public class SubjectTest
 
     }
 
-    @org.junit.Test
+    //@org.junit.Test
     public void SubjectOffTestController()  {
 
         AddOffSubject();
@@ -71,7 +71,7 @@ public class SubjectTest
         UpdateOffSubject();
     }
 
-    //@org.junit.Test
+   // @org.junit.Test
     public void SubjectJurTestController() {
 
         AddJurSubject();
@@ -79,7 +79,7 @@ public class SubjectTest
         UpdateJurSubject();
     }
 
-   // @org.junit.Test
+    @org.junit.Test
     public void SubjectPhyTestController(){
 
         AddPhysSubject();
@@ -123,7 +123,7 @@ public class SubjectTest
     public void GetOffSubject() {
         log.info("Invoked SubjectTest.GetOffSubject" );
 
-        List<Person> result_o= sService.findOffUser("Тру", "", "", null, "Брест");
+        List<Person> result_o= sService.findOffUser("Тру", "", "", null, "Брест",null);
 
         assertTrue(!result_o.isEmpty());
     }
@@ -142,9 +142,10 @@ public class SubjectTest
                 op.subjectType = subjectServDictList.get(24);
                 op.isOwner = 0;
 
-                op.firstname = "Петров" + String.valueOf(20+i);
-                op.surname = "Иван" + String.valueOf(20+i);
+                op.surname = "Иванов" + String.valueOf(20+i);
+                op.firstname = "Петр" + String.valueOf(20+i);
                 op.fathername = "Артемьевич" + String.valueOf(20+i);
+
 
                 op.org_kod = torStructDictList.get(0);
                 op.orgname = "РУП \"Брестское агентство по государственной регистрации и земельному кадастру\"";
@@ -152,7 +153,7 @@ public class SubjectTest
 
             }
 
-            List<Person> result_o= sService.findOffUser(null, "", "Артем", null, "БРЕСТ");
+            List<Person> result_o= sService.findOffUser("Иванов22", null , "Артем", null, "БРЕСТ",null);
 
 
             int i = 0;
@@ -160,9 +161,9 @@ public class SubjectTest
             for(Person o : result_o)
             {
                 OPerson op = (OPerson) o;
-                op.firstname  = "Петров" + String.valueOf(30+i) ;
-                op.surname = "Иван" + String.valueOf(30+i);
-                op.fathername = "Артемьевич" + String.valueOf(30+i);
+                op.surname = "Иванов" + String.valueOf(40+i);
+                op.firstname  = "Петр" + String.valueOf(40+i) ;
+                op.fathername = "Артемьевич" + String.valueOf(40+i);
 
                 sService.refreshSubject(op);
                 i++;
@@ -190,7 +191,7 @@ public class SubjectTest
             for(int i=0; i<10; i++) {
 
                 JPerson jp = new JPerson();
-                jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
+                jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
                 jp.isOwner = 1;
 
                 jp.subjectType = subjectServDictList.get(9);
@@ -221,7 +222,7 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<Person> result_j= sService.findJurByNameType("Вал", "", subjectServDictList.get(9).getCode_id());
+        List<Person> result_j= sService.findByNameType("Вал", "", subjectServDictList.get(9).getCode_id());
 
         assertTrue(!result_j.isEmpty());
 
@@ -238,7 +239,7 @@ public class SubjectTest
 
         for(int i=0; i<10; i++) {
             JPerson jp = new JPerson();
-            jp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
+            jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
             jp.fullname = "ОАО Update_" + String.valueOf(i) ;
             jp.orgRightForm = orgStructDictList.get(6);
             jp.subjectType = subjectServDictList.get(14);
@@ -249,7 +250,7 @@ public class SubjectTest
         }
 
 
-        List<Person> result_p= sService.findJurByNameType("Upd",null,subjectServDictList.get(9).getCode_id());
+        List<Person> result_p= sService.findByNameType("Upd", null, subjectServDictList.get(9).getCode_id());
 
         int i = 10;
 
@@ -280,7 +281,7 @@ public class SubjectTest
 
     public void AddPhysSubject() {
 
-        log.info("Invoked SubjectTest.AddPhysSubject()" );
+        log.info("Invoked SubjectTest.AddPhysSubject" );
 
         boolean retval = true;
 
@@ -289,7 +290,7 @@ public class SubjectTest
             for(int i=0; i<10; i++) {
 
                 PPerson pp = new PPerson();
-                pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
+                pp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
                 pp.surname = "Иван"+"_"+i;
                 pp.firstname = "Иванов"+"_"+i;
                 pp.fathername = "Иванович"+"_"+i;
@@ -298,7 +299,8 @@ public class SubjectTest
                 pp.bothRegDate = new Date();
 
                 pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE" ;
-                pp.personalNumber += String.valueOf(CheckLastNumber(pp.personalNumber));
+
+                pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"')");
 
                 sService.addSubject(pp);
 
@@ -321,7 +323,7 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<Person> result_p = sService.findPhyzByFIOType("Ив", "И", null, null, subjectServDictList.get(2).getCode_id());
+        List<Person> result_p = sService.findByFIOType("Ив", "И", null, null, subjectServDictList.get(2).getCode_id());
 
         assertTrue(!result_p.isEmpty());
 
@@ -338,7 +340,7 @@ public class SubjectTest
         for(int i=0; i<10; i++) {
 
             PPerson pp = new PPerson();
-            pp.subjectdataid = (Integer)scg.generate("SEQ_SUBJECTSDATA_ID");
+            pp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
 
             pp.surname = "Дженкинс"+"_"+i;
             pp.firstname = "Владимир"+"_"+i;
@@ -350,7 +352,7 @@ public class SubjectTest
             pp.datestart = new Date();
 
             pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
-            pp.personalNumber += String.valueOf(CheckLastNumber(pp.personalNumber));
+            pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"')");
 
             sService.addSubject(pp);
 
@@ -358,7 +360,7 @@ public class SubjectTest
 
         }
 
-        List<Person> result_p= sService.findPhyzByFIOType("Дж", "", "Об", "1597", 110);
+        List<Person> result_p= sService.findByFIOType("Дж", "", "Об", "1597", 110);
 
         int i = 0;
 
@@ -369,7 +371,7 @@ public class SubjectTest
             pp.surname  += String.valueOf(i);
 
             pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
-            pp.personalNumber += String.valueOf(CheckLastNumber(((PPerson) p).personalNumber));
+            pp.personalNumber += (Integer)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"')");
 
             pp.subjectType = subjectServDictList.get(2);
             pp.sitizens = stateDictList.get(3);
@@ -387,6 +389,7 @@ public class SubjectTest
 
 
     public int CheckLastNumber(String str) {
+
         int v_1 = Integer.valueOf(str.substring(1, 2));
         int v_2 = Integer.valueOf(str.substring(2, 3));
         int v_3 = Integer.valueOf(str.substring(3, 4));

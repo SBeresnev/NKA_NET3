@@ -7,8 +7,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -30,15 +28,15 @@ public class CodeGenerator  {
         this.sessionFactory = sessionFactory;
     }
 
-    public  Serializable generate(String hql) throws HibernateException {
+    public  Object generate(String hql) throws HibernateException {
 
-        String conn_str ="SELECT "+hql + ".nextval from dual";
+        String conn_str ="SELECT "+hql + " from dual";
 
         SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(conn_str);
 
         try {
 
-            Integer ret_val =  ((BigDecimal)query.uniqueResult()).intValue();
+            Object ret_val =  query.uniqueResult();
 
                 return ret_val;
 
