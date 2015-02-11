@@ -157,9 +157,9 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             personalNumber = personalNumber == null ? "":personalNumber;
 
             query = DetachedCriteria.forClass(PPerson.class)
-                    .add(Restrictions.or(Restrictions.like("surname", surname , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("surname")))
+                    .add(Restrictions.or(Restrictions.like("surname", surname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("surname")))
                     .add(Restrictions.or(Restrictions.like("firstname", firstname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("firstname")))
-                    .add(Restrictions.or(Restrictions.like("fathername", fathername , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fathername")))
+                    .add(Restrictions.or(Restrictions.like("fathername", fathername, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fathername")))
                     .add(Restrictions.or(Restrictions.like("personalNumber",  personalNumber , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("personalNumber")))
                     ;
 
