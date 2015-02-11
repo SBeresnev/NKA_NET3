@@ -58,6 +58,7 @@ public class JPerson extends Person implements Serializable{
         if (this == o) return true;
         if (!(o instanceof JPerson)) return false;
         JPerson person = (JPerson) o;
+        if (subjectId != null ? !subjectId.equals(person.subjectId) : person.subjectId != null) return false;
         if (regNumber != null ? !regNumber.equals(person.regNumber) : person.regNumber != null) return false;
         if (unp != null ? !unp.equals(person.unp) : person.unp != null) return false;
         return true;
@@ -67,11 +68,12 @@ public class JPerson extends Person implements Serializable{
     public int hashCode() {
         int result = regNumber != null ? regNumber.hashCode() : 0;
         result = 31 * result + (unp != null ? unp.hashCode() : 0);
+        result = 31 * result + (subjectId != null ? subjectId.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Fullname" + fullname + "RegNumber: " + regNumber + "UNP: " + unp;
+        return "SubjectId: " +subjectId+" Fullname: " + fullname + " RegNumber: " + regNumber + " UNP: " + unp;
     }
 }

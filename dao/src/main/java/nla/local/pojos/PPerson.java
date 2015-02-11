@@ -53,19 +53,22 @@ public class PPerson extends Person implements Serializable{
         if (this == o) return true;
         if (!(o instanceof PPerson)) return false;
         PPerson person = (PPerson) o;
+
+        if (subjectId != null ? !subjectId.equals(person.personalNumber) : person.subjectId != null) return false;
         if (personalNumber != null ? !personalNumber.equals(person.personalNumber) : person.personalNumber != null) return false;
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = personalNumber != null ? personalNumber.hashCode() : 0;
+        int result = subjectId != null ? subjectId.hashCode() : 0;
+        result = 31 * result + (reestrdataID != null ? reestrdataID.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return " PersonalNumber: " + personalNumber;
+        return " Subject Id: " + subjectId +" PersonalNumber: " + personalNumber;
     }
 
 

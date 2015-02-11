@@ -1,5 +1,6 @@
 package nla.local.pojos.dict;
 
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Where;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @Immutable
+@BatchSize(size = 20)
 @Table(name="ANALYTICCODES")
 @Where(clause = "ANALYTIC_TYPE = 200")
 public class StateDict extends Dict{
@@ -25,6 +27,7 @@ public class StateDict extends Dict{
     @Column( name = "ANALYTIC_CODE_NAME")
     private String code_name;
 
+    @OrderColumn
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private String code_short_name;
 
@@ -34,7 +37,6 @@ public class StateDict extends Dict{
         return StateDict.class;
 
     }
-
 
     @Override
     public Integer getCode_id() {

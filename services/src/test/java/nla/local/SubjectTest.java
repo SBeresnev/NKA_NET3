@@ -28,7 +28,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class SubjectTest
 {
@@ -63,7 +63,7 @@ public class SubjectTest
 
     }
 
-    //@org.junit.Test
+    @org.junit.Test
     public void SubjectOffTestController()  {
 
         AddOffSubject();
@@ -71,7 +71,7 @@ public class SubjectTest
         UpdateOffSubject();
     }
 
-   // @org.junit.Test
+    @org.junit.Test
     public void SubjectJurTestController() {
 
         AddJurSubject();
@@ -250,7 +250,7 @@ public class SubjectTest
         }
 
 
-        List<Person> result_p= sService.findByNameType("Upd", null, subjectServDictList.get(9).getCode_id());
+        List<Person> result_p= sService.findByNameType("Upd", null, subjectServDictList.get(14).getCode_id());
 
         int i = 10;
 
@@ -264,7 +264,7 @@ public class SubjectTest
             jp.orgRightForm = orgStructDictList.get(7);
             jp.subjectType = subjectServDictList.get(12);
 
-            sService.refreshSubject(p);
+            sService.refreshSubject(jp);
             i++;
         }
 
@@ -297,10 +297,9 @@ public class SubjectTest
                 pp.subjectType = subjectServDictList.get(2);
                 pp.isOwner = 1;
                 pp.bothRegDate = new Date();
-
                 pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE" ;
-
-                pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"')");
+                pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
+                pp.sitizens = stateDictList.get(73);
 
                 sService.addSubject(pp);
 
@@ -352,7 +351,7 @@ public class SubjectTest
             pp.datestart = new Date();
 
             pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
-            pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"')");
+            pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
 
             sService.addSubject(pp);
 
@@ -360,7 +359,7 @@ public class SubjectTest
 
         }
 
-        List<Person> result_p= sService.findByFIOType("Дж", "", "Об", "1597", 110);
+        List<Person> result_p= sService.findByFIOType("Дж", "", "Об", "311", subjectServDictList.get(3).getCode_id());
 
         int i = 0;
 
@@ -371,12 +370,12 @@ public class SubjectTest
             pp.surname  += String.valueOf(i);
 
             pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
-            pp.personalNumber += (Integer)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"')");
+            pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
 
             pp.subjectType = subjectServDictList.get(2);
             pp.sitizens = stateDictList.get(3);
 
-            sService.refreshSubject(p);
+            sService.refreshSubject(pp);
             i++;
         }
 

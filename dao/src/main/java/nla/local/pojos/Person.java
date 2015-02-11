@@ -1,5 +1,6 @@
 package nla.local.pojos;
 import nla.local.pojos.dict.SubjectTypeDict;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="SUBJECTS")
+@BatchSize(size = 20)
 @Inheritance(strategy= InheritanceType.JOINED)
 public class Person implements Serializable {
 
