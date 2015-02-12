@@ -1,4 +1,4 @@
-package nla.local.services.impl;
+package nla.local.services.impl.subjects;
 
 import nla.local.pojos.JPerson;
 import org.apache.log4j.Logger;
@@ -8,6 +8,7 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * Created by beresnev on 12.02.2015.
  */
 @Service
+@Transactional
 public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
     private static Logger log = Logger.getLogger(JSubjectServiceImp.class);
@@ -40,6 +42,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
         this.query = query;
     }
+
 
     public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType )
     {

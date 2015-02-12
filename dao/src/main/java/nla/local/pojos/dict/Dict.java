@@ -9,6 +9,10 @@ public abstract class Dict {
 
     public abstract Integer getCode_id();
 
+   // public abstract Integer getParent_code();
+
+    //public abstract void setParent_code(Integer parent_code);
+
     public abstract String getCode_name();
 
     public abstract String getCode_short_name();

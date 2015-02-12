@@ -34,7 +34,7 @@ public class JPerson extends Person implements Serializable{
     @Column(name = "UNP")
     public String unp;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "ORG_RIGHT_FORM", nullable = false)
     public OrgStructDict orgRightForm;
 

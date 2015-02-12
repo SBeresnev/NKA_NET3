@@ -11,6 +11,9 @@ import nla.local.pojos.dict.SubjectTypeDict;
 import nla.local.pojos.dict.TorStructDict;
 import nla.local.services.ISubjectService;
 import nla.local.services.impl.DictionaryServiceImp;
+import nla.local.services.impl.subjects.JSubjectServiceImp;
+import nla.local.services.impl.subjects.OSubjectServiceImp;
+import nla.local.services.impl.subjects.PSubjectServiceImp;
 import nla.local.util.CodeGenerator;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -34,6 +37,16 @@ public class SubjectTest
 {
 
     private static Logger log = Logger.getLogger(SubjectTest.class);
+
+
+    @Autowired
+    public OSubjectServiceImp oService;
+
+    @Autowired
+    public PSubjectServiceImp pService;
+
+    @Autowired
+    public JSubjectServiceImp jService;
 
     @Autowired
     public ISubjectService<Person> sService;
@@ -60,7 +73,6 @@ public class SubjectTest
 
         torStructDictList = CommonDict.getAll(TorStructDict.class);
 
-
     }
 
     @org.junit.Test
@@ -79,7 +91,7 @@ public class SubjectTest
         UpdateJurSubject();
     }
 
-    @org.junit.Test
+   @org.junit.Test
     public void SubjectPhyTestController(){
 
         AddPhysSubject();
@@ -87,6 +99,7 @@ public class SubjectTest
         UpdatePhysSubject();
 
     }
+
 
     public void AddOffSubject() {
         log.info("Invoked SubjectTest.AddOffSubject()" );
@@ -123,7 +136,7 @@ public class SubjectTest
     public void GetOffSubject() {
         log.info("Invoked SubjectTest.GetOffSubject" );
 
-        List<Person> result_o= sService.findOffUser("Тру", "", "", null, "Брест",null);
+        List<OPerson> result_o= oService.findOffUser("Тру", "", "", null, "Брест",null);
 
         assertTrue(!result_o.isEmpty());
     }
@@ -153,7 +166,7 @@ public class SubjectTest
 
             }
 
-            List<Person> result_o= sService.findOffUser("Иванов22", null , "Артем", null, "БРЕСТ",null);
+            List<OPerson> result_o= oService.findOffUser("Иванов22", null , "Артем", null, "БРЕСТ",null);
 
 
             int i = 0;
@@ -222,7 +235,7 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<Person> result_j= sService.findByNameType("Вал", "", subjectServDictList.get(9).getCode_id());
+        List<JPerson> result_j= jService.findByNameType("Вал", "", subjectServDictList.get(9).getCode_id());
 
         assertTrue(!result_j.isEmpty());
 
@@ -250,7 +263,7 @@ public class SubjectTest
         }
 
 
-        List<Person> result_p= sService.findByNameType("Upd", null, subjectServDictList.get(14).getCode_id());
+        List<JPerson> result_p= jService.findByNameType("Upd", null, subjectServDictList.get(14).getCode_id());
 
         int i = 10;
 
@@ -322,7 +335,7 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<Person> result_p = sService.findByFIOType("Ив", "И", null, null, subjectServDictList.get(2).getCode_id());
+        List<PPerson> result_p = pService.findByFIOType("Ив", "И", null, null, subjectServDictList.get(2).getCode_id());
 
         assertTrue(!result_p.isEmpty());
 
@@ -359,7 +372,7 @@ public class SubjectTest
 
         }
 
-        List<Person> result_p= sService.findByFIOType("Дж", "", "Об", "311", subjectServDictList.get(3).getCode_id());
+        List<PPerson> result_p= pService.findByFIOType("Дж", "", "Об", "311", subjectServDictList.get(3).getCode_id());
 
         int i = 0;
 

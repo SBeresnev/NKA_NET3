@@ -3,7 +3,7 @@ package nla.local.services.impl;
 import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
-import nla.local.services.IService;
+import nla.local.services.IDictionaryService;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements IService<T> {
+public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements IDictionaryService<T> {
 
     @Autowired
     public DictionaryServiceImp(SessionFactory sessionFactory)
@@ -25,8 +25,18 @@ public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements 
 
     }
 
-    public List<T> getAll(Class<T> clazz) throws DaoException {
-        return super.getAll(clazz);
+    @Override
+    public List<T> getAll(Class<T> clazz)  {
+
+        try {
+            return super.getAll(clazz);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+
+        }
+        return null;
     }
 
     @Override

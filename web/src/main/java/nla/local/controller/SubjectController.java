@@ -7,11 +7,13 @@ package nla.local.controller;
 import forms.SearchSubjectForm;
 import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.pojos.JPerson;
 import nla.local.pojos.PPerson;
-import nla.local.pojos.Person;
 import nla.local.pojos.dict.SubjectTypeDict;
-import nla.local.services.ISubjectService;
 import nla.local.services.impl.DictionaryServiceImp;
+import nla.local.services.impl.subjects.JSubjectServiceImp;
+import nla.local.services.impl.subjects.OSubjectServiceImp;
+import nla.local.services.impl.subjects.PSubjectServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +26,13 @@ import java.util.List;
 public class SubjectController {
 
     @Autowired
-    public ISubjectService<Person> sService;
+    public OSubjectServiceImp oService;
+
+    @Autowired
+    public PSubjectServiceImp pService;
+
+    @Autowired
+    public JSubjectServiceImp jService;
 
     @Autowired
     public DictionaryServiceImp commonDict;
@@ -32,10 +40,10 @@ public class SubjectController {
     private List<SubjectTypeDict> subjectServDictList;
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public List<Person> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
+    public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
 
         subjectServDictList = commonDict.getAll(SubjectTypeDict.class);
-        List<Person> result_p= sService.findByFIOType("", searchSubjectForm.getName(), null, searchSubjectForm.getNumber(), subjectServDictList.get(2).getCode_id());
+        List<PPerson> result_p= pService.findByFIOType("", searchSubjectForm.getName(), null, searchSubjectForm.getNumber(), subjectServDictList.get(2).getCode_id());
         return result_p;
     }
 
@@ -43,8 +51,8 @@ public class SubjectController {
     public void updatePerson(SubjectForm subjectForm) throws DaoException
     {
          if(subjectForm.getSubjectId() != null) {
-           PPerson pPerson = (PPerson) sService.getSubject(PPerson.class, subjectForm.getSubjectId());
-           sService.refreshSubject(subjectForm.updatePPerson(pPerson));
+           PPerson pPerson = (PPerson) pService.getSubject(PPerson.class, subjectForm.getSubjectId());
+             pService.refreshSubject(subjectForm.updatePPerson(pPerson));
        }
     }
 
@@ -52,15 +60,16 @@ public class SubjectController {
     public void addPerson(SubjectForm subjectForm) throws DaoException
     {
         if(subjectForm.getSubjectId() != null) {
-            PPerson pPerson = (PPerson) sService.getSubject(PPerson.class, subjectForm.getSubjectId());
-            sService.refreshSubject(subjectForm.updatePPerson(pPerson));
+            PPerson pPerson = (PPerson) pService.getSubject(PPerson.class, subjectForm.getSubjectId());
+            pService.refreshSubject(subjectForm.updatePPerson(pPerson));
         }
     }
 
     @RequestMapping(value = "/juridical", method = RequestMethod.GET)
-    public List<Person> getJuridicalPerson(SearchSubjectForm searchSubjectForm)
+    public List<JPerson> getJuridicalPerson(SubjectForm subjectForm)
     {
-        List<Person> result_p= sService.findByFIOType("Ив", "И", null, null, 210);
-        return result_p;
+        List<JPerson> result_j= jService.findByNameType("Upd", null, subjectForm.getSubjectId());
+
+        return result_j;
     }
 }

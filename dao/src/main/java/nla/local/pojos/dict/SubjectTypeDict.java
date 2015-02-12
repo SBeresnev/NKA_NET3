@@ -19,7 +19,6 @@ import java.io.Serializable;
 @Where(clause = "ANALYTIC_TYPE = 110")
 public class SubjectTypeDict extends Dict implements Serializable{
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANALYTIC_CODE", unique = true, nullable = false)
@@ -31,12 +30,16 @@ public class SubjectTypeDict extends Dict implements Serializable{
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private  String code_short_name;
 
-    @Column( name = "PARENT_CODE")
-    private  Integer parent_code;
 
-    private  String parent_desc;
+    public Integer getParent_code() {
+        return parent_code;
+    }
 
-    public String getParent_desc(){
+    public void setParent_code(Integer parent_code) {
+        this.parent_code = parent_code;
+    }
+
+    public String getParent_desc() {
 
         if(parent_code == 100) parent_desc = "PRIVATE";
 
@@ -45,26 +48,38 @@ public class SubjectTypeDict extends Dict implements Serializable{
         if(parent_code == 600) parent_desc = "OFFICIAL";
 
         return parent_desc;
-
     }
 
-    @Override
-    public Class getType(){ return SubjectTypeDict.class; }
+    public void setParent_desc(String parent_desc) {
+        this.parent_desc = parent_desc;
+    }
+
+    @Column( name = "PARENT_CODE")
+    private  Integer parent_code;
+
+    @Transient
+    private  String parent_desc;
+
+
+
 
     @Override
     public Integer getCode_id() {
         return code_id;
     }
 
+
     @Override
     public String getCode_name() {
         return code_name;
     }
 
+
     @Override
     public String getCode_short_name() {
         return code_short_name;
     }
+
 
     @Override
     public void setCode_id(Integer code_id) {
@@ -80,5 +95,10 @@ public class SubjectTypeDict extends Dict implements Serializable{
     public void setCode_short_name(String code_short_name) {
         this.code_short_name = code_short_name;
     }
+
+
+    @Override
+    public Class getType(){ return SubjectTypeDict.class; }
+
 
 }

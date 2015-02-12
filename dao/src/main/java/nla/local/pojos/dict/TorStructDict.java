@@ -27,6 +27,19 @@ public class TorStructDict extends Dict{
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private  String code_short_name;
 
+    @Column( name = "PARENT_CODE")
+    private  Integer parent_code;
+
+    /*
+    @Override
+    public Integer getParent_code() { return parent_code; }
+
+    @Override
+    public void setParent_code(Integer parent_code) {
+        this.parent_code = parent_code;
+    }
+    */
+
     @Override
     public Class getType()
     {

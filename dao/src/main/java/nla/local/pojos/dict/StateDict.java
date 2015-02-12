@@ -28,21 +28,30 @@ public class StateDict extends Dict implements Serializable{
     @Column( name = "ANALYTIC_CODE_NAME")
     private String code_name;
 
+
     @OrderColumn
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private String code_short_name;
 
-    @Override
-    public Class getType()
-    {
-        return StateDict.class;
+    /*
+    @Column( name = "PARENT_CODE")
+    private String parent_code;
 
+    @Override
+    public Integer getParent_code() {
+        return null;
     }
+
+    @Override
+    public void setParent_code(Integer parent_code) {
+
+    } */
 
     @Override
     public Integer getCode_id() {
         return code_id;
     }
+
 
     @Override
     public String getCode_name() {
@@ -68,5 +77,8 @@ public class StateDict extends Dict implements Serializable{
     public void setCode_short_name(String code_short_name) {
         this.code_short_name = code_short_name;
     }
+
+    @Override
+    public Class getType()   {  return StateDict.class;  }
 
 }
