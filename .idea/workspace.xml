@@ -1292,13 +1292,7 @@
       <workItem from="1423635435925" duration="20890000" />
       <workItem from="1423722053982" duration="8388000" />
       <workItem from="1423733300665" duration="16000" />
-      <workItem from="1423735272363" duration="98000" />
-    </task>
-    <task id="LOCAL-00027" summary=" Thursday change">
-      <created>1422541574402</created>
-      <option name="number" value="00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1422541574402</updated>
+      <workItem from="1423735272363" duration="171000" />
     </task>
     <task id="LOCAL-00028" summary=" Friday change">
       <created>1422602162953</created>
@@ -1588,11 +1582,17 @@
       <option name="project" value="LOCAL" />
       <updated>1423735329905</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Wednesday change">
+      <created>1423735374330</created>
+      <option name="number" value="00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1423735374330</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="354804000" />
+    <option name="totallyTimeSpent" value="354877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
