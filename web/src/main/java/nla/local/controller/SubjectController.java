@@ -9,7 +9,9 @@ import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.PPerson;
 import nla.local.pojos.Person;
+import nla.local.pojos.dict.SubjectTypeDict;
 import nla.local.services.ISubjectService;
+import nla.local.services.impl.DictionaryServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,10 +26,16 @@ public class SubjectController {
     @Autowired
     public ISubjectService<Person> sService;
 
+    @Autowired
+    public DictionaryServiceImp commonDict;
+
+    private List<SubjectTypeDict> subjectServDictList;
+
     @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public List<Person> getPerson(SearchSubjectForm searchSubjectForm)
-    {
-        List<Person> result_p= sService.findByFIOType("", searchSubjectForm.getName(), null, searchSubjectForm.getNumber(), searchSubjectForm.getType());
+    public List<Person> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
+
+        subjectServDictList = commonDict.getAll(SubjectTypeDict.class);
+        List<Person> result_p= sService.findByFIOType("", searchSubjectForm.getName(), null, searchSubjectForm.getNumber(), subjectServDictList.get(2).getCode_id());
         return result_p;
     }
 
