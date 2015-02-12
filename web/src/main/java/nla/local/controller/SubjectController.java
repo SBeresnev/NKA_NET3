@@ -40,11 +40,11 @@ public class SubjectController {
     private List<SubjectTypeDict> subjectServDictList;
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
+    public PPerson getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
 
         subjectServDictList = commonDict.getAll(SubjectTypeDict.class);
         List<PPerson> result_p= pService.findByFIOType("", searchSubjectForm.getName(), null, searchSubjectForm.getNumber(), subjectServDictList.get(2).getCode_id());
-        return result_p;
+        return result_p.get(0);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT )

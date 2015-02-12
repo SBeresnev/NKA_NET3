@@ -41,11 +41,11 @@ public class SubjectTypeDict extends Dict implements Serializable{
 
     public String getParent_desc() {
 
-        if(parent_code == 100) parent_desc = "PRIVATE";
+        if(parent_code == 100) parent_desc = "private";
 
-        if(parent_code == 200) parent_desc = "PUBLIC";
+        if(parent_code == 200) parent_desc = "juridical";
 
-        if(parent_code == 600) parent_desc = "OFFICIAL";
+        if(parent_code == 600) parent_desc = "official";
 
         return parent_desc;
     }
