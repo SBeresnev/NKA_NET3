@@ -30,6 +30,12 @@ public class SubjectTypeDict extends Dict implements Serializable{
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private  String code_short_name;
 
+    @Column( name = "PARENT_CODE")
+    private  Integer parent_code;
+
+    @Transient
+    private  String parent_desc;
+
 
     public Integer getParent_code() {
         return parent_code;
@@ -53,14 +59,6 @@ public class SubjectTypeDict extends Dict implements Serializable{
     public void setParent_desc(String parent_desc) {
         this.parent_desc = parent_desc;
     }
-
-    @Column( name = "PARENT_CODE")
-    private  Integer parent_code;
-
-    @Transient
-    private  String parent_desc;
-
-
 
 
     @Override
