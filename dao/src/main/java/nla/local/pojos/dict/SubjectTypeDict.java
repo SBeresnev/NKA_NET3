@@ -94,7 +94,6 @@ public class SubjectTypeDict extends Dict implements Serializable{
         this.code_short_name = code_short_name;
     }
 
-
     @Override
     public Class getType(){ return SubjectTypeDict.class; }
 

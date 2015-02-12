@@ -9,11 +9,15 @@ import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.JPerson;
 import nla.local.pojos.PPerson;
+import nla.local.pojos.dict.StateDict;
 import nla.local.pojos.dict.SubjectTypeDict;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,11 +44,18 @@ public class SubjectController {
     private List<SubjectTypeDict> subjectServDictList;
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public PPerson getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
+    public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
 
-        subjectServDictList = commonDict.getAll(SubjectTypeDict.class);
+        //subjectServDictList = commonDict.getAll(SubjectTypeDict.class);
+
+        DetachedCriteria dc = DetachedCriteria.forClass(StateDict.class).add(Restrictions.or(Restrictions.like("code_short_name", "Беларусь", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("code_short_name")));
+
+        subjectServDictList = commonDict.getCriterion(dc);
+
         List<PPerson> result_p= pService.findByFIOType("", searchSubjectForm.getName(), null, searchSubjectForm.getNumber(), subjectServDictList.get(2).getCode_id());
-        return result_p.get(0);
+
+        return result_p;
+
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT )

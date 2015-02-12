@@ -5,8 +5,10 @@ import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
 import nla.local.services.IDictionaryService;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.List;
  * Created by beresnev on 06.02.2015.
  */
 @Service
-@Transactional
+@Transactional(propagation = Propagation.SUPPORTS)
 public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements IDictionaryService<T> {
 
     @Autowired
@@ -23,6 +25,21 @@ public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements 
     {
         super(sessionFactory);
 
+    }
+
+    @Override
+    public List<T> getCriterion(DetachedCriteria dc)
+    {
+        try {
+
+            return super.getCriterion(dc);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+
+        }
+        return null;
     }
 
     @Override
