@@ -30,12 +30,25 @@ public class SubjectTypeDict extends Dict {
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private  String code_short_name;
 
-    @Override
-    public Class getType()
-    {
-        return SubjectTypeDict.class;
+    @Column( name = "PARENT_CODE")
+    private  Integer parent_code;
+
+    private  String parent_desc;
+
+    public String getParent_desc(){
+
+        if(parent_code == 100) parent_desc = "PRIVATE";
+
+        if(parent_code == 200) parent_desc = "PUBLIC";
+
+        if(parent_code == 600) parent_desc = "OFFICIAL";
+
+        return parent_desc;
 
     }
+
+    @Override
+    public Class getType(){ return SubjectTypeDict.class; }
 
     @Override
     public Integer getCode_id() {

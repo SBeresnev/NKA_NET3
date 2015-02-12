@@ -5,7 +5,6 @@ package nla.local.pojos.dict;
  * Abstract Dictionary
  */
 
-
 public abstract class Dict {
 
     public abstract Integer getCode_id();
@@ -22,3 +21,4 @@ public abstract class Dict {
 
     public abstract Class getType();
 }
+
