@@ -26,8 +26,8 @@ public class PPerson extends Person implements Serializable{
     @Column(name = "FATHERNAME")
     public String fathername;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SITIZENS", nullable = false, referencedColumnName = "ANALYTIC_CODE")
+    @ManyToOne
+    @JoinColumn(name = "SITIZENS", referencedColumnName = "ANALYTIC_CODE")
     public StateDict sitizens;
 
     @Column(name = "BOTH_REG_DATE")

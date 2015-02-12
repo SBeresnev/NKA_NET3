@@ -13,7 +13,7 @@ public interface Dao<T> {
 
     void update(T t) throws DaoException;
 
-    T get(Class<T> clazz, Serializable id) throws DaoException;
+    T get(Class clazz, Serializable id) throws DaoException;
 
     public List<T> getCriterion(DetachedCriteria crio) throws DaoException;
 

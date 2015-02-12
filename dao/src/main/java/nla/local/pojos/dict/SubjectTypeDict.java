@@ -5,6 +5,7 @@ import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 /**
@@ -16,7 +17,7 @@ import javax.persistence.*;
 @Immutable
 @Table(name="ANALYTICCODES")
 @Where(clause = "ANALYTIC_TYPE = 110")
-public class SubjectTypeDict extends Dict {
+public class SubjectTypeDict extends Dict implements Serializable{
 
 
     @Id

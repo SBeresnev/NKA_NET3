@@ -26,10 +26,7 @@ public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements 
     }
 
     public List<T> getAll(Class<T> clazz) throws DaoException {
-
         return super.getAll(clazz);
-
-
     }
 
     @Override

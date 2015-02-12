@@ -5,6 +5,7 @@ import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by beresnev on 10.02.2015.
@@ -16,7 +17,7 @@ import javax.persistence.*;
 @BatchSize(size = 20)
 @Table(name="ANALYTICCODES")
 @Where(clause = "ANALYTIC_TYPE = 200")
-public class StateDict extends Dict{
+public class StateDict extends Dict implements Serializable{
 
 
     @Id

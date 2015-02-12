@@ -25,6 +25,7 @@ public class BaseDao<T> implements Dao<T> {
     private static Logger log = Logger.getLogger(BaseDao.class);
 
 
+    @Autowired
     private  SessionFactory sessionFactory;
 
     private Class<T> type;
@@ -122,7 +123,7 @@ public class BaseDao<T> implements Dao<T> {
     }
 
     @Override
-    public T get(Class<T> clazz, Serializable id) throws DaoException{
+    public T get(Class clazz, Serializable id) throws DaoException{
 
         log.info("Get:" + id.toString());
 
