@@ -65,4 +65,5 @@ public class OrgStructDict extends Dict {
         return OrgStructDict.class;
 
     }
+
 }

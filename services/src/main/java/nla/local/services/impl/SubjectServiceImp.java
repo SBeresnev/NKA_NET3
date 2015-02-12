@@ -32,7 +32,20 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
     private DetachedCriteria query;
 
-    @Autowired
+
+    public DetachedCriteria getQuery()
+    {
+        return query;
+    }
+
+    public void setQuery(DetachedCriteria query)
+    {
+        this.query = query;
+    }
+
+
+
+   @Autowired
    public SubjectServiceImp(SessionFactory sessionFactory)
     {
         super(sessionFactory);
@@ -82,14 +95,15 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     };
 
 
+
     public List<T> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 
         log.info("Get " + " by name. Invoked SubjectService.getByNameType" );
 
-         Type t = getClass().getGenericSuperclass();
+        Type t = getClass().getGenericSuperclass();
 
-        List<T> retval = new ArrayList<T>();
+        List<JPerson> retval = new ArrayList<JPerson>();
 
         if(fullName != null || regNumber != null) {
 
@@ -103,13 +117,12 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
             query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query;
 
 
-            retval = (List<T>) this.findSubject(query);
+            retval = (List<JPerson>) this.findSubject(query);
 
         }
 
         return retval;
     }
-
 
     public List<T> findOffUser(String surname, String firstname, String fathername, Integer user_num, String orgname, Integer subjectType )
     {
@@ -171,16 +184,6 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
         return retval;
 
-    }
-
-    public DetachedCriteria getQuery()
-    {
-        return query;
-    }
-
-    public void setQuery(DetachedCriteria query)
-    {
-        this.query = query;
     }
 
 

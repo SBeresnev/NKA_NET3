@@ -2,15 +2,18 @@ package nla.local.services.impl;
 
 import nla.local.dao.BaseDao;
 import nla.local.pojos.dict.Dict;
+import nla.local.services.IService;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by beresnev on 06.02.2015.
  */
 @Service
-public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> {
+@Transactional
+public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements IService<T> {
 
     @Autowired
     public DictionaryServiceImp(SessionFactory sessionFactory)
@@ -18,18 +21,6 @@ public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> {
         super(sessionFactory);
 
     }
-
-   /* @Override
-    public List<T> getAll(Class<T> dict)
-    {
-        Class<Dict> p = dict. //dict.getClass();
-        try {
-               super.getAll(p);
-            } catch (DaoException e) {
-            e.printStackTrace();
-        }
-
-    }*/
 
     @Override
     @Deprecated

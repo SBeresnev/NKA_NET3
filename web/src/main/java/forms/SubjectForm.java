@@ -105,11 +105,11 @@ public class SubjectForm {
         pPerson.firstname = this.firstname;
         pPerson.fathername = this.fathername;
         pPerson.surname = this.surname;
-        pPerson.actual = this.actual;
+        //pPerson.actual = this.actual;
         pPerson.address = this.address;
         pPerson.bothRegDate = this.bothRegDate == null ? null : new Date(this.bothRegDate);
         pPerson.personalNumber = this.personalNumber;
-        pPerson.subjectType = this.subjectType;
+        //pPerson.subjectType = this.subjectType;
         pPerson.datestart = this.datestart == null ? null : new Date(this.datestart);
         return pPerson;
     }

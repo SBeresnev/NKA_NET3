@@ -15,12 +15,6 @@ public interface ISubjectService<T> extends IService<T> {
 
     public void refreshSubject(T t) throws DaoException;
 
-    public List<T> findSubject(DetachedCriteria dc);
-
-    public List<T> findOffUser(String surname, String firstname, String fathername, Integer user_num, String orgname, Integer subjectType );
-
-    public List<T> findByNameType(String fullName, String regNumber, Integer subjectType );
-
-    public List<T> findByFIOType(String surname, String firstname  ,String fathername, String personalNumber, Integer subjectType );
+    public List<T> findSubject(DetachedCriteria dc) throws DaoException;
 
 }
