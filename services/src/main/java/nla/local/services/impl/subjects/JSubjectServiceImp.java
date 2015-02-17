@@ -1,5 +1,6 @@
 package nla.local.services.impl.subjects;
 
+import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.JPerson;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -29,6 +30,20 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
         super(sessionFactory);
 
+    }
+
+    public List<JPerson> getAll()
+    {
+        try {
+
+            return super.getAll(JPerson.class);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public DetachedCriteria getQuery()

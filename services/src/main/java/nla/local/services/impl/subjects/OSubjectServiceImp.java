@@ -1,5 +1,6 @@
 package nla.local.services.impl.subjects;
 
+import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.OPerson;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
@@ -41,6 +42,20 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
         super.setQuery(query);
 
         this.query = query;
+    }
+
+    public List<OPerson> getAll()
+    {
+        try {
+
+            return super.getAll(OPerson.class);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public List<OPerson> findOffUser(String surname, String firstname, String fathername, Integer user_num, String orgname, Integer subjectType )

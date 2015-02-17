@@ -29,7 +29,7 @@ public class Person implements Serializable {
     @Column(name = "IS_OWNER")
     public Integer isOwner;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")
     public SubjectTypeDict subjectType;
 

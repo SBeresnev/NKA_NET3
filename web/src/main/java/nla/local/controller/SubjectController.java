@@ -46,13 +46,15 @@ public class SubjectController {
     @RequestMapping(value = "/private", method = RequestMethod.GET )
     public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
 
-        //subjectServDictList = commonDict.getAll(SubjectTypeDict.class);
+        subjectServDictList = commonDict.getAll(SubjectTypeDict.class);
 
         DetachedCriteria dc = DetachedCriteria.forClass(StateDict.class).add(Restrictions.or(Restrictions.like("code_short_name", "Беларусь", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("code_short_name")));
 
-        subjectServDictList = commonDict.getCriterion(dc);
+       // List<PPerson> result_p = pService.getAll();
 
-        List<PPerson> result_p= pService.findByFIOType("", searchSubjectForm.getName(), null, searchSubjectForm.getNumber(), subjectServDictList.get(2).getCode_id());
+        //subjectServDictList = commonDict.getCriterion(dc);
+
+        List<PPerson> result_p= pService.findByFIOType("","", null, "" , subjectServDictList.get(2).getCode_id());
 
         return result_p;
 
