@@ -2,6 +2,7 @@ package nla.local.services.impl.subjects;
 
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.JPerson;
+import nla.local.pojos.dict.EnumDict;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -75,7 +76,8 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
                     .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber + "%", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("regNumber")))
                     .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%",MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fullname")));
 
-            query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query;
+
+            query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query;
 
 
             retval = (List<JPerson>) this.findSubject(query);

@@ -86,6 +86,7 @@ public class Person implements Serializable {
     }
 
     public void setSubjectType(SubjectTypeDict subjectType) {
+
         this.subjectType = subjectType;
     }
 }

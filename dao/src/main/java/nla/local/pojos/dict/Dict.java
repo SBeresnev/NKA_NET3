@@ -20,8 +20,6 @@ public class Dict implements IDict{
     @Column(name = "ANALYTIC_CODE",  nullable = false)
     private  Integer code_id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( name ="ANALYTIC_TYPE", nullable = false, insertable = false , updatable = false )
     private Integer analytic_type;
 

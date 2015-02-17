@@ -11,12 +11,8 @@ import javax.persistence.Transient;
 @DiscriminatorValue("110")
 public class SubjectTypeDict extends Dict {
 
-    @Transient
+     @Transient
     private  String parent_desc;
-
-    public  void setAnalytic_type() {
-         super.setAnalytic_type(110);
-    }
 
     public String getParent_desc() {
 
