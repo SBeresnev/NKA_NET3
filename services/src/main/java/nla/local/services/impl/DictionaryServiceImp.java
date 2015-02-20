@@ -6,6 +6,7 @@ import nla.local.pojos.dict.Dict;
 import nla.local.services.IDictionaryService;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 @Service
 @Transactional(propagation = Propagation.SUPPORTS)
-public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements IDictionaryService<T> {
+public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionaryService {
 
     @Autowired
     public DictionaryServiceImp(SessionFactory sessionFactory)
@@ -28,7 +29,7 @@ public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements 
     }
 
     @Override
-    public List<T> getCriterion(DetachedCriteria dc)
+    public List getCriterion(DetachedCriteria dc)
     {
         try {
 
@@ -42,11 +43,13 @@ public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements 
         return null;
     }
 
-    @Override
-    public List<T> getAll(Class<T> clazz)  {
+
+    public List<Dict> getAll()  {
 
         try {
-            return super.getAll(clazz);
+
+
+            return super.getAll(Dict.class);
 
         } catch (DaoException e) {
 
@@ -74,5 +77,17 @@ public class DictionaryServiceImp<T extends Dict> extends BaseDao<T> implements 
     @Override
     @Deprecated
     public void refresh(Dict t) {
+    }
+
+    @Override
+    public List<Dict> getDict(Integer a_type) {
+
+        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type",a_type));
+
+        List<Dict> ret_val = this.getCriterion(dc);
+
+        return ret_val;
+
+
     }
 }
