@@ -16,21 +16,19 @@ import java.util.List;
 
 public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> implements ISubjectService<T> {
 
-    private static Logger log = Logger.getLogger(SubjectServiceImp.class);
+   private static Logger log = Logger.getLogger(SubjectServiceImp.class);
 
-    private DetachedCriteria query;
+   private DetachedCriteria query;
 
-
-    public DetachedCriteria getQuery()
+   public DetachedCriteria getQuery()
     {
         return query;
     }
 
-    public void setQuery(DetachedCriteria query)
+   public void setQuery(DetachedCriteria query)
     {
         this.query = query;
     }
-
 
    public SubjectServiceImp(SessionFactory sessionFactory)
     {
@@ -55,7 +53,7 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
     };
 
     @Override
-    public List<T> findSubject(DetachedCriteria dc)
+    public List<T> findSubjects(DetachedCriteria dc)
     {
         List<T> out = null;
 

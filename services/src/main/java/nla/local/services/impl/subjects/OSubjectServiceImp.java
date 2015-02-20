@@ -23,9 +23,9 @@ import java.util.List;
 @Transactional
 public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
 
-    private static Logger log = Logger.getLogger(PSubjectServiceImp.class);
+    private static Logger log = Logger.getLogger(OSubjectServiceImp.class);
 
-    private DetachedCriteria query;
+    private DetachedCriteria query = DetachedCriteria.forClass(OPerson.class);
 
     @Autowired
     public OSubjectServiceImp(SessionFactory sessionFactory) {
@@ -63,6 +63,8 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
     public List<OPerson> findOffUser(String surname, String firstname, String fathername, Integer user_num, String orgname, Integer subjectType )
     {
 
+        DetachedCriteria query_ = query;
+
         log.info("Get " + " by name. Invoked SubjectService.findOffUser" );
 
         List<OPerson> retval =  new ArrayList<OPerson>();
@@ -74,17 +76,17 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
             fathername = fathername == null ? "":fathername;
             orgname = orgname == null ? "":orgname;
 
-            query = DetachedCriteria.forClass(OPerson.class)
+            query_ = query_
                     .add(Restrictions.or(Restrictions.like("surname", surname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("surname")))
                     .add(Restrictions.or(Restrictions.like("firstname", firstname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("firstname")))
                     .add(Restrictions.or(Restrictions.like("fathername", fathername, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fathername")))
                     .add(Restrictions.or(Restrictions.like("orgname", orgname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("orgname")));
 
-            query = user_num != null ? query.add(Restrictions.eq("user_num", user_num)): query;
-            query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query;
+            query_ = user_num != null ? query_.add(Restrictions.eq("user_num", user_num)): query_;
+            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query_;
 
 
-            retval = (List<OPerson>) this.findSubject(query);
+            retval = (List<OPerson>) this.findSubjects(query_);
 
         }
 
@@ -94,7 +96,15 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
 
 
     @Override
-    public OPerson getSubject( Serializable id) throws DaoException {
+    public OPerson getSubject( Serializable id)  {
+
+        try {
+            return super.get(OPerson.class,id);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+        }
         return null;
     }
 }

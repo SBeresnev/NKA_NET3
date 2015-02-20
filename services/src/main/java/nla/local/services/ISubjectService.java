@@ -15,6 +15,6 @@ public interface ISubjectService<T> extends IService<T> {
 
     public void refreshSubject(T t) throws DaoException;
 
-    public List<T> findSubject(DetachedCriteria dc) throws DaoException;
+    public List<T> findSubjects(DetachedCriteria dc) throws DaoException;
 
 }

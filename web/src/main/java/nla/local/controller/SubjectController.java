@@ -9,11 +9,13 @@ import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.JPerson;
 import nla.local.pojos.PPerson;
-import nla.local.pojos.dict.SubjectType;
+import nla.local.pojos.dict.Dict;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,20 +39,19 @@ public class SubjectController {
     @Autowired
     public DictionaryServiceImp commonDict;
 
-    private List<SubjectType> subjectServDictList;
+    private List<Dict> subjectServDictList;
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public List<JPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
+    public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
 
-        subjectServDictList = commonDict.getAll(SubjectType.class);
+        //subjectServDictList = commonDict.getDict(EnumDict.SubjectType.toInt());
 
-        //DetachedCriteria dc = DetachedCriteria.forClass(StateDict.class).add(Restrictions.or(Restrictions.like("code_short_name", "Беларусь", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("code_short_name")));
+        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("code_id", 120));
+        //add(Restrictions.like("code_short_name", "Беларусь", MatchMode.ANYWHERE).ignoreCase());
 
-        List<JPerson> result_p = (List<JPerson>) jService.getSubject(JPerson.class, (Integer) 20519);//.getAll();
+        subjectServDictList = commonDict.getCriterion(dc);
 
-        //subjectServDictList = commonDict.getCriterion(dc);
-
-       // List<PPerson> result_p= pService.findByFIOType("","", null, "" , subjectServDictList.get(2).getCode_id());
+        List<PPerson> result_p= pService.findByFIOType("","", null, "" , subjectServDictList.get(0).getCode_id());
 
         return result_p;
 
@@ -60,7 +61,7 @@ public class SubjectController {
     public void updatePerson(SubjectForm subjectForm) throws DaoException
     {
          if(subjectForm.getSubjectId() != null) {
-           PPerson pPerson = (PPerson) pService.getSubject(PPerson.class, subjectForm.getSubjectId());
+           PPerson pPerson = (PPerson) pService.getSubject(subjectForm.getSubjectId());
              pService.refreshSubject(subjectForm.updatePPerson(pPerson));
        }
     }
@@ -69,7 +70,7 @@ public class SubjectController {
     public void addPerson(SubjectForm subjectForm) throws DaoException
     {
         if(subjectForm.getSubjectId() != null) {
-            PPerson pPerson = (PPerson) pService.getSubject(PPerson.class, subjectForm.getSubjectId());
+            PPerson pPerson = (PPerson) pService.getSubject( subjectForm.getSubjectId());
             pService.refreshSubject(subjectForm.updatePPerson(pPerson));
         }
     }
@@ -77,6 +78,9 @@ public class SubjectController {
     @RequestMapping(value = "/juridical", method = RequestMethod.GET)
     public List<JPerson> getJuridicalPerson(SubjectForm subjectForm)
     {
+        JPerson jp = jService.getSubject((Integer) 20519);
+        List<JPerson> result_p = (List<JPerson>) jService.getAll();
+
         List<JPerson> result_j= jService.findByNameType("Upd", null, subjectForm.getSubjectId());
 
         return result_j;

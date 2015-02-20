@@ -37,6 +37,9 @@ public class JPerson extends Person implements Serializable{
     @Column(name = "UNP")
     public String unp;
 
+    @Column(name = "PARENT_DESC")
+    public String parent_desc;
+
     @ManyToOne
     @JoinColumnsOrFormulas({
             @JoinColumnOrFormula(column=@JoinColumn(name = "ORG_RIGHT_FORM", nullable = false, referencedColumnName = "ANALYTIC_CODE")),

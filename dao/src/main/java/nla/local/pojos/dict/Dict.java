@@ -31,12 +31,6 @@ public class Dict implements IDict {
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private  String code_short_name;
 
-    @Column( name = "PARENT_CODE")
-    private  Integer parent_code;
-
-    @Transient
-    private  String parent_desc;
-
 
     public Integer getAnalytic_type() {
         return analytic_type;
@@ -44,30 +38,6 @@ public class Dict implements IDict {
 
     public void setAnalytic_type(Integer analytic_type) {
         this.analytic_type = analytic_type;
-    }
-
-    public Integer getParent_code() {
-
-        return parent_code;
-
-    }
-
-    public void setParent_code(Integer parent_code) {
-        this.parent_code = parent_code;
-    }
-
-    public String getParent_desc() {
-
-        if( parent_code == 100 && analytic_type == 110 ) parent_desc = "private";
-
-        if( parent_code == 200 && analytic_type == 110 ) parent_desc = "juridical";
-
-        if( parent_code == 600 && analytic_type == 110 ) parent_desc = "official";
-
-        return parent_desc;}
-
-    public void setParent_desc(String parent_desc) {
-        this.parent_desc = parent_desc;
     }
 
     public Integer getCode_id() {

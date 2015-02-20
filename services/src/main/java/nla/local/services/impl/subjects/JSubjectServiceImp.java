@@ -25,23 +25,26 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
     private static Logger log = Logger.getLogger(JSubjectServiceImp.class);
 
-    private DetachedCriteria query;
+    private DetachedCriteria query = DetachedCriteria.forClass(JPerson.class).add(Restrictions.eq("parent_desc","juridical"));
 
     @Autowired
     public JSubjectServiceImp(SessionFactory sessionFactory) {
 
         super(sessionFactory);
 
+
+
     }
 
     public List<JPerson> getAll()
     {
+
         try {
 
-            return super.getAll(JPerson.class);
+            return super.findSubjects(query);
+            //super.getAll(JPerson.class);
 
-        } catch (DaoException e) {
-
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -64,6 +67,8 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
     public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 
+        DetachedCriteria query_ = query;
+
         log.info("Get " + " by name. Invoked JSubjectServiceImp.getByNameType" );
 
         List<JPerson> retval = new ArrayList<JPerson>();
@@ -73,15 +78,15 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
             regNumber = regNumber == null ? "":regNumber;
             fullName = fullName==null? "":fullName;
 
-            query = DetachedCriteria.forClass(JPerson.class)
+             query_ = query_
                     .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber + "%", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("regNumber")))
                     .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%",MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fullname")));
 
 
-            query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query;
+            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query_;
 
 
-            retval = (List<JPerson>) this.findSubject(query);
+            retval = (List<JPerson>) this.findSubjects(query_);
 
         }
 
@@ -96,6 +101,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
             return super.get(JPerson.class,id);
 
         } catch (DaoException e) {
+
             e.printStackTrace();
         }
         return null;

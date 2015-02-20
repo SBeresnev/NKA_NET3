@@ -6,6 +6,7 @@ import nla.local.pojos.dict.Dict;
 import org.hibernate.annotations.JoinColumnOrFormula;
 import org.hibernate.annotations.JoinColumnsOrFormulas;
 import org.hibernate.annotations.JoinFormula;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.Date;
 @Entity
 @Table(name="V_SUBJECTSDATA")
 @PrimaryKeyJoinColumn(name="SUBJECT_ID" )
+@Where(clause = "PARENT_DESC='private'")
 public class PPerson extends Person implements Serializable{
     private static final long serialVersionUID = 2L;
 
@@ -28,6 +30,9 @@ public class PPerson extends Person implements Serializable{
 
     @Column(name = "FATHERNAME")
     public String fathername;
+
+    @Column(name = "PARENT_DESC")
+    public String parent_desc;
 
     @ManyToOne
     @JoinColumnsOrFormulas({

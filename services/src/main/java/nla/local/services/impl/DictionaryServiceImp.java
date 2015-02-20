@@ -44,6 +44,7 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
         return null;
     }
 
+    @Override
     public Dict getDict(DictPk dPk)
     {
         Dict ret_val = null;
@@ -57,16 +58,12 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
             e.printStackTrace();
         }
 
-        /*
-        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class)
-                .add(Restrictions.eq("analytic_type", code_type));
-
-        List<Dict> ret_val = this.getCriterion(dc); */
 
         return ret_val;
 
     }
 
+    @Override
     public List<Dict> getAll()  {
 
         try {

@@ -36,7 +36,8 @@ public class Person implements Serializable {
     @ManyToOne
     @JoinColumnsOrFormulas({
             @JoinColumnOrFormula(column=@JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula( formula=@JoinFormula(value="110", referencedColumnName="ANALYTIC_TYPE"))
+            @JoinColumnOrFormula( formula=@JoinFormula(value="110",referencedColumnName="ANALYTIC_TYPE")
+            )
     })
     public Dict subjectType;
 

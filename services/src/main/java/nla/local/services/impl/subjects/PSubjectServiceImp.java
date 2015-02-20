@@ -1,6 +1,7 @@
 package nla.local.services.impl.subjects;
 
 import nla.local.dao.exceptions.DaoException;
+import nla.local.pojos.JPerson;
 import nla.local.pojos.PPerson;
 import nla.local.pojos.dict.EnumDict;
 import org.apache.log4j.Logger;
@@ -25,7 +26,8 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
     private static Logger log = Logger.getLogger(PSubjectServiceImp.class);
 
-    private DetachedCriteria query;
+    private DetachedCriteria query = DetachedCriteria.forClass(JPerson.class).add(Restrictions.eq("parent_desc","private"));
+
 
     @Autowired
     public PSubjectServiceImp(SessionFactory sessionFactory) {
@@ -64,6 +66,8 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
     public List<PPerson> findByFIOType(String surname, String firstname, String fathername, String personalNumber, Integer subjectType )
     {
 
+        DetachedCriteria query_ = query;
+
         log.info("Get " + " by name. Invoked SubjectService.getByFIOType" );
 
 
@@ -78,7 +82,7 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
             personalNumber = personalNumber == null ? "":personalNumber;
 
 
-            query = DetachedCriteria.forClass(PPerson.class)
+            query_ = DetachedCriteria.forClass(PPerson.class)
                     .add(Restrictions.or(Restrictions.like("surname", surname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("surname")))
                     .add(Restrictions.or(Restrictions.like("firstname", firstname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("firstname")))
                     .add(Restrictions.or(Restrictions.like("fathername", fathername, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fathername")))
@@ -86,10 +90,10 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
             ;
 
-            query = subjectType != null ? query.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query;
+            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query_;
 
 
-            retval = (List<PPerson>) this.findSubject(query);
+            retval = (List<PPerson>) this.findSubjects(query_);
         }
 
         return retval;
@@ -98,7 +102,16 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
 
     @Override
-    public PPerson getSubject( Serializable id) throws DaoException {
+    public PPerson getSubject( Serializable id)  {
+
+        try {
+            return super.get(PPerson.class,id);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+        }
+
         return null;
     }
 }

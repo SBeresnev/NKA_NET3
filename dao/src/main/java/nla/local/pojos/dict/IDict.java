@@ -11,14 +11,6 @@ public interface IDict extends Serializable {
 
     public void setAnalytic_type(Integer analytic_type);
 
-    public Integer getParent_code();
-
-    public void setParent_code(Integer parent_code);
-
-    public String getParent_desc();
-
-    public void setParent_desc(String parent_desc);
-
     public Integer getCode_id();
 
     public String getCode_name();
