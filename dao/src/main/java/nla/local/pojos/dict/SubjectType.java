@@ -1,19 +1,19 @@
 package nla.local.pojos.dict;
 
 import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 
 /**
- * Created by beresnev on 16.02.2015.
+ * Created by beresnev on 20.02.2015.
  */
 
 @Entity
 @Immutable
 @Table(name="ANALYTICCODES")
-@DiscriminatorColumn(name="ANALYTIC_TYPE", discriminatorType=DiscriminatorType.INTEGER )
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
-public class Dict implements IDict{
+@Where(clause = "ANALYTIC_TYPE=110")
+public class SubjectType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -93,7 +93,4 @@ public class Dict implements IDict{
     }
 
 
-
 }
-
-

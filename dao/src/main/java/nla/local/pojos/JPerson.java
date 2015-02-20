@@ -2,7 +2,8 @@ package nla.local.pojos;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-import nla.local.pojos.dict.OrgStructDict;
+import nla.local.pojos.dict.Dict;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -36,7 +37,7 @@ public class JPerson extends Person implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "ORG_RIGHT_FORM", nullable = false)
-    public OrgStructDict orgRightForm;
+    public Dict orgRightForm;
 
     @Column(name = "BOTH_REG_DATE")
     @JsonSerialize(using= DateSerializer.class)

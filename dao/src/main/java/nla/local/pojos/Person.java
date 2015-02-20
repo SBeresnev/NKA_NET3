@@ -1,5 +1,5 @@
 package nla.local.pojos;
-import nla.local.pojos.dict.SubjectTypeDict;
+import nla.local.pojos.dict.SubjectType;
 import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
@@ -31,7 +31,7 @@ public class Person implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")
-    public SubjectTypeDict subjectType;
+    public SubjectType subjectType;
 
 
     @Override
@@ -81,11 +81,12 @@ public class Person implements Serializable {
         this.isOwner = isOwner;
     }
 
-    public SubjectTypeDict getSubjectType() {
+    public SubjectType getSubjectType() {
+
         return subjectType;
     }
 
-    public void setSubjectType(SubjectTypeDict subjectType) {
+    public void setSubjectType(SubjectType subjectType) {
 
         this.subjectType = subjectType;
     }

@@ -5,10 +5,9 @@ import nla.local.pojos.JPerson;
 import nla.local.pojos.OPerson;
 import nla.local.pojos.PPerson;
 import nla.local.pojos.Person;
-import nla.local.pojos.dict.OrgStructDict;
-import nla.local.pojos.dict.StateDict;
-import nla.local.pojos.dict.SubjectTypeDict;
-import nla.local.pojos.dict.TorStructDict;
+
+import nla.local.pojos.dict.Dict;
+import nla.local.pojos.dict.SubjectType;
 import nla.local.services.ISubjectService;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
@@ -57,21 +56,21 @@ public class SubjectTest
     @Autowired
     public CodeGenerator scg;
 
-    private List<SubjectTypeDict> subjectServDictList;
-    private List<OrgStructDict> orgStructDictList;
-    private List<StateDict> stateDictList;
-    private List<TorStructDict> torStructDictList;
+    private List<SubjectType> subjectServDictList;
+    private List<Dict> orgStructDictList;
+    private List<Dict> stateDictList;
+    private List<Dict> torStructDictList;
 
     @Before
     public void setUp() throws Exception {
 
-        subjectServDictList = CommonDict.getAll(SubjectTypeDict.class);
+        subjectServDictList = CommonDict.getAll(SubjectType.class);
 
-        orgStructDictList = CommonDict.getAll(OrgStructDict.class);
+        orgStructDictList = CommonDict.getAll(Dict.class);
 
-        stateDictList = CommonDict.getAll(StateDict.class);
+        stateDictList = CommonDict.getAll(Dict.class);
 
-        torStructDictList = CommonDict.getAll(TorStructDict.class);
+        torStructDictList = CommonDict.getAll(Dict.class);
 
     }
 

@@ -9,8 +9,8 @@ import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.JPerson;
 import nla.local.pojos.PPerson;
-import nla.local.pojos.dict.StateDict;
-import nla.local.pojos.dict.SubjectTypeDict;
+
+import nla.local.pojos.dict.SubjectType;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
@@ -41,20 +41,20 @@ public class SubjectController {
     @Autowired
     public DictionaryServiceImp commonDict;
 
-    private List<SubjectTypeDict> subjectServDictList;
+    private List<SubjectType> subjectServDictList;
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
     public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
 
-        subjectServDictList = commonDict.getAll(SubjectTypeDict.class);
+        subjectServDictList = commonDict.getAll(SubjectType.class);
 
-        DetachedCriteria dc = DetachedCriteria.forClass(StateDict.class).add(Restrictions.or(Restrictions.like("code_short_name", "Беларусь", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("code_short_name")));
+        //DetachedCriteria dc = DetachedCriteria.forClass(StateDict.class).add(Restrictions.or(Restrictions.like("code_short_name", "Беларусь", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("code_short_name")));
 
-       // List<PPerson> result_p = pService.getAll();
+        List<PPerson> result_p = pService.getAll();
 
         //subjectServDictList = commonDict.getCriterion(dc);
 
-        List<PPerson> result_p= pService.findByFIOType("","", null, "" , subjectServDictList.get(2).getCode_id());
+       // List<PPerson> result_p= pService.findByFIOType("","", null, "" , subjectServDictList.get(2).getCode_id());
 
         return result_p;
 

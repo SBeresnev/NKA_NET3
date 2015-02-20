@@ -3,7 +3,6 @@ package nla.local.services.impl.subjects;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.PPerson;
 import nla.local.pojos.dict.EnumDict;
-import nla.local.pojos.dict.SubjectTypeDict;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -13,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +46,7 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
         this.query = query;
     }
 
+
     public List<PPerson> getAll()
     {
         try {
@@ -68,9 +69,6 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
         List<PPerson> retval =  new ArrayList<PPerson>();
 
-        SubjectTypeDict std = new SubjectTypeDict();
-        std.setCode_id(subjectType);
-        std.setAnalytic_type(110);
 
         if(surname != null || personalNumber != null) {
 

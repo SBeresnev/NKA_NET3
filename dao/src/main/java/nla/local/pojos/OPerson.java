@@ -1,6 +1,6 @@
 package nla.local.pojos;
 
-import nla.local.pojos.dict.TorStructDict;
+import nla.local.pojos.dict.Dict;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -42,7 +42,7 @@ public class OPerson extends Person implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORG_KOD", referencedColumnName = "ANALYTIC_CODE")
-    public TorStructDict org_kod;
+    public Dict org_kod;
 
     @Column(name = "PREV_ADDRESS")
     public String prev_address;
