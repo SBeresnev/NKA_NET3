@@ -1,6 +1,8 @@
 package nla.local.pojos;
 
 import nla.local.pojos.dict.Dict;
+import nla.local.pojos.dict.OrgKod;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,7 +16,9 @@ import java.util.Date;
 
 @Entity
 @Table(name="OFFICIALUSERS" )
+@SecondaryTable(name = "ANALYTICTYPES")
 @PrimaryKeyJoinColumn(name="SUBJECT_ID")
+@Where(clause = "ANALYTIC_TYPE=300")
 public class OPerson extends Person implements Serializable{
 
     private static final long serialVersionUID = 4L;
@@ -40,9 +44,14 @@ public class OPerson extends Person implements Serializable{
     @Column(name = "DATE_OUT")
     public Date date_out;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ORG_KOD", referencedColumnName = "ANALYTIC_CODE")
-    public Dict org_kod;
+    @Column(name = "ANALYTIC_TYPE", insertable = false , updatable = false)
+    public Integer analytic_type;
+
+    @ManyToOne
+    @JoinColumns( {
+            @JoinColumn(name = "ORG_KOD", nullable = false, referencedColumnName = "ANALYTIC_CODE"),
+            @JoinColumn(name = "ANALYTIC_TYPE", nullable = false, referencedColumnName = "ANALYTIC_TYPE")})
+    public OrgKod org_kod;
 
     @Column(name = "PREV_ADDRESS")
     public String prev_address;

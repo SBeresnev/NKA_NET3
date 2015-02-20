@@ -1,99 +1,34 @@
 package nla.local.pojos.dict;
 
-import org.hibernate.annotations.Immutable;
-
-import javax.persistence.*;
-
 /**
- * Created by beresnev on 16.02.2015.
+ * Created by beresnev on 20.02.2015.
  */
+public abstract class Dict {
 
-@Entity
-@Immutable
-@Table(name="ANALYTICCODES")
-@DiscriminatorColumn(name="ANALYTIC_TYPE", discriminatorType=DiscriminatorType.INTEGER )
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
-public class Dict implements IDict{
+    public abstract Integer getAnalytic_type();
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ANALYTIC_CODE",  nullable = false)
-    private  Integer code_id;
+    public abstract void setAnalytic_type(Integer analytic_type);
 
-    @Column( name ="ANALYTIC_TYPE", nullable = false, insertable = false , updatable = false )
-    private Integer analytic_type;
+    public abstract Integer getParent_code();
 
-    @Column( name = "ANALYTIC_CODE_NAME")
-    private  String code_name;
+    public abstract void setParent_code(Integer parent_code);
 
-    @Column( name = "ANALYTIC_CODE_SHORTNAME")
-    private  String code_short_name;
+    public abstract String getParent_desc();
 
-    @Column( name = "PARENT_CODE")
-    private  Integer parent_code;
+    public abstract void setParent_desc(String parent_desc);
 
-    @Transient
-    private  String parent_desc;
+    public abstract Integer getCode_id();
 
+    public abstract String getCode_name();
 
-    public Integer getAnalytic_type() {
-        return analytic_type;
-    }
+    public abstract String getCode_short_name();
 
-    public void setAnalytic_type(Integer analytic_type) {
-        this.analytic_type = analytic_type;
-    }
+    public abstract void setCode_id(Integer code_id);
 
-    public Integer getParent_code() {
+    public abstract void setCode_name(String code_name);
 
-        return parent_code;
-
-    }
-
-    public void setParent_code(Integer parent_code) {
-        this.parent_code = parent_code;
-    }
-
-    public String getParent_desc() {
-
-        if( parent_code == 100 && analytic_type == 110 ) parent_desc = "private";
-
-        if( parent_code == 200 && analytic_type == 110 ) parent_desc = "juridical";
-
-        if( parent_code == 600 && analytic_type == 110 ) parent_desc = "official";
-
-        return parent_desc;}
-
-    public void setParent_desc(String parent_desc) {
-        this.parent_desc = parent_desc;
-    }
-
-    public Integer getCode_id() {
-        return code_id;
-    }
-
-    public String getCode_name() {
-        return code_name;
-    }
-
-    public String getCode_short_name() {
-        return code_short_name;
-    }
-
-    public void setCode_id(Integer code_id) {
-        this.code_id = code_id;
-    }
-
-    public void setCode_name(String code_name) {
-        this.code_name = code_name;
-    }
-
-    public void setCode_short_name(String code_short_name) {
-        this.code_short_name = code_short_name;
-    }
+    public abstract void setCode_short_name(String code_short_name);
 
 
 
 }
-
-

@@ -3,6 +3,8 @@ package nla.local.pojos;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.Dict;
+import nla.local.pojos.dict.OrgKod;
+import org.hibernate.annotations.Where;
 
 
 import javax.persistence.*;
@@ -15,7 +17,9 @@ juridical person
 
 @Entity
 @Table(name="V_SUBJECTSDATA")
+@SecondaryTable(name = "ANALYTICTYPES")
 @PrimaryKeyJoinColumn(name="SUBJECT_ID")
+@Where(clause = "ANALYTIC_TYPE=220")
 public class JPerson extends Person implements Serializable{
 
     private static final long serialVersionUID = 3L;
@@ -35,9 +39,14 @@ public class JPerson extends Person implements Serializable{
     @Column(name = "UNP")
     public String unp;
 
+    @Column(name = "ANALYTIC_TYPE", insertable = false , updatable = false)
+    public Integer analytic_type;
+
     @ManyToOne
-    @JoinColumn(name = "ORG_RIGHT_FORM", nullable = false)
-    public Dict orgRightForm;
+    @JoinColumns( {
+            @JoinColumn(name = "ORG_RIGHT_FORM", nullable = false, referencedColumnName = "ANALYTIC_CODE"),
+            @JoinColumn(name = "ANALYTIC_TYPE", nullable = false, referencedColumnName = "ANALYTIC_TYPE")})
+    public OrgKod orgRightForm;
 
     @Column(name = "BOTH_REG_DATE")
     @JsonSerialize(using= DateSerializer.class)

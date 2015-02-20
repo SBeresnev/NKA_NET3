@@ -44,13 +44,13 @@ public class SubjectController {
     private List<SubjectType> subjectServDictList;
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
+    public List<JPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
 
         subjectServDictList = commonDict.getAll(SubjectType.class);
 
         //DetachedCriteria dc = DetachedCriteria.forClass(StateDict.class).add(Restrictions.or(Restrictions.like("code_short_name", "Беларусь", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("code_short_name")));
 
-        List<PPerson> result_p = pService.getAll();
+        List<JPerson> result_p = (List<JPerson>) jService.getSubject(JPerson.class, (Integer) 20519);//.getAll();
 
         //subjectServDictList = commonDict.getCriterion(dc);
 

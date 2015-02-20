@@ -1,29 +1,26 @@
 package nla.local.pojos.dict;
 
 import org.hibernate.annotations.Immutable;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
- * Created by beresnev on 20.02.2015.
+ * Created by beresnev on 16.02.2015.
  */
 
 @Entity
 @Immutable
 @Table(name="ANALYTICCODES")
-@Where(clause = "ANALYTIC_TYPE=110")
-public class SubjectType extends Dict implements Serializable{
+@DiscriminatorColumn(name="ANALYTIC_TYPE", discriminatorType=DiscriminatorType.INTEGER )
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+public class Dict_ implements IDict{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANALYTIC_CODE",  nullable = false)
     private  Integer code_id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name ="ANALYTIC_TYPE", nullable = false, insertable = false, updatable = false)
+    @Column( name ="ANALYTIC_TYPE", nullable = false, insertable = false , updatable = false )
     private Integer analytic_type;
 
     @Column( name = "ANALYTIC_CODE_NAME")
@@ -96,4 +93,7 @@ public class SubjectType extends Dict implements Serializable{
     }
 
 
+
 }
+
+

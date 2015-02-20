@@ -27,9 +27,9 @@ public class PPerson extends Person implements Serializable{
     @Column(name = "FATHERNAME")
     public String fathername;
 
-    @ManyToOne
-    @JoinColumn(name = "SITIZENS", referencedColumnName = "ANALYTIC_CODE")
-    public Dict sitizens;
+   // @ManyToOne
+  //  @JoinColumn(name = "SITIZENS", referencedColumnName = "ANALYTIC_CODE")
+   // public Dict sitizens;
 
     @Column(name = "BOTH_REG_DATE")
     public Date bothRegDate;

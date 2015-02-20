@@ -7,6 +7,7 @@ import nla.local.pojos.PPerson;
 import nla.local.pojos.Person;
 
 import nla.local.pojos.dict.Dict;
+import nla.local.pojos.dict.OrgKod;
 import nla.local.pojos.dict.SubjectType;
 import nla.local.services.ISubjectService;
 import nla.local.services.impl.DictionaryServiceImp;
@@ -117,7 +118,7 @@ public class SubjectTest
                 op.surname = "Труба" + String.valueOf(i);
                 op.fathername = "Флейтович" + String.valueOf(i);
 
-                op.org_kod = torStructDictList.get(0);
+                op.org_kod = (OrgKod) torStructDictList.get(0);
                 op.orgname = "РУП \"Брестское агентство по государственной регистрации и земельному кадастру\"";
                 sService.addSubject(op);
 
@@ -159,7 +160,7 @@ public class SubjectTest
                 op.fathername = "Артемьевич" + String.valueOf(20+i);
 
 
-                op.org_kod = torStructDictList.get(0);
+                op.org_kod = (OrgKod) torStructDictList.get(0);
                 op.orgname = "РУП \"Брестское агентство по государственной регистрации и земельному кадастру\"";
                 sService.addSubject(op);
 
@@ -207,7 +208,7 @@ public class SubjectTest
                 jp.isOwner = 1;
 
                 jp.subjectType = subjectServDictList.get(9);
-                jp.orgRightForm = orgStructDictList.get(6);
+                jp.orgRightForm = (OrgKod) orgStructDictList.get(6);
 
                 jp.fullname = "Валенки"+"_"+i;
                 jp.regNumber = String.valueOf(123456000+i);
@@ -253,7 +254,7 @@ public class SubjectTest
             JPerson jp = new JPerson();
             jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
             jp.fullname = "ОАО Update_" + String.valueOf(i) ;
-            jp.orgRightForm = orgStructDictList.get(6);
+            jp.orgRightForm = (OrgKod) orgStructDictList.get(6);
             jp.subjectType = subjectServDictList.get(14);
             jp.regNumber = String.valueOf(124566000+i) ;
             jp.unp = String.valueOf(159777758+i);
@@ -273,7 +274,7 @@ public class SubjectTest
             jp.unp =  String.valueOf(159777758+i);
             jp.regNumber =  String.valueOf(124566000+i);
 
-            jp.orgRightForm = orgStructDictList.get(7);
+            jp.orgRightForm = (OrgKod) orgStructDictList.get(7);
             jp.subjectType = subjectServDictList.get(12);
 
             sService.refreshSubject(jp);
@@ -311,7 +312,7 @@ public class SubjectTest
                 pp.bothRegDate = new Date();
                 pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE" ;
                 pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
-                pp.sitizens = stateDictList.get(73);
+               // pp.sitizens = stateDictList.get(73);
 
                 sService.addSubject(pp);
 
@@ -358,7 +359,7 @@ public class SubjectTest
             pp.fathername = "Обамович"+"_"+i;
             pp.subjectType = subjectServDictList.get(3);
             pp.isOwner = 1;
-            pp.sitizens = stateDictList.get(2);
+           // pp.sitizens = stateDictList.get(2);
             pp.bothRegDate = new Date();
             pp.datestart = new Date();
 
@@ -385,7 +386,7 @@ public class SubjectTest
             pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
 
             pp.subjectType = subjectServDictList.get(2);
-            pp.sitizens = stateDictList.get(3);
+            //pp.sitizens = stateDictList.get(3);
 
             sService.refreshSubject(pp);
             i++;

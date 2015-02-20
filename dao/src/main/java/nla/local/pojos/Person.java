@@ -1,6 +1,7 @@
 package nla.local.pojos;
 import nla.local.pojos.dict.SubjectType;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +13,9 @@ import java.io.Serializable;
 @Entity
 @Table(name="SUBJECTS")
 @BatchSize(size = 20)
+@SecondaryTable(name = "ANALYTICTYPES")
 @Inheritance(strategy= InheritanceType.JOINED)
+@Where(clause = "ANALYTIC_TYPE=110")
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,8 +32,13 @@ public class Person implements Serializable {
     @Column(name = "IS_OWNER")
     public Integer isOwner;
 
+    @Column(name = "ANALYTIC_TYPE", insertable = false , updatable = false)
+    public Integer analytic_type;
+
     @ManyToOne
-    @JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")
+    @JoinColumns( {
+            @JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE"),
+            @JoinColumn(name = "ANALYTIC_TYPE", nullable = false, referencedColumnName = "ANALYTIC_TYPE")})
     public SubjectType subjectType;
 
 

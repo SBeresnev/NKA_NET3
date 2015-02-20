@@ -1,6 +1,5 @@
 package nla.local.pojos.dict;
 
-import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -9,12 +8,10 @@ import java.io.Serializable;
 /**
  * Created by beresnev on 20.02.2015.
  */
-
 @Entity
-@Immutable
 @Table(name="ANALYTICCODES")
-@Where(clause = "ANALYTIC_TYPE=110")
-public class SubjectType extends Dict implements Serializable{
+@Where(clause = "ANALYTIC_TYPE = 220")
+public class OrgKod extends Dict implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +20,7 @@ public class SubjectType extends Dict implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name ="ANALYTIC_TYPE", nullable = false, insertable = false, updatable = false)
+    @Column( name ="ANALYTIC_TYPE", nullable = false, insertable = false , updatable = false )
     private Integer analytic_type;
 
     @Column( name = "ANALYTIC_CODE_NAME")
@@ -94,6 +91,7 @@ public class SubjectType extends Dict implements Serializable{
     public void setCode_short_name(String code_short_name) {
         this.code_short_name = code_short_name;
     }
+
 
 
 }
