@@ -97,4 +97,8 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
     }
 
 
+    @Override
+    public PPerson getSubject( Serializable id) throws DaoException {
+        return null;
+    }
 }

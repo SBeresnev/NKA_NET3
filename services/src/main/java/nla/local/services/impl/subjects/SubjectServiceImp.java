@@ -7,19 +7,14 @@ import nla.local.services.ISubjectService;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by beresnev on 23.01.2015.
  */
-@Service
-@Transactional
-public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements ISubjectService<T> {
+
+public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> implements ISubjectService<T> {
 
     private static Logger log = Logger.getLogger(SubjectServiceImp.class);
 
@@ -37,8 +32,6 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
     }
 
 
-
-   @Autowired
    public SubjectServiceImp(SessionFactory sessionFactory)
     {
         super(sessionFactory);
@@ -53,14 +46,6 @@ public class SubjectServiceImp<T extends Person> extends BaseDao<T> implements I
 
     }
 
-
-    @Override
-    public T getSubject(Class<T> clazz, Serializable id) throws DaoException
-    {
-
-        return super.get(clazz,id);
-
-    };
 
     @Override
     public void refreshSubject(T t) throws DaoException

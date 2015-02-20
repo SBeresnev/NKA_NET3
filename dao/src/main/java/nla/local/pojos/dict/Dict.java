@@ -11,14 +11,17 @@ import javax.persistence.*;
 @Entity
 @Immutable
 @Table(name="ANALYTICCODES")
+@IdClass(DictPk.class)
 @Inheritance(strategy= InheritanceType.SINGLE_TABLE)
-public class Dict implements IDict{
+public class Dict implements IDict {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANALYTIC_CODE",  nullable = false)
     private  Integer code_id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( name ="ANALYTIC_TYPE", nullable = false, insertable = false , updatable = false )
     private Integer analytic_type;
 

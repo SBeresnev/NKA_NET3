@@ -3,6 +3,9 @@ package nla.local.pojos;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.Dict;
+import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.JoinColumnsOrFormulas;
+import org.hibernate.annotations.JoinFormula;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -35,8 +38,10 @@ public class JPerson extends Person implements Serializable{
     public String unp;
 
     @ManyToOne
-    @JoinColumn(name = "ORG_RIGHT_FORM", nullable = false, referencedColumnName = "ANALYTIC_CODE")
-    @Column(name = "ORG_RIGHT_FORM")
+    @JoinColumnsOrFormulas({
+            @JoinColumnOrFormula(column=@JoinColumn(name = "ORG_RIGHT_FORM", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
+            @JoinColumnOrFormula( formula=@JoinFormula(value="220", referencedColumnName="ANALYTIC_TYPE"))
+    })
     public Dict orgRightForm;
 
     @Column(name = "BOTH_REG_DATE")
@@ -77,4 +82,6 @@ public class JPerson extends Person implements Serializable{
     public String toString() {
         return "SubjectId: " +subjectId+" Fullname: " + fullname + " RegNumber: " + regNumber + " UNP: " + unp;
     }
+
+
 }

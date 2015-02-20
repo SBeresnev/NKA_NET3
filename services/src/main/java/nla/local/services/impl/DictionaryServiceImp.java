@@ -3,6 +3,7 @@ package nla.local.services.impl;
 import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
+import nla.local.pojos.dict.DictPk;
 import nla.local.services.IDictionaryService;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -43,6 +44,28 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
         return null;
     }
 
+    public Dict getDict(DictPk dPk)
+    {
+        Dict ret_val = null;
+
+        try {
+
+            ret_val = super.get(Dict.class,dPk);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+        }
+
+        /*
+        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class)
+                .add(Restrictions.eq("analytic_type", code_type));
+
+        List<Dict> ret_val = this.getCriterion(dc); */
+
+        return ret_val;
+
+    }
 
     public List<Dict> getAll()  {
 
@@ -80,9 +103,9 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
     }
 
     @Override
-    public List<Dict> getDict(Integer a_type) {
+    public List<Dict> getDict(Integer code_type) {
 
-        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type",a_type));
+        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type", code_type));
 
         List<Dict> ret_val = this.getCriterion(dc);
 

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,5 +93,8 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
     }
 
 
-
+    @Override
+    public OPerson getSubject( Serializable id) throws DaoException {
+        return null;
+    }
 }

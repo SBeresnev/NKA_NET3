@@ -3,7 +3,9 @@ package nla.local.pojos;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.Dict;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.JoinColumnsOrFormulas;
+import org.hibernate.annotations.JoinFormula;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,8 +30,10 @@ public class PPerson extends Person implements Serializable{
     public String fathername;
 
     @ManyToOne
-    @JoinColumn(name = "SITIZENS", referencedColumnName = "ANALYTIC_CODE")
-    @Where(clause = "ANALYTIC_TYPE=200")
+    @JoinColumnsOrFormulas({
+            @JoinColumnOrFormula(column= @JoinColumn(name = "SITIZENS", referencedColumnName = "ANALYTIC_CODE")),
+            @JoinColumnOrFormula( formula=@JoinFormula(value="200", referencedColumnName="ANALYTIC_TYPE"))
+    })
     public Dict sitizens;
 
     @Column(name = "BOTH_REG_DATE")

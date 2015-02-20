@@ -1,7 +1,10 @@
 package nla.local.pojos;
+
 import nla.local.pojos.dict.Dict;
 import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.JoinColumnsOrFormulas;
+import org.hibernate.annotations.JoinFormula;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -31,8 +34,10 @@ public class Person implements Serializable {
     public Integer isOwner;
 
     @ManyToOne
-    @JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")
-    @Where(clause = "ANALYTIC_TYPE=110")
+    @JoinColumnsOrFormulas({
+            @JoinColumnOrFormula(column=@JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
+            @JoinColumnOrFormula( formula=@JoinFormula(value="110", referencedColumnName="ANALYTIC_TYPE"))
+    })
     public Dict subjectType;
 
     @Override

@@ -1,7 +1,9 @@
 package nla.local.pojos;
 
 import nla.local.pojos.dict.Dict;
-import org.hibernate.annotations.Where;
+import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.JoinColumnsOrFormulas;
+import org.hibernate.annotations.JoinFormula;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -42,8 +44,10 @@ public class OPerson extends Person implements Serializable{
     public Date date_out;
 
     @ManyToOne
-    @JoinColumn(name = "ORG_KOD", nullable = false, referencedColumnName = "ANALYTIC_CODE")
-    @Where(clause = "ANALYTIC_TYPE=220")
+    @JoinColumnsOrFormulas({
+            @JoinColumnOrFormula(column= @JoinColumn(name = "ORG_KOD", referencedColumnName = "ANALYTIC_CODE")),
+            @JoinColumnOrFormula( formula=@JoinFormula(value="300", referencedColumnName="ANALYTIC_TYPE"))
+    })
     public Dict org_kod;
 
     @Column(name = "PREV_ADDRESS")
