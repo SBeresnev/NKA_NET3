@@ -75,7 +75,7 @@ public class SubjectTest
 
     }
 
-    //@org.junit.Test
+    @org.junit.Test
     public void SubjectOffTestController()  {
 
         AddOffSubject();
@@ -86,16 +86,16 @@ public class SubjectTest
     @org.junit.Test
     public void SubjectJurTestController() {
 
-       // AddJurSubject();
-       // GetJurSubject();
+        AddJurSubject();
+        GetJurSubject();
         UpdateJurSubject();
     }
 
    @org.junit.Test
     public void SubjectPhyTestController(){
 
-     //   AddPhysSubject();
-     //   GetPhysSubject();
+        AddPhysSubject();
+        GetPhysSubject();
         UpdatePhysSubject();
 
     }
@@ -266,6 +266,7 @@ public class SubjectTest
             JPerson jp = new JPerson();
             jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
             jp.fullname = "ОАО Update_" + String.valueOf(i) ;
+            jp.isOwner = 1;
             jp.orgRightForm =  orgStructDictList.get(6);
             jp.subjectType = subjectServDictList.get(14);
             jp.regNumber = String.valueOf(124566000+i) ;
