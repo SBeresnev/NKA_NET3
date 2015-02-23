@@ -3,6 +3,7 @@ package nla.local.services.impl.subjects;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.SubjectClass;
+import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -45,7 +46,7 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
     {
         super.setQuery(query);
 
-        this.query = query;
+        this.query = (DetachedCriteria) SerializationUtils.clone(query);
     }
 
     @Override
@@ -53,6 +54,20 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
     {
         return this.getAll();
 
+    }
+
+    @Override
+    public PPerson getSubject( Serializable id)  {
+
+        try {
+            return super.get(PPerson.class,id);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 
@@ -74,7 +89,7 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
     public List<PPerson> findByFIOType(String surname, String firstname, String fathername, String personalNumber, Integer subjectType )
     {
 
-        DetachedCriteria query_ = query;
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query);
 
         log.info("Get " + " by name. Invoked SubjectService.getByFIOType" );
 
@@ -109,17 +124,4 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
     }
 
 
-    @Override
-    public PPerson getSubject( Serializable id)  {
-
-        try {
-            return super.get(PPerson.class,id);
-
-        } catch (DaoException e) {
-
-            e.printStackTrace();
-        }
-
-        return null;
-    }
 }

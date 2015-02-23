@@ -3,6 +3,7 @@ package nla.local.services.impl.subjects;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.SubjectClass;
+import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -41,6 +42,19 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
     }
 
+    @Override
+    public JPerson getSubject(Serializable id) {
+
+        try {
+            return super.get(JPerson.class,id);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public List<JPerson> getAll()
     {
 
@@ -72,7 +86,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
     public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 
-        DetachedCriteria query_ = query;
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query);
 
         log.info("Get " + " by name. Invoked JSubjectServiceImp.getByNameType" );
 
@@ -84,8 +98,8 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
             fullName = fullName==null? "":fullName;
 
              query_ = query_
-                    .add(Restrictions.or(Restrictions.like("regNumber", "%" + regNumber + "%", MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("regNumber")))
-                    .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%",MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fullname")));
+                    .add(Restrictions.or(Restrictions.like("regNumber", regNumber , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("regNumber")))
+                    .add(Restrictions.or(Restrictions.like("fullname", fullName ,MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fullname")));
 
 
             query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query_;
@@ -99,16 +113,4 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
     }
 
 
-    @Override
-    public JPerson getSubject(Serializable id) {
-
-        try {
-            return super.get(JPerson.class,id);
-
-        } catch (DaoException e) {
-
-            e.printStackTrace();
-        }
-        return null;
-    }
 }

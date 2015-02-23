@@ -7,9 +7,10 @@ package nla.local.controller;
 import forms.SearchSubjectForm;
 import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
-import nla.local.pojos.JPerson;
-import nla.local.pojos.PPerson;
 import nla.local.pojos.dict.Dict;
+import nla.local.pojos.dict.EnumDict;
+import nla.local.pojos.subjects.JPerson;
+import nla.local.pojos.subjects.PPerson;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
@@ -62,7 +63,7 @@ public class SubjectController {
     {
          if(subjectForm.getSubjectId() != null) {
            PPerson pPerson = (PPerson) pService.getSubject(subjectForm.getSubjectId());
-             pService.refreshSubject(subjectForm.updatePPerson(pPerson));
+            // pService.refreshSubject(subjectForm.updatePPerson(pPerson));
        }
     }
 
@@ -71,17 +72,24 @@ public class SubjectController {
     {
         if(subjectForm.getSubjectId() != null) {
             PPerson pPerson = (PPerson) pService.getSubject( subjectForm.getSubjectId());
-            pService.refreshSubject(subjectForm.updatePPerson(pPerson));
+            //pService.refreshSubject(subjectForm.updatePPerson(pPerson));
         }
     }
 
     @RequestMapping(value = "/juridical", method = RequestMethod.GET)
     public List<JPerson> getJuridicalPerson(SubjectForm subjectForm)
     {
-        JPerson jp = jService.getSubject((Integer) 20519);
-        List<JPerson> result_p = (List<JPerson>) jService.getAll();
+        List<JPerson> result_j = (List<JPerson>) jService.getAll();
 
-        List<JPerson> result_j= jService.findByNameType("Upd", null, subjectForm.getSubjectId());
+        JPerson jp = jService.getSubject(result_j.get(0).getSubjectId());
+
+        DetachedCriteria.forClass(Dict.class)
+                .add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt()))
+                .add(Restrictions.eq("parent_code", 600));
+
+        result_j.clear();
+
+        result_j= jService.findByNameType("Upd", null, subjectForm.getSubjectId());
 
         return result_j;
     }

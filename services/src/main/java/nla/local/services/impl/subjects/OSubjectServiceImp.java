@@ -3,6 +3,7 @@ package nla.local.services.impl.subjects;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.subjects.OPerson;
 import nla.local.pojos.subjects.SubjectClass;
+import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -64,7 +65,7 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
     public List<OPerson> findOffUser(String surname, String firstname, String fathername, Integer user_num, String orgname, Integer subjectType )
     {
 
-        DetachedCriteria query_ = query;
+        DetachedCriteria query_  = (DetachedCriteria) SerializationUtils.clone(query);
 
         log.info("Get " + " by name. Invoked SubjectService.findOffUser" );
 

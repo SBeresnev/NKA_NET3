@@ -1,6 +1,6 @@
 package forms;
 
-import nla.local.pojos.PPerson;
+import nla.local.pojos.subjects.PPerson;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;

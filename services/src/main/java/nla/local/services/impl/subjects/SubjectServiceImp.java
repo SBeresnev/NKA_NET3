@@ -25,10 +25,6 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
         return query;
     }
 
-   public void setQuery(DetachedCriteria query)
-    {
-        this.query = query;
-    }
 
    public SubjectServiceImp(SessionFactory sessionFactory)
     {
@@ -57,12 +53,14 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
     {
         List<T> out = null;
 
-        if (dc == null) { dc = getQuery(); }
-        else { setQuery(dc);}
+        if (dc == null)
+        {
+            dc = getQuery();
+        }
 
         try {
 
-            out = super.getCriterion(query);
+            out = super.getCriterion(dc);
 
         } catch (DaoException e) {
             e.printStackTrace();

@@ -275,11 +275,11 @@ public class SubjectTest
         }
 
 
-        List<JPerson> result_p= jService.findByNameType("Upd", null, subjectServDictList.get(14).getCode_id());
+        List<JPerson> result_j= jService.findByNameType("Upd", null, subjectServDictList.get(14).getCode_id());
 
         int i = 10;
 
-        for(Person p : result_p)
+        for(Person p : result_j)
         {
             JPerson jp = (JPerson) p;
             jp.fullname  = "ОАО Update_" + String.valueOf(i) ;
