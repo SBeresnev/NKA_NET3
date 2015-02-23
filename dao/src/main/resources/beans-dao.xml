@@ -28,7 +28,7 @@
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 
         <property name="dataSource" ref="dataSource"/>
-        <property name= "packagesToScan">
+        <property name=  "packagesToScan">
             <list>
                 <value>nla.local.pojos</value>
                 <value>nla.local.pojos.dict</value>
@@ -40,6 +40,8 @@
             <props>
                 <prop key="default_schema">SERGEI</prop>
                 <prop key="hibernate.show_sql">true</prop>
+                <prop key="cache.use_second_level_cache">false</prop>
+                <prop key="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.SingletonEhCacheProvider</prop>
                 <prop key="debug">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">validate</prop>
