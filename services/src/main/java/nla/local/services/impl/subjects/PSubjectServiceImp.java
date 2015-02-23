@@ -2,7 +2,7 @@ package nla.local.services.impl.subjects;
 
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.subjects.PPerson;
-import nla.local.pojos.subjects.SubjectEnum;
+import nla.local.pojos.subjects.SubjectClass;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -26,7 +26,7 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
     private static Logger log = Logger.getLogger(PSubjectServiceImp.class);
 
-    private DetachedCriteria query = DetachedCriteria.forClass(PPerson.class).add(Restrictions.eq("dtype", SubjectEnum.PRV.toString()));
+    private DetachedCriteria query = DetachedCriteria.forClass(PPerson.class).add(Restrictions.eq("dtype", SubjectClass.PRV.toString()));
 
 
     @Autowired

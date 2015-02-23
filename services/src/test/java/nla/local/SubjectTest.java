@@ -2,7 +2,6 @@ package nla.local;
 
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
-import nla.local.pojos.dict.DictPk;
 import nla.local.pojos.dict.EnumDict;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.OPerson;
@@ -59,6 +58,8 @@ public class SubjectTest
 
     private List<Dict> allDictList;
 
+
+
     @Before
     public void setUp() throws Exception {
 
@@ -72,14 +73,9 @@ public class SubjectTest
 
         allDictList = CommonDict.getAll();
 
-        DictPk pk = new DictPk(120,110);
-
-        Dict dd = CommonDict.getDict(pk);
-
-        Integer u =5;
     }
 
-   // @org.junit.Test
+    //@org.junit.Test
     public void SubjectOffTestController()  {
 
         AddOffSubject();
@@ -90,17 +86,17 @@ public class SubjectTest
     @org.junit.Test
     public void SubjectJurTestController() {
 
-       // AddJurSubject();
+        AddJurSubject();
         GetJurSubject();
-       // UpdateJurSubject();
+        UpdateJurSubject();
     }
 
-   //@org.junit.Test
+   @org.junit.Test
     public void SubjectPhyTestController(){
 
         AddPhysSubject();
-       // GetPhysSubject();
-        //UpdatePhysSubject();
+        GetPhysSubject();
+        UpdatePhysSubject();
 
     }
 
@@ -239,13 +235,21 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<JPerson> result_j_0 = jService.getAll();//jService.findByNameType("Вал", "", subjectServDictList.get(9).getCode_id());
+        List<JPerson> result_j_0 = jService.getAll();
 
         List<JPerson> result_j_1 = jService.findByNameType("", "",null);
 
-        JPerson dc = jService.getSubject((Integer)19126);
+        List<JPerson> result_j_2 = jService.findByNameType("Вал", "", subjectServDictList.get(9).getCode_id());;
 
-        assertTrue(!result_j_0.isEmpty());
+
+        JPerson dc = null;
+
+        if(result_j_2 != null)  dc = jService.getSubject(result_j_2.get(0).getSubjectId());
+
+        if(dc == null || (result_j_0.size() != result_j_1.size()) || result_j_2.size()<10) { retval= false;}
+
+
+        assertTrue(retval);
 
 
     }
@@ -318,8 +322,8 @@ public class SubjectTest
                 pp.subjectType = subjectServDictList.get(2);
                 pp.isOwner = 1;
                 pp.bothRegDate = new Date();
-                pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE8" ;
-                //pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
+                pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE" ;
+                pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
                 pp.sitizens = stateDictList.get(73);
 
                 pService.addSubject(pp);
@@ -343,9 +347,19 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<PPerson> result_p = pService.findByFIOType("Ив", "И", null, null, subjectServDictList.get(2).getCode_id());
+        List<PPerson> result_p_0 = pService.getAll();
 
-        assertTrue(!result_p.isEmpty());
+        List<PPerson> result_p_1 = pService.findByFIOType("", "", null, null, 120);
+
+        List<PPerson> result_p_2 = pService.findByFIOType("Ив", "И", null, null, subjectServDictList.get(2).getCode_id());
+
+        PPerson dc = null;
+
+        if(result_p_2 != null)  dc = pService.getSubject(result_p_2.get(0).getSubjectId());
+
+        if(dc == null || (result_p_0.size() != result_p_1.size()) || result_p_2.size()<10) { retval= false;}
+
+        assertTrue(retval);
 
     }
 
