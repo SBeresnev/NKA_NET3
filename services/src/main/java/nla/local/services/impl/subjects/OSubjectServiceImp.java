@@ -43,9 +43,8 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
 
     public void setQuery(DetachedCriteria query)
     {
-        super.setQuery(query);
 
-        this.query = query;
+        this.query =  (DetachedCriteria) SerializationUtils.clone(query);
     }
 
     public List<OPerson> getAll()

@@ -44,7 +44,6 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
     public void setQuery(DetachedCriteria query)
     {
-        super.setQuery(query);
 
         this.query = (DetachedCriteria) SerializationUtils.clone(query);
     }

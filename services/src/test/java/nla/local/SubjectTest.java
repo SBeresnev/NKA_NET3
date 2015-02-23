@@ -86,16 +86,16 @@ public class SubjectTest
     @org.junit.Test
     public void SubjectJurTestController() {
 
-        AddJurSubject();
-        GetJurSubject();
+       // AddJurSubject();
+       // GetJurSubject();
         UpdateJurSubject();
     }
 
    @org.junit.Test
     public void SubjectPhyTestController(){
 
-        AddPhysSubject();
-        GetPhysSubject();
+     //   AddPhysSubject();
+     //   GetPhysSubject();
         UpdatePhysSubject();
 
     }
@@ -273,7 +273,6 @@ public class SubjectTest
             jp.bothRegDate = new Date();
             jService.addSubject(jp);
         }
-
 
         List<JPerson> result_j= jService.findByNameType("Upd", null, subjectServDictList.get(14).getCode_id());
 

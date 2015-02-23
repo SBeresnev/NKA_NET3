@@ -77,9 +77,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
     public void setQuery(DetachedCriteria query)
     {
-        super.setQuery(query);
-
-        this.query = query;
+         this.query =  (DetachedCriteria) SerializationUtils.clone(query);
     }
 
 
