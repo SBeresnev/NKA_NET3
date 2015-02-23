@@ -2,6 +2,7 @@ package nla.local.services;
 
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.DictPk;
+import nla.local.pojos.dict.EnumDict;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 public interface  IDictionaryService extends IService<Dict> {
 
-    public List<Dict> getDict(Integer a_type);
+    public List<Dict> getDict(EnumDict a_type);
 
     public Dict getDict(DictPk dPk);
 

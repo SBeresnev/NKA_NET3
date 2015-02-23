@@ -1,8 +1,8 @@
 package nla.local.services.impl.subjects;
 
 import nla.local.dao.exceptions.DaoException;
-import nla.local.pojos.JPerson;
-import nla.local.pojos.dict.EnumDict;
+import nla.local.pojos.subjects.JPerson;
+import nla.local.pojos.subjects.SubjectEnum;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -25,14 +25,19 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
     private static Logger log = Logger.getLogger(JSubjectServiceImp.class);
 
-    private DetachedCriteria query = DetachedCriteria.forClass(JPerson.class).add(Restrictions.eq("parent_desc","juridical"));
+    private DetachedCriteria query = DetachedCriteria.forClass(JPerson.class).add(Restrictions.eq("dtype", SubjectEnum.JUR.toString()));
 
     @Autowired
     public JSubjectServiceImp(SessionFactory sessionFactory) {
 
         super(sessionFactory);
 
+    }
 
+    @Override
+    public List<JPerson> getAll(Class<JPerson> clazz)
+    {
+        return this.getAll();
 
     }
 
@@ -42,7 +47,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
         try {
 
             return super.findSubjects(query);
-            //super.getAll(JPerson.class);
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,7 +88,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
                     .add(Restrictions.or(Restrictions.like("fullname", "%" + fullName + "%",MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fullname")));
 
 
-            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query_;
+            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query_;
 
 
             retval = (List<JPerson>) this.findSubjects(query_);

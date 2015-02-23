@@ -2,7 +2,7 @@ package nla.local.services.impl;
 
 import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoException;
-import nla.local.pojos.Address;
+import nla.local.pojos.Addresses;
 import nla.local.services.IAdressService;
 import nla.local.services.impl.subjects.SubjectServiceImp;
 import org.apache.log4j.Logger;
@@ -15,7 +15,7 @@ import java.util.List;
  * Created by beresnev on 29.01.2015.
  */
 @Service
-public class AddressServiceImp extends BaseDao<Address> implements IAdressService {
+public class AddressServiceImp extends BaseDao<Addresses> implements IAdressService {
 
     private static Logger log = Logger.getLogger(SubjectServiceImp.class);
 
@@ -26,9 +26,9 @@ public class AddressServiceImp extends BaseDao<Address> implements IAdressServic
     }
 
     @Override
-    public List<Address> findAddress(DetachedCriteria dc) {
+    public List<Addresses> findAddress(DetachedCriteria dc) {
 
-        List<Address> out = null;
+        List<Addresses> out = null;
 
         if (dc == null) { dc = getQuery(); }
         else { setQuery(dc);}

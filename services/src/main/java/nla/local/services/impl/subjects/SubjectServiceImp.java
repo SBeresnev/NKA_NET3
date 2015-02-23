@@ -2,7 +2,7 @@ package nla.local.services.impl.subjects;
 
 import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoException;
-import nla.local.pojos.Person;
+import nla.local.pojos.subjects.Person;
 import nla.local.services.ISubjectService;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;

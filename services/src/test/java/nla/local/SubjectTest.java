@@ -1,13 +1,13 @@
 package nla.local;
 
 import nla.local.dao.exceptions.DaoException;
-import nla.local.pojos.JPerson;
-import nla.local.pojos.OPerson;
-import nla.local.pojos.PPerson;
-import nla.local.pojos.Person;
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.DictPk;
 import nla.local.pojos.dict.EnumDict;
+import nla.local.pojos.subjects.JPerson;
+import nla.local.pojos.subjects.OPerson;
+import nla.local.pojos.subjects.PPerson;
+import nla.local.pojos.subjects.Person;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
@@ -62,13 +62,13 @@ public class SubjectTest
     @Before
     public void setUp() throws Exception {
 
-        subjectServDictList = CommonDict.getDict(EnumDict.SubjectType.toInt());
+        subjectServDictList = CommonDict.getDict(EnumDict.SubjectType);
 
-        orgStructDictList = CommonDict.getDict(EnumDict.OrgStruct.toInt());
+        orgStructDictList = CommonDict.getDict(EnumDict.OrgStruct);
 
-        stateDictList = CommonDict.getDict(EnumDict.State.toInt());
+        stateDictList = CommonDict.getDict(EnumDict.State);
 
-        torStructDictList = CommonDict.getDict(EnumDict.TorStruct.toInt());
+        torStructDictList = CommonDict.getDict(EnumDict.TorStruct);
 
         allDictList = CommonDict.getAll();
 
@@ -95,12 +95,12 @@ public class SubjectTest
        // UpdateJurSubject();
     }
 
-  // @org.junit.Test
+   //@org.junit.Test
     public void SubjectPhyTestController(){
 
         AddPhysSubject();
-        GetPhysSubject();
-        UpdatePhysSubject();
+       // GetPhysSubject();
+        //UpdatePhysSubject();
 
     }
 
@@ -239,11 +239,13 @@ public class SubjectTest
 
         boolean retval = true;
 
-        List<JPerson> result_j= jService.getAll();//jService.findByNameType("Вал", "", subjectServDictList.get(9).getCode_id());
+        List<JPerson> result_j_0 = jService.getAll();//jService.findByNameType("Вал", "", subjectServDictList.get(9).getCode_id());
+
+        List<JPerson> result_j_1 = jService.findByNameType("", "",null);
 
         JPerson dc = jService.getSubject((Integer)19126);
 
-        assertTrue(!result_j.isEmpty());
+        assertTrue(!result_j_0.isEmpty());
 
 
     }
@@ -316,8 +318,8 @@ public class SubjectTest
                 pp.subjectType = subjectServDictList.get(2);
                 pp.isOwner = 1;
                 pp.bothRegDate = new Date();
-                pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE" ;
-                pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
+                pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE8" ;
+                //pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
                 pp.sitizens = stateDictList.get(73);
 
                 pService.addSubject(pp);

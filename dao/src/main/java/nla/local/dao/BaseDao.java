@@ -24,8 +24,6 @@ public class BaseDao<T> implements Dao<T> {
 
     private static Logger log = Logger.getLogger(BaseDao.class);
 
-
-    @Autowired
     private  SessionFactory sessionFactory;
 
     private Class<T> type;

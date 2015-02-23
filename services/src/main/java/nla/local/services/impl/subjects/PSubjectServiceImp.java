@@ -1,15 +1,15 @@
 package nla.local.services.impl.subjects;
 
 import nla.local.dao.exceptions.DaoException;
-import nla.local.pojos.JPerson;
-import nla.local.pojos.PPerson;
-import nla.local.pojos.dict.EnumDict;
+import nla.local.pojos.subjects.PPerson;
+import nla.local.pojos.subjects.SubjectEnum;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,11 +26,11 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
     private static Logger log = Logger.getLogger(PSubjectServiceImp.class);
 
-    private DetachedCriteria query = DetachedCriteria.forClass(JPerson.class).add(Restrictions.eq("parent_desc","private"));
+    private DetachedCriteria query = DetachedCriteria.forClass(PPerson.class).add(Restrictions.eq("dtype", SubjectEnum.PRV.toString()));
 
 
     @Autowired
-    public PSubjectServiceImp(SessionFactory sessionFactory) {
+    public PSubjectServiceImp(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
 
         super(sessionFactory);
 
@@ -48,14 +48,22 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
         this.query = query;
     }
 
+    @Override
+    public List<PPerson> getAll(Class<PPerson> clazz)
+    {
+        return this.getAll();
+
+    }
+
 
     public List<PPerson> getAll()
     {
         try {
 
-            return super.getAll(PPerson.class);
 
-        } catch (DaoException e) {
+            return super.findSubjects(query);
+
+        } catch (Exception e) {
 
             e.printStackTrace();
         }
@@ -90,7 +98,7 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
             ;
 
-            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query_;
+            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query_;
 
 
             retval = (List<PPerson>) this.findSubjects(query_);

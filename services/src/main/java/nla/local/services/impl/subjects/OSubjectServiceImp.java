@@ -1,8 +1,8 @@
 package nla.local.services.impl.subjects;
 
 import nla.local.dao.exceptions.DaoException;
-import nla.local.pojos.OPerson;
-import nla.local.pojos.dict.EnumDict;
+import nla.local.pojos.subjects.OPerson;
+import nla.local.pojos.subjects.SubjectEnum;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -25,7 +25,8 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
 
     private static Logger log = Logger.getLogger(OSubjectServiceImp.class);
 
-    private DetachedCriteria query = DetachedCriteria.forClass(OPerson.class);
+    private DetachedCriteria query = DetachedCriteria.forClass(OPerson.class).add(Restrictions.eq("dtype", SubjectEnum.OFC.toString()));
+
 
     @Autowired
     public OSubjectServiceImp(SessionFactory sessionFactory) {
@@ -83,7 +84,7 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
                     .add(Restrictions.or(Restrictions.like("orgname", orgname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("orgname")));
 
             query_ = user_num != null ? query_.add(Restrictions.eq("user_num", user_num)): query_;
-            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)).add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt())):query_;
+            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query_;
 
 
             retval = (List<OPerson>) this.findSubjects(query_);

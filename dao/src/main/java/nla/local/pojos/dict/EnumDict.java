@@ -29,7 +29,6 @@ public enum EnumDict {
         return value;
     }
 
-
     public static EnumDict fromInt(int value) {
         switch(value) {
 
@@ -45,4 +44,5 @@ public enum EnumDict {
                 return UNKNOW;
         }
     }
+
 }

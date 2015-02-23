@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Immutable
 @Table(name="ANALYTICCODES")
 @IdClass(DictPk.class)
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public class Dict implements IDict {
 
     @Id
@@ -22,7 +21,7 @@ public class Dict implements IDict {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name ="ANALYTIC_TYPE", nullable = false, insertable = false , updatable = false )
+    @Column( name ="ANALYTIC_TYPE", nullable = false)
     private Integer analytic_type;
 
     @Column( name = "ANALYTIC_CODE_NAME")
@@ -31,6 +30,16 @@ public class Dict implements IDict {
     @Column( name = "ANALYTIC_CODE_SHORTNAME")
     private  String code_short_name;
 
+    @Column( name = "PARENT_CODE")
+    private  Integer parent_code;
+
+    public Integer getParent_code() {
+        return parent_code;
+    }
+
+    public void setParent_code(Integer parent_code) {
+        this.parent_code = parent_code;
+    }
 
     public Integer getAnalytic_type() {
         return analytic_type;

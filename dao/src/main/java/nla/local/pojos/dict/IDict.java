@@ -7,6 +7,10 @@ import java.io.Serializable;
  */
 public interface IDict extends Serializable {
 
+    public Integer getParent_code();
+
+    public void setParent_code(Integer parent_code);
+
     public Integer getAnalytic_type();
 
     public void setAnalytic_type(Integer analytic_type);

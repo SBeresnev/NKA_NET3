@@ -4,6 +4,7 @@ import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.DictPk;
+import nla.local.pojos.dict.EnumDict;
 import nla.local.services.IDictionaryService;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
@@ -100,9 +101,9 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
     }
 
     @Override
-    public List<Dict> getDict(Integer code_type) {
+    public List<Dict> getDict(EnumDict code_type) {
 
-        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type", code_type));
+        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type", code_type.toInt()));
 
         List<Dict> ret_val = this.getCriterion(dc);
 
