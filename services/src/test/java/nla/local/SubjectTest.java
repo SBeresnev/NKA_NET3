@@ -58,7 +58,9 @@ public class SubjectTest
 
     private List<Dict> allDictList;
 
-
+    private static String cleanSubject = "delete from SUBJECTS";
+    private static String cleanSubjectData = "delete from SUBJECTSDATA";
+    private static String cleanOfficialuser = "delete from OFFICIALUSERS";
 
     @Before
     public void setUp() throws Exception {
@@ -78,13 +80,17 @@ public class SubjectTest
     @org.junit.Test
     public void SubjectOffTestController()  {
 
+        scg.generate_obj(cleanOfficialuser);
+
         AddOffSubject();
         GetOffSubject();
         UpdateOffSubject();
     }
 
     @org.junit.Test
-    public void SubjectJurTestController() {
+    public void SubjectsTestController() {
+
+        scg.generate_obj(cleanSubjectData);
 
         AddJurSubject();
         GetJurSubject();
