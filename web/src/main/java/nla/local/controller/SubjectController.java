@@ -7,10 +7,10 @@ package nla.local.controller;
 import forms.SearchSubjectForm;
 import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.pojos.JPerson;
+import nla.local.pojos.PPerson;
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.EnumDict;
-import nla.local.pojos.subjects.JPerson;
-import nla.local.pojos.subjects.PPerson;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -43,16 +44,33 @@ public class SubjectController {
     private List<Dict> subjectServDictList;
 
     @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
-
-        DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("code_id", 120));
-
-        subjectServDictList = commonDict.getCriterion(dc);
-
-        List<PPerson> result_p= pService.findByFIOType("","", null, "" , subjectServDictList.get(0).getCode_id());
-
+    public List getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
+        List result_p  = new ArrayList();
+        if(100 < searchSubjectForm.getType() && searchSubjectForm.getType() < 200){
+           result_p.addAll(pService.findByFIOType(
+                   searchSubjectForm.surname,
+                   searchSubjectForm.firstname,
+                   searchSubjectForm.surname,
+                   searchSubjectForm.getNumber(),
+                   searchSubjectForm.getType()
+           ));
+        }
+        if(200 < searchSubjectForm.getType() && searchSubjectForm.getType() < 500){
+            result_p.addAll(jService.findByNameType(searchSubjectForm.getName(), searchSubjectForm.getNumber(), searchSubjectForm.getType()));
+        }
         return result_p;
+    }
 
+    @RequestMapping(value = "/subjectTypes", method = RequestMethod.GET )
+    public List<SubjectTypeDict> getSubjectType() throws DaoException {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(SubjectTypeDict.class);
+        return commonDict.getCriterion(detachedCriteria);
+    }
+
+    @RequestMapping(value = "/states", method = RequestMethod.GET )
+    public List<StateDict> getStates() throws DaoException {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StateDict.class);
+        return commonDict.getCriterion(detachedCriteria);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT )
