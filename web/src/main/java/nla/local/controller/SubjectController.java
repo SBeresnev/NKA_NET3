@@ -45,10 +45,7 @@ public class SubjectController {
     @RequestMapping(value = "/private", method = RequestMethod.GET )
     public List<PPerson> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
 
-        //subjectServDictList = commonDict.getDict(EnumDict.SubjectType.toInt());
-
         DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("code_id", 120));
-        //add(Restrictions.like("code_short_name", "Беларусь", MatchMode.ANYWHERE).ignoreCase());
 
         subjectServDictList = commonDict.getCriterion(dc);
 
@@ -63,7 +60,7 @@ public class SubjectController {
     {
          if(subjectForm.getSubjectId() != null) {
            PPerson pPerson = (PPerson) pService.getSubject(subjectForm.getSubjectId());
-            // pService.refreshSubject(subjectForm.updatePPerson(pPerson));
+            pService.refreshSubject(subjectForm.updatePPerson(pPerson));
        }
     }
 
@@ -72,7 +69,7 @@ public class SubjectController {
     {
         if(subjectForm.getSubjectId() != null) {
             PPerson pPerson = (PPerson) pService.getSubject( subjectForm.getSubjectId());
-            //pService.refreshSubject(subjectForm.updatePPerson(pPerson));
+            pService.refreshSubject(subjectForm.updatePPerson(pPerson));
         }
     }
 
