@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment="Tuesday  change">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/nla/local/controller/SubjectController.class" afterPath="$PROJECT_DIR$/web/target/classes/nla/local/controller/SubjectController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" afterPath="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" afterPath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -56,215 +58,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Project.uml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project.uml">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>JAVA</ID>
-              <OriginalElement>nla.local.SubjectTest</OriginalElement>
-              <nodes>
-                <node x="191.0" y="495.0">nla.local.pojos.subjects.OPerson</node>
-                <node x="148.00000000000006" y="160.0">nla.local.services.IAdressService</node>
-                <node x="277.00000000000006" y="160.0">nla.local.dao.BaseDao</node>
-                <node x="496.00000000000006" y="240.0">org.junit.runner.RunWith</node>
-                <node x="1117.0" y="340.0">nla.local.services.impl.subjects.OSubjectServiceImp</node>
-                <node x="496.53020833333346" y="340.0">nla.local.SubjectTest</node>
-                <node x="596.0" y="240.0">org.springframework.test.context.transaction.TransactionConfiguration</node>
-                <node x="1039.5" y="160.0">nla.local.services.ISubjectService</node>
-                <node x="167.6729166666667" y="80.0">nla.local.services.IService</node>
-                <node x="169.00000000000006" y="240.0">nla.local.services.impl.AddressServiceImp</node>
-                <node x="97.0" y="495.0">nla.local.pojos.subjects.JPerson</node>
-                <node x="316.5" y="495.0">nla.local.pojos.dict.Dict</node>
-                <node x="99.0" y="415.0">nla.local.pojos.subjects.Person</node>
-                <node x="997.75" y="240.0">nla.local.services.impl.subjects.SubjectServiceImp</node>
-                <node x="804.0" y="340.0">nla.local.services.impl.subjects.PSubjectServiceImp</node>
-                <node x="315.0" y="415.0">nla.local.pojos.dict.IDict</node>
-                <node x="168.14479166666678" y="340.0">nla.local.services.impl.DictionaryServiceImp</node>
-                <node x="327.00000000000006" y="240.0">org.springframework.test.context.ContextConfiguration</node>
-                <node x="962.0" y="340.0">nla.local.services.impl.subjects.JSubjectServiceImp</node>
-                <node x="0.0" y="495.0">nla.local.pojos.subjects.PPerson</node>
-                <node x="234.1729166666667" y="0.0">nla.local.dao.Dao</node>
-                <node x="0.0" y="160.0">nla.local.services.IDictionaryService</node>
-                <node x="786.0" y="240.0">org.springframework.transaction.annotation.Transactional</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="nla.local.services.impl.subjects.PSubjectServiceImp" target="nla.local.services.impl.subjects.SubjectServiceImp">
-                  <point x="34.5" y="-15.0" />
-                  <point x="907.5" y="320.0" />
-                  <point x="1019.5833333333334" y="320.0" />
-                  <point x="-43.66666666666663" y="15.0" />
-                </edge>
-                <edge source="nla.local.pojos.subjects.OPerson" target="nla.local.pojos.subjects.Person">
-                  <point x="0.0" y="-15.0" />
-                  <point x="230.5" y="470.0" />
-                  <point x="157.33333333333331" y="470.0" />
-                  <point x="23.333333333333314" y="15.0" />
-                </edge>
-                <edge source="nla.local.pojos.subjects.JPerson" target="nla.local.pojos.subjects.Person">
-                  <point x="0.0" y="-15.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.IDictionaryService" target="nla.local.services.IService">
-                  <point x="0.0" y="-15.0" />
-                  <point x="64.0" y="140.0" />
-                  <point x="180.00625000000002" y="140.0" />
-                  <point x="-24.666666666666657" y="15.0" />
-                </edge>
-                <edge source="nla.local.SubjectTest" target="org.springframework.test.context.ContextConfiguration">
-                  <point x="-35.625" y="-15.0" />
-                  <point x="508.40520833333346" y="300.0" />
-                  <point x="401.50000000000006" y="300.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.pojos.subjects.PPerson" target="nla.local.pojos.subjects.Person">
-                  <point x="0.0" y="-15.0" />
-                  <point x="38.5" y="470.0" />
-                  <point x="110.66666666666667" y="470.0" />
-                  <point x="-23.33333333333333" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.subjects.JSubjectServiceImp" target="nla.local.services.impl.subjects.SubjectServiceImp">
-                  <point x="33.75" y="-15.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.ISubjectService" target="nla.local.services.IService">
-                  <point x="0.0" y="-15.0" />
-                  <point x="1096.0" y="130.0" />
-                  <point x="229.3395833333334" y="130.0" />
-                  <point x="24.666666666666686" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.subjects.SubjectServiceImp" target="nla.local.dao.BaseDao">
-                  <point x="-32.75" y="-15.0" />
-                  <point x="1030.5" y="215.0" />
-                  <point x="342.83333333333337" y="215.0" />
-                  <point x="26.333333333333314" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.IAdressService" target="nla.local.services.IService">
-                  <point x="0.0" y="-15.0" />
-                  <point x="202.50000000000006" y="140.0" />
-                  <point x="204.6729166666667" y="140.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.subjects.OSubjectServiceImp" target="org.springframework.transaction.annotation.Transactional">
-                  <point x="-35.0" y="-15.0" />
-                  <point x="1152.0" y="300.0" />
-                  <point x="880.5" y="300.0" />
-                  <point x="42.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.DictionaryServiceImp" target="org.springframework.transaction.annotation.Transactional">
-                  <point x="48.666666666666686" y="-15.0" />
-                  <point x="289.81145833333346" y="310.0" />
-                  <point x="796.5" y="310.0" />
-                  <point x="-42.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.AddressServiceImp" target="nla.local.dao.BaseDao">
-                  <point x="33.5" y="-15.0" />
-                  <point x="269.50000000000006" y="215.0" />
-                  <point x="290.16666666666674" y="215.0" />
-                  <point x="-26.333333333333314" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.DictionaryServiceImp" target="nla.local.services.IDictionaryService">
-                  <point x="-48.666666666666686" y="-15.0" />
-                  <point x="192.4781250000001" y="320.0" />
-                  <point x="64.00000000000006" y="320.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.AddressServiceImp" target="nla.local.services.IAdressService">
-                  <point x="-33.5" y="-15.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.subjects.SubjectServiceImp" target="nla.local.services.ISubjectService">
-                  <point x="32.75" y="-15.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.subjects.PSubjectServiceImp" target="org.springframework.transaction.annotation.Transactional">
-                  <point x="-34.5" y="-15.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.SubjectTest" target="org.springframework.transaction.annotation.Transactional">
-                  <point x="35.625" y="-15.0" />
-                  <point x="579.6552083333335" y="320.0" />
-                  <point x="817.5" y="320.0" />
-                  <point x="-21.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.IService" target="nla.local.dao.Dao">
-                  <point x="0.0" y="-15.0" />
-                  <point x="204.6729166666667" y="55.0" />
-                  <point x="247.9229166666667" y="55.0" />
-                  <point x="-13.75" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.DictionaryServiceImp" target="nla.local.dao.BaseDao">
-                  <point x="0.0" y="-15.0" />
-                  <point x="241.14479166666678" y="300.0" />
-                  <point x="316.50000000000006" y="300.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.dao.BaseDao" target="nla.local.dao.Dao">
-                  <point x="0.0" y="-15.0" />
-                  <point x="316.50000000000006" y="140.0" />
-                  <point x="329.5583333333334" y="140.0" />
-                  <point x="329.5583333333334" y="55.0" />
-                  <point x="275.4229166666667" y="55.0" />
-                  <point x="13.75" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.subjects.OSubjectServiceImp" target="nla.local.services.impl.subjects.SubjectServiceImp">
-                  <point x="35.0" y="-15.0" />
-                  <point x="1222.0" y="290.0" />
-                  <point x="1106.9166666666667" y="290.0" />
-                  <point x="43.66666666666674" y="15.0" />
-                </edge>
-                <edge source="nla.local.services.impl.subjects.JSubjectServiceImp" target="org.springframework.transaction.annotation.Transactional">
-                  <point x="-33.75" y="-15.0" />
-                  <point x="995.75" y="310.0" />
-                  <point x="859.5" y="310.0" />
-                  <point x="21.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.SubjectTest" target="org.junit.runner.RunWith">
-                  <point x="-11.875" y="-15.0" />
-                  <point x="532.1552083333335" y="300.0" />
-                  <point x="536.0" y="300.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.pojos.dict.Dict" target="nla.local.pojos.dict.IDict">
-                  <point x="0.0" y="-15.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-                <edge source="nla.local.SubjectTest" target="org.springframework.test.context.transaction.TransactionConfiguration">
-                  <point x="11.875" y="-15.0" />
-                  <point x="555.9052083333335" y="300.0" />
-                  <point x="681.0" y="300.0" />
-                  <point x="0.0" y="15.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="202.5" y="119.0" />
-              <SelectedNodes />
-              <Categories />
-              <SCOPE>All</SCOPE>
-              <VISIBILITY>packageLocal</VISIBILITY>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IDictionaryService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/IDictionaryService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/IService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ISubjectService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/ISubjectService.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -292,18 +85,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubjectController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SubjectController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.478125" vertical-offset="816" max-vertical-offset="1530">
-              <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1027" max-vertical-offset="1921">
+              <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#getStates#0;class#SubjectController#0" expanded="false" />
                 <element signature="method#updatePerson#0;class#SubjectController#0" expanded="false" />
                 <element signature="method#addPerson#0;class#SubjectController#0" expanded="false" />
-                <element signature="method#getJuridicalPerson#0;class#SubjectController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnumDict.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/EnumDict.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="884">
+              <caret line="13" column="15" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Person.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1598">
+              <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -322,21 +133,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubjectTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SubjectTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1113" max-vertical-offset="3791">
-              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.2154472" vertical-offset="898" max-vertical-offset="7650">
+              <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#GetOffSubject#0;class#SubjectTest#0" expanded="false" />
-                <element signature="method#UpdateOffSubject#0;class#SubjectTest#0" expanded="false" />
-                <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
-                <element signature="method#GetJurSubject#0;class#SubjectTest#0" expanded="false" />
-                <element signature="method#UpdateJurSubject#0;class#SubjectTest#0" expanded="false" />
-                <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
-                <element signature="method#GetPhysSubject#0;class#SubjectTest#0" expanded="false" />
-                <element signature="method#CheckLastNumber#0;class#SubjectTest#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="811" max-vertical-offset="1564">
+              <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+              <folding>
+                <marker date="1424778359444" expanded="true" signature="732:758" placeholder="SELECT missi..dual..." />
               </folding>
             </state>
           </provider>
@@ -352,16 +167,6 @@
                 <element signature="method#updatePPerson#0;class#SubjectForm#0" expanded="false" />
                 <element signature="method#SubjectForm#1;class#SubjectForm#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IAdressService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/IAdressService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -397,7 +202,6 @@
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/TorStruct.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgStrDict.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/JurSubjectServiceImp.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/DictionaryService.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/PSubjectServiceImp.java" />
@@ -425,7 +229,6 @@
         <option value="$PROJECT_DIR$/web/src/main/java/forms/SubjectForm.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PSubjectServiceImp.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/OSubjectServiceImp.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java" />
         <option value="$PROJECT_DIR$/dao/src/test/java/nla/local/DAOTest.java" />
         <option value="$PROJECT_DIR$/services/pom.xml" />
         <option value="$PROJECT_DIR$/dao/pom.xml" />
@@ -434,8 +237,10 @@
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/JSubjectServiceImp.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/ISubjectService.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/SubjectServiceImp.java" />
-        <option value="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
       </list>
     </option>
   </component>
@@ -581,6 +386,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -848,6 +691,202 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dict" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -1014,7 +1053,7 @@
       </UpdatedFiles>
     </UpdateInfo>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat7">
+  <component name="RunManager" selected="JUnit.SubjectTest">
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1455,25 +1494,7 @@
       <workItem from="1424420238037" duration="20529000" />
       <workItem from="1424672964854" duration="710000" />
       <workItem from="1424674235979" duration="132000" />
-      <workItem from="1424674862593" duration="38030000" />
-    </task>
-    <task id="LOCAL-00048" summary="Wednesday change">
-      <created>1423035958422</created>
-      <option name="number" value="00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1423035958422</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Wednesday change">
-      <created>1423036639279</created>
-      <option name="number" value="00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1423036639279</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Wednesday change">
-      <created>1423037472238</created>
-      <option name="number" value="00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1423037472260</updated>
+      <workItem from="1424674862593" duration="39681000" />
     </task>
     <task id="LOCAL-00051" summary="Wednesday change">
       <created>1423061349764</created>
@@ -1751,11 +1772,29 @@
       <option name="project" value="LOCAL" />
       <updated>1424776716241</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Tuesday  change">
+      <created>1424776840308</created>
+      <option name="number" value="00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1424776840308</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Tuesday  change">
+      <created>1424776939508</created>
+      <option name="number" value="00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1424776939508</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Tuesday  change">
+      <created>1424776975856</created>
+      <option name="number" value="00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1424776975856</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="445478000" />
+    <option name="totallyTimeSpent" value="447129000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1780,8 +1819,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18486486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.046486486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27783784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40864864" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27783784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43783784" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.030270271" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22761194" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1910,8 +1949,20 @@
           <properties />
           <option name="timeStamp" value="112" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="262" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java</url>
+          <line>84</line>
+          <properties />
+          <option name="timeStamp" value="263" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="262" />
+      <option name="time" value="264" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -2223,13 +2274,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/junit4/SpringMethodRoadie.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29580575" vertical-offset="1532" max-vertical-offset="3842">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/WelcomeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
@@ -2269,13 +2313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3192771" vertical-offset="5857" max-vertical-offset="11866">
           <caret line="421" column="19" selection-start-line="421" selection-start-column="19" selection-end-line="421" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/EnumDict.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="884">
-          <caret line="9" column="0" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -2333,16 +2370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <marker date="1424619278000" expanded="true" signature="-1:-1" placeholder="SELECT missi..dual..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/junit4/SpringTestMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.92" vertical-offset="611" max-vertical-offset="1190">
@@ -2377,14 +2404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1513">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1598">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2729,34 +2748,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/EnumDict.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1113" max-vertical-offset="3791">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GetOffSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#UpdateOffSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#AddJurSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#GetJurSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#UpdateJurSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#AddPhysSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#GetPhysSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#CheckLastNumber#0;class#SubjectTest#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1598">
+          <caret line="54" column="23" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.478125" vertical-offset="816" max-vertical-offset="1530">
-          <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1027" max-vertical-offset="1921">
+          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getStates#0;class#SubjectController#0" expanded="false" />
             <element signature="method#updatePerson#0;class#SubjectController#0" expanded="false" />
             <element signature="method#addPerson#0;class#SubjectController#0" expanded="false" />
-            <element signature="method#getJuridicalPerson#0;class#SubjectController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/junit4/SpringMethodRoadie.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35079727" vertical-offset="1852" max-vertical-offset="3842">
+          <caret line="145" column="19" selection-start-line="145" selection-start-column="19" selection-end-line="145" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="811" max-vertical-offset="1564">
+          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding>
+            <marker date="1424778359444" expanded="true" signature="732:758" placeholder="SELECT missi..dual..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2154472" vertical-offset="898" max-vertical-offset="7650">
+          <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -77,34 +77,30 @@ public class SubjectTest
 
     }
 
-    @org.junit.Test
-    public void SubjectOffTestController()  {
 
-        scg.generate_obj(cleanOfficialuser);
-
-        AddOffSubject();
-        GetOffSubject();
-        UpdateOffSubject();
-    }
 
     @org.junit.Test
     public void SubjectsTestController() {
 
-        scg.generate_obj(cleanSubjectData);
+        scg.update(cleanSubjectData);
+        scg.update(cleanOfficialuser);
+        scg.update(cleanSubject);
 
         AddJurSubject();
         GetJurSubject();
         UpdateJurSubject();
-    }
 
-   @org.junit.Test
-    public void SubjectPhyTestController(){
+        AddOffSubject();
+        GetOffSubject();
+        UpdateOffSubject();
 
         AddPhysSubject();
         GetPhysSubject();
         UpdatePhysSubject();
 
     }
+
+
 
 
     public void AddOffSubject() {
@@ -164,7 +160,6 @@ public class SubjectTest
                 op.surname = "Иванов" + String.valueOf(20+i);
                 op.firstname = "Петр" + String.valueOf(20+i);
                 op.fathername = "Артемьевич" + String.valueOf(20+i);
-
 
                 op.org_kod =  torStructDictList.get(0);
                 op.orgname = "РУП \"Брестское агентство по государственной регистрации и земельному кадастру\"";

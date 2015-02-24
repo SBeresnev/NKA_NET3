@@ -7,10 +7,10 @@ package nla.local.controller;
 import forms.SearchSubjectForm;
 import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
-import nla.local.pojos.JPerson;
-import nla.local.pojos.PPerson;
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.EnumDict;
+import nla.local.pojos.subjects.JPerson;
+import nla.local.pojos.subjects.PPerson;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
@@ -62,14 +62,18 @@ public class SubjectController {
     }
 
     @RequestMapping(value = "/subjectTypes", method = RequestMethod.GET )
-    public List<SubjectTypeDict> getSubjectType() throws DaoException {
-        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(SubjectTypeDict.class);
-        return commonDict.getCriterion(detachedCriteria);
+    public List<Dict> getSubjectType() throws DaoException {
+
+        List<Dict> ld = commonDict.getDict(EnumDict.SubjectType);
+
+        return ld;
     }
 
     @RequestMapping(value = "/states", method = RequestMethod.GET )
-    public List<StateDict> getStates() throws DaoException {
-        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(StateDict.class);
+    public List<Dict> getStates() throws DaoException {
+        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Dict.class);
+
+
         return commonDict.getCriterion(detachedCriteria);
     }
 
@@ -109,4 +113,5 @@ public class SubjectController {
 
         return result_j;
     }
+
 }

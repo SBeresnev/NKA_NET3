@@ -18,7 +18,7 @@ import java.io.Serializable;
 @BatchSize(size = 20)
 @Inheritance(strategy= InheritanceType.JOINED)
 //@DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING)
-public abstract class Person extends DictionaryServiceImp implements Serializable {
+public abstract class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

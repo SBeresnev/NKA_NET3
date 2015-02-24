@@ -57,6 +57,8 @@ public class CodeGenerator  {
 
         try {
 
+            query.executeUpdate();
+
             List<Object> ret_val = query.list();
 
             return ret_val;
@@ -66,6 +68,25 @@ public class CodeGenerator  {
             log.error(e);
 
             throw new HibernateException("Unable to object generate");
+        }
+
+    }
+
+    public int update(String sql) throws HibernateException {
+
+        String conn_str =sql;
+
+        SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(conn_str);
+
+        try {
+
+            return query.executeUpdate();
+
+        } catch (HibernateException e) {
+
+            log.error(e);
+
+            throw new HibernateException("Unable to update table");
         }
 
     }
