@@ -80,7 +80,6 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
          this.query =  (DetachedCriteria) SerializationUtils.clone(query);
     }
 
-
     public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 
