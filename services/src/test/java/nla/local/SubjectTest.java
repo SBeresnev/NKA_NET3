@@ -2,6 +2,7 @@ package nla.local;
 
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
+import nla.local.pojos.dict.DictPk;
 import nla.local.pojos.dict.EnumDict;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.OPerson;
@@ -65,6 +66,8 @@ public class SubjectTest
     @Before
     public void setUp() throws Exception {
 
+        /*small dictionary test */
+
         subjectServDictList = CommonDict.getDict(EnumDict.SubjectType);
 
         orgStructDictList = CommonDict.getDict(EnumDict.OrgStruct);
@@ -74,6 +77,15 @@ public class SubjectTest
         torStructDictList = CommonDict.getDict(EnumDict.TorStruct);
 
         allDictList = CommonDict.getAll();
+
+        DictPk pk = new DictPk(112,200); /*Республика Беларусь*/
+
+        Dict pm = CommonDict.getDict(pk);
+
+        if (pm == null || subjectServDictList.size() == 0 || orgStructDictList.size() == 0 || stateDictList.size() == 0 ||
+                torStructDictList.size() == 0 ||  allDictList.size() == 0 )
+            assert (false);
+
 
     }
 
