@@ -1,4 +1,4 @@
-package nla.local.services.util;
+package nla.local.pojos.subjects;
 
 /**
  * Created by beresnev on 24.02.2015.

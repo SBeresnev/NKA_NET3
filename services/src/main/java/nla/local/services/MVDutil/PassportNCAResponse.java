@@ -1,8 +1,10 @@
-package nla.local.services.util;
+package nla.local.services.MVDutil;
 
 /**
  * Created by beresnev on 24.02.2015.
  */
+import nla.local.pojos.subjects.RespNCA;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;

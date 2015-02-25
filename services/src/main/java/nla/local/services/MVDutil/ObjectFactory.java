@@ -1,8 +1,11 @@
-package nla.local.services.util;
+package nla.local.services.MVDutil;
 
 /**
  * Created by beresnev on 24.02.2015.
  */
+
+import nla.local.pojos.subjects.PassportNCA;
+import nla.local.pojos.subjects.RespNCA;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -36,7 +39,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PassportNCA }
+     * Create an instance of {@link nla.local.pojos.subjects.PassportNCA }
      *
      */
     public PassportNCA createPassportNCA() {
@@ -44,7 +47,7 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RespNCA }
+     * Create an instance of {@link nla.local.pojos.subjects.RespNCA }
      *
      */
     public RespNCA createRespNCA() {

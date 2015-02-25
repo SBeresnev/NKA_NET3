@@ -8,17 +8,13 @@ import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.OPerson;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.Person;
-import nla.local.services.IPassportService;
 import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
-import nla.local.services.impl.subjects.PassportServiceImp;
-import nla.local.services.util.RespNCA;
 import nla.local.util.CodeGenerator;
 import org.apache.log4j.Logger;
 import org.junit.Before;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -89,20 +85,6 @@ public class SubjectTest
         if (pm == null || subjectServDictList.size() == 0 || orgStructDictList.size() == 0
             || stateDictList.size() == 0 || torStructDictList.size() == 0 || allDictList.size() == 0 )
             assert (false);
-
-    }
-
-    @Test
-    public void MVDServiceTest()
-    {
-        IPassportService service = new PassportServiceImp().getPassportPort();
-        //invoke business method
-        RespNCA resp = service.passportNCA("MP", "2415801", "3170583m002pb9", "", "", "", "");
-        if (resp.getError() == null) {
-            System.out.println(resp.getNAME()+resp.getSNAME()/*+etc+*/);
-        } else {
-            System.out.println(resp.getError());
-        }
 
     }
 
