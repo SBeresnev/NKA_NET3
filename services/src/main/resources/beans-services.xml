@@ -23,13 +23,24 @@
 
     <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
-
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
 
     </bean>
 
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
+
+    <bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate"
+          p:marshaller-ref="jaxbMarshaller"
+          p:unmarshaller-ref="jaxbMarshaller"
+          p:defaultUri="http://172.31.11.242:8080/MVDWS/Passport"
+          p:messageSender-ref="messageSender">
+        <constructor-arg ref="messageFactory"/>
+    </bean>
+
+    <bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponentsMessageSender"/>
+    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"/>
+    <bean id="jaxbMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller" p:contextPath="by.nca"/>
 
 
 </beans>
