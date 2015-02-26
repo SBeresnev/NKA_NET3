@@ -1,9 +1,10 @@
 
 package nla.local.pojos.subjects;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import org.hibernate.annotations.Immutable;
+
+import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 
 
 /**
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "PassportNCA")
 @XmlType(name = "PassportNCA", propOrder = {
         "ser",
         "num",
@@ -41,7 +43,18 @@ import javax.xml.bind.annotation.XmlType;
         "lastname",
         "bdate"
 })
+@Entity
+@Table(name="V_MVD_SUBJECTS_OUTPUT")
+@Immutable
 public class PassportNCA {
+
+
+    @XmlTransient
+    private Integer owner_id;
+    @XmlTransient
+    private Integer org_id;
+    @XmlTransient
+    private Integer rownum;
 
     protected String ser;
     protected String num;
@@ -51,6 +64,37 @@ public class PassportNCA {
     protected String lastname;
     protected String bdate;
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "OWNER_ID")
+    public Integer getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(Integer owner_id) {
+        this.owner_id = owner_id;
+    }
+
+    @Column(name = "RWNUM")
+    public Integer getRownum() {
+        return rownum;
+    }
+
+    public void setRownum(Integer rownum) {
+        this.rownum = rownum;
+    }
+
+    @Column(name = "ORG_ID")
+    public Integer getOrg_id() {
+        return org_id;
+    }
+
+    public void setOrg_id(Integer org_id) {
+        this.org_id = org_id;
+    }
+
+
     /**
      * Gets the value of the ser property.
      *
@@ -59,6 +103,8 @@ public class PassportNCA {
      *     {@link String }
      *
      */
+
+    @Column(name = "DOC_SERIAL")
     public String getSer() {
         return ser;
     }
@@ -83,6 +129,7 @@ public class PassportNCA {
      *     {@link String }
      *
      */
+    @Column(name = "DOC_NUMBER")
     public String getNum() {
         return num;
     }
@@ -107,6 +154,7 @@ public class PassportNCA {
      *     {@link String }
      *
      */
+    @Column(name = "PERSONAL_NUMBER")
     public String getIdentif() {
         return identif;
     }
@@ -131,6 +179,7 @@ public class PassportNCA {
      *     {@link String }
      *
      */
+    @Column(name = "SURNAME")
     public String getSurname() {
         return surname;
     }
@@ -155,6 +204,7 @@ public class PassportNCA {
      *     {@link String }
      *
      */
+    @Column(name = "FIRSTNAME")
     public String getName() {
         return name;
     }
@@ -179,6 +229,7 @@ public class PassportNCA {
      *     {@link String }
      *
      */
+    @Column(name = "FATHERNAME")
     public String getLastname() {
         return lastname;
     }
@@ -203,6 +254,7 @@ public class PassportNCA {
      *     {@link String }
      *
      */
+    @Column(name = "BIRTH_DATE")
     public String getBdate() {
         return bdate;
     }

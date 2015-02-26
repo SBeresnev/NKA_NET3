@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation=
                "http://www.springframework.org/schema/beans
                 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
@@ -23,7 +24,6 @@
 
     <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
-
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
 
@@ -31,5 +31,20 @@
 
     <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
+    <bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate"
+          p:marshaller-ref="jaxbMarshaller"
+          p:unmarshaller-ref="jaxbMarshaller"
+          p:defaultUri="http://172.31.11.242:8080/MVDWS/Passport"
+          p:messageSender-ref="messageSender">
+        <constructor-arg ref="messageFactory"/>
+    </bean>
+
+    <bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponentsMessageSender"
+          p:readTimeout="120000"
+          p:connectionTimeout="120000"/>
+
+    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"/>
+
+    <bean id="jaxbMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller" p:contextPath="nla.local.services.MVDutil"/>
 
 </beans>

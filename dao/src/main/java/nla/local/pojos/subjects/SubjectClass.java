@@ -6,9 +6,8 @@ package nla.local.pojos.subjects;
  * Created by Serega on 22.02.2015.
  */
 
-
-
 public enum SubjectClass {
+
     PRV("private"),
     JUR("juridical"),
     OFC("official"),
@@ -24,7 +23,6 @@ public enum SubjectClass {
     public String toString() {
         return value;
     }
-
 
     public int toInt(SubjectClass value) {
 
@@ -57,4 +55,5 @@ public enum SubjectClass {
                 return UKW;
         }
     }
+
 };

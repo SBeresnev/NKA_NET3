@@ -4,10 +4,11 @@ package nla.local.pojos.subjects;
  * Created by beresnev on 24.02.2015.
  */
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.*;
 
 
 /**
@@ -105,80 +106,129 @@ import javax.xml.bind.annotation.XmlType;
         "ttypecityl",
         "ttypestreetl"
 })
+@Entity
+@Table(name="MVD_SUBJECTS_INPUT")
 public class RespNCA {
+
+
+    @Id
+    @Column(name = "OWNER_ID")
+    @XmlTransient
+    private Integer owner_id;
+
+    @XmlTransient
+    @Column(name = "ORG_ID")
+    private Integer org_id;
+
 
     @XmlElement(name = "APP")
     protected String app;
     @XmlElement(name = "AREA_L_TXT")
+    @Column(name = "AREA_L_TXT")
     protected String arealtxt;
     @XmlElement(name = "BDATE")
+    @Column(name = "BDATE")
     protected String bdate;
     @XmlElement(name = "CITIZENSHIP")
+    @Column(name = "CITIZENSHIP")
     protected Long citizenship;
     @XmlElement(name = "CITIZENSHIP_TXT")
+    @Column(name = "CITIZENSHIP_TXT")
     protected String citizenshiptxt;
     @XmlElement(name = "CITY_L_TXT")
+    @Column(name = "CITY_L_TXT")
     protected String cityltxt;
     @XmlElement(name = "COUNTRY_L_TXT")
+    @Column(name = "COUNTRY_L_TXT")
     protected String countryltxt;
     @XmlElement(name = "c_AREA_L")
+    @Column(name = "c_AREA_L")
     protected Long careal;
     @XmlElement(name = "c_CITY_L")
+    @Column(name = "c_CITY_L")
     protected Long ccityl;
     @XmlElement(name = "c_COUNTRY_L")
+    @Column(name = "c_COUNTRY_L")
     protected Long ccountryl;
     @XmlElement(name = "c_REGION_L")
+    @Column(name = "c_REGION_L")
     protected Long cregionl;
     @XmlElement(name = "c_STREET_L")
+    @Column(name = "c_STREET_L")
     protected Long cstreetl;
     @XmlElement(name = "c_TYPE_CITY_L")
+    @Column(name = "c_TYPE_CITY_L")
     protected Long ctypecityl;
     @XmlElement(name = "c_TYPE_STREET_L")
+    @Column(name = "c_TYPE_STREET_L")
     protected Long ctypestreetl;
     @XmlElement(name = "DOCUMENT")
+    @Column(name = "DOCUMENT")
     protected String document;
     @XmlElement(name = "DOC_TYPE")
+    @Column(name = "DOC_TYPE")
     protected Long doctype;
     @XmlElement(name = "DOC_TYPE_TXT")
+    @Column(name = "DOC_TYPE_TXT")
     protected String doctypetxt;
+    @Column(name = "ERROR")
     protected String error;
     @XmlElement(name = "HOUSE")
+    @Column(name = "HOUSE")
     protected String house;
     @XmlElement(name = "IDENTIF")
+    @Column(name = "IDENTIF")
     protected String identif;
     @XmlElement(name = "KORPS")
+    @Column(name = "KORPS")
     protected String korps;
     @XmlElement(name = "NAME")
+    @Column(name = "NAME")
     protected String name;
     @XmlElement(name = "REGION_L_TXT")
+    @Column(name = "REGION_L_TXT")
     protected String regionltxt;
     @XmlElement(name = "SNAME")
+    @Column(name = "SNAME")
     protected String sname;
     @XmlElement(name = "STATUS")
+    @Column(name = "STATUS")
     protected String status;
     @XmlElement(name = "STATUS_CODE")
+    @Column(name = "STATUS_CODE")
     protected Long statuscode;
     @XmlElement(name = "STREET_L_TXT")
+    @Column(name = "STREET_L_TXT")
     protected String streetltxt;
     @XmlElement(name = "SURNAME")
+    @Column(name = "SURNAME")
     protected String surname;
     @XmlElement(name = "TYPE_CITY_L_TXT")
+    @Column(name = "TYPE_CITY_L_TXT")
     protected String typecityltxt;
     @XmlElement(name = "TYPE_STREET_L_TXT")
+    @Column(name = "TYPE_STREET_L_TXT")
     protected String typestreetltxt;
     @XmlElement(name = "t_AREA_L")
+    @Column(name = "t_AREA_L")
     protected Long tareal;
     @XmlElement(name = "t_CITY_L")
+    @Column(name = "t_CITY_L")
     protected Long tcityl;
     @XmlElement(name = "t_COUNTRY_L")
+    @Column(name = "t_COUNTRY_L")
     protected Long tcountryl;
     @XmlElement(name = "t_REGION_L")
+    @Column(name = "t_REGION_L")
     protected Long tregionl;
     @XmlElement(name = "t_STREET_L")
+    @Column(name = "t_STREET_L")
     protected Long tstreetl;
     @XmlElement(name = "t_TYPE_CITY_L")
+    @Column(name = "t_TYPE_CITY_L")
     protected Long ttypecityl;
     @XmlElement(name = "t_TYPE_STREET_L")
+    @Column(name = "t_TYPE_STREET_L")
     protected Long ttypestreetl;
 
     /**
@@ -189,6 +239,23 @@ public class RespNCA {
      *     {@link String }
      *
      */
+
+    public Integer getOwner_id() {
+        return owner_id;
+    }
+
+    public void setOwner_id(Integer owner_id) {
+        this.owner_id = owner_id;
+    }
+
+    public Integer getOrg_id() {
+        return org_id;
+    }
+
+    public void setOrg_id(Integer org_id) {
+        this.org_id = org_id;
+    }
+
     public String getAPP() {
         return app;
     }

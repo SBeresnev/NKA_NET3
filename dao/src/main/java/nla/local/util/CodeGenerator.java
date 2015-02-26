@@ -28,9 +28,9 @@ public class CodeGenerator  {
         this.sessionFactory = sessionFactory;
     }
 
-    public  Object generate(String hql) throws HibernateException {
+    public  Object generate(String param) throws HibernateException {
 
-        String conn_str ="SELECT "+hql + " from dual";
+        String conn_str ="SELECT "+param + " from dual";
 
         SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(conn_str);
 

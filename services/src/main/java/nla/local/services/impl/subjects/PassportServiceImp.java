@@ -6,7 +6,6 @@ import nla.local.services.IPassportService;
 import nla.local.services.MVDutil.PassportNCAResponse;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
@@ -21,12 +20,15 @@ public class PassportServiceImp extends PSubjectServiceImp implements IPassportS
     @Autowired
     WebServiceTemplate webServiceTemplate;
 
-    public PassportServiceImp(@Qualifier("sessionFactory") SessionFactory sessionFactory) {
+    @Autowired
+    public PassportServiceImp(SessionFactory sessionFactory) {
         super(sessionFactory);
     }
 
     @Override
     public RespNCA findSubject(PassportNCA PassNCA) {
+
+
 
         JAXBElement<PassportNCAResponse> jaxrespNCA = (JAXBElement<PassportNCAResponse>) webServiceTemplate.marshalSendAndReceive(PassNCA);
 

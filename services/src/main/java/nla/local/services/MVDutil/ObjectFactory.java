@@ -15,7 +15,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each
  * Java content interface and Java element interface
- * generated in the by.nca package.
+ * generated in the  package.
  */
 @XmlRegistry
 public class ObjectFactory {
@@ -24,7 +24,7 @@ public class ObjectFactory {
     private final static QName _PassportNCAResponse_QNAME = new QName("http://MVDWebServices/", "PassportNCAResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: by.nca
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: 
      *
      */
     public ObjectFactory() {
