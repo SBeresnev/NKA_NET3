@@ -21,5 +21,4 @@ public enum SubjectClass {
         return value;
     }
 
-
 };
