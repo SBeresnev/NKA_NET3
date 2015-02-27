@@ -16,7 +16,7 @@ public enum SubjectClass {
     public String toString() {
         return value;
     }
-    public int toInt(SubjectClass value) {
+    public static int toInt(SubjectClass value) {
         switch(value) {
             case JUR: return 200;
             case PRV: return 100;
