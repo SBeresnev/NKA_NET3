@@ -20,6 +20,4 @@ public enum SubjectClass {
     public String toString() {
         return value;
     }
-
-
 };

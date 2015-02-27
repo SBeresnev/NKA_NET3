@@ -11,7 +11,6 @@ import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.EnumDict;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.PPerson;
-import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
@@ -38,11 +37,6 @@ public class SubjectController {
     @Autowired
     public JSubjectServiceImp jService;
 
-    @Autowired
-    public DictionaryServiceImp commonDict;
-
-    private List<Dict> subjectServDictList;
-
     @RequestMapping(value = "/private", method = RequestMethod.GET )
     public List getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
         List result_p  = new ArrayList();
@@ -59,22 +53,6 @@ public class SubjectController {
             result_p.addAll(jService.findByNameType(searchSubjectForm.getName(), searchSubjectForm.getNumber(), searchSubjectForm.getType()));
         }
         return result_p;
-    }
-
-    @RequestMapping(value = "/subjectTypes", method = RequestMethod.GET )
-    public List<Dict> getSubjectType() throws DaoException {
-
-        List<Dict> ld = commonDict.getDict(EnumDict.SubjectType);
-
-        return ld;
-    }
-
-    @RequestMapping(value = "/states", method = RequestMethod.GET )
-    public List<Dict> getStates() throws DaoException {
-        DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Dict.class);
-
-
-        return commonDict.getCriterion(detachedCriteria);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT )
@@ -98,20 +76,13 @@ public class SubjectController {
     @RequestMapping(value = "/juridical", method = RequestMethod.GET)
     public List<JPerson> getJuridicalPerson(SubjectForm subjectForm)
     {
-
         List<JPerson> result_j = (List<JPerson>) jService.getAll();
-
         JPerson jp = jService.getSubject(result_j.get(0).getSubjectId());
-
         DetachedCriteria.forClass(Dict.class)
                 .add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt()))
                 .add(Restrictions.eq("parent_code", 600));
-
         result_j.clear();
-
         result_j= jService.findByNameType("Upd", null, subjectForm.getSubjectId());
-
         return result_j;
     }
-
 }
