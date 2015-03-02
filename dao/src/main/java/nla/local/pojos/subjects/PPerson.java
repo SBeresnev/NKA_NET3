@@ -50,10 +50,10 @@ public class PPerson extends Person implements Serializable{
     @Column(name = "PREV_ADDRESS")
     public String address;
 
-    /*
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ADDRESS_ID")
-    public Address address;*/
+    @Column(name = "REMARK")
+    public String remark;
+
+
 
     @Override
     public boolean equals(Object o) {

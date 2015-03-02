@@ -1,5 +1,7 @@
 package nla.local;
 
+import nla.local.dao.exceptions.DaoException;
+import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.PassportNCA;
 import nla.local.pojos.subjects.RespNCA;
 import nla.local.services.impl.subjects.PassportServiceImp;
@@ -23,7 +25,7 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
-@TransactionConfiguration(defaultRollback = false)
+@TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class MVDTest {
 
@@ -40,21 +42,45 @@ public class MVDTest {
     @Before
     public  void setList()
     {
-        pl = psi.getSession().createCriteria(PassportNCA.class).add(Restrictions.between("rownum", 101, 250)).list();//le("rownum", 100)).list();
+        pl = psi.getSession().createCriteria(PassportNCA.class).add(Restrictions.between("rownum", 256, 500)).list();
+
     }
 
     @Test
     @Transactional
+    public void MVDSingleTest()
+    {
+        PassportNCA ps = new PassportNCA();
+
+        ps.setIdentif("4230256C014PB7");
+        ps.setSer("AB");
+        ps.setNum("1176453");
+
+        RespNCA resp = psi.findSubject(ps);
+
+        PPerson pp =psi.casttoPerson(resp);
+
+
+        try { psi.addSubject(pp); }
+        catch (DaoException e) { e.printStackTrace(); assert (false); }
+
+        if (pp.personalNumber != null) assert (true);
+
+
+
+    }
+
+
     public void MVDServiceTest()
     {
 
        //scg.update(mvdsubjectsinputcleaner);
 
-        Integer i = 0;
+        for (int i = 0; i <pl.size() ; i++) {
 
-        for (PassportNCA pass : pl) {
+           //for (PassportNCA pass : pl) {
 
-            PassportNCA ps  =  pass;
+            PassportNCA ps  =  pl.get(i);
 
             ps.setSer(Converter.convertText(ps.getSer(), Converter.ConvertType.CYR2LAT));
 
@@ -66,23 +92,22 @@ public class MVDTest {
                 ps.setSurname(null);
 
             }
-            RespNCA resp = psi.findSubject(ps);
+            try {
+                RespNCA resp = psi.findSubject(ps);
 
-            resp.setOrg_id(ps.getOrg_id());
-            resp.setOwner_id(ps.getOwner_id());
+                resp.setOrg_id(ps.getOrg_id());
+                resp.setOwner_id(ps.getOwner_id());
 
-            System.out.println("Number of Objects --- " + i);
-            i++;
-            psi.getSession().save(resp);
+                System.out.println("Number of Objects --- " + i);
+                i++;
+                psi.getSession().save(resp);
+
+            } catch (Exception p)
+            {
+                System.out.print(p.getMessage());
+                System.out.print(p.getCause().getMessage());
+            }
         }
-
-
-        /*List<Object> ty = scg.generate_obj(getsubjectsinput);
-          PassportNCA PassNCA = new ObjectFactory().createPassportNCA();
-          PassNCA.setSer("MP");
-          PassNCA.setNum("2415801");
-          PassNCA.setIdentif("3170583m002pb9");
-          RespNCA rNCA = psi.findSubject(PassNCA); */
 
     }
 

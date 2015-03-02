@@ -46,9 +46,8 @@
                 <prop key="hibernate.connection.url" >jdbc:oracle:thin:@nca-vm-db:1521/win.minsk.nca</prop>
                 <prop key="cache.use_second_level_cache">false</prop-->
 
-                <prop key="default_schema">SERGEI</prop>
+                <prop key="default_schema">NKA_NET3_DEV</prop>
                 <prop key="hibernate.show_sql">true</prop>
-
                 <prop key="debug">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">validate</prop>

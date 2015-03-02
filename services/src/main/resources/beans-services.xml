@@ -39,9 +39,7 @@
         <constructor-arg ref="messageFactory"/>
     </bean>
 
-    <bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponentsMessageSender"
-          p:readTimeout="120000"
-          p:connectionTimeout="120000"/>
+    <bean id="messageSender" class="org.springframework.ws.transport.http.HttpComponentsMessageSender" p:readTimeout="30000" p:connectionTimeout="30000"/>
 
     <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"/>
 

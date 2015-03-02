@@ -50,7 +50,6 @@ public class JPerson extends Person implements Serializable{
     public Date bothRegDate;
 
     @Column(name = "REMARK")
-    @JoinColumnOrFormula( formula=@JoinFormula(value="juridical", referencedColumnName="DTYPE"))
     public String remark;
 
     @Column(name = "PREV_ADDRESS")

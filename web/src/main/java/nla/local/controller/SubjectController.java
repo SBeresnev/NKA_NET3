@@ -18,6 +18,7 @@ import nla.local.services.impl.subjects.PSubjectServiceImp;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,7 @@ public class SubjectController {
     @Autowired
     public OSubjectServiceImp oService;
 
+    @Qualifier("PSubjectServiceImp")
     @Autowired
     public PSubjectServiceImp pService;
 
@@ -73,7 +75,7 @@ public class SubjectController {
         JPerson jp = jService.getSubject(result_j.get(0).getSubjectId());
         DetachedCriteria.forClass(Dict.class)
                 .add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt()))
-                .add(Restrictions.eq("parent_code", 600));
+                .add(Restrictions.eq("parent_code", SubjectClass.toInt(SubjectClass.OFC)));
         result_j.clear();
         result_j= jService.findByNameType("Upd", null, subjectForm.getSubjectId());
         return result_j;

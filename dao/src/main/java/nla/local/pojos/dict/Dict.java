@@ -73,6 +73,12 @@ public class Dict implements IDict {
         this.code_short_name = code_short_name;
     }
 
+    public Dict() {};
+
+    public Dict(DictPk pk) {
+        this.analytic_type = pk.getAnalytic_type();
+        this.code_id = pk.getCode_id();
+    }
 
 
 }

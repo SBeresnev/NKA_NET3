@@ -4,6 +4,7 @@ package nla.local.pojos.subjects;
  * из таблицы ANALYTICCODES, ANALYTIC_TYPE = 110
  * Created by Serega on 22.02.2015.
  */
+
 public enum SubjectClass {
     PRV("private"),
     JUR("juridical"),

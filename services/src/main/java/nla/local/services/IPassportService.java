@@ -1,5 +1,6 @@
 package nla.local.services;
 
+import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.PassportNCA;
 import nla.local.pojos.subjects.RespNCA;
 
@@ -9,7 +10,9 @@ import nla.local.pojos.subjects.RespNCA;
 
 public interface IPassportService {
 
-   RespNCA findSubject(PassportNCA PassNCA);
+   public RespNCA findSubject(PassportNCA PassNCA);
+   public PPerson casttoPerson(RespNCA resp);
+
 
 }
 

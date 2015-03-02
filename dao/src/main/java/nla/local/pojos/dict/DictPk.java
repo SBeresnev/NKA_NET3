@@ -8,6 +8,22 @@ import java.io.Serializable;
 public class DictPk implements Serializable{
 
 
+    public Integer getCode_id() {
+        return code_id;
+    }
+
+    public void setCode_id(Integer code_id) {
+        this.code_id = code_id;
+    }
+
+    public Integer getAnalytic_type() {
+        return analytic_type;
+    }
+
+    public void setAnalytic_type(Integer analytic_type) {
+        this.analytic_type = analytic_type;
+    }
+
     private Integer code_id;
     private Integer analytic_type;
 
