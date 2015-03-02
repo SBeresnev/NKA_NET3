@@ -9,12 +9,11 @@ import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.EnumDict;
-import nla.local.pojos.subjects.JPerson;
-import nla.local.pojos.subjects.PPerson;
-import nla.local.pojos.subjects.SubjectClass;
+import nla.local.pojos.subjects.*;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
+import nla.local.services.impl.subjects.PassportServiceImp;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,10 @@ public class SubjectController {
     @Qualifier("PSubjectServiceImp")
     @Autowired
     public PSubjectServiceImp pService;
+
+    @Autowired
+    public PassportServiceImp passService;
+
 
     @Autowired
     public JSubjectServiceImp jService;
@@ -66,6 +69,22 @@ public class SubjectController {
             PPerson pPerson = pService.getSubject( subjectForm.getSubjectId());
             pService.refreshSubject(subjectForm.updatePPerson(pPerson));
         }
+    }
+
+    @RequestMapping(value = "/mvd", method = RequestMethod.GET)
+    public PPerson getMVDPerson(SubjectForm subjectForm)
+    {
+        PassportNCA ps = new PassportNCA();
+
+        ps.setIdentif("4230256C014PB7");
+        ps.setSer("AB");
+        ps.setNum("1176453");
+
+        RespNCA resp = passService.findSubject(ps);
+        PPerson pp =passService.casttoPerson(resp);
+
+        return pp;
+
     }
 
     @RequestMapping(value = "/juridical", method = RequestMethod.GET)

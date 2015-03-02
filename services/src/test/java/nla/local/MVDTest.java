@@ -5,7 +5,6 @@ import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.PassportNCA;
 import nla.local.pojos.subjects.RespNCA;
 import nla.local.services.impl.subjects.PassportServiceImp;
-import nla.local.util.CodeGenerator;
 import nla.local.util.Converter;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Before;
@@ -34,9 +33,6 @@ public class MVDTest {
     @Autowired
     PassportServiceImp psi;
 
-    @Autowired
-    public CodeGenerator scg;
-
     private List<PassportNCA> pl;
 
     @Before
@@ -57,16 +53,12 @@ public class MVDTest {
         ps.setNum("1176453");
 
         RespNCA resp = psi.findSubject(ps);
-
         PPerson pp =psi.casttoPerson(resp);
-
 
         try { psi.addSubject(pp); }
         catch (DaoException e) { e.printStackTrace(); assert (false); }
 
         if (pp.personalNumber != null) assert (true);
-
-
 
     }
 
@@ -77,8 +69,6 @@ public class MVDTest {
        //scg.update(mvdsubjectsinputcleaner);
 
         for (int i = 0; i <pl.size() ; i++) {
-
-           //for (PassportNCA pass : pl) {
 
             PassportNCA ps  =  pl.get(i);
 
