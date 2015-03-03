@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -23,10 +24,16 @@ import java.util.List;
 @Transactional(propagation = Propagation.SUPPORTS)
 public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionaryService {
 
+    /* hash for most common dicts */
+
+    private HashMap<EnumDict,List<Dict>> common ;
+
     @Autowired
     public DictionaryServiceImp(SessionFactory sessionFactory)
     {
         super(sessionFactory);
+
+        common = new HashMap<EnumDict, List<Dict>>();
 
     }
 
@@ -58,7 +65,6 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
 
             e.printStackTrace();
         }
-
 
         return ret_val;
 
@@ -103,9 +109,19 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
     @Override
     public List<Dict> getDict(EnumDict code_type) {
 
+        List<Dict> ret_val = null;
+
         DetachedCriteria dc = DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type", code_type.toInt()));
 
-        List<Dict> ret_val = this.getCriterion(dc);
+        if(code_type == EnumDict.SubjectType || code_type == EnumDict.OrgStruct || code_type == EnumDict.TorStruct || code_type == EnumDict.State ){
+
+          if(common.containsKey(code_type) == false)
+              common.put(code_type,this.getCriterion(dc));
+
+            return common.get(code_type);
+        }
+
+        ret_val = this.getCriterion(dc);
 
         return ret_val;
 

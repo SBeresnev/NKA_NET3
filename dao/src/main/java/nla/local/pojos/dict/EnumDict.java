@@ -25,11 +25,13 @@ public enum EnumDict {
         this.value = value;
     }
 
-    public int toInt() {
+
+    public  int toInt() {
         return value;
     }
 
     public static EnumDict fromInt(int value) {
+
         switch(value) {
 
             case 220: return OrgStruct;

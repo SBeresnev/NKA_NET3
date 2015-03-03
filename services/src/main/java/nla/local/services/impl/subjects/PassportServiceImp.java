@@ -1,13 +1,17 @@
 package nla.local.services.impl.subjects;
 
 import nla.local.pojos.dict.Dict;
-import nla.local.pojos.dict.DictPk;
+import nla.local.pojos.dict.EnumDict;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.PassportNCA;
 import nla.local.pojos.subjects.RespNCA;
 import nla.local.services.IPassportService;
 import nla.local.services.MVDutil.PassportNCAResponse;
+import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.util.CodeGenerator;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.Predicate;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +27,17 @@ import java.text.SimpleDateFormat;
 @Service
 public class PassportServiceImp extends PSubjectServiceImp implements IPassportService{
 
+    private static Logger log = Logger.getLogger(PassportServiceImp.class);
+
+
     @Autowired
     WebServiceTemplate webServiceTemplate;
 
     @Autowired
     public CodeGenerator scg;
+
+    @Autowired
+    public DictionaryServiceImp commonDict;
 
     @Autowired
     public PassportServiceImp(SessionFactory sessionFactory) {
@@ -37,11 +47,18 @@ public class PassportServiceImp extends PSubjectServiceImp implements IPassportS
     @Override
     public RespNCA findSubject(PassportNCA PassNCA) {
 
+        RespNCA ret_val = null;
+
+        try {
+
         JAXBElement<PassportNCAResponse> jaxrespNCA = (JAXBElement<PassportNCAResponse>) webServiceTemplate.marshalSendAndReceive(PassNCA);
 
-        RespNCA ret_val = jaxrespNCA.getValue().getReturn();
+        ret_val = jaxrespNCA.getValue().getReturn();
+
+        } catch (Exception ex) {log.error(ex.getStackTrace().toString());}
 
         return ret_val;
+
     }
 
     public PPerson casttoPerson(RespNCA resp)
@@ -53,12 +70,26 @@ public class PassportServiceImp extends PSubjectServiceImp implements IPassportS
         p.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
 
         p.firstname = resp.getNAME();
-        p.fathername = resp.getSURNAME();
+        p.fathername = resp.getSNAME();
         p.surname = resp.getSURNAME();
 
         if (resp.getDOCTYPE() == 54100001)
-        p.sitizens = new Dict(new DictPk(112,200));      /*РЕСПУБЛИКА БЕЛАРУСЬ*/
-        p.subjectType = new Dict(new DictPk(110,110)); /*Граждане Республики Беларусь, имеющие паспорт нового образца*/
+        p.sitizens = CollectionUtils.find(commonDict.getDict(EnumDict.State), new Predicate() {
+            public boolean evaluate(Object o) {
+                Dict c = (Dict) o;
+                return c.getCode_id().equals(112);
+            }
+        });
+        /*new Dict(new DictPk(112,200));      РЕСПУБЛИКА БЕЛАРУСЬ*/
+
+
+        p.subjectType = CollectionUtils.find(commonDict.getDict(EnumDict.SubjectType), new Predicate() {
+            public boolean evaluate(Object o) {
+                Dict c = (Dict) o;
+                return c.getCode_id().equals(110);
+            }
+        });
+         /* new Dict(new DictPk(110,110)); /*Граждане Республики Беларусь, имеющие паспорт нового образца*/
 
         p.address = "РЕСПУБЛИКА БЕЛАРУСЬ; " + resp.getAREALTXT() + "; ";
         p.address += resp.getREGIONLTXT() != null ? resp.getREGIONLTXT()+" р-н ; ": "";

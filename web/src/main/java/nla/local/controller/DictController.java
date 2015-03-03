@@ -25,6 +25,7 @@ public class DictController {
 
     @RequestMapping(value = "/states", method = RequestMethod.GET )
     public List<Dict> getStates() throws DaoException {
+
         return commonDict.getDict(EnumDict.State);
     }
 
