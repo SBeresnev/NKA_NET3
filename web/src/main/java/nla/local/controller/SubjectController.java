@@ -90,7 +90,7 @@ public class SubjectController {
     @RequestMapping(value = "/juridical", method = RequestMethod.GET)
     public List<JPerson> getJuridicalPerson(SubjectForm subjectForm)
     {
-        List<JPerson> result_j = (List<JPerson>) jService.getAll();
+        List<JPerson> result_j = jService.getAll();
         JPerson jp = jService.getSubject(result_j.get(0).getSubjectId());
         DetachedCriteria.forClass(Dict.class)
                 .add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt()))
