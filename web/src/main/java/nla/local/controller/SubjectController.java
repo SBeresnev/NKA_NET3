@@ -74,6 +74,8 @@ public class SubjectController {
     @RequestMapping(value = "/mvd", method = RequestMethod.GET)
     public PPerson getMVDPerson(SubjectForm subjectForm)
     {
+        PPerson pp = null;
+
         PassportNCA ps = new PassportNCA();
 
         ps.setIdentif("4230256C014PB7");
@@ -81,7 +83,7 @@ public class SubjectController {
         ps.setNum("1176453");
 
         RespNCA resp = passService.findSubject(ps);
-        PPerson pp =passService.casttoPerson(resp);
+        if (resp != null) pp =passService.casttoPerson(resp);
 
         return pp;
 

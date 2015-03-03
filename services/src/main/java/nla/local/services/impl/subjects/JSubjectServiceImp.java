@@ -29,7 +29,8 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
     private DetachedCriteria query = DetachedCriteria.forClass(JPerson.class).add(Restrictions.eq("dtype", SubjectClass.JUR.toString()));
 
     @Autowired
-    public JSubjectServiceImp(SessionFactory sessionFactory) {
+    public JSubjectServiceImp(SessionFactory sessionFactory)
+    {
 
         super(sessionFactory);
 
@@ -50,7 +51,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
+            log.error(e.getStackTrace().toString());
         }
         return null;
     }
@@ -64,7 +65,9 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
 
         } catch (Exception e) {
-            e.printStackTrace();
+
+            log.error(e.getStackTrace().toString());
+
         }
 
         return null;
@@ -83,9 +86,9 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
     public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType )
     {
 
-        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query);
-
         log.info("Get " + " by name. Invoked JSubjectServiceImp.getByNameType" );
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query);
 
         List<JPerson> retval = new ArrayList<JPerson>();
 
