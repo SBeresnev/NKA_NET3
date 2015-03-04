@@ -83,7 +83,6 @@ public class SubjectController {
         List<PPerson> list = new ArrayList<PPerson>();
         list.add(pp);
         return list;
-
     }
 
     @RequestMapping(value = "/juridical", method = RequestMethod.GET)
