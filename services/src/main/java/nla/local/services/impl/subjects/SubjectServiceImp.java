@@ -33,7 +33,7 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
     }
 
     @Override
-    public void addSubject(T t) throws DaoException
+    public void add(T t) throws DaoException
     {
 
          super.add(t);

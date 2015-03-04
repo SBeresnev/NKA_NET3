@@ -8,7 +8,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 /**
@@ -67,45 +70,6 @@ import javax.xml.bind.annotation.*;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "respNCA", propOrder = {
-        "app",
-        "arealtxt",
-        "bdate",
-        "citizenship",
-        "citizenshiptxt",
-        "cityltxt",
-        "countryltxt",
-        "careal",
-        "ccityl",
-        "ccountryl",
-        "cregionl",
-        "cstreetl",
-        "ctypecityl",
-        "ctypestreetl",
-        "document",
-        "doctype",
-        "doctypetxt",
-        "error",
-        "house",
-        "identif",
-        "korps",
-        "name",
-        "regionltxt",
-        "sname",
-        "status",
-        "statuscode",
-        "streetltxt",
-        "surname",
-        "typecityltxt",
-        "typestreetltxt",
-        "tareal",
-        "tcityl",
-        "tcountryl",
-        "tregionl",
-        "tstreetl",
-        "ttypecityl",
-        "ttypestreetl"
-})
 @Entity
 @Table(name="MVD_SUBJECTS_INPUT")
 public class RespNCA {

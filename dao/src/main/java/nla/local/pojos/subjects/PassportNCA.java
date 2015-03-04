@@ -9,15 +9,6 @@ import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "PassportNCA")
-@XmlType(name = "PassportNCA", propOrder = {
-        "ser",
-        "num",
-        "identif",
-        "surname",
-        "name",
-        "lastname",
-        "bdate"
-})
 @Entity
 @Table(name="V_MVD_SUBJECTS_OUTPUT")
 @Immutable
@@ -31,12 +22,19 @@ public class PassportNCA {
     @XmlTransient
     private Integer rownum;
 
+    @XmlElement(name = "ser")
     protected String ser;
+    @XmlElement(name = "num")
     protected String num;
+    @XmlElement(name = "identif")
     protected String identif;
+    @XmlElement(name = "surname")
     protected String surname;
+    @XmlElement(name = "name")
     protected String name;
+    @XmlElement(name = "lastname")
     protected String lastname;
+    @XmlElement(name = "bdate")
     protected String bdate;
 
 

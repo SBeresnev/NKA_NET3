@@ -55,7 +55,7 @@ public class MVDTest {
         RespNCA resp = psi.findSubject(ps);
         PPerson pp =psi.casttoPerson(resp);
 
-        try { psi.addSubject(pp); }
+        try { psi.add(pp); }
         catch (DaoException e) { e.printStackTrace(); assert (false); }
 
         if (pp.personalNumber != null) assert (true);

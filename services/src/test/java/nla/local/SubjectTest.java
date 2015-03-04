@@ -85,8 +85,9 @@ public class SubjectTest
 
         Dict pm = CommonDict.getDict(pk);
 
-        if (pm == null || subjectServDictList.size() == 0 || orgStructDictList.size() == 0
-            || stateDictList.size() == 0 || torStructDictList.size() == 0 || allDictList.size() == 0 )
+        if (pm == null
+                || subjectServDictList.size() == 0 || orgStructDictList.size() == 0
+                || stateDictList.size() == 0 || torStructDictList.size() == 0 || allDictList.size() == 0 )
             assert (false);
 
     }
@@ -114,10 +115,9 @@ public class SubjectTest
     }
 
 
-
-
     public void AddOffSubject() {
-        log.info("Invoked SubjectTest.AddOffSubject()" );
+
+        log.info("Invoked SubjectTest.AddOffSubject" );
 
         boolean retval = true;
 
@@ -135,7 +135,7 @@ public class SubjectTest
 
                 op.org_kod =  torStructDictList.get(0);
                 op.orgname = "РУП \"Брестское агентство по государственной регистрации и земельному кадастру\"";
-                oService.addSubject(op);
+                oService.add(op);
 
             }
         }
@@ -176,7 +176,7 @@ public class SubjectTest
 
                 op.org_kod =  torStructDictList.get(0);
                 op.orgname = "РУП \"Брестское агентство по государственной регистрации и земельному кадастру\"";
-                oService.addSubject(op);
+                oService.add(op);
 
             }
 
@@ -228,7 +228,7 @@ public class SubjectTest
                 jp.regNumber = String.valueOf(123456000+i);
                 jp.unp = String.valueOf(159357258+i);
                 jp.bothRegDate = new Date();
-                jService.addSubject(jp);
+                jService.add(jp);
 
             }
 
@@ -286,7 +286,7 @@ public class SubjectTest
             jp.regNumber = String.valueOf(124566000+i) ;
             jp.unp = String.valueOf(159777758+i);
             jp.bothRegDate = new Date();
-            jService.addSubject(jp);
+            jService.add(jp);
         }
 
         List<JPerson> result_j= jService.findByNameType("Upd", null, subjectServDictList.get(14).getCode_id());
@@ -340,7 +340,7 @@ public class SubjectTest
                 pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
                 pp.sitizens = stateDictList.get(73);
 
-                pService.addSubject(pp);
+                pService.add(pp);
 
             }
 
@@ -402,7 +402,7 @@ public class SubjectTest
             pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
             pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
 
-            pService.addSubject(pp);
+            pService.add(pp);
 
         }
 

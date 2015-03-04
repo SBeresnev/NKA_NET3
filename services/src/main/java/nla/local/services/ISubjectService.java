@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface ISubjectService<T> extends IService<T> {
 
-    public void addSubject(T t) throws DaoException;
 
     public T getSubject(Serializable id) throws DaoException;
 
