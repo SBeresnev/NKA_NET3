@@ -4,12 +4,16 @@ package nla.local.controller;
  * Created by beresnev on 16.01.2015.
  */
 
+import forms.SearchMvdForm;
 import forms.SearchSubjectForm;
 import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.EnumDict;
-import nla.local.pojos.subjects.*;
+import nla.local.pojos.subjects.JPerson;
+import nla.local.pojos.subjects.PPerson;
+import nla.local.pojos.subjects.RespNCA;
+import nla.local.pojos.subjects.SubjectClass;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
@@ -72,18 +76,13 @@ public class SubjectController {
     }
 
     @RequestMapping(value = "/mvd", method = RequestMethod.GET)
-    public PPerson getMVDPerson(SubjectForm subjectForm)
+    public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm)
     {
-        PassportNCA ps = new PassportNCA();
-
-        ps.setIdentif("4230256C014PB7");
-        ps.setSer("AB");
-        ps.setNum("1176453");
-
-        RespNCA resp = passService.findSubject(ps);
-        PPerson pp =passService.casttoPerson(resp);
-
-        return pp;
+        RespNCA resp = passService.findSubject(searchMvdForm.createOrGetPassportNCAObj());
+        PPerson pp = passService.casttoPerson(resp);
+        List<PPerson> list = new ArrayList<PPerson>();
+        list.add(pp);
+        return list;
 
     }
 
@@ -96,7 +95,7 @@ public class SubjectController {
                 .add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt()))
                 .add(Restrictions.eq("parent_code", SubjectClass.toInt(SubjectClass.OFC)));
         result_j.clear();
-        result_j= jService.findByNameType("Upd", null, subjectForm.getSubjectId());
+        result_j = jService.findByNameType("Upd", null, subjectForm.getSubjectId());
         return result_j;
     }
 }
