@@ -1,9 +1,5 @@
 package nla.local.controller;
 
-/**
- * Created by beresnev on 16.01.2015.
- */
-
 import forms.SearchMvdForm;
 import forms.SearchSubjectForm;
 import forms.SubjectForm;
@@ -23,15 +19,15 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/subject")
-public class SubjectController {
+@RequestMapping({"/subject"})
+public class SubjectController
+{
 
     @Autowired
     public OSubjectServiceImp oService;
@@ -46,55 +42,63 @@ public class SubjectController {
     @Autowired
     public JSubjectServiceImp jService;
 
-    @RequestMapping(value = "/private", method = RequestMethod.GET )
-    public List getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
-        List result_p  = new ArrayList();
-        if(searchSubjectForm.getSubjectClass() == SubjectClass.PRV)
-           result_p.addAll(pService.findByFIOType( searchSubjectForm.surname, searchSubjectForm.firstname, searchSubjectForm.surname, searchSubjectForm.getNumber(), searchSubjectForm.getType()));
-        if(searchSubjectForm.getSubjectClass() == SubjectClass.JUR)
-           result_p.addAll(jService.findByNameType( searchSubjectForm.getName(), searchSubjectForm.getNumber(), searchSubjectForm.getType()));
+    @RequestMapping(value={"/private"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List getPerson(SearchSubjectForm searchSubjectForm)
+            throws DaoException
+    {
+        List result_p = new ArrayList();
+        if (searchSubjectForm.getSubjectClass() == SubjectClass.PRV) {
+            result_p.addAll(this.pService.findByFIOType(searchSubjectForm.surname, searchSubjectForm.firstname, searchSubjectForm.surname, searchSubjectForm.getNumber(), searchSubjectForm.getType()));
+        }
+        if (searchSubjectForm.getSubjectClass() == SubjectClass.JUR) {
+            result_p.addAll(this.jService.findByNameType(searchSubjectForm.getName(), searchSubjectForm.getNumber(), searchSubjectForm.getType()));
+        }
         return result_p;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT )
-    public void updatePerson(SubjectForm subjectForm) throws DaoException
+    @RequestMapping(value={"/update"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+    public void updatePerson(SubjectForm subjectForm)
+            throws DaoException
     {
-         if(subjectForm.getSubjectId() != null) {
-           PPerson pPerson = pService.getSubject(subjectForm.getSubjectId());
-           pService.refreshSubject(subjectForm.updatePPerson(pPerson));
-       }
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.PUT )
-    public void addPerson(SubjectForm subjectForm) throws DaoException
-    {
-        if(subjectForm.getSubjectId() != null) {
-            PPerson pPerson = pService.getSubject( subjectForm.getSubjectId());
-            pService.refreshSubject(subjectForm.updatePPerson(pPerson));
+        if (subjectForm.getSubjectId() != null)
+        {
+            PPerson pPerson = this.pService.getSubject(subjectForm.getSubjectId());
+            this.pService.refreshSubject(subjectForm.updatePPerson(pPerson));
         }
     }
 
-    @RequestMapping(value = "/mvd", method = RequestMethod.GET)
-    public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm) throws Exception {
+    @RequestMapping(value={"/add"}, method={org.springframework.web.bind.annotation.RequestMethod.PUT})
+    public void addPerson(SubjectForm subjectForm)
+            throws DaoException
+    {
+        if (subjectForm.getSubjectId() != null)
+        {
+            PPerson pPerson = this.pService.getSubject(subjectForm.getSubjectId());
+            this.pService.refreshSubject(subjectForm.updatePPerson(pPerson));
+        }
+    }
 
-
-        RespNCA resp = passService.findSubject(searchMvdForm.createOrGetPassportNCAObj());
-        PPerson pp = passService.casttoPerson(resp);
-        List<PPerson> list = new ArrayList<PPerson>();
+    @RequestMapping(value={"/mvd"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm)
+            throws Exception
+    {
+        RespNCA resp = this.passService.findSubject(searchMvdForm.createOrGetPassportNCAObj());
+        PPerson pp = this.passService.casttoPerson(resp);
+        List<PPerson> list = new ArrayList();
         list.add(pp);
         return list;
     }
 
-    @RequestMapping(value = "/juridical", method = RequestMethod.GET)
+    @RequestMapping(value={"/juridical"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<JPerson> getJuridicalPerson(SubjectForm subjectForm)
     {
-        List<JPerson> result_j = jService.getAll();
-        JPerson jp = jService.getSubject(result_j.get(0).getSubjectId());
-        DetachedCriteria.forClass(Dict.class)
-                .add(Restrictions.eq("analytic_type", EnumDict.SubjectType.toInt()))
-                .add(Restrictions.eq("parent_code", SubjectClass.toInt(SubjectClass.OFC)));
+        List<JPerson> result_j = this.jService.getAll();
+        JPerson jp = this.jService.getSubject(((JPerson)result_j.get(0)).getSubjectId());
+        DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type", Integer.valueOf(EnumDict.SubjectType.toInt()))).add(Restrictions.eq("parent_code", Integer.valueOf(SubjectClass.toInt(SubjectClass.OFC))));
+
+
         result_j.clear();
-        result_j = jService.findByNameType("Upd", null, subjectForm.getSubjectId());
+        result_j = this.jService.findByNameType("Upd", null, subjectForm.getSubjectId());
         return result_j;
     }
 }

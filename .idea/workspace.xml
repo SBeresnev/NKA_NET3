@@ -1,29 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment=" Tuesday change">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__asm_asm_3_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_2_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/src/test/java/nla/local/OtherTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/target/classes/nla/local/controller/SubjectController.class" afterPath="$PROJECT_DIR$/web/target/classes/nla/local/controller/SubjectController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/target/test-classes/nla/local/SubjectTest.class" afterPath="$PROJECT_DIR$/services/target/test-classes/nla/local/SubjectTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Addresses.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Addresses.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/exceptions/DaoException.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/exceptions/DaoException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/DictionaryServiceImp.java" afterPath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/DictionaryServiceImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/test/java/nla/local/MVDTest.java" afterPath="$PROJECT_DIR$/services/src/test/java/nla/local/MVDTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PSubjectServiceImp.java" afterPath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PSubjectServiceImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PassportServiceImp.java" afterPath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PassportServiceImp.java" />
+    <list default="true" id="eb346077-0913-4eee-9e2a-2e872c9bfe7f" name="Default" comment="Thursday  change">
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\artifacts\nka_net3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\artifacts\nka_net3_war.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\artifacts\nka_net3_war_exploded.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\artifacts\web.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\dataSources.ids" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\dataSources.local.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\dataSources.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__antlr_antlr_2_7_7.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__asm_asm_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__backport_util_concurrent_backport_util_concurrent_3_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__cglib_cglib_2_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__commons_collections_commons_collections_3_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__javassist_javassist_3_12_0_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__junit_junit_4_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__junit_junit_4_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__net_sf_ehcache_ehcache_1_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__net_sf_ehcache_ehcache_2_8_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__net_sf_ehcache_ehcache_core_2_4_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__net_sf_jsr107cache_jsr107cache_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__nla_local_services_1_0_SNAPSHOT.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_aspectj_aspectjtools_1_8_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hamcrest_hamcrest_core_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_common_hibernate_commons_annotations_4_0_5_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_core_3_6_10_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_core_4_2_12_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_core_4_3_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_core_4_3_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_core_4_3_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_core_4_3_6_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_ehcache_3_6_2_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_ehcache_4_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_entitymanager_3_6_10_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_hibernate_entitymanager_4_3_4_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_hibernate_javax_persistence_hibernate_jpa_2_0_api_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_jboss_jandex_1_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_1_spec_1_0_1_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\libraries\Maven__org_springframework_spring_test_2_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\.idea\uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\services\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\web\target\classes\forms\UserForm.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\web\target\classes\log4j.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\web\target\classes\nla\local\controller\AdressController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\web\target\classes\nla\local\controller\SubjectController.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\web\target\classes\nla\local\controller\WelcomeController.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="D:\users\beresnev\projects\NKA_NET3\nka_net3\services\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst" afterPath="D:\users\beresnev\projects\NKA_NET3\nka_net3\services\target\maven-status\maven-compiler-plugin\compile\default-compile\inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/nla/local/controller/DictController.java" afterPath="$PROJECT_DIR$/web/src/main/java/nla/local/controller/DictController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/SubjectClass.java" afterPath="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/SubjectClass.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" afterPath="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/SubjectServiceImp.java" afterPath="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/SubjectServiceImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" afterPath="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/src/main/resources/beans-services.xml" afterPath="$PROJECT_DIR$/services/src/main/resources/beans-services.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/target/classes/beans-services.xml" afterPath="$PROJECT_DIR$/services/target/classes/beans-services.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/dao.iml" afterPath="$PROJECT_DIR$/dao/dao.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dao/pom.xml" afterPath="$PROJECT_DIR$/dao/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/pom.xml" afterPath="$PROJECT_DIR$/services/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nka_net3.iml" afterPath="$PROJECT_DIR$/nka_net3.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/services.iml" afterPath="$PROJECT_DIR$/services/services.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/web.iml" afterPath="$PROJECT_DIR$/web/web.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/web_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/web_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -60,6 +95,16 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
       </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Oracle -XE TEST_BURAVEL" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -68,56 +113,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="MVDTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/MVDTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1853">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubjectClass.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/SubjectClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.45535713" vertical-offset="0" max-vertical-offset="714">
+              <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+              <folding>
+                <element signature="e#385#386#0" expanded="true" />
+                <element signature="e#419#420#0" expanded="true" />
+                <element signature="e#450#451#0" expanded="true" />
+                <element signature="e#478#479#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SubjectController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1411">
-              <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PSubjectServiceImp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PSubjectServiceImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="906" max-vertical-offset="2499">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1853">
+              <caret line="95" column="83" selection-start-line="95" selection-start-column="83" selection-end-line="95" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2703#2712#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dict.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1139">
-              <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-              <folding>
-                <element signature="method#Dict#1;class#Dict#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnumDict.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/EnumDict.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-              <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OtherTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OtherTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/OtherTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51829267" vertical-offset="0" max-vertical-offset="867">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+              <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DictController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/DictController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,24 +174,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubjectForm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/src/main/java/forms/SubjectForm.java">
+      <file leaf-file-name="PassportServiceImp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PassportServiceImp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1598">
-              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-              <folding>
-                <element signature="e#572#573#0" expanded="true" />
-                <element signature="e#604#605#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1581">
+              <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ServiceAspect.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/aspect/ServiceAspect.java">
+      <file leaf-file-name="Converter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/Converter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="867">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="346" max-vertical-offset="1054">
+              <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -150,35 +196,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="beans-services.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/src/main/resources/beans-services.xml">
+      <file leaf-file-name="RespNCA.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/RespNCA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.28" vertical-offset="0" max-vertical-offset="782">
-              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="16082">
+              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PassportNCA.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/PassportNCA.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="3604">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding>
-                <element signature="n#bean#1;n#beans#0;n#!!top" expanded="false" />
-                <element signature="n#bean#2;n#beans#0;n#!!top" expanded="false" />
+                <element signature="e#1123#1124#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DaoException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/exceptions/DaoException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="239" max-vertical-offset="714">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractAspectJAdvice.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.5.RELEASE/spring-aop-4.0.5.RELEASE.jar!/org/springframework/aop/aspectj/AbstractAspectJAdvice.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.52" vertical-offset="5821" max-vertical-offset="7038">
-              <caret line="410" column="21" selection-start-line="410" selection-start-column="21" selection-end-line="410" selection-end-column="21" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -202,12 +237,35 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/SubjectServiceImp.java" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/JSubjectServiceImp.java" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/OSubjectServiceImp.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgStructDict.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/TorStructDict.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/StateDict.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/EnumDict.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/SubjectTypeDict.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/OrgKod.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/SubjectType.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict_.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/DictPk.java" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/DictionaryServiceImp.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/OPerson.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Person.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/PPerson.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/IDict.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/JPerson.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/IDictionaryService.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/SubjectEnum.java" />
         <option value="$PROJECT_DIR$/web/src/main/java/forms/SubjectForm.java" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PSubjectServiceImp.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/OSubjectServiceImp.java" />
+        <option value="$PROJECT_DIR$/dao/pom.xml" />
+        <option value="$PROJECT_DIR$/dao/src/main/resources/beans-dao.xml" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/JSubjectServiceImp.java" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/ISubjectService.java" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/SubjectServiceImp.java" />
         <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/IPassport.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/util/PassportNCAResponse.java" />
@@ -216,43 +274,20 @@
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/util/PassportNCA.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/util/package-info.java" />
         <option value="$PROJECT_DIR$/dao/src/test/java/nla/local/DAOTest.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/IPassportServiceImp.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/util/Converter.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/PPerson.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/JPerson.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/DictPk.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java" />
         <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/IPassportService.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/SubjectClass.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/EnumDict.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/nla/local/controller/DictController.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/JSubjectServiceImp.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/ISubjectService.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/resources/beans-dao.xml" />
-        <option value="$PROJECT_DIR$/web/src/main/webapp/WEB-INF/rest-servlet.xml" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/RespNCA.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/PassportNCA.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/exceptions/DaoException.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/DictionaryServiceImp.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PassportServiceImp.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Addresses.java" />
-        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java" />
-        <option value="$PROJECT_DIR$/services/src/test/java/nla/local/MVDTest.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/SubjectServiceImp.java" />
-        <option value="$PROJECT_DIR$/services/pom.xml" />
-        <option value="$PROJECT_DIR$/dao/pom.xml" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/IPassportServiceImp.java" />
         <option value="$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java" />
-        <option value="$PROJECT_DIR$/services/src/test/java/nla/local/AppTest.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/exception/ServiceAspect.aj" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/aspect/ServiceAspect.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/ServiceAspect.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PSubjectServiceImp.java" />
-        <option value="$PROJECT_DIR$/services/src/test/java/nla/local/OtherTest.java" />
-        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/aspect/ServiceAspect.java" />
-        <option value="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/services/pom.xml" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/util/Converter.java" />
         <option value="$PROJECT_DIR$/services/src/main/resources/beans-services.xml" />
+        <option value="$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PassportServiceImp.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/RespNCA.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/PassportNCA.java" />
+        <option value="$PROJECT_DIR$/services/src/test/java/nla/local/MVDTest.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java" />
+        <option value="$PROJECT_DIR$/web/src/main/java/nla/local/controller/DictController.java" />
+        <option value="$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/SubjectClass.java" />
       </list>
     </option>
   </component>
@@ -283,10 +318,6 @@
           <option name="myItemId" value="nka_net3" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -295,30 +326,6 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="nka_net3" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="dao" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="dao" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
@@ -359,7 +366,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -441,6 +448,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -535,6 +546,18 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -589,44 +612,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nka_net3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nka_net3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aspect" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -685,6 +670,112 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nka_net3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subjects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -720,7 +811,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -735,12 +826,12 @@
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Spring3Example" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="options.lastSelected" value="configurable.group.appearance" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="FullScreen" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="OverrideImplement.combined" value="true" />
@@ -761,12 +852,10 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="964" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="SearchEverywhereHistoryKey" value="e&#9;FILE&#9;file://D:/users/beresnev/projects/NKA_NET3/nka_net3/dao/src/main/java/nla/local/dao/exceptions/DaoException.java" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="nla.local" />
-      <recent name="nla.local.services.aspect" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\users\beresnev\projects\NKA_NET3\nka_net3\dao\src\main\java\nla\local\pojos\subjects" />
@@ -775,133 +864,7 @@
       <recent name="nla.local" />
     </key>
   </component>
-  <component name="RestClientSettings">
-    <option name="REQUEST_HISTORY">
-      <list>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/nka_net3/subject/mvd" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/subject/mvd" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/nka_net3/dict/states" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/nka_net3/dict/subjectTypes" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/nka_net3/dict/OrgStruct" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/dict/states" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat7">
+  <component name="RunManager" selected="JUnit.MVDTest">
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1217,42 +1180,8 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="MVDTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="nla.local.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="services" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="PACKAGE_NAME" value="nla.local" />
-      <option name="MAIN_CLASS_NAME" value="nla.local.MVDTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="Tomcat7" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.53" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/nka_net3/subject/mvd?seriesAndNumber=mp2415801&amp;idNumber=3170583m002pb9" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/nka_net3/subject/private" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="web:war">
@@ -1328,7 +1257,7 @@
         </option>
       </method>
     </configuration>
-    <configuration default="false" name="OtherTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <configuration default="false" name="MVDTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="nla.local.*" />
@@ -1339,7 +1268,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="nla.local" />
-      <option name="MAIN_CLASS_NAME" value="nla.local.OtherTest" />
+      <option name="MAIN_CLASS_NAME" value="nla.local.MVDTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1362,11 +1291,10 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="JUnit.SubjectTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.MVDTest" />
-      <item index="2" class="java.lang.String" itemvalue="Tomcat Server.Tomcat7" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.OtherTest" />
+      <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Tomcat7" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.MVDTest" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -1416,10 +1344,55 @@
       <workItem from="1424779543379" duration="8963000" />
       <workItem from="1424850388718" duration="35998000" />
       <workItem from="1425031868675" duration="1072000" />
-      <workItem from="1425033050018" duration="11148000" />
-      <workItem from="1425047646371" duration="495000" />
-      <workItem from="1425276636769" duration="48960000" />
-      <workItem from="1425461928124" duration="31519000" />
+      <workItem from="1425563928726" duration="189000" />
+    </task>
+    <task id="LOCAL-00060" summary="Friday change">
+      <created>1423215256561</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1423215256563</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Friday change">
+      <created>1423218184421</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1423218184421</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Friday change">
+      <created>1423233088666</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1423233088666</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Friday change">
+      <created>1423234001150</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1423234001150</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Friday change">
+      <created>1423234010067</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1423234010067</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Friday change">
+      <created>1423234030700</created>
+      <option name="number" value="00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1423234030700</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Monday change">
+      <created>1423551537270</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1423551537290</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Tuesday change">
+      <created>1423566752561</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1423566752561</updated>
     </task>
     <task id="LOCAL-00068" summary="Tuesday change">
       <created>1423577519083</created>
@@ -1667,59 +1640,11 @@
       <option name="project" value="LOCAL" />
       <updated>1424960635438</updated>
     </task>
-    <task id="LOCAL-00109" summary="Friday  change">
-      <created>1425033520288</created>
-      <option name="number" value="00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1425033520301</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Friday  change">
-      <created>1425034583589</created>
-      <option name="number" value="00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1425034583589</updated>
-    </task>
-    <task id="LOCAL-00111" summary="Monday  change">
-      <created>1425305052015</created>
-      <option name="number" value="00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1425305052068</updated>
-    </task>
-    <task id="LOCAL-00112" summary="Monday  change">
-      <created>1425307044457</created>
-      <option name="number" value="00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1425307044457</updated>
-    </task>
-    <task id="LOCAL-00113" summary="Monday  change">
-      <created>1425371230679</created>
-      <option name="number" value="00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1425371230679</updated>
-    </task>
-    <task id="LOCAL-00114" summary="Monday  change">
-      <created>1425388599206</created>
-      <option name="number" value="00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1425388599206</updated>
-    </task>
-    <task id="LOCAL-00115" summary=" Tuesday change">
-      <created>1425461809957</created>
-      <option name="number" value="00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1425461809957</updated>
-    </task>
-    <task id="LOCAL-00116" summary=" Tuesday change">
-      <created>1425462820978</created>
-      <option name="number" value="00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1425462820979</updated>
-    </task>
-    <option name="localTasksCounter" value="117" />
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="586299000" />
+    <option name="totallyTimeSpent" value="494366000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1729,8 +1654,8 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19567567" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23240939" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.09297297" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20522387" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16950959" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1738,28 +1663,27 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42594594" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56864864" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17837837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25621623" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18486486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.046486486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27135134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42378378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40172786" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24324325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.030270271" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22761194" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.08864865" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20108108" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -1817,20 +1741,20 @@
     <MESSAGE value=" Saturday change" />
     <MESSAGE value=" Friday change" />
     <MESSAGE value=" Monday change" />
+    <MESSAGE value=" Tuesday change" />
     <MESSAGE value="Thursday change" />
     <MESSAGE value="Friday change" />
     <MESSAGE value="Monday change" />
     <MESSAGE value="MONDAY change" />
     <MESSAGE value="Tuesday change" />
     <MESSAGE value="Wednesday change" />
+    <MESSAGE value="Friday  change" />
+    <MESSAGE value="Monday  change" />
     <MESSAGE value="Tuesday  change TestCommits" />
     <MESSAGE value="Tuesday  change" />
     <MESSAGE value="Wednesday  change" />
     <MESSAGE value="Thursday  change" />
-    <MESSAGE value="Friday  change" />
-    <MESSAGE value="Monday  change" />
-    <MESSAGE value=" Tuesday change" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Tuesday change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thursday  change" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.84539473" />
   </component>
@@ -1878,7 +1802,7 @@
           <option name="timeStamp" value="112" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="320" />
+      <option name="time" value="286" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1891,10 +1815,9 @@
         <watch expression="subjectServDictList" />
       </configuration>
       <configuration name="JUnit">
-        <watch expression="pjp" language="JAVA" custom="" />
-        <watch expression="pjp.getSignature()" language="JAVA" custom="" />
-        <watch expression="((MethodInvocationProceedingJoinPoint) pjp).sourceLocation" language="JAVA" custom="org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint" />
-        <watch expression="pjp.getSignature().getDeclaringTypeName()" language="JAVA" custom="" />
+        <watch expression="pl" language="JAVA" custom="" />
+        <watch expression="ps" />
+        <watch expression="resp" />
       </configuration>
     </watches-manager>
   </component>
@@ -1903,6 +1826,471 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/IDict.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="612">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2891" max-vertical-offset="3502">
+          <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/junit4/SpringJUnit4ClassRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8042328" vertical-offset="513" max-vertical-offset="1105">
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/junit4/SpringTestMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.92" vertical-offset="611" max-vertical-offset="1190">
+          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/JPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1513">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0689654" vertical-offset="2048" max-vertical-offset="2737">
+          <caret line="124" column="11" selection-start-line="124" selection-start-column="11" selection-end-line="124" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="227" max-vertical-offset="850">
+          <caret line="40" column="37" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.448276" vertical-offset="416" max-vertical-offset="2686">
+          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/AddressServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Project.uml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>nla.local.SubjectTest</OriginalElement>
+          <nodes>
+            <node x="191.0" y="495.0">nla.local.pojos.subjects.OPerson</node>
+            <node x="148.00000000000006" y="160.0">nla.local.services.IAdressService</node>
+            <node x="277.00000000000006" y="160.0">nla.local.dao.BaseDao</node>
+            <node x="496.00000000000006" y="240.0">org.junit.runner.RunWith</node>
+            <node x="1117.0" y="340.0">nla.local.services.impl.subjects.OSubjectServiceImp</node>
+            <node x="496.53020833333346" y="340.0">nla.local.SubjectTest</node>
+            <node x="596.0" y="240.0">org.springframework.test.context.transaction.TransactionConfiguration</node>
+            <node x="1039.5" y="160.0">nla.local.services.ISubjectService</node>
+            <node x="167.6729166666667" y="80.0">nla.local.services.IService</node>
+            <node x="169.00000000000006" y="240.0">nla.local.services.impl.AddressServiceImp</node>
+            <node x="97.0" y="495.0">nla.local.pojos.subjects.JPerson</node>
+            <node x="316.5" y="495.0">nla.local.pojos.dict.Dict</node>
+            <node x="99.0" y="415.0">nla.local.pojos.subjects.Person</node>
+            <node x="997.75" y="240.0">nla.local.services.impl.subjects.SubjectServiceImp</node>
+            <node x="804.0" y="340.0">nla.local.services.impl.subjects.PSubjectServiceImp</node>
+            <node x="315.0" y="415.0">nla.local.pojos.dict.IDict</node>
+            <node x="168.14479166666678" y="340.0">nla.local.services.impl.DictionaryServiceImp</node>
+            <node x="327.00000000000006" y="240.0">org.springframework.test.context.ContextConfiguration</node>
+            <node x="962.0" y="340.0">nla.local.services.impl.subjects.JSubjectServiceImp</node>
+            <node x="0.0" y="495.0">nla.local.pojos.subjects.PPerson</node>
+            <node x="234.1729166666667" y="0.0">nla.local.dao.Dao</node>
+            <node x="0.0" y="160.0">nla.local.services.IDictionaryService</node>
+            <node x="786.0" y="240.0">org.springframework.transaction.annotation.Transactional</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="nla.local.services.impl.subjects.PSubjectServiceImp" target="nla.local.services.impl.subjects.SubjectServiceImp">
+              <point x="34.5" y="-15.0" />
+              <point x="907.5" y="320.0" />
+              <point x="1019.5833333333334" y="320.0" />
+              <point x="-43.66666666666663" y="15.0" />
+            </edge>
+            <edge source="nla.local.pojos.subjects.OPerson" target="nla.local.pojos.subjects.Person">
+              <point x="0.0" y="-15.0" />
+              <point x="230.5" y="470.0" />
+              <point x="157.33333333333331" y="470.0" />
+              <point x="23.333333333333314" y="15.0" />
+            </edge>
+            <edge source="nla.local.pojos.subjects.JPerson" target="nla.local.pojos.subjects.Person">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.IDictionaryService" target="nla.local.services.IService">
+              <point x="0.0" y="-15.0" />
+              <point x="64.0" y="140.0" />
+              <point x="180.00625000000002" y="140.0" />
+              <point x="-24.666666666666657" y="15.0" />
+            </edge>
+            <edge source="nla.local.SubjectTest" target="org.springframework.test.context.ContextConfiguration">
+              <point x="-35.625" y="-15.0" />
+              <point x="508.40520833333346" y="300.0" />
+              <point x="401.50000000000006" y="300.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.pojos.subjects.PPerson" target="nla.local.pojos.subjects.Person">
+              <point x="0.0" y="-15.0" />
+              <point x="38.5" y="470.0" />
+              <point x="110.66666666666667" y="470.0" />
+              <point x="-23.33333333333333" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.subjects.JSubjectServiceImp" target="nla.local.services.impl.subjects.SubjectServiceImp">
+              <point x="33.75" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.ISubjectService" target="nla.local.services.IService">
+              <point x="0.0" y="-15.0" />
+              <point x="1096.0" y="130.0" />
+              <point x="229.3395833333334" y="130.0" />
+              <point x="24.666666666666686" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.subjects.SubjectServiceImp" target="nla.local.dao.BaseDao">
+              <point x="-32.75" y="-15.0" />
+              <point x="1030.5" y="215.0" />
+              <point x="342.83333333333337" y="215.0" />
+              <point x="26.333333333333314" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.IAdressService" target="nla.local.services.IService">
+              <point x="0.0" y="-15.0" />
+              <point x="202.50000000000006" y="140.0" />
+              <point x="204.6729166666667" y="140.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.subjects.OSubjectServiceImp" target="org.springframework.transaction.annotation.Transactional">
+              <point x="-35.0" y="-15.0" />
+              <point x="1152.0" y="300.0" />
+              <point x="880.5" y="300.0" />
+              <point x="42.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.DictionaryServiceImp" target="org.springframework.transaction.annotation.Transactional">
+              <point x="48.666666666666686" y="-15.0" />
+              <point x="289.81145833333346" y="310.0" />
+              <point x="796.5" y="310.0" />
+              <point x="-42.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.AddressServiceImp" target="nla.local.dao.BaseDao">
+              <point x="33.5" y="-15.0" />
+              <point x="269.50000000000006" y="215.0" />
+              <point x="290.16666666666674" y="215.0" />
+              <point x="-26.333333333333314" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.DictionaryServiceImp" target="nla.local.services.IDictionaryService">
+              <point x="-48.666666666666686" y="-15.0" />
+              <point x="192.4781250000001" y="320.0" />
+              <point x="64.00000000000006" y="320.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.AddressServiceImp" target="nla.local.services.IAdressService">
+              <point x="-33.5" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.subjects.SubjectServiceImp" target="nla.local.services.ISubjectService">
+              <point x="32.75" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.subjects.PSubjectServiceImp" target="org.springframework.transaction.annotation.Transactional">
+              <point x="-34.5" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.SubjectTest" target="org.springframework.transaction.annotation.Transactional">
+              <point x="35.625" y="-15.0" />
+              <point x="579.6552083333335" y="320.0" />
+              <point x="817.5" y="320.0" />
+              <point x="-21.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.IService" target="nla.local.dao.Dao">
+              <point x="0.0" y="-15.0" />
+              <point x="204.6729166666667" y="55.0" />
+              <point x="247.9229166666667" y="55.0" />
+              <point x="-13.75" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.DictionaryServiceImp" target="nla.local.dao.BaseDao">
+              <point x="0.0" y="-15.0" />
+              <point x="241.14479166666678" y="300.0" />
+              <point x="316.50000000000006" y="300.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.dao.BaseDao" target="nla.local.dao.Dao">
+              <point x="0.0" y="-15.0" />
+              <point x="316.50000000000006" y="140.0" />
+              <point x="329.5583333333334" y="140.0" />
+              <point x="329.5583333333334" y="55.0" />
+              <point x="275.4229166666667" y="55.0" />
+              <point x="13.75" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.subjects.OSubjectServiceImp" target="nla.local.services.impl.subjects.SubjectServiceImp">
+              <point x="35.0" y="-15.0" />
+              <point x="1222.0" y="290.0" />
+              <point x="1106.9166666666667" y="290.0" />
+              <point x="43.66666666666674" y="15.0" />
+            </edge>
+            <edge source="nla.local.services.impl.subjects.JSubjectServiceImp" target="org.springframework.transaction.annotation.Transactional">
+              <point x="-33.75" y="-15.0" />
+              <point x="995.75" y="310.0" />
+              <point x="859.5" y="310.0" />
+              <point x="21.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.SubjectTest" target="org.junit.runner.RunWith">
+              <point x="-11.875" y="-15.0" />
+              <point x="532.1552083333335" y="300.0" />
+              <point x="536.0" y="300.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.pojos.dict.Dict" target="nla.local.pojos.dict.IDict">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="nla.local.SubjectTest" target="org.springframework.test.context.transaction.TransactionConfiguration">
+              <point x="11.875" y="-15.0" />
+              <point x="555.9052083333335" y="300.0" />
+              <point x="681.0" y="300.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="203.0" y="119.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>packageLocal</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/IAdressService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/IService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/JSubjectServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="243" max-vertical-offset="1037">
+          <caret line="24" column="57" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/forms/SubjectForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1292">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/DictPk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <caret line="15" column="56" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/DAOUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769" vertical-offset="4794" max-vertical-offset="5678">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/SubjectServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="141" max-vertical-offset="1343">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.5.RELEASE/spring-web-4.0.5.RELEASE.jar!/org/springframework/web/context/request/async/StandardServletAsyncWebRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36298934" vertical-offset="340" max-vertical-offset="1428">
+          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.5.RELEASE/spring-web-4.0.5.RELEASE.jar!/org/springframework/web/context/request/async/WebAsyncManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16852146" vertical-offset="506" max-vertical-offset="3825">
+          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.5.RELEASE/spring-webmvc-4.0.5.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16558442" vertical-offset="5967" max-vertical-offset="11866">
+          <caret line="421" column="19" selection-start-line="421" selection-start-column="19" selection-end-line="421" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.5.RELEASE/spring-web-4.0.5.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16558442" vertical-offset="1785" max-vertical-offset="2822">
+          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/test/java/nla/local/DAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/resources/beans-dao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.16" vertical-offset="0" max-vertical-offset="1105">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/ISubjectService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/MVDutil/ObjectFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="560" max-vertical-offset="1292">
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PSubjectServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1309">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/EnumDict.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="52" max-vertical-offset="918">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding>
+            <element signature="e#312#313#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="7871">
+          <caret line="66" column="4" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/CodeGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1564">
+          <caret line="55" column="59" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/IPassportService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/IDictionaryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/OSubjectServiceImp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1938">
+          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/MVDutil/PassportNCAResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1173">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding>
+            <element signature="n#dependencies#0;n#project#0;n#!!top" expanded="false" />
+            <element signature="n#build#0;n#project#0;n#!!top" expanded="false" />
+            <element signature="n#configuration#0;n#plugin#0;n#plugins#0;n#build#0;n#project#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/util/filters/CORSFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding>
+            <element signature="method#equals#0;class#Person#0" expanded="false" />
+            <element signature="method#hashCode#0;class#Person#0" expanded="false" />
+            <element signature="method#getSubjectType#0;class#Person#0" expanded="false" />
+            <element signature="method#setSubjectType#0;class#Person#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.5.RELEASE/spring-aop-4.0.5.RELEASE.jar!/org/springframework/aop/framework/CglibAopProxy.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31994262" vertical-offset="6152" max-vertical-offset="10013">
@@ -1910,484 +2298,112 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/MVDutil/PassportNCAResponse.java">
+    <entry file="file://$PROJECT_DIR$/services/src/main/resources/beans-services.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="1088">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/MVDutil/ObjectFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1190">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="157" max-vertical-offset="1309">
-          <caret line="20" column="28" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/DictPk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/PPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3448277" vertical-offset="714" max-vertical-offset="1292">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/junit4/SpringTestMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3628118" vertical-offset="724" max-vertical-offset="1190">
-          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/JPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1649">
-          <caret line="52" column="25" selection-start-line="52" selection-start-column="25" selection-end-line="52" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/IPassportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/SubjectClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2" max-vertical-offset="986">
-          <caret line="44" column="5" selection-start-line="30" selection-start-column="3" selection-end-line="44" selection-end-column="5" />
-          <folding>
-            <element signature="method#SubjectClass#0;class#SubjectClass#0" expanded="false" />
-            <element signature="method#toString#0;class#SubjectClass#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/OSubjectServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1683">
-          <caret line="27" column="0" selection-start-line="26" selection-start-column="3" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/forms/SearchSubjectForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/WelcomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
-          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/RespNCA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10642">
-          <caret line="90" column="32" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
-          <folding>
-            <element signature="docComment;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setAPP#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getAREALTXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setAREALTXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getBDATE#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setBDATE#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCITIZENSHIP#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCITIZENSHIP#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCITIZENSHIPTXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCITIZENSHIPTXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCITYLTXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCITYLTXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCOUNTRYLTXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCOUNTRYLTXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCAREAL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCAREAL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCCITYL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCCITYL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCCOUNTRYL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCCOUNTRYL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCREGIONL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCREGIONL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCSTREETL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCSTREETL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCTYPECITYL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCTYPECITYL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getCTYPESTREETL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setCTYPESTREETL#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getDOCUMENT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setDOCUMENT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getDOCTYPE#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setDOCTYPE#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getDOCTYPETXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setDOCTYPETXT#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getError#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setError#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getHOUSE#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#setHOUSE#0;class#RespNCA#0" expanded="false" />
-            <element signature="docComment;method#getIDENTIF#0;class#RespNCA#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/PassportNCA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3621">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/forms/SearchMvdForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/exceptions/DaoErrorCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/ISubjectService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/JSubjectServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="339" max-vertical-offset="1071">
-          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#JSubjectServiceImp#0;class#JSubjectServiceImp#0" expanded="false" />
-            <element signature="method#getSubject#0;class#JSubjectServiceImp#0" expanded="false" />
-            <element signature="method#getAll#1;class#JSubjectServiceImp#0" expanded="false" />
-            <element signature="method#findByNameType#0;class#JSubjectServiceImp#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/DictController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="152" max-vertical-offset="884">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/Converter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/Addresses.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1105">
-          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.0.5.RELEASE/spring-core-4.0.5.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.48" vertical-offset="1283" max-vertical-offset="2499">
-          <caret line="101" column="18" selection-start-line="101" selection-start-column="18" selection-end-line="101" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/4.0.5.RELEASE/spring-tx-4.0.5.RELEASE.jar!/org/springframework/dao/support/PersistenceExceptionTranslationInterceptor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.2" vertical-offset="637" max-vertical-offset="1394">
-          <caret line="70" column="66" selection-start-line="70" selection-start-column="66" selection-end-line="70" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/BaseDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="977" max-vertical-offset="3553">
-          <caret line="80" column="9" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="935">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PassportServiceImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="876" max-vertical-offset="1904">
-          <caret line="94" column="30" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1581">
+          <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/junit4/SpringMethodRoadie.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3438202" vertical-offset="1853" max-vertical-offset="3842">
+          <caret line="145" column="19" selection-start-line="145" selection-start-column="19" selection-end-line="145" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/RespNCA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="16881">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/util/Converter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="346" max-vertical-offset="1054">
+          <caret line="31" column="26" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/junit4/SpringMethodRoadie.class">
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/PassportNCA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33775812" vertical-offset="2253" max-vertical-offset="3842">
-          <caret line="173" column="19" selection-start-line="173" selection-start-column="19" selection-end-line="173" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-test/2.5.6/spring-test-2.5.6.jar!/org/springframework/test/context/TestContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.32" vertical-offset="1714" max-vertical-offset="2142">
-          <caret line="146" column="30" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/SubjectServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1241">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="4301">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
           <folding>
-            <element signature="n#repositories#0;n#project#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2737">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/webapp/WEB-INF/rest-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.5.RELEASE/spring-web-4.0.5.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.72" vertical-offset="1719" max-vertical-offset="2822">
-          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="163" max-vertical-offset="1887">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="n#build#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#configuration#0;n#plugin#0;n#plugins#0;n#build#0;n#project#0;n#!!top" expanded="false" />
+            <element signature="e#1123#1124#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/MVDTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/DictionaryServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="764" max-vertical-offset="1853">
-          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding>
-            <element signature="method#getAll#0;class#DictionaryServiceImp#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25844595" vertical-offset="1173" max-vertical-offset="2788">
-          <caret line="78" column="38" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/SubjectTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2229" max-vertical-offset="5338">
-          <caret line="240" column="0" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
-          <folding>
-            <element signature="method#GetOffSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#UpdateOffSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#GetJurSubject#0;class#SubjectTest#0" expanded="false" />
-            <element signature="method#UpdateJurSubject#0;class#SubjectTest#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/resources/beans-dao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.92" vertical-offset="125" max-vertical-offset="646">
-          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-          <folding>
-            <element signature="n#bean#0;n#beans#0;n#!!top" expanded="false" />
-            <element signature="n#property#1;n#bean#1;n#beans#0;n#!!top" expanded="false" />
-            <element signature="n#list#0;n#property#1;n#bean#1;n#beans#0;n#!!top" expanded="false" />
-            <element signature="n#property#2;n#bean#1;n#beans#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.4/junit-4.4.jar!/org/junit/internal/runners/JUnit38ClassRunner.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34879032" vertical-offset="48" max-vertical-offset="1785">
-          <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/forms/SubjectForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1598">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding>
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#604#605#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/EnumDict.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/dict/Dict.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1139">
-          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding>
-            <element signature="method#Dict#1;class#Dict#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.0.5.RELEASE/spring-aop-4.0.5.RELEASE.jar!/org/springframework/aop/aspectj/AbstractAspectJAdvice.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.52" vertical-offset="5821" max-vertical-offset="7038">
-          <caret line="410" column="21" selection-start-line="410" selection-start-column="21" selection-end-line="410" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/dao/exceptions/DaoException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="239" max-vertical-offset="714">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/services/impl/subjects/PSubjectServiceImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1110" max-vertical-offset="2499">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="1853">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2703#2712#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1411">
-          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/java/nla/local/aspect/ServiceAspect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="96" max-vertical-offset="867">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/src/main/resources/beans-services.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.28" vertical-offset="0" max-vertical-offset="782">
-          <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding>
-            <element signature="n#bean#1;n#beans#0;n#!!top" expanded="false" />
-            <element signature="n#bean#2;n#beans#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/src/test/java/nla/local/OtherTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51829267" vertical-offset="0" max-vertical-offset="867">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+          <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/SubjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1853">
+          <caret line="95" column="83" selection-start-line="95" selection-start-column="83" selection-end-line="95" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nka_net3_/web/src/main/java/nla/local/controller/DictController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="897">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/src/main/java/nla/local/controller/DictController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/src/main/java/nla/local/pojos/subjects/SubjectClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45535713" vertical-offset="0" max-vertical-offset="714">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+          <folding>
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#419#420#0" expanded="true" />
+            <element signature="e#450#451#0" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2411,7 +2427,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring (dao)|Spring</last-edited>
+          <last-edited>Web (web)|Web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2451,7 +2467,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

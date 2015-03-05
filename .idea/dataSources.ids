@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component name="dataSourceStorage">
-  <data-source name="Oracle - DEV.MINSK.NCA@172.31.11.190" uuid="e66be0d4-ac97-409e-8dbe-d9d7073be9b0">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-  <data-source name="Oracle -XE TEST_BURAVEL" uuid="171a1c24-32c6-4aaa-acdd-0b3d82340208">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-</component>
