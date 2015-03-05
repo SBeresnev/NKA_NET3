@@ -16,6 +16,7 @@ public class SearchMvdForm {
     }
 
     public void setSeriesAndNumber(String seriesAndNumber) {
+        seriesAndNumber.toUpperCase();
         this.seriesAndNumber = seriesAndNumber;
     }
 
@@ -24,6 +25,7 @@ public class SearchMvdForm {
     }
 
     public void setIdNumber(String idNumber) {
+        idNumber.toUpperCase();
         this.idNumber = idNumber;
     }
 
