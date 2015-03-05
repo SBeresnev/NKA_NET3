@@ -5,10 +5,11 @@ package nla.local.services;
  */
 
 import nla.local.dao.Dao;
+import nla.local.exception.ServiceException;
 
 
 public interface IService<T> extends Dao<T> {
 
    @Override
-   public  void add(T t) ;
+   public  void add(T t) throws ServiceException;
 }

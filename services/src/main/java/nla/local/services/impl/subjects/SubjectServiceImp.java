@@ -1,6 +1,7 @@
 package nla.local.services.impl.subjects;
 
 import nla.local.dao.BaseDao;
+import nla.local.dao.exceptions.DaoErrorCode;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.subjects.Person;
@@ -34,7 +35,7 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
     }
 
     @Override
-    public void add(T t)  {
+    public void add(T t) throws ServiceException {
 
         try {
 
@@ -43,6 +44,9 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
         } catch (DaoException e) {
 
             e.printStackTrace();
+
+            throw new ServiceException(e, DaoErrorCode.NKANET_DAO_002, null);
+
         }
 
     }
