@@ -9,4 +9,6 @@ import nla.local.dao.Dao;
 
 public interface IService<T> extends Dao<T> {
 
+   @Override
+   public  void add(T t) ;
 }

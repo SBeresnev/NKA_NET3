@@ -3,8 +3,8 @@ package nla.local;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import nla.local.aspect.ServiceAspect;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.exception.ServiceExceptionAspect;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -35,15 +35,16 @@ public class OtherTest extends TestCase
     /**
      * Rigourous Test :-)
      */
-    public void testApp() throws DaoException {
+    public void testApp()  {
 
         ApplicationContext appContext = new ClassPathXmlApplicationContext("beans-services.xml");
 
         PSubjectServiceImp pService = (PSubjectServiceImp) appContext.getBean("PSubjectServiceImp");
 
-        pService.add(null);
+        try { pService.add(null);
+        } catch (DaoException e) { e.printStackTrace(); }
 
-        ServiceAspect aspect = (ServiceAspect) appContext.getBean("serviceAspect");
+        ServiceExceptionAspect aspect = (ServiceExceptionAspect) appContext.getBean("serviceExceptionAspect");
 
 
         assertTrue( true );

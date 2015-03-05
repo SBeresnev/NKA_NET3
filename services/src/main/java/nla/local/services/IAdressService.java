@@ -1,5 +1,6 @@
 package nla.local.services;
 
+import nla.local.exception.ServiceException;
 import nla.local.pojos.Addresses;
 import org.hibernate.criterion.DetachedCriteria;
 
@@ -10,7 +11,6 @@ import java.util.List;
  */
 public interface IAdressService extends IService<Addresses> {
 
-    public List findAddress(DetachedCriteria dc);
-
+    public List findAddress(DetachedCriteria dc) throws ServiceException;
 
 }

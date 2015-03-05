@@ -51,6 +51,7 @@ public class AddressServiceImp extends BaseDao<Addresses> implements IAdressServ
     }
 
     public void setQuery(DetachedCriteria query) {
+
         this.query = query;
     }
 

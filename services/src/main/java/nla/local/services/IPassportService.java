@@ -11,6 +11,7 @@ import nla.local.pojos.subjects.RespNCA;
 public interface IPassportService {
 
    public RespNCA findSubject(PassportNCA PassNCA);
+
    public PPerson casttoPerson(RespNCA resp);
 
 

@@ -2,6 +2,7 @@ package nla.local.services.impl.subjects;
 
 import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.exception.ServiceException;
 import nla.local.pojos.subjects.Person;
 import nla.local.services.ISubjectService;
 import org.apache.log4j.Logger;
@@ -33,23 +34,31 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
     }
 
     @Override
-    public void add(T t) throws DaoException
-    {
+    public void add(T t)  {
 
         try {
+
             super.add(t);
+
         } catch (DaoException e) {
+
             e.printStackTrace();
         }
-
 
     }
 
 
     @Override
-    public void refreshSubject(T t) throws DaoException
+    public void refreshSubject(T t) throws ServiceException
     {
+        try {
+
             super.update(t);
+
+        } catch (DaoException e) {
+
+            e.printStackTrace();
+        }
 
     };
 

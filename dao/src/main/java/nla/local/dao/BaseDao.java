@@ -60,7 +60,7 @@ public class BaseDao<T> implements Dao<T> {
     }
 
     @Override
-    public void add(T t) throws DaoException {
+    public void add(T t) throws DaoException, ServiceException {
 
 
         try{
