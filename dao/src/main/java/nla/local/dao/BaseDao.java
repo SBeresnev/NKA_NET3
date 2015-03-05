@@ -62,11 +62,14 @@ public class BaseDao<T> implements Dao<T> {
     @Override
     public void add(T t) throws DaoException {
 
+
         try{
 
             getSession().save(t);
 
             log.info("Save:" + t);
+
+
 
         } catch (HibernateException e) {
 

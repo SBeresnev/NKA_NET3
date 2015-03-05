@@ -69,6 +69,24 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
         return null;
     }
 
+    public void add() throws DaoException {
+
+        throw new DaoException(null,null);//Exception("Generic Error");
+
+    }
+
+    @Override
+    public void add(PPerson t) throws DaoException
+    {
+
+        try {
+            super.add(t);
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
     public List<PPerson> getAll()
     {

@@ -98,13 +98,13 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
 
     @Override
     @Deprecated
-    public void delete(Dict t)  {
-    }
+    public void delete(Dict t)
+    {}
 
     @Override
     @Deprecated
-    public void refresh(Dict t) {
-    }
+    public void refresh(Dict t)
+    {}
 
     @Override
     public List<Dict> getDict(EnumDict code_type) {
@@ -116,6 +116,7 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
         if(code_type == EnumDict.SubjectType || code_type == EnumDict.OrgStruct || code_type == EnumDict.TorStruct || code_type == EnumDict.State ){
 
           if(common.containsKey(code_type) == false)
+
               common.put(code_type,this.getCriterion(dc));
 
             return common.get(code_type);

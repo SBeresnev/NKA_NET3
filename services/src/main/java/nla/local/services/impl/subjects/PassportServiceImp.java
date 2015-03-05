@@ -93,8 +93,8 @@ public class PassportServiceImp extends PSubjectServiceImp implements IPassportS
 
         p.address = "РЕСПУБЛИКА БЕЛАРУСЬ; " + resp.getAREALTXT() + "; ";
         p.address += resp.getREGIONLTXT() != null ? resp.getREGIONLTXT()+" р-н ; ": "";
-        p.address +=  resp.getTYPECITYLTXT() + ". " + resp.getCITYLTXT()+ "; ";
-        p.address +=  resp.getTYPESTREETLTXT() + ". " + resp.getSTREETLTXT() + " " ;
+        p.address += resp.getTYPECITYLTXT() + ". " + resp.getCITYLTXT()+ "; ";
+        p.address += resp.getTYPESTREETLTXT() + ". " + resp.getSTREETLTXT() + " " ;
         p.address += resp.getHOUSE() != null ? "д. " + resp.getHOUSE()+" ": "";
         p.address += resp.getKORPS() != null ? "корп. " + resp.getKORPS()+" ": "";
 

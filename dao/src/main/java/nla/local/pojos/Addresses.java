@@ -32,8 +32,8 @@ public class Addresses {
     @Column(name = "NP_NAME")
     public String npname;
 
-    @Column(name = "NP_TYPE")
-    public Integer nptype;
+    @Column(name = "NP_TYPE_NAME")
+    public String nptypename;
 
     @Column(name = "SELSOVET")
     public String selsovet;
@@ -41,8 +41,8 @@ public class Addresses {
     @Column(name = "STREET_NAME")
     public String streetName;
 
-    @Column(name = "STREET_TYPE")
-    public Integer streetType;
+    @Column(name = "STREET_TYPE_NAME")
+    public String streettypename;
 
     @Column(name = "HOUSE_NUM")
     public int houseNum;

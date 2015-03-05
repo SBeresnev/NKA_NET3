@@ -75,8 +75,9 @@ public class SubjectController {
     }
 
     @RequestMapping(value = "/mvd", method = RequestMethod.GET)
-    public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm)
-    {
+    public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm) throws Exception {
+
+
         RespNCA resp = passService.findSubject(searchMvdForm.createOrGetPassportNCAObj());
         PPerson pp = passService.casttoPerson(resp);
         List<PPerson> list = new ArrayList<PPerson>();

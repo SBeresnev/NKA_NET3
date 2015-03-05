@@ -1,6 +1,5 @@
 package nla.local;
 
-import nla.local.dao.exceptions.DaoException;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.PassportNCA;
 import nla.local.pojos.subjects.RespNCA;
@@ -56,7 +55,7 @@ public class MVDTest {
         PPerson pp =psi.casttoPerson(resp);
 
         try { psi.add(pp); }
-        catch (DaoException e) { e.printStackTrace(); assert (false); }
+        catch (Exception e) { e.printStackTrace(); assert (false); }
 
         if (pp.personalNumber != null) assert (true);
 

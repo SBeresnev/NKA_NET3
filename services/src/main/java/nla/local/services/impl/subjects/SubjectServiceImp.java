@@ -36,7 +36,12 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
     public void add(T t) throws DaoException
     {
 
-         super.add(t);
+        try {
+            super.add(t);
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

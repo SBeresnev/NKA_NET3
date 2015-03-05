@@ -44,4 +44,5 @@ public class DaoException extends Exception {
     public void setMessage(String message) {
 	this.message = message;
     }
+
 }
