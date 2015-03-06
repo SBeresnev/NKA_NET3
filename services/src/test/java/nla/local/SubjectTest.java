@@ -63,7 +63,7 @@ public class SubjectTest
 
     private List<Dict> allDictList;
 
-    private Integer GLOBAL_INDEX = 10;
+    private Integer GLOBAL_INDEX = 500;
 
     private static String cleanSubject = "delete from SUBJECTS";
     private static String cleanSubjectData = "delete from SUBJECTSDATA";
@@ -98,22 +98,22 @@ public class SubjectTest
     public void SubjectsTestController() {
 
 
-        //scg.update(cleanSubjectData);
+        scg.update(cleanSubjectData);
         scg.update(cleanOfficialuser);
-       // scg.update(cleanSubject);
+        scg.update(cleanSubject);
 
-       // AddJurSubject();
-       // GetJurSubject();
-       // UpdateJurSubject();
+        AddJurSubject();
+        GetJurSubject();
+        UpdateJurSubject();
 
 
-       // AddOffSubject();
+        AddOffSubject();
         GetOffSubject();
         UpdateOffSubject();
 
-       // AddPhysSubject();
-       // GetPhysSubject();
-       // UpdatePhysSubject();
+        AddPhysSubject();
+        GetPhysSubject();
+        UpdatePhysSubject();
 
 
     }
@@ -125,17 +125,14 @@ public class SubjectTest
 
         boolean retval = true;
 
-        int cycle = 1;
 
         try {
 
             for (int i = 0; i < GLOBAL_INDEX; i++) {
 
-                if(cycle < subjectServDictList.size()) cycle++;
-                else cycle = 1;
 
                 OPerson op = new OPerson();
-                op.subjectType = subjectServDictList.get(cycle);
+                op.subjectType = subjectServDictList.get(24);
                 op.isOwner = 0;
 
                 op.firstname = "Дударык" + String.valueOf(i);
@@ -179,17 +176,15 @@ public class SubjectTest
 
         boolean retval = true;
 
-        int cycle = 1;
+
 
         try {
 
             for(int i=0; i<GLOBAL_INDEX; i++) {
 
-                if(cycle < subjectServDictList.size()) cycle++;
-                else cycle = 1;
 
                 OPerson op = new OPerson();
-                op.subjectType = subjectServDictList.get(cycle);
+                op.subjectType = subjectServDictList.get(24);
                 op.isOwner = 0;
 
                 op.surname = "Иванов" + String.valueOf(20+i);
