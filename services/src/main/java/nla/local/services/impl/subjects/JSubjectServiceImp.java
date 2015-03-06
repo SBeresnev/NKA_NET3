@@ -2,7 +2,7 @@ package nla.local.services.impl.subjects;
 
 import nla.local.dao.exceptions.DaoErrorCode;
 import nla.local.dao.exceptions.DaoException;
-import nla.local.exception.ServiceException;
+import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.SubjectClass;
 import org.apache.commons.lang3.SerializationUtils;
@@ -39,29 +39,27 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
     }
 
     @Override
-    public List<JPerson> getAll(Class<JPerson> clazz) throws ServiceException {
+    public List<JPerson> getAll(Class<JPerson> clazz) throws ServiceDaoException {
 
         return this.getAll();
 
     }
 
     @Override
-    public JPerson getSubject(Serializable id) throws ServiceException {
+    public JPerson getSubject(Serializable id) throws ServiceDaoException {
 
         try {
             return super.get(JPerson.class,id);
 
         } catch (DaoException e) {
 
-            throw new ServiceException(e, DaoErrorCode.NKANET_DAO_001, id);
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_001, id);
 
         }
-
          //log.error(e.getStackTrace().toString());
-
     }
 
-    public List<JPerson> getAll() throws ServiceException {
+    public List<JPerson> getAll() throws ServiceDaoException {
 
          return super.findSubjects(query);
 
@@ -77,9 +75,8 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
          this.query =  (DetachedCriteria) SerializationUtils.clone(query);
     }
 
-    public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType ) throws ServiceException {
+    public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType ) throws ServiceDaoException {
 
-        log.info("Get " + " by name. Invoked JSubjectServiceImp.getByNameType" );
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query);
 

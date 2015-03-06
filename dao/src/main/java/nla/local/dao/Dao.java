@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface Dao<T> {
 
-    void add(T t) throws DaoException, ServiceException, ServiceException;
+    void add(T t) throws DaoException;
 
     void update(T t) throws DaoException;
 

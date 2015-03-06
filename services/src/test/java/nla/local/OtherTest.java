@@ -4,7 +4,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import nla.local.dao.exceptions.DaoException;
-import nla.local.exception.ServiceExceptionAspect;
+import nla.local.exception.ServiceExceptionLogAspect;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -44,7 +44,7 @@ public class OtherTest extends TestCase
         try { pService.add(null);
         } catch (DaoException e) { e.printStackTrace(); }
 
-        ServiceExceptionAspect aspect = (ServiceExceptionAspect) appContext.getBean("serviceExceptionAspect");
+        ServiceExceptionLogAspect aspect = (ServiceExceptionLogAspect) appContext.getBean("serviceExceptionAspect");
 
 
         assertTrue( true );

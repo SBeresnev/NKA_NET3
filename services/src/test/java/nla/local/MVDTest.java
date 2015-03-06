@@ -1,5 +1,7 @@
 package nla.local;
 
+import nla.local.exception.ServiceDaoException;
+import nla.local.exception.ServiceException;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.PassportNCA;
 import nla.local.pojos.subjects.RespNCA;
@@ -51,7 +53,12 @@ public class MVDTest {
         ps.setSer("AB");
         ps.setNum("1176453");
 
-        RespNCA resp = psi.findSubject(ps);
+        try {
+
+        RespNCA resp = null;
+
+        resp = psi.findSubject(ps);
+
         PPerson pp =psi.casttoPerson(resp);
 
         try { psi.add(pp); }
@@ -59,6 +66,13 @@ public class MVDTest {
 
         if (pp.personalNumber != null) assert (true);
 
+        } catch (ServiceDaoException e) {
+            e.printStackTrace();
+        }
+        catch (ServiceException e1) {
+
+            e1.printStackTrace();
+        }
     }
 
 

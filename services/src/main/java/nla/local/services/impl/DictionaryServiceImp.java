@@ -1,7 +1,9 @@
 package nla.local.services.impl;
 
 import nla.local.dao.BaseDao;
+import nla.local.dao.exceptions.DaoErrorCode;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.DictPk;
 import nla.local.pojos.dict.EnumDict;
@@ -38,22 +40,27 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
     }
 
     @Override
-    public List getCriterion(DetachedCriteria dc)
+    public List<Dict> getCriterion(DetachedCriteria dc) throws ServiceDaoException
     {
+
+        List ret_val = null;
+
         try {
 
-            return super.getCriterion(dc);
+            ret_val = super.getCriterion(dc);
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_005, null);
 
         }
-        return null;
+
+        return ret_val;
+
     }
 
     @Override
-    public Dict getDict(DictPk dPk)
+    public Dict getDict(DictPk dPk) throws ServiceDaoException
     {
         Dict ret_val = null;
 
@@ -63,7 +70,8 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_000, dPk);
+
         }
 
         return ret_val;
@@ -71,19 +79,22 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
     }
 
     @Override
-    public List<Dict> getAll()  {
+    public List<Dict> getAll() throws ServiceDaoException {
+
+        List ret_val = null;
 
         try {
 
 
-            return super.getAll(Dict.class);
+            ret_val =  super.getAll(Dict.class);
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_005, null);
 
         }
-        return null;
+
+        return ret_val;
     }
 
     @Override
@@ -107,7 +118,7 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
     {}
 
     @Override
-    public List<Dict> getDict(EnumDict code_type) {
+    public List<Dict> getDict(EnumDict code_type) throws ServiceDaoException {
 
         List<Dict> ret_val = null;
 
@@ -125,7 +136,6 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
         ret_val = this.getCriterion(dc);
 
         return ret_val;
-
 
     }
 }

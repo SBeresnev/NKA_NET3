@@ -70,7 +70,6 @@ public class BaseDao<T> implements Dao<T> {
             log.info("Save:" + t);
 
 
-
         } catch (HibernateException e) {
 
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_002, t);
