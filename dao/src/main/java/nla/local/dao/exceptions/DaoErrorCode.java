@@ -12,7 +12,8 @@ public enum DaoErrorCode {
     NKANET_DAO_003("Cannot update object %s"),
     NKANET_DAO_004("Cannot delete object %s"),
     NKANET_DAO_005("Cannot create criteria for type %s"),
-    NKANET_DAO_006("Cannot refresh object: %s");
+    NKANET_DAO_006("Cannot refresh object: %s"),
+    NKANET_DAO_007("Cannot get Passport data %s by id=%s");
 
     private final String value;
 

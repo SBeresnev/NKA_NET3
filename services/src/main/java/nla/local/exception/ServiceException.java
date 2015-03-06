@@ -1,16 +1,24 @@
 package nla.local.exception;
 
-import nla.local.dao.exceptions.DaoErrorCode;
-import nla.local.dao.exceptions.DaoException;
 
 /**
- * Created by beresnev on 05.03.2015.
+ * Created by beresnev on 06.03.2015.
  */
+public class ServiceException extends Exception {
 
-public class ServiceException extends DaoException {
+    @Override
+    public String getMessage() {
+        return message;
+    }
 
-    public ServiceException(Throwable t, DaoErrorCode code, Object... params) {
-        super(t, code, params);
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    private String message;
+
+    public ServiceException(Throwable t, String message) {
+        super(t);
+
     }
 }
-

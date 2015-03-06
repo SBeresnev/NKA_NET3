@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.*;
 @Entity
 @Table(name="V_MVD_SUBJECTS_OUTPUT")
 @Immutable
-public class PassportNCA {
+public class PassportNCA  {
 
 
     @XmlTransient
@@ -36,6 +36,12 @@ public class PassportNCA {
     protected String lastname;
     @XmlElement(name = "bdate")
     protected String bdate;
+
+
+    public String toString()
+    {
+        return "PassportNCA : PassNum: " + ser + num + " Identif: " + identif;
+    }
 
 
     @Id

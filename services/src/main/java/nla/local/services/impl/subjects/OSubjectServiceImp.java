@@ -1,6 +1,8 @@
 package nla.local.services.impl.subjects;
 
+import nla.local.dao.exceptions.DaoErrorCode;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.subjects.OPerson;
 import nla.local.pojos.subjects.SubjectClass;
 import org.apache.commons.lang3.SerializationUtils;
@@ -47,7 +49,7 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
         this.query =  (DetachedCriteria) SerializationUtils.clone(query);
     }
 
-    public List<OPerson> getAll()
+    public List<OPerson> getAll() throws ServiceDaoException
     {
         try {
 
@@ -55,14 +57,12 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
-        }
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_005, null);
 
-        return null;
+        }
     }
 
-    public List<OPerson> findOffUser(String surname, String firstname, String fathername, Integer user_num, String orgname, Integer subjectType )
-    {
+    public List<OPerson> findOffUser(String surname, String firstname, String fathername, Integer user_num, String orgname, Integer subjectType ) throws ServiceDaoException {
 
         DetachedCriteria query_  = (DetachedCriteria) SerializationUtils.clone(query);
 
@@ -95,17 +95,18 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
 
     }
 
-
     @Override
-    public OPerson getSubject( Serializable id)  {
+    public OPerson getSubject( Serializable id) throws ServiceDaoException {
 
         try {
+
             return super.get(OPerson.class,id);
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_001, id);
+
         }
-        return null;
+
     }
 }

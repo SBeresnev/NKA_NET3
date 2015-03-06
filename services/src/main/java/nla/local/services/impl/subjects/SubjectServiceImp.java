@@ -3,7 +3,7 @@ package nla.local.services.impl.subjects;
 import nla.local.dao.BaseDao;
 import nla.local.dao.exceptions.DaoErrorCode;
 import nla.local.dao.exceptions.DaoException;
-import nla.local.exception.ServiceException;
+import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.subjects.Person;
 import nla.local.services.ISubjectService;
 import org.apache.log4j.Logger;
@@ -35,7 +35,7 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
     }
 
     @Override
-    public void add(T t) throws ServiceException {
+    public void add(T t) throws ServiceDaoException {
 
         try {
 
@@ -43,17 +43,14 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
-
-            throw new ServiceException(e, DaoErrorCode.NKANET_DAO_002, null);
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_002, null);
 
         }
 
     }
 
-
     @Override
-    public void refreshSubject(T t) throws ServiceException
+    public void refreshSubject(T t) throws ServiceDaoException
     {
         try {
 
@@ -61,13 +58,14 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_003, null);
+
         }
 
     };
 
     @Override
-    public List<T> findSubjects(DetachedCriteria dc)
+    public List<T> findSubjects(DetachedCriteria dc) throws ServiceDaoException
     {
         List<T> out = null;
 
@@ -81,7 +79,9 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseDao<T> imp
             out = super.getCriterion(dc);
 
         } catch (DaoException e) {
-            e.printStackTrace();
+
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_005, null);
+
         }
 
         return (List<T>) out;

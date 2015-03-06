@@ -1,6 +1,8 @@
 package nla.local.services.impl.subjects;
 
+import nla.local.dao.exceptions.DaoErrorCode;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.exception.ServiceException;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.SubjectClass;
 import org.apache.commons.lang3.SerializationUtils;
@@ -37,40 +39,32 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
     }
 
     @Override
-    public List<JPerson> getAll(Class<JPerson> clazz)
-    {
+    public List<JPerson> getAll(Class<JPerson> clazz) throws ServiceException {
+
         return this.getAll();
 
     }
 
     @Override
-    public JPerson getSubject(Serializable id) {
+    public JPerson getSubject(Serializable id) throws ServiceException {
 
         try {
             return super.get(JPerson.class,id);
 
         } catch (DaoException e) {
 
-            log.error(e.getStackTrace().toString());
+            throw new ServiceException(e, DaoErrorCode.NKANET_DAO_001, id);
+
         }
-        return null;
+
+         //log.error(e.getStackTrace().toString());
+
     }
 
-    public List<JPerson> getAll()
-    {
+    public List<JPerson> getAll() throws ServiceException {
 
-        try {
+         return super.findSubjects(query);
 
-            return super.findSubjects(query);
-
-
-        } catch (Exception e) {
-
-            log.error(e.getStackTrace().toString());
-
-        }
-
-        return null;
     }
 
     public DetachedCriteria getQuery()
@@ -83,8 +77,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
          this.query =  (DetachedCriteria) SerializationUtils.clone(query);
     }
 
-    public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType )
-    {
+    public List<JPerson> findByNameType(String fullName, String regNumber, Integer subjectType ) throws ServiceException {
 
         log.info("Get " + " by name. Invoked JSubjectServiceImp.getByNameType" );
 
@@ -97,7 +90,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
             regNumber = regNumber == null ? "":regNumber;
             fullName = fullName==null? "":fullName;
 
-             query_ = query_
+            query_ = query_
                     .add(Restrictions.or(Restrictions.like("regNumber", regNumber , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("regNumber")))
                     .add(Restrictions.or(Restrictions.like("fullname", fullName ,MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fullname")));
 

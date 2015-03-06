@@ -1,6 +1,8 @@
 package nla.local.services.impl.subjects;
 
+import nla.local.dao.exceptions.DaoErrorCode;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.SubjectClass;
 import org.apache.commons.lang3.SerializationUtils;
@@ -49,62 +51,35 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
     }
 
     @Override
-    public List<PPerson> getAll(Class<PPerson> clazz)
-    {
+    public List<PPerson> getAll(Class<PPerson> clazz) throws ServiceDaoException {
+
         return this.getAll();
 
     }
 
     @Override
-    public PPerson getSubject( Serializable id)  {
+    public PPerson getSubject( Serializable id) throws ServiceDaoException {
 
         try {
+
             return super.get(PPerson.class,id);
 
         } catch (DaoException e) {
 
-            e.printStackTrace();
+            throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_001, id);
+
         }
 
-        return null;
     }
 
-    public void add() throws DaoException {
 
-        throw new DaoException(null,null);//Exception("Generic Error");
+    public List<PPerson> getAll() throws ServiceDaoException {
 
-    }
-
-    @Override
-    public void add(PPerson t) throws DaoException
-    {
-
-        try {
-            super.add(t);
-        } catch (DaoException e) {
-            e.printStackTrace();
-        }
-
+       return super.findSubjects(query);
 
     }
 
-    public List<PPerson> getAll()
-    {
-        try {
-
-
-            return super.findSubjects(query);
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    public List<PPerson> findByFIOType(String surname, String firstname, String fathername, String personalNumber, Integer subjectType )
-    {
+    public List<PPerson> findByFIOType(String surname, String firstname, String fathername, String personalNumber, Integer subjectType ) throws ServiceDaoException {
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query);
 
@@ -126,9 +101,7 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
                     .add(Restrictions.or(Restrictions.like("surname", surname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("surname")))
                     .add(Restrictions.or(Restrictions.like("firstname", firstname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("firstname")))
                     .add(Restrictions.or(Restrictions.like("fathername", fathername, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fathername")))
-                    .add(Restrictions.or(Restrictions.like("personalNumber",  personalNumber , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("personalNumber")))
-
-            ;
+                    .add(Restrictions.or(Restrictions.like("personalNumber",  personalNumber , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("personalNumber"))) ;
 
             query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query_;
 
