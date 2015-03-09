@@ -15,6 +15,8 @@ public enum EnumDict {
 
     TorStruct(300),
 
+    ResolutionType(55),
+
     UNKNOW(-1);
 
 
@@ -41,6 +43,8 @@ public enum EnumDict {
             case 110: return SubjectType;
 
             case 300: return TorStruct;
+
+            case 55: return ResolutionType;
 
             default:
                 return UNKNOW;

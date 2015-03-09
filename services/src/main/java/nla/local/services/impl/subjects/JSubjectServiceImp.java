@@ -56,7 +56,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
             throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_001, id);
 
         }
-         //log.error(e.getStackTrace().toString());
+
     }
 
     public List<JPerson> getAll() throws ServiceDaoException {

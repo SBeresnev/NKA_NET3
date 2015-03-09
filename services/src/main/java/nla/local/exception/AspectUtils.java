@@ -13,9 +13,7 @@ public final class AspectUtils {
 
     private static final Logger log = Logger.getLogger(AspectUtils.class);
 
-    private AspectUtils() {
-
-    }
+    private AspectUtils() { }
 
     public static Logger getLogger(org.aspectj.lang.JoinPoint joinPoint) {
         try {
@@ -32,8 +30,7 @@ public final class AspectUtils {
         return log;
     }
 
-    public static void logParamValues(StringBuilder logLine,
-                                      String[] paramNames, Object[] paramValues) {
+    public static void logParamValues(StringBuilder logLine,String[] paramNames, Object[] paramValues) {
         for (int i = 0; i < paramValues.length; i++) {
             logLine.append(paramNames[i]).append("=")
                     .append(toString(paramValues[i]));
@@ -41,7 +38,6 @@ public final class AspectUtils {
                 logLine.append(", ");
         }
     }
-
 
     public static String toString(Object object) {
         if (object == null)
