@@ -63,7 +63,7 @@ public class SubjectTest
 
     private List<Dict> allDictList;
 
-    private Integer GLOBAL_INDEX = 500;
+    private Integer GLOBAL_INDEX = 5;
 
     private static String cleanSubject = "delete from SUBJECTS";
     private static String cleanSubjectData = "delete from SUBJECTSDATA";

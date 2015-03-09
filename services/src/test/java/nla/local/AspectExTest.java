@@ -11,15 +11,16 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Unit test for simple App.
+ * AspectTest
  */
-public class OtherTest extends TestCase
+public class AspectExTest extends TestCase
 {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public OtherTest( String testName )
+    public AspectExTest( String testName )
     {
         super( testName );
     }
@@ -29,7 +30,7 @@ public class OtherTest extends TestCase
      */
     public static Test suite()
     {
-        return new TestSuite( OtherTest.class );
+        return new TestSuite( AspectExTest.class );
     }
 
     /**

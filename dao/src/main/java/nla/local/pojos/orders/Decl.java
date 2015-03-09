@@ -4,6 +4,7 @@ package nla.local.pojos.orders;
 import nla.local.pojos.subjects.Person;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -12,30 +13,80 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "Decl")
-public class Decl {
+public class Decl implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer decl_id;
+    private Integer decl_id;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "DECLARANTS", joinColumns = {
             @JoinColumn(name = "DECL_ID", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "SUBJECT_ID", nullable = false, updatable = false) })
-    Set<Person> declarants;
+    private Set<Person> declarants;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "DECL_ID")
-    Set<DeclUser> oUsers;
+    private Set<DeclUser> oUsers;
 
     @Column(name = "DECLDATE")
-    Date decldate;
+    private Date decldate;
 
     @Column(name = "REGDECLDATE")
-    Date regdecldate;
+    private Date regdecldate;
 
     @Column(name = "INFO")
-    String info;
+    private String info;
+
+
+    public Integer getDecl_id() {
+        return decl_id;
+    }
+
+    public void setDecl_id(Integer decl_id) {
+        this.decl_id = decl_id;
+    }
+
+    public Set<Person> getDeclarants() {
+        return declarants;
+    }
+
+    public void setDeclarants(Set<Person> declarants) {
+        this.declarants = declarants;
+    }
+
+    public Set<DeclUser> getoUsers() {
+        return oUsers;
+    }
+
+    public void setoUsers(Set<DeclUser> oUsers) {
+        this.oUsers = oUsers;
+    }
+
+    public Date getDecldate() {
+        return decldate;
+    }
+
+    public void setDecldate(Date decldate) {
+        this.decldate = decldate;
+    }
+
+    public Date getRegdecldate() {
+        return regdecldate;
+    }
+
+    public void setRegdecldate(Date regdecldate) {
+        this.regdecldate = regdecldate;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
 
     /*
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)

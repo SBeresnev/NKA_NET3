@@ -9,7 +9,6 @@ import nla.local.pojos.orders.Decl;
  */
 public interface IOrderService extends Dao<Decl> {
 
-    public void postOrder() throws ServiceException;
-
+    public void postOrder(Decl decl) throws ServiceException;
 
 }
