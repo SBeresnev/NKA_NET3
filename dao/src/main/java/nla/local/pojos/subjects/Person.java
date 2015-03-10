@@ -42,6 +42,8 @@ public abstract class Person implements Serializable {
     })
     public Dict subjectType;
 
+    @Column(name = "SUBJECT_CLASS", insertable = false, updatable = false)
+    public String dtype;
 
     public String getDtype() {
         return dtype;
@@ -50,9 +52,6 @@ public abstract class Person implements Serializable {
     public void setDtype(String dtype) {
         this.dtype = dtype;
     }
-
-    @Column(name = "SUBJECT_CLASS", insertable = false, updatable = false)
-    public String dtype;
 
     @Override
     public boolean equals(Object o) {
@@ -75,7 +74,6 @@ public abstract class Person implements Serializable {
     public String toString() {
         return "Person : id: " + subjectId + " Reestrdate: " + reestrdataID;
     }
-
 
     public Integer getSubjectId() {
         return subjectId;

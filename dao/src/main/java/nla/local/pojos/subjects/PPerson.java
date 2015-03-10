@@ -34,7 +34,7 @@ public class PPerson extends Person implements Serializable{
     @ManyToOne
     @JoinColumnsOrFormulas({
             @JoinColumnOrFormula(column= @JoinColumn(name = "SITIZENS", referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula( formula=@JoinFormula(value="200", referencedColumnName="ANALYTIC_TYPE"))             })
+            @JoinColumnOrFormula( formula=@JoinFormula(value="200", referencedColumnName="ANALYTIC_TYPE")) })
     public Dict sitizens;
 
     @Column(name = "BOTH_REG_DATE")

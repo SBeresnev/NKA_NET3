@@ -1,5 +1,7 @@
 package nla.local.pojos.orders;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.subjects.OPerson;
 
 import javax.persistence.*;
@@ -13,22 +15,30 @@ import java.util.Set;
 @Table(name = "DECLUSER")
 public class DeclUser {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer decluser_id;
 
-    @ManyToMany
-    @JoinColumn(name = "DECL_ID")
-    Set<Decl> decls ;
+    @Id
+    @Column(name="decluser_id", unique=true, nullable=false )
+    @SequenceGenerator(name="decluser_seq", sequenceName="SEQ_DECLUSER_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="decluser_seq")
+    public Integer decluser_id;
+
+    @Column(name = "DECL_ID")
+    public Integer  decl_id;
+
+    @OneToMany
+    @JoinColumn(name="DECL_ID")
+    public Set<Decl> decls ;
 
     @OneToOne
     @JoinColumn(name = "SUBJECT_ID")
-    OPerson oPerson;
+    public OPerson oPerson;
 
     @Column(name = "DATE_IN")
-    Date date_in;
+    @JsonSerialize(using=DateSerializer.class)
+    public Date date_in;
 
     @Column(name = "DATE_OUT")
-    Date date_out;
+    @JsonSerialize(using=DateSerializer.class)
+    public Date date_out;
 
 }

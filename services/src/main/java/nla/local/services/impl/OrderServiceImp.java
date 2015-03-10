@@ -6,7 +6,6 @@ import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.orders.Decl;
-import nla.local.pojos.orders.DeclUser;
 import nla.local.pojos.subjects.Person;
 import nla.local.services.IOrderService;
 import nla.local.util.CodeGenerator;
@@ -30,14 +29,15 @@ public class OrderServiceImp  extends BaseDao<Decl> implements IOrderService {
     @Autowired
     private CodeGenerator scg;
 
-    @Autowired
-    private BaseDao baseDao;
+    private BaseDao BD;
 
 
     @Autowired
     public OrderServiceImp(SessionFactory sessionFactory)
     {
         super(sessionFactory);
+
+        BD = new BaseDao(sessionFactory);
 
     }
 
@@ -57,18 +57,13 @@ public class OrderServiceImp  extends BaseDao<Decl> implements IOrderService {
     @Override
     public void postOrder(Decl decl) throws ServiceException {
 
-        Set<DeclUser> dusers = decl.getoUsers();
+        this.getSession().persist(decl);
 
         try {
 
-          for (DeclUser duser : dusers)
-          {
+            super.add(decl);
 
-                baseDao.add(duser);
-
-          }
-
-        } catch (DaoException e) { e.printStackTrace(); }
+        } catch (DaoException e) {e.printStackTrace();}
 
         Set<Person> sp = decl.getDeclarants();
 
