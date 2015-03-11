@@ -10,7 +10,6 @@ import nla.local.pojos.subjects.Person;
 import nla.local.services.impl.OrderServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
-import org.hibernate.criterion.DetachedCriteria;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,10 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by beresnev on 09.03.2015.
@@ -48,6 +44,8 @@ public class OrderTest {
     @Autowired
     PSubjectServiceImp pssi;
 
+    Integer GLOBAL_INDEX = 12;
+
     @Before
     public  void setOrder()
     { }
@@ -59,49 +57,55 @@ public class OrderTest {
 
         Calendar cal = Calendar.getInstance();
 
-
-        Decl dcl = new Decl();
-
         List<OPerson> op = ossi.getAll();
 
         List<PPerson> pp = pssi.getAll();
 
-        /*******************************************************************************/
-        Set<DeclUser> sdu = new HashSet<DeclUser>();
-
-        DeclUser du_one = new DeclUser();
-
-        cal.add(Calendar.DATE, -1);
-
-        du_one.date_in = cal.getTime() ;
-
-        du_one.oPerson = op.get(0);
-
-        DeclUser du_two = new DeclUser();
-
-        cal.add(Calendar.DATE, -2);
-
-        du_two.date_in = cal.getTime();
-
-        du_two.oPerson = op.get(1);
-
-        sdu.add(du_one);
-
-        sdu.add(du_two);
+        Random r = new Random();
 
         /*******************************************************************************/
 
+        for (int i = 0; i < GLOBAL_INDEX ; i++) {
 
-        DetachedCriteria cd =DetachedCriteria.forClass(PSubjectServiceImp.class);
+            Set<DeclUser> sdu = new HashSet<DeclUser>();
 
-        dcl.setDeclarants(new HashSet<Person>(pp.subList(0,1)));
+            Decl dcl = new Decl();
 
-        dcl.setoUsers(sdu);
+            int Rbo = r.nextInt(op.size()-1);
+            int Reo = r.nextInt(op.size()-1-Rbo) + Rbo;
 
-        cal.add(Calendar.DATE, -5);
+                for (int j = Rbo; j <= Reo ; j++)
+                {
+                    DeclUser du_one = new DeclUser();
 
-        dcl.setDecldate(cal.getTime());
+                    cal.add(Calendar.DATE, -Rbo);
 
-        osi.add(dcl);
+                    du_one.date_in = cal.getTime() ;
+
+                    du_one.oPerson = op.get(j);
+
+                    sdu.add(du_one);
+
+                }
+
+            int Rbp = r.nextInt(pp.size()-2);
+
+            dcl.setDeclarants(new HashSet<Person>(pp.subList(Rbp,Rbp+1)));
+
+            dcl.setoUsers(sdu);
+
+            cal.add(Calendar.DATE, -Rbo);
+
+            dcl.setDecldate(cal.getTime());
+
+            osi.add(dcl);
+
+
+        }
+
+
+        /*******************************************************************************/
+
+
     }
 }

@@ -18,11 +18,6 @@ import java.util.Set;
 @Table(name = "DECL")
 public class Decl implements Serializable {
 
-   /*  @Id   @Parameter(name="key", value = "SEQ_DECL_ID")
-    @Column(name="DECL_ID", unique=true, nullable=false )
-    @SequenceGenerator(name="decl_seq", sequenceName="SEQ_SUBJECTS_ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="decl_seq")*/
-
     @Id
     @GeneratedValue(generator="seq_id")
     @GenericGenerator(
@@ -48,6 +43,13 @@ public class Decl implements Serializable {
     @Column(name = "DECLDATE")
     @JsonSerialize(using=DateSerializer.class)
     private Date decldate;
+
+    @Column(name="DECLTYPE")
+    private Integer decltype;
+
+    @Column(name="URGENCY")
+    private Integer urgency;
+
 
     @Column(name = "REGDECLDATE")
     @JsonSerialize(using=DateSerializer.class)
