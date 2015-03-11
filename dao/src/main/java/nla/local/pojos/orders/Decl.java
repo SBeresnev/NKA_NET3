@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.subjects.Person;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -36,17 +37,9 @@ public class Decl implements Serializable {
     @Column(name = "DECLNUMBER")
     private String declnumber ;
 
-    //@JoinTable(name = "DECLRESOLUTIONS", joinColumns = {@JoinColumn(name = "DECL_ID", nullable = false, updatable = false) })
-    //@OneToOne(cascade = CascadeType.ALL)
-   // @JoinColumn(name = "DECL_ID", referencedColumnName = "DECL_ID")
-
-   /* @ElementCollection
-    @CollectionTable(name = "DECLRESOLUTIONS",
-            joinColumns = @JoinColumn(name = "DECL_ID"))
-    @Column(name = "DECL_ID")*/
-
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name = "DECL_ID")
+    @Where( clause = "RESOLUTION_DATE_OUT is NULL")
     private Set<DeclResolution> dclresolution;
 
     @OneToMany(cascade=CascadeType.ALL)

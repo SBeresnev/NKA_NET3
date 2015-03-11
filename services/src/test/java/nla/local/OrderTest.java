@@ -82,13 +82,29 @@ public class OrderTest {
     public void OrederTestController() throws DaoException, ServiceException {
 
        // AddOrder();
+       // GetOrder();
 
-        GetOrder();
+        UpdateOrder();
 
     }
 
+    public void UpdateOrder() throws DaoException {
 
-     public void AddOrder() throws ServiceDaoException, ServiceException {
+        List<Decl> ld = osi.getAll(Decl.class);
+
+        ld.get(0).getDclresolution().iterator().next().setResolutionType(resolutionType.get(1));
+
+        DeclResolution dr = ld.get(0).getDclresolution().iterator().next();
+
+        dr.setDecl_id(null);
+
+        osi.update(ld.get(0));
+
+        int m = 0;
+
+    }
+
+    public void AddOrder() throws ServiceDaoException, ServiceException {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
@@ -162,7 +178,6 @@ public class OrderTest {
 
 
     }
-
 
     public void GetOrder() throws DaoException {
 
