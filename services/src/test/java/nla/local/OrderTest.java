@@ -1,15 +1,21 @@
 package nla.local;
 
+import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
+import nla.local.pojos.dict.Dict;
+import nla.local.pojos.dict.EnumDict;
 import nla.local.pojos.orders.Decl;
+import nla.local.pojos.orders.DeclResolution;
 import nla.local.pojos.orders.DeclUser;
 import nla.local.pojos.subjects.OPerson;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.Person;
+import nla.local.services.impl.DictionaryServiceImp;
 import nla.local.services.impl.OrderServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
+import nla.local.util.CodeGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,23 +41,54 @@ import java.util.*;
 public class OrderTest {
 
     @Autowired
-    OrderServiceImp osi;
+    public OrderServiceImp osi;
 
     @Autowired
-    OSubjectServiceImp ossi;
+    public OSubjectServiceImp ossi;
 
     @Qualifier("PSubjectServiceImp")
     @Autowired
-    PSubjectServiceImp pssi;
+    public PSubjectServiceImp pssi;
+
+    @Autowired
+    public CodeGenerator scg;
+
+    private static String cleanDecl = "delete from DECL";
+    private static String cleanDeclarants = "delete from DECLARANTS";
+    private static String cleanDecluser = "delete from DECLUSER";
+    private static String cleanDeclresolution = "delete from DECLRESOLUTIONS";
+
+    private List<Dict> resolutionType;
+
+    @Autowired
+    public DictionaryServiceImp CommonDict;
 
     Integer GLOBAL_INDEX = 12;
 
     @Before
-    public  void setOrder()
-    { }
+    public  void setOrder() throws ServiceDaoException {
+
+        /*
+        scg.update(cleanDecluser);
+        scg.update(cleanDeclresolution);
+        scg.update(cleanDeclarants);
+        scg.update(cleanDecl);
+        */
+
+        resolutionType = CommonDict.getDict(EnumDict.ResolutionType);
+    }
 
     @Test
-    public void AddOrder() throws ServiceDaoException, ServiceException {
+    public void OrederTestController() throws DaoException, ServiceException {
+
+      //  AddOrder();
+
+        GetOrder();
+
+    }
+
+
+     public void AddOrder() throws ServiceDaoException, ServiceException {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
@@ -70,6 +107,7 @@ public class OrderTest {
             Set<DeclUser> sdu = new HashSet<DeclUser>();
 
             Decl dcl = new Decl();
+
 
             int Rbo = r.nextInt(op.size()-1);
             int Reo = r.nextInt(op.size()-1-Rbo) + Rbo;
@@ -98,14 +136,37 @@ public class OrderTest {
 
             dcl.setDecldate(cal.getTime());
 
+            /**************************DeclResolution***************************************/
+
+            DeclResolution dr = new DeclResolution();
+
+            dr.setResolutionType(resolutionType.get(0));
+
+            dr.setResolutionDate(cal.getTime());
+
+            dr.setoPerson(null);
+
+            /********************************************************************************/
+
+            dcl.setDclresolution(dr);
+
+            dcl.setDecltype(1);
+
+            dcl.setUrgency(0);
+
             osi.add(dcl);
 
+            System.out.print("Sd");
 
         }
 
 
-        /*******************************************************************************/
+    }
 
+
+    public void GetOrder() throws DaoException {
+
+        List<Decl> ld = osi.getAll(Decl.class);
 
     }
 }

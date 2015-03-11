@@ -23,12 +23,15 @@ public enum SubjectClass {
     public String toString() {
         return value;
     }
+
     public static int toInt(SubjectClass value) {
 
         switch(value) {
+
             case JUR: return 200;
             case PRV: return 100;
             case OFC: return 600;
+
             default:
                 return -1;
         }
@@ -40,6 +43,7 @@ public enum SubjectClass {
             case 200: return JUR;
             case 100: return PRV;
             case 600: return OFC;
+
             default:
                 return UKW;
         }

@@ -4,6 +4,7 @@ import forms.SearchMvdForm;
 import forms.SearchSubjectForm;
 import forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
+import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.dict.Dict;
 import nla.local.pojos.dict.EnumDict;
 import nla.local.pojos.subjects.JPerson;
@@ -28,7 +29,6 @@ import java.util.List;
 @RequestMapping({"/subject"})
 public class SubjectController
 {
-
     @Autowired
     public OSubjectServiceImp oService;
 
@@ -92,13 +92,19 @@ public class SubjectController
     @RequestMapping(value={"/juridical"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<JPerson> getJuridicalPerson(SubjectForm subjectForm)
     {
-        List<JPerson> result_j = this.jService.getAll();
-        JPerson jp = this.jService.getSubject(((JPerson)result_j.get(0)).getSubjectId());
-        DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type", Integer.valueOf(EnumDict.SubjectType.toInt()))).add(Restrictions.eq("parent_code", Integer.valueOf(SubjectClass.toInt(SubjectClass.OFC))));
+        List<JPerson> result_j = null;
 
+      try {
+            result_j = this.jService.getAll();
 
-        result_j.clear();
-        result_j = this.jService.findByNameType("Upd", null, subjectForm.getSubjectId());
+            JPerson jp = this.jService.getSubject(((JPerson)result_j.get(0)).getSubjectId());
+            DetachedCriteria.forClass(Dict.class).add(Restrictions.eq("analytic_type", Integer.valueOf(EnumDict.SubjectType.toInt()))).add(Restrictions.eq("parent_code", Integer.valueOf(SubjectClass.toInt(SubjectClass.OFC))));
+
+            result_j.clear();
+            result_j = this.jService.findByNameType("Upd", null, subjectForm.getSubjectId());
+
+        } catch (ServiceDaoException e) { e.printStackTrace();}
+
         return result_j;
     }
 }

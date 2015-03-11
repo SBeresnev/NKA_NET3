@@ -85,7 +85,6 @@ public class DictionaryServiceImp extends BaseDao<Dict> implements IDictionarySe
 
         try {
 
-
             ret_val =  super.getAll(Dict.class);
 
         } catch (DaoException e) {

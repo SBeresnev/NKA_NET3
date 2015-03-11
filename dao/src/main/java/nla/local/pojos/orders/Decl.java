@@ -36,6 +36,11 @@ public class Decl implements Serializable {
     @Column(name = "DECLNUMBER")
     private String declnumber ;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    //@JoinTable(name = "DECLRESOLUTIONS", joinColumns = {@JoinColumn(name = "DECL_ID", nullable = false, updatable = false) })
+    @JoinColumn(name = "DECL_ID", nullable = false, updatable = false)
+    private DeclResolution dclresolution;
+
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name = "DECL_ID")
     private Set<DeclUser> oUsers;
@@ -49,7 +54,6 @@ public class Decl implements Serializable {
 
     @Column(name="URGENCY")
     private Integer urgency;
-
 
     @Column(name = "REGDECLDATE")
     @JsonSerialize(using=DateSerializer.class)
@@ -65,6 +69,36 @@ public class Decl implements Serializable {
             du.decl_id = d_id;
         }
 
+        if(dclresolution != null)
+        {
+            dclresolution.setDecl_id(d_id);
+
+        }
+
+    }
+
+    public DeclResolution getDclresolution() {
+        return dclresolution;
+    }
+
+    public void setDclresolution(DeclResolution dclresolution) {
+        this.dclresolution = dclresolution;
+    }
+
+    public Integer getDecltype() {
+        return decltype;
+    }
+
+    public void setDecltype(Integer decltype) {
+        this.decltype = decltype;
+    }
+
+    public Integer getUrgency() {
+        return urgency;
+    }
+
+    public void setUrgency(Integer urgency) {
+        this.urgency = urgency;
     }
 
     public Integer getDecl_id() {
@@ -122,20 +156,5 @@ public class Decl implements Serializable {
     public void setDeclnumber(String declnumber) {
         this.declnumber = declnumber;
     }
-    /*
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinTable(name = "DECLDOCUMENTS", joinColumns = {
-            @JoinColumn(name = "DECL_ID", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "DOC_ID", nullable = false, updatable = false) })
-    Set<Doc> decldocuments;
-
-    "DECL_ID" NUMBER NOT NULL ENABLE,
-    "DECLNUMBER" NUMBER NOT NULL ENABLE,
-    "DECLDATE" DATE DEFAULT SYSDATE NOT NULL ENABLE,
-    "REGDECLDATE" DATE DEFAULT NULL ,
-    "DECLTYPE" NUMBER DEFAULT 1 NOT NULL ENABLE,
-    "URGENCY" NUMBER DEFAULT 0 NOT NULL ENABLE,
-    "INFO" VARCHAR2(1000 BYTE) DEFAULT NULL,
-    "CORRECT_COUNT" NUMBER DEFAULT 0 NOT NULL ENABLE,*/
 
 }
