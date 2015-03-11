@@ -36,10 +36,18 @@ public class Decl implements Serializable {
     @Column(name = "DECLNUMBER")
     private String declnumber ;
 
-    @OneToOne(cascade = CascadeType.ALL)
     //@JoinTable(name = "DECLRESOLUTIONS", joinColumns = {@JoinColumn(name = "DECL_ID", nullable = false, updatable = false) })
-    @JoinColumn(name = "DECL_ID", nullable = false, updatable = false)
-    private DeclResolution dclresolution;
+    //@OneToOne(cascade = CascadeType.ALL)
+   // @JoinColumn(name = "DECL_ID", referencedColumnName = "DECL_ID")
+
+   /* @ElementCollection
+    @CollectionTable(name = "DECLRESOLUTIONS",
+            joinColumns = @JoinColumn(name = "DECL_ID"))
+    @Column(name = "DECL_ID")*/
+
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name = "DECL_ID")
+    private Set<DeclResolution> dclresolution;
 
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name = "DECL_ID")
@@ -69,19 +77,19 @@ public class Decl implements Serializable {
             du.decl_id = d_id;
         }
 
-        if(dclresolution != null)
+        for(DeclResolution  dr : dclresolution)
         {
-            dclresolution.setDecl_id(d_id);
-
+            dr.setDecl_id(d_id);
         }
+
 
     }
 
-    public DeclResolution getDclresolution() {
+    public Set<DeclResolution> getDclresolution() {
         return dclresolution;
     }
 
-    public void setDclresolution(DeclResolution dclresolution) {
+    public void setDclresolution(Set<DeclResolution> dclresolution) {
         this.dclresolution = dclresolution;
     }
 

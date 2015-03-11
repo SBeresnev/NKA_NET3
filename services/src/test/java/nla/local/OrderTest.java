@@ -68,12 +68,12 @@ public class OrderTest {
     @Before
     public  void setOrder() throws ServiceDaoException {
 
-        /*
-        scg.update(cleanDecluser);
+
+     /*   scg.update(cleanDecluser);
         scg.update(cleanDeclresolution);
         scg.update(cleanDeclarants);
-        scg.update(cleanDecl);
-        */
+        scg.update(cleanDecl); */
+
 
         resolutionType = CommonDict.getDict(EnumDict.ResolutionType);
     }
@@ -81,7 +81,7 @@ public class OrderTest {
     @Test
     public void OrederTestController() throws DaoException, ServiceException {
 
-      //  AddOrder();
+       // AddOrder();
 
         GetOrder();
 
@@ -138,7 +138,7 @@ public class OrderTest {
 
             /**************************DeclResolution***************************************/
 
-            DeclResolution dr = new DeclResolution();
+            final DeclResolution dr = new DeclResolution();
 
             dr.setResolutionType(resolutionType.get(0));
 
@@ -148,7 +148,7 @@ public class OrderTest {
 
             /********************************************************************************/
 
-            dcl.setDclresolution(dr);
+            dcl.setDclresolution(new HashSet<DeclResolution>() {{add(dr);}});
 
             dcl.setDecltype(1);
 
