@@ -1,5 +1,4 @@
 package nla.local;
-
 import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
@@ -25,15 +24,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
 /**
  * Created by beresnev on 09.03.2015.
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
 @TransactionConfiguration(defaultRollback = false)
@@ -52,123 +48,77 @@ public class OrderTest {
 
     @Autowired
     public CodeGenerator scg;
-
     private static String cleanDecl = "delete from DECL";
     private static String cleanDeclarants = "delete from DECLARANTS";
     private static String cleanDecluser = "delete from DECLUSER";
     private static String cleanDeclresolution = "delete from DECLRESOLUTIONS";
-
     private List<Dict> resolutionType;
-
     @Autowired
     public DictionaryServiceImp CommonDict;
-
     Integer GLOBAL_INDEX = 12;
-
     @Before
-    public  void setOrder() throws ServiceDaoException {
+    public void setOrder() throws ServiceDaoException {
 
-        /*
-        scg.update(cleanDecluser);
+    /*  scg.update(cleanDecluser);
         scg.update(cleanDeclresolution);
         scg.update(cleanDeclarants);
-        scg.update(cleanDecl);
-        */
+        scg.update(cleanDecl); */
 
         resolutionType = CommonDict.getDict(EnumDict.ResolutionType);
     }
-
     @Test
     public void OrederTestController() throws DaoException, ServiceException {
-
-       // AddOrder();
-       // GetOrder();
-       // UpdateOrder();
-      //  AddOrder();
-
-
+        // AddOrder();
+        // GetOrder();
+        UpdateOrder();
     }
-
-
-     public void AddOrder() throws ServiceDaoException, ServiceException {
-
+    public void UpdateOrder() throws DaoException {
+        List<Decl> ld = osi.getAll(Decl.class);
+        ld.get(0).getDclresolution().iterator().next().setResolutionType(resolutionType.get(1));
+        DeclResolution dr = ld.get(0).getDclresolution().iterator().next();
+        dr.setDecl_id(null);
+        osi.update(ld.get(0));
+        int m = 0;
+    }
+    public void AddOrder() throws ServiceDaoException, ServiceException {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-
         Calendar cal = Calendar.getInstance();
-
         List<OPerson> op = ossi.getAll();
-
         List<PPerson> pp = pssi.getAll();
-
         Random r = new Random();
-
-        /*******************************************************************************/
-
+/*******************************************************************************/
         for (int i = 0; i < GLOBAL_INDEX ; i++) {
-
             Set<DeclUser> sdu = new HashSet<DeclUser>();
-
             Decl dcl = new Decl();
-
-
             int Rbo = r.nextInt(op.size()-1);
             int Reo = r.nextInt(op.size()-1-Rbo) + Rbo;
-
-                for (int j = Rbo; j <= Reo ; j++)
-                {
-                    DeclUser du_one = new DeclUser();
-
-                    cal.add(Calendar.DATE, -Rbo);
-
-                    du_one.setDate_in(cal.getTime());
-
-                    du_one.setoPerson(op.get(j));
-
-                    sdu.add(du_one);
-
-                }
-
+            for (int j = Rbo; j <= Reo ; j++)
+            {
+                DeclUser du_one = new DeclUser();
+                cal.add(Calendar.DATE, -Rbo);
+                du_one.setDate_in(cal.getTime());
+                du_one.setoPerson(op.get(j));
+                sdu.add(du_one);
+            }
             int Rbp = r.nextInt(pp.size()-2);
-
             dcl.setDeclarants(new HashSet<Person>(pp.subList(Rbp,Rbp+1)));
-
             dcl.setoUsers(sdu);
-
             cal.add(Calendar.DATE, -Rbo);
-
             dcl.setDecldate(cal.getTime());
-
-            /**************************DeclResolution***************************************/
-
-            DeclResolution dr = new DeclResolution();
-
+/**************************DeclResolution***************************************/
+            final DeclResolution dr = new DeclResolution();
             dr.setResolutionType(resolutionType.get(0));
-
             dr.setResolutionDate(cal.getTime());
-
             dr.setoPerson(null);
-
-            /********************************************************************************/
-
-            dcl.setDclresolution(dr);
-
+/********************************************************************************/
+            dcl.setDclresolution(new HashSet<DeclResolution>() {{add(dr);}});
             dcl.setDecltype(1);
-
             dcl.setUrgency(0);
-
             osi.add(dcl);
-
             System.out.print("Sd");
-
         }
-
-
     }
-
-
     public void GetOrder() throws DaoException {
-
         List<Decl> ld = osi.getAll(Decl.class);
-
     }
 }
