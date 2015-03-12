@@ -68,9 +68,6 @@ public class SubjectTest
     private static String cleanSubject = "delete from SUBJECTS";
     private static String cleanSubjectData = "delete from SUBJECTSDATA";
     private static String cleanOfficialuser = "delete from OFFICIALUSERS";
-    private static String cleanDecluser = "delete from DECLUSER";
-    private static String cleanDeclarants = "delete from DECLARANTS";
-    private static String cleanDeclresolution = "delete from DECLRESOLUTIONS";
 
     @Before
     public void setUp() throws Exception {
@@ -103,9 +100,6 @@ public class SubjectTest
 
         scg.update(cleanSubjectData);
         scg.update(cleanOfficialuser);
-        scg.update(cleanDecluser);
-        scg.update(cleanDeclresolution);
-        scg.update(cleanDeclarants);
         scg.update(cleanSubject);
 
 

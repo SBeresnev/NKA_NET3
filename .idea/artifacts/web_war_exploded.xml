@@ -32,14 +32,25 @@
           <element id="library" level="project" name="Maven: org.hibernate.common:hibernate-commons-annotations:4.0.4.Final" />
           <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.4" />
           <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.5.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:2.5.6" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.4.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.4.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.4.3" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.1" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.0.5.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aspects:4.0.5.RELEASE" />
-          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.7.4" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-collections4:4.0" />
+          <element id="library" level="project" name="Maven: org.springframework.ws:spring-ws-core:2.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.0.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.ws:spring-xml:2.2.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.2.1" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.6" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient-cache:4.2.4" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.2.4" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpmime:4.2.1" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.8.4" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.8.4" />
+          <element id="library" level="project" name="Maven: cglib:cglib:2.2.2" />
+          <element id="library" level="project" name="Maven: asm:asm:3.3.1" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.10" />
@@ -52,6 +63,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.0.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.0.5.RELEASE" />
@@ -59,7 +71,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="D:\nka_net3\web\target/MANIFEST.MF" />
+        <element id="file-copy" path="D:\users\beresnev\projects\NKA_NET3\nka_net3\web\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="web/web/Web" />
     </root>
