@@ -68,12 +68,12 @@ public class OrderTest {
     @Before
     public  void setOrder() throws ServiceDaoException {
 
-
-
+        /*
+        scg.update(cleanDecluser);
         scg.update(cleanDeclresolution);
         scg.update(cleanDeclarants);
         scg.update(cleanDecl);
-
+        */
 
         resolutionType = CommonDict.getDict(EnumDict.ResolutionType);
     }
@@ -81,30 +81,14 @@ public class OrderTest {
     @Test
     public void OrederTestController() throws DaoException, ServiceException {
 
-       // AddOrder();
-       // GetOrder();
+      //  AddOrder();
 
-       // UpdateOrder();
-
-    }
-
-    public void UpdateOrder() throws DaoException {
-
-        List<Decl> ld = osi.getAll(Decl.class);
-
-        ld.get(0).getDclresolution().iterator().next().setResolutionType(resolutionType.get(1));
-
-        DeclResolution dr = ld.get(0).getDclresolution().iterator().next();
-
-        dr.setDecl_id(null);
-
-        osi.update(ld.get(0));
-
-        int m = 0;
+        GetOrder();
 
     }
 
-    public void AddOrder() throws ServiceDaoException, ServiceException {
+
+     public void AddOrder() throws ServiceDaoException, ServiceException {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
@@ -154,7 +138,7 @@ public class OrderTest {
 
             /**************************DeclResolution***************************************/
 
-            final DeclResolution dr = new DeclResolution();
+            DeclResolution dr = new DeclResolution();
 
             dr.setResolutionType(resolutionType.get(0));
 
@@ -164,7 +148,7 @@ public class OrderTest {
 
             /********************************************************************************/
 
-            dcl.setDclresolution(new HashSet<DeclResolution>() {{add(dr);}});
+            dcl.setDclresolution(dr);
 
             dcl.setDecltype(1);
 
@@ -178,6 +162,7 @@ public class OrderTest {
 
 
     }
+
 
     public void GetOrder() throws DaoException {
 

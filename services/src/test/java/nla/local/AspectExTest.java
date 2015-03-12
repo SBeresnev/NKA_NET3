@@ -4,7 +4,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import nla.local.dao.exceptions.DaoException;
-import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceExceptionLogAspect;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
 import org.springframework.context.ApplicationContext;
@@ -37,7 +36,7 @@ public class AspectExTest extends TestCase
     /**
      * Rigourous Test :-)
      */
-    public void testApp() throws ServiceDaoException {
+    public void testApp()  {
 
         ApplicationContext appContext = new ClassPathXmlApplicationContext("beans-services.xml");
 

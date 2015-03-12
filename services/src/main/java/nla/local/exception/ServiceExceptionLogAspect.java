@@ -14,7 +14,7 @@ import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.stereotype.Component;
 
 @Aspect
-@Component("serviceExceptionAspect")
+@Component
 public class ServiceExceptionLogAspect {
 
     @AfterThrowing(pointcut = "within(nla.local.services..*)", throwing = "ex" )
