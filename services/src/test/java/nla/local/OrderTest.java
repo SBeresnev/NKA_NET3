@@ -69,10 +69,10 @@ public class OrderTest {
     public  void setOrder() throws ServiceDaoException {
 
 
-     /*   scg.update(cleanDecluser);
+
         scg.update(cleanDeclresolution);
         scg.update(cleanDeclarants);
-        scg.update(cleanDecl); */
+        scg.update(cleanDecl);
 
 
         resolutionType = CommonDict.getDict(EnumDict.ResolutionType);
@@ -84,7 +84,7 @@ public class OrderTest {
        // AddOrder();
        // GetOrder();
 
-        UpdateOrder();
+       // UpdateOrder();
 
     }
 
