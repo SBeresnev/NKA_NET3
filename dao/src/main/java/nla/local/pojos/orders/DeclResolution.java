@@ -17,7 +17,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "DECLRESOLUTIONS")
+@Table(name = "V_DECLRESOLUTIONS")
 public class DeclResolution {
 
     @Id

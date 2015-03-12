@@ -20,25 +20,75 @@ public class DeclUser {
     @Column(name="decluser_id", unique=true, nullable=false )
     @SequenceGenerator(name="decluser_seq", sequenceName="SEQ_DECLUSER_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="decluser_seq")
-    public Integer decluser_id;
+    private Integer decluser_id;
 
     @Column(name = "DECL_ID")
-    public Integer  decl_id;
+    private Integer  decl_id;
 
     @OneToMany
     @JoinColumn(name="DECL_ID")
-    public Set<Decl> decls ;
+    private Set<Decl> decls ;
 
     @OneToOne
     @JoinColumn(name = "SUBJECT_ID")
-    public OPerson oPerson;
+    private OPerson oPerson;
 
     @Column(name = "DATE_IN")
     @JsonSerialize(using=DateSerializer.class)
-    public Date date_in;
+    private Date date_in;
 
     @Column(name = "DATE_OUT")
     @JsonSerialize(using=DateSerializer.class)
-    public Date date_out;
+    private Date date_out;
+
+
+
+    public Integer getDecluser_id() {
+        return decluser_id;
+    }
+
+    public void setDecluser_id(Integer decluser_id) {
+        this.decluser_id = decluser_id;
+    }
+
+    public Integer getDecl_id() {
+        return decl_id;
+    }
+
+    public void setDecl_id(Integer decl_id) {
+        this.decl_id = decl_id;
+    }
+
+    public Set<Decl> getDecls() {
+        return decls;
+    }
+
+    public void setDecls(Set<Decl> decls) {
+        this.decls = decls;
+    }
+
+    public OPerson getoPerson() {
+        return oPerson;
+    }
+
+    public void setoPerson(OPerson oPerson) {
+        this.oPerson = oPerson;
+    }
+
+    public Date getDate_in() {
+        return date_in;
+    }
+
+    public void setDate_in(Date date_in) {
+        this.date_in = date_in;
+    }
+
+    public Date getDate_out() {
+        return date_out;
+    }
+
+    public void setDate_out(Date date_out) {
+        this.date_out = date_out;
+    }
 
 }

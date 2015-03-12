@@ -43,10 +43,9 @@ public class AspectExTest extends TestCase
 
         PSubjectServiceImp pService = (PSubjectServiceImp) appContext.getBean("PSubjectServiceImp");
 
-        try { pService.add(null);
-        } catch (DaoException e) { e.printStackTrace(); }
-
         ServiceExceptionLogAspect aspect = (ServiceExceptionLogAspect) appContext.getBean("serviceExceptionAspect");
+
+        try { pService.add(null); } catch (DaoException e) { e.printStackTrace(); }
 
 
         assertTrue( true );

@@ -109,7 +109,6 @@ public class SubjectTest
         scg.update(cleanSubject);
 
 
-
         AddJurSubject();
         GetJurSubject();
         UpdateJurSubject();

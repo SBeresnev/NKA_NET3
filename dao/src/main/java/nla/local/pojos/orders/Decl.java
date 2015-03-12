@@ -67,7 +67,7 @@ public class Decl implements Serializable {
     {
         for(DeclUser du : oUsers)
         {
-            du.decl_id = d_id;
+            du.setDecl_id(d_id);
         }
 
         for(DeclResolution  dr : dclresolution)

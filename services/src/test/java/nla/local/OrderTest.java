@@ -83,7 +83,6 @@ public class OrderTest {
 
        // AddOrder();
        // GetOrder();
-
        // UpdateOrder();
 
     }
@@ -134,9 +133,9 @@ public class OrderTest {
 
                     cal.add(Calendar.DATE, -Rbo);
 
-                    du_one.date_in = cal.getTime() ;
+                    du_one.setDate_in(cal.getTime());
 
-                    du_one.oPerson = op.get(j);
+                    du_one.setoPerson(op.get(j));
 
                     sdu.add(du_one);
 
