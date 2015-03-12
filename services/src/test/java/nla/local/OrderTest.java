@@ -48,38 +48,48 @@ public class OrderTest {
 
     @Autowired
     public CodeGenerator scg;
+
+    @Autowired
+    public DictionaryServiceImp CommonDict;
+
+    private List<Dict> resolutionType;
+
     private static String cleanDecl = "delete from DECL";
     private static String cleanDeclarants = "delete from DECLARANTS";
     private static String cleanDecluser = "delete from DECLUSER";
     private static String cleanDeclresolution = "delete from DECLRESOLUTIONS";
-    private List<Dict> resolutionType;
-    @Autowired
-    public DictionaryServiceImp CommonDict;
+
+
     Integer GLOBAL_INDEX = 12;
+
+
     @Before
     public void setOrder() throws ServiceDaoException {
 
-    /*  scg.update(cleanDecluser);
+        scg.update(cleanDecluser);
         scg.update(cleanDeclresolution);
         scg.update(cleanDeclarants);
-        scg.update(cleanDecl); */
+        scg.update(cleanDecl);
 
         resolutionType = CommonDict.getDict(EnumDict.ResolutionType);
     }
     @Test
     public void OrederTestController() throws DaoException, ServiceException {
-        // AddOrder();
+         AddOrder();
         // GetOrder();
-        UpdateOrder();
+       // UpdateOrder();
+
     }
+
     public void UpdateOrder() throws DaoException {
         List<Decl> ld = osi.getAll(Decl.class);
         ld.get(0).getDclresolution().iterator().next().setResolutionType(resolutionType.get(1));
         DeclResolution dr = ld.get(0).getDclresolution().iterator().next();
-        dr.setDecl_id(null);
+
         osi.update(ld.get(0));
         int m = 0;
     }
+
     public void AddOrder() throws ServiceDaoException, ServiceException {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();

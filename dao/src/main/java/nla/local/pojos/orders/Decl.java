@@ -33,9 +33,9 @@ public class Decl implements Serializable {
     @Column(name = "DECLNUMBER")
     private String declnumber ;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.MERGE)
     @JoinColumn(name = "DECL_ID")
-    @Where( clause = "RESOLUTION_DATE_OUT is NULL")
+    //@Where( clause = "RESOLUTION_DATE_OUT is NULL")
     private Set<DeclResolution> dclresolution;
 
     @OneToMany(cascade=CascadeType.ALL)
