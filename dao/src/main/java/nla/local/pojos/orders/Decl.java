@@ -15,6 +15,7 @@ import java.util.Set;
 @Table(name = "DECL")
 public class Decl implements Serializable {
 
+
     @Id
     @GeneratedValue(generator="seq_id")
     @GenericGenerator(
@@ -22,7 +23,7 @@ public class Decl implements Serializable {
             strategy = "nla.local.util.CodeGenerator",
             parameters = @org.hibernate.annotations.Parameter(name = "seq_name", value = "SEQ_DECL_ID"))
     @Column(name="DECL_ID", unique=true, nullable=false )
-    public Integer decl_id;
+    private Integer decl_id;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "DECLARANTS", joinColumns = {
@@ -33,7 +34,7 @@ public class Decl implements Serializable {
     @Column(name = "DECLNUMBER")
     private String declnumber ;
 
-    @OneToMany(cascade=CascadeType.MERGE)
+    @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name = "DECL_ID")
     //@Where( clause = "RESOLUTION_DATE_OUT is NULL")
     private Set<DeclResolution> dclresolution;
@@ -70,6 +71,7 @@ public class Decl implements Serializable {
             dr.setDecl_id(d_id);
         }
     }
+
     public Set<DeclResolution> getDclresolution() {
         return dclresolution;
     }

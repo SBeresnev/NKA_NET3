@@ -83,9 +83,6 @@ public class PSubjectServiceImp extends SubjectServiceImp<PPerson> {
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query);
 
-        log.info("Get " + " by name. Invoked SubjectService.getByFIOType" );
-
-
         List<PPerson> retval =  new ArrayList<PPerson>();
 
 

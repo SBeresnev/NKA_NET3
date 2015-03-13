@@ -42,9 +42,9 @@ public class SearchSubjectForm {
     }
 
     public void setType(Integer type) {
-        if (type < 200) setSubjectClass(SubjectClass.PRV);
+        if (type < SubjectClass.toInt(SubjectClass.PRV) ) setSubjectClass(SubjectClass.PRV);
         else {
-            if (type < 400) setSubjectClass(SubjectClass.JUR);
+            if (type < SubjectClass.toInt(SubjectClass.JUR)) setSubjectClass(SubjectClass.JUR);
             else setSubjectClass(SubjectClass.OFC);
         }
         this.type = type;
