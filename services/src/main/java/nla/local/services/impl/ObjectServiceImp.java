@@ -128,6 +128,57 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
     }
 
+    public List<Object_dest> findObjectbyInventoryNumCommon(Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException {
+
+        List<Object_dest> ret_val_dest = null;
+
+        List<Object_src> ret_val_src = null;
+
+        ret_val_dest = (List<Object_dest>) findObjectbyInventoryNum(Object_dest.class, inventory_number, object_type, org_id);
+
+        if(ret_val_dest.size() == 0) {
+
+            ret_val_src = (List<Object_src>) findObjectbyInventoryNum(Object_src.class, inventory_number, object_type, org_id);
+
+            for (Object_src src : ret_val_src)
+            {
+
+                Object_dest dest = convertSrctoDest(src);
+
+                ret_val_dest.add(dest);
+
+            }
+        }
+
+        return ret_val_dest;
+
+    }
+
+    public List<Object_dest> findObjectbyCadastreNumCommon(String cadastre_number) throws ServiceDaoException {
+
+        List<Object_dest> ret_val_dest = null;
+
+        List<Object_src> ret_val_src = null;
+
+        ret_val_dest = (List<Object_dest>) findObjectbyCadastreNum(Object_dest.class, cadastre_number);
+
+        if(ret_val_dest.size() == 0) {
+
+            ret_val_src = (List<Object_src>) findObjectbyCadastreNum(Object_src.class, cadastre_number);
+
+            for (Object_src src : ret_val_src)
+            {
+
+                Object_dest dest = convertSrctoDest(src);
+
+                ret_val_dest.add(dest);
+
+            }
+        }
+
+        return ret_val_dest;
+
+    }
 
     public List<Object_dest> findObjectbyAddressCommon(List<Long> address_id) throws ServiceDaoException {
 

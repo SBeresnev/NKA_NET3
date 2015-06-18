@@ -261,13 +261,13 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
     }
 
     @Override
-    public List<Ate> getAllATE() throws  ServiceDaoException
-    {
+    public List<Ate> getAllATE() throws  ServiceDaoException  {
 
         return super.getAll(Ate.class);
 
     }
 
+    @Override
     public Address_dest convertSrctoDest(Address_src adr_src) throws ServiceDaoException {
 
         Address_dest ret_val = new Address_dest();
@@ -318,10 +318,8 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
     }
 
-
     @Override
-    public Address_dest bindAddress( Address_dest new_adr) throws  ServiceDaoException
-    {
+    public Address_dest bindAddress( Address_dest new_adr) throws  ServiceDaoException  {
 
         Address_dest adr_dst = new Address_dest();
 

@@ -2,9 +2,6 @@ package nla.local.controller;
 
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
-import nla.local.pojos.object.*;
-import nla.local.pojos.orders.Journal;
-import nla.local.services.IAddressService;
 import nla.local.services.IObjectService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +33,13 @@ public class ObjectController {
 
     }
 
+    @RequestMapping(value = "/find_by_inv", method = {RequestMethod.GET})
+    public List<? extends nla.local.pojos.object.Object> findObjectbyInventoryNumCommon(Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException, ServiceException {
+
+        logger.info("root - /object/find_by_inv");
+
+        return objectServiceImp.findObjectbyInventoryNumCommon(inventory_number, object_type, org_id);
+
+    }
 
 }
