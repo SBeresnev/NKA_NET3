@@ -33,4 +33,6 @@ public interface IObjectService extends IService{
 
     public List<Object_dest> findObjectbyInventoryNumCommon(Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException ;
 
+    public List<Object_dest> findObjectbyCadastreNumCommon(String cadastre_number) throws ServiceDaoException ;
+
 }

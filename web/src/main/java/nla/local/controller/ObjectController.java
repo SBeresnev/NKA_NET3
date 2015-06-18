@@ -42,4 +42,14 @@ public class ObjectController {
 
     }
 
+    @RequestMapping(value = "/find_by_cadastr", method = {RequestMethod.GET})
+    public List<? extends nla.local.pojos.object.Object> findObjectbyCadastreNumCommon(String cadastre_number) throws ServiceDaoException, ServiceException {
+
+        logger.info("root - /object/find_by_cadastr");
+
+        return objectServiceImp.findObjectbyCadastreNumCommon(cadastre_number);
+
+    }
+
+
 }

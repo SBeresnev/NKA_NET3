@@ -1,5 +1,7 @@
 package nla.local.pojos.address;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 /**
@@ -11,9 +13,9 @@ public class Address_dest {
 
     @Id
     @Column(name="ADDRESS_ID", unique=true, nullable=false )
-    //@SequenceGenerator(name="address_seq", sequenceName="SEQ_ADDRESS_ID")
-    //@GeneratedValue(strategy = GenerationType.AUTO) // ,generator="address_seq")
-    private Long address_id;
+    @SequenceGenerator(name="adr_seq", sequenceName="SEQ_ADDRESS_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO ,generator="adr_seq")
+     private Long address_id;
 
     @Column(name = "ADR_NUM")
     private Long adr_num;

@@ -2,6 +2,7 @@ package nla.local;
 
 import nla.local.exception.ServiceException;
 import nla.local.pojos.address.Address_dest;
+import nla.local.pojos.address.Address_src;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
@@ -50,9 +51,9 @@ public class ObjectTest{
 
         long startTime = System.nanoTime();
 
-       // bindObjectbyAddress();
+        bindObjectbyAddressCommon();
 
-        bindObjectbyInventoryNum();
+        bindObjectbyInventoryNumCommon();
 
         long endTime = System.nanoTime();
 
@@ -63,34 +64,31 @@ public class ObjectTest{
     }
 
 
-    public void bindObjectbyAddress() throws ServiceDaoException, ServiceException {
+    // Поиск новых адресов через adr_num
+    public void bindObjectbyAddressCommon() throws ServiceDaoException, ServiceException {
 
-        // Поиск новых адресов через adr_num
+        Address_dest adr_dest = asi.getdestbyIDs(null, Long.valueOf(878782));
 
-        CatalogItem ci = new CatalogItem();
+        if (adr_dest == null) {
 
-        Address_dest adr_dest = asi.getdestbyIDs(null, Long.valueOf(3129691));
+            adr_dest =  asi.convertSrctoDest(asi.getsrcbyID(null, Long.valueOf(878782), 3).get(0));
 
-        List<Object_dest> ret_val_dest = (List<Object_dest>) osi.findObjectbyAddress(Object_dest.class, Arrays.asList(adr_dest.getAddress_id()));
+        }
 
-        if(ret_val_dest.size() == 0) {
+        List<Object_dest> ret_val_dest =  osi.findObjectbyAddressCommon( Arrays.asList(adr_dest.getAdr_num()));
 
-            List<Object_src> ret_val_src = (List<Object_src>) osi.findObjectbyAddress(Object_src.class, Arrays.asList(adr_dest.getAdr_num()));
+         int i = 0;
 
-            for( Object_src ret_val : ret_val_src )
+            for( Object_dest dst_src : ret_val_dest )
             {
 
-                Object_dest odt = osi.convertSrctoDest(ret_val);
+                dst_src.setReadiness(100);
 
-                odt.setObj_id_inv(ret_val.getObj_id());
+                dst_src.setConserv(0);
 
-                odt.setReadiness(100);
+                dst_src.setReg_type(1);
 
-                odt.setConserv(0);
-
-                odt.setReg_type(1);
-
-                odt.setStatus(1);
+                dst_src.setStatus(1);
 
                 List<CatalogItem>  obj_pup = catalogService.getCatalogItemsByTyp(Integer.decode(CatalogConstants.USE_PURPOSE));
 
@@ -101,109 +99,57 @@ public class ObjectTest{
                     }
                 });
 
-                odt.setUse_purpose(objectType);
+                dst_src.setAddress_dest(adr_dest);
 
+                dst_src.setUse_purpose(objectType);
 
-                odt.setAdr_num(adr_dest.getAdr_num());
+                dst_src.setAdr_num(adr_dest.getAdr_num());
 
-                odt.setAddress_dest(adr_dest); // Не обязательно, хорошо для контроллера сразу вернуть и адресс
+                ret_val_dest.set(i,dst_src);
 
-
-
-                ret_val_dest.add(odt);
+                i++;
 
             }
 
-        } else {
 
-           ret_val_dest.get(0).setSquare(179);
-
-           ret_val_dest.get(0).setRoomscount(550);
-
-           ret_val_dest.get(0).setOoper(ret_val_dest.get(0).getOoper()+1);
-
-        }
 
         if(ret_val_dest.size() > 0) { osi.bindObject(ret_val_dest.get(0)); }
 
     }
 
 
+    public void bindObjectbyInventoryNumCommon() throws ServiceDaoException, ServiceException {
 
-    public void bindObjectbyInventoryNum() throws ServiceDaoException, ServiceException {
+        List<Object_dest> ret_val_dest = (List<Object_dest>) osi.findObjectbyInventoryNumCommon(11, 3, 0);
 
-        //Поиск новых адресов через adr_num
-        //List<Object_src> ret_val_src = (List<Object_src>) osi.findObjectbyAddress(Object_src.class, Arrays.asList(((Integer) 840884).longValue()));
+        if (ret_val_dest.size() >0 ) {
 
-        List<Object_dest> ret_val_dest = (List<Object_dest>) osi.findObjectbyInventoryNum(Object_dest.class, 11, 3, 0);
+            ret_val_dest.get(0).setReadiness(50);
 
-        if (ret_val_dest.size() == 0 ) {
+            ret_val_dest.get(0).setConserv(0);
 
+            ret_val_dest.get(0).setReg_type(1);
 
-            List<Object_src> ret_val_src = (List<Object_src>) osi.findObjectbyInventoryNum(Object_src.class, 11, 3, 0);
+            ret_val_dest.get(0).setStatus(1);
 
-            for (Object_src ret_val : ret_val_src) {
+            ret_val_dest.get(0).setOoper(120);
 
-                Object_dest odt = osi.convertSrctoDest(ret_val);
+            List<CatalogItem> obj_pup = catalogService.getCatalogItemsByTyp(Integer.decode(CatalogConstants.USE_PURPOSE));
 
-                odt.setObj_id_inv(ret_val.getObj_id());
+            CatalogItem objectType = CollectionUtils.find(obj_pup, new Predicate() {
+                public boolean evaluate(Object o) {
+                    CatalogItem c = (CatalogItem) o;
+                    return c.getCode_name().toLowerCase().contains("сооружение");
+                }
+            });
 
-                odt.setReadiness(100);
+            ret_val_dest.get(0).setUse_purpose(objectType);
 
-                odt.setConserv(0);
-
-                odt.setReg_type(1);
-
-                odt.setStatus(1);
-
-                odt.setOoper(12);
-
-                List<CatalogItem> obj_pup = catalogService.getCatalogItemsByTyp(Integer.decode(CatalogConstants.USE_PURPOSE));
-
-                CatalogItem objectType = CollectionUtils.find(obj_pup, new Predicate() {
-                    public boolean evaluate(Object o) {
-                        CatalogItem c = (CatalogItem) o;
-                        return c.getCode_name().toLowerCase().contains("сооружение");
-                    }
-                });
-
-                odt.setUse_purpose(objectType);
-
-                //odt.setBound_id(0);
-
-                odt.setAdr_num(ret_val.getAddress_id());
-
-                ret_val_dest.add(odt);
-
-            }
-
-        } else {
-
-
-            for( Object_dest ret_val : ret_val_dest ) {
-
-                Address_dest ade = asi.getdestbyIDs(ret_val.getAddress_id(),null);
-
-                ret_val.setAddress_dest(ade);
-
-            }
-            ret_val_dest.get(0).setSquare(179);
-
-            ret_val_dest.get(0).setOoper(ret_val_dest.get(0).getOoper()+1);
-
-            /*
-            ret_val_dest.get(0).setSquare(179);
-
-            ret_val_dest.get(0).setRoomscount(550);
-
-            ret_val_dest.get(0).setOoper(ret_val_dest.get(0).getOoper()+1);
-            */
-
-
-            }
+        }
 
         osi.bindObject(ret_val_dest.get(0));
 
     }
+
 
 }

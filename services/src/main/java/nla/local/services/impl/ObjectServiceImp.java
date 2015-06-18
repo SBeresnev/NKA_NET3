@@ -34,9 +34,42 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
     @Autowired
     private CodeGenerator scg;
 
-
-    public List<Object_dest> findbyobjDestid(Long obj_dest_id) throws ServiceDaoException
+    @Transactional( rollbackFor=Exception.class)
+    public Object_dest bindObject( Object_dest object_dest) throws ServiceDaoException, ServiceException
     {
+
+        if (object_dest.getAddress_dest() != null )
+        {
+                if (object_dest.getAddress_dest().getAddress_id() == null) {
+
+                    object_dest.setAddress_dest(ias.bindAddress(object_dest.getAddress_dest()));
+                }
+                 else {
+                    object_dest.setAddress_id(object_dest.getAddress_dest().getAddress_id());
+                }
+
+            } else throw new ServiceException(new Exception(),"No address found by object");
+
+
+        if( object_dest.getObj_id() != null )
+        {
+            this.update(object_dest);
+
+        } else {
+
+            Long objid = Long.valueOf(scg.generate("SEQ_OBJECTS_ID.NEXTVAL").toString());
+
+            object_dest.setObj_id(objid);
+
+            this.add(object_dest);
+        }
+
+        return object_dest;
+
+    }
+
+    public List<Object_dest> findbyobjDestid(Long obj_dest_id) throws ServiceDaoException    {
+
         List<Object_dest> ret_val = null;
 
         DetachedCriteria query_ = DetachedCriteria.forClass(Object_dest.class);
@@ -50,12 +83,9 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         return ret_val;
 
-
     }
 
-
-    public Object_dest convertSrctoDest(Object_src adr_src) throws ServiceDaoException
-    {
+    public Object_dest convertSrctoDest(Object_src adr_src) throws ServiceDaoException    {
 
         Object_dest ret_val = new Object_dest();
 
@@ -83,49 +113,8 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         ret_val.setAdr_num(adr_src.getAddress_id());
 
+
         return ret_val;
-    }
-
-
-    @Transactional( rollbackFor=Exception.class)
-    public Object_dest bindObject( Object_dest object_dest) throws ServiceDaoException, ServiceException
-    {
-
-        if (object_dest.getAddress_id() == null && object_dest.getAdr_num() != null)
-        {
-
-            List<Address_src> ret_src_list = ias.getsrcbyID(null, object_dest.getAdr_num(), object_dest.getObjectType().getCode_id());
-
-            if(ret_src_list.size() > 0 ) {
-
-                Address_dest adr_dst_t = ias.convertSrctoDest(ret_src_list.get(0));
-
-                adr_dst_t = ias.bindAddress(adr_dst_t);
-
-                object_dest.setAddress_dest(adr_dst_t);
-
-                object_dest.setAddress_id(adr_dst_t.getAddress_id());
-
-            } else throw new ServiceException(new Exception(),"No address found by object");
-
-        }
-
-
-        if( object_dest.getObj_id() != null )
-        {
-            this.update(object_dest);
-
-        }else {
-
-            Long objid = Long.valueOf(scg.generate("SEQ_OBJECTS_ID.NEXTVAL").toString());
-
-            object_dest.setObj_id(objid);
-
-            this.add(object_dest);
-        }
-
-        return object_dest;
-
     }
 
     public List<Object_dest> findObjectbyInventoryNumCommon(Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException {
@@ -145,9 +134,31 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
                 Object_dest dest = convertSrctoDest(src);
 
+                Address_dest ret_dest_adr = findbyAdrnum(null,src.getAddress_id(), src.getObjectType().getCode_id());
+
+                dest.setAddress_dest(ret_dest_adr);
+
                 ret_val_dest.add(dest);
 
             }
+
+        } else {
+
+            int i =0;
+
+            for (Object_dest dst : ret_val_dest)
+            {
+
+                Address_dest ret_dest_adr = findbyAdrnum(dst.getAddress_id(),dst.getAdr_num(), dst.getObjectType().getCode_id());
+
+                dst.setAddress_dest(ret_dest_adr);
+
+                ret_val_dest.set(i, dst);
+
+                i++;
+
+            }
+
         }
 
         return ret_val_dest;
@@ -171,7 +182,27 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
                 Object_dest dest = convertSrctoDest(src);
 
+                Address_dest ret_dest_adr = findbyAdrnum(null, src.getAddress_id(),  src.getObjectType().getCode_id());
+
+                dest.setAddress_dest(ret_dest_adr);
+
                 ret_val_dest.add(dest);
+
+            }
+        }
+        {
+
+            int i = 0;
+
+            for (Object_dest dst : ret_val_dest) {
+
+                Address_dest ret_dest_adr = findbyAdrnum(dst.getAddress_id(), dst.getAdr_num(), dst.getObjectType().getCode_id());
+
+                dst.setAddress_dest(ret_dest_adr);
+
+                ret_val_dest.set(i, dst);
+
+                i++;
 
             }
         }
@@ -204,7 +235,6 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         return ret_val_dest;
     }
-
 
     public List<? extends Object> findObjectbyAddress(Class<? extends Object> cobj, List<Long> address_id) throws ServiceDaoException
     {
@@ -255,6 +285,22 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         return  ret_val;
 
+    }
+
+    private Address_dest findbyAdrnum(Long address_id,Long adr_num, Integer obj_type) throws ServiceDaoException
+    {
+
+        Address_dest ade = ias.getdestbyIDs(address_id,adr_num);
+
+        if(ade == null) {
+
+            List<Address_src> asr = ias.getsrcbyID(null, adr_num, obj_type);
+
+            if(asr != null) { ade = ias.convertSrctoDest(asr.get(0)); }
+
+        }
+
+        return ade;
     }
 
 }
