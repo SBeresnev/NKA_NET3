@@ -321,24 +321,21 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
     @Override
     public Address_dest bindAddress( Address_dest new_adr) throws  ServiceDaoException  {
 
-        Address_dest adr_dst = new Address_dest();
 
-        adr_dst = this.getdestbyIDs(null,new_adr.getAdr_num());
-
-        if (adr_dst != null)
+        if (new_adr.getAddress_id() != null)
         {
-            adr_dst.setAdr(new_adr.getAdr());
 
-            this.update(adr_dst);
+
+            this.update(new_adr);
 
         } else {
 
-            adr_dst = new_adr ;
 
-            this.add(adr_dst);
+
+            this.add(new_adr);
         }
 
-        return adr_dst;
+        return new_adr;
 
     }
 
