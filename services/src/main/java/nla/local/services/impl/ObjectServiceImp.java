@@ -15,7 +15,6 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -82,6 +81,8 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         ret_val.setLand_category(adr_src.getLand_category());
 
+        ret_val.setAdr_num(adr_src.getAddress_id());
+
         return ret_val;
     }
 
@@ -126,6 +127,33 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
         return object_dest;
 
     }
+
+
+    public List<Object_dest> findObjectbyAddressCommon(List<Long> address_id) throws ServiceDaoException {
+
+        List<Object_dest> ret_val_dest = null;
+
+        List<Object_src> ret_val_src = null;
+
+        ret_val_dest = (List<Object_dest>) findObjectbyAddress(Object_dest.class, address_id);
+
+        if(ret_val_dest.size() == 0) {
+
+            ret_val_src = (List<Object_src>) findObjectbyAddress(Object_src.class, address_id);
+
+            for (Object_src src : ret_val_src)
+            {
+
+                Object_dest dest = convertSrctoDest(src);
+
+                ret_val_dest.add(dest);
+
+            }
+        }
+
+        return ret_val_dest;
+    }
+
 
     public List<? extends Object> findObjectbyAddress(Class<? extends Object> cobj, List<Long> address_id) throws ServiceDaoException
     {

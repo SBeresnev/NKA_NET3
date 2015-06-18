@@ -1,4 +1,5 @@
 package nla.local.pojos.object;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import nla.local.pojos.address.Address_dest;
 import nla.local.pojos.operations.Operation;
 
@@ -41,9 +42,11 @@ public class Object_dest extends Object  {
      private Long address_id;
 
     @Transient
+    @JsonSerialize
     private Long adr_num;
 
     @Transient
+    @JsonSerialize
     private Address_dest address_dest;
 
 

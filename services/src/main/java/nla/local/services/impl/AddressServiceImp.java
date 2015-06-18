@@ -39,7 +39,6 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
     private DetachedCriteria query_ate = DetachedCriteria.forClass(Ate.class);
 
 
-
     @Override
     public Address_dest getdestbyIDs(Long addressID, Long adr_num ) throws ServiceDaoException {
 

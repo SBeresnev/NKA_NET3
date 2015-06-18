@@ -137,30 +137,12 @@ public class ObjectTest{
 
         List<Object_dest> ret_val_dest = (List<Object_dest>) osi.findObjectbyInventoryNum(Object_dest.class, 11, 3, 0);
 
-        if (ret_val_dest.size() >0 ) {
+        if (ret_val_dest.size() == 0 ) {
 
-            for( Object_dest ret_val : ret_val_dest ) {
-
-               Address_dest ade = asi.getdestbyIDs(ret_val.getAddress_id(),null);
-
-               ret_val.setAddress_dest(ade);
-
-            }
-            ret_val_dest.get(0).setSquare(79);
-
-            /*
-            ret_val_dest.get(0).setSquare(179);
-
-            ret_val_dest.get(0).setRoomscount(550);
-
-            ret_val_dest.get(0).setOoper(ret_val_dest.get(0).getOoper()+1);
-            */
-
-        }else {
 
             List<Object_src> ret_val_src = (List<Object_src>) osi.findObjectbyInventoryNum(Object_src.class, 11, 3, 0);
 
-            for( Object_src ret_val : ret_val_src ) {
+            for (Object_src ret_val : ret_val_src) {
 
                 Object_dest odt = osi.convertSrctoDest(ret_val);
 
@@ -176,9 +158,9 @@ public class ObjectTest{
 
                 odt.setOoper(12);
 
-                List<CatalogItem>  obj_pup = catalogService.getCatalogItemsByTyp(Integer.decode(CatalogConstants.USE_PURPOSE));
+                List<CatalogItem> obj_pup = catalogService.getCatalogItemsByTyp(Integer.decode(CatalogConstants.USE_PURPOSE));
 
-                CatalogItem  objectType = CollectionUtils.find(obj_pup, new Predicate() {
+                CatalogItem objectType = CollectionUtils.find(obj_pup, new Predicate() {
                     public boolean evaluate(Object o) {
                         CatalogItem c = (CatalogItem) o;
                         return c.getCode_name().toLowerCase().contains("сооружение");
@@ -194,8 +176,31 @@ public class ObjectTest{
                 ret_val_dest.add(odt);
 
             }
-        }
 
+        } else {
+
+
+            for( Object_dest ret_val : ret_val_dest ) {
+
+                Address_dest ade = asi.getdestbyIDs(ret_val.getAddress_id(),null);
+
+                ret_val.setAddress_dest(ade);
+
+            }
+            ret_val_dest.get(0).setSquare(179);
+
+            ret_val_dest.get(0).setOoper(ret_val_dest.get(0).getOoper()+1);
+
+            /*
+            ret_val_dest.get(0).setSquare(179);
+
+            ret_val_dest.get(0).setRoomscount(550);
+
+            ret_val_dest.get(0).setOoper(ret_val_dest.get(0).getOoper()+1);
+            */
+
+
+            }
 
         osi.bindObject(ret_val_dest.get(0));
 

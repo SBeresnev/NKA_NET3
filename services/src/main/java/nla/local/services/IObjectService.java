@@ -29,4 +29,6 @@ public interface IObjectService extends IService{
 
     public List<Object_dest> findbyobjDestid(Long obj_dest_id) throws ServiceDaoException;
 
+    public List<Object_dest> findObjectbyAddressCommon(List<Long> address_id) throws ServiceDaoException;
+
 }
