@@ -1,0 +1,9 @@
+.idea/*
+nka_net3.iml
+target/*
+out/*
+*.iml
+services/target/
+dao/target/
+web/target/
+target/
