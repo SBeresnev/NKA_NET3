@@ -110,8 +110,6 @@ public class CatalogDAO extends BaseDao<CatalogItem> implements ICatalogDAO {
             }
             getSession().delete(type);
 
-            session.flush();
-
         } catch (Exception e) {
             session.getTransaction().rollback();
             throw new DaoException(e, DaoErrorCode.NKANET_DAO_004);

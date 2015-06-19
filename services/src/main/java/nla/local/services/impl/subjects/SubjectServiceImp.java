@@ -20,7 +20,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class SubjectServiceImp<T extends Person> extends BaseServiceImp<T> implements ISubjectService<T> {
+public abstract class SubjectServiceImp<T extends Person> extends BaseServiceImp<T> implements ISubjectService<T> {
 
    private static Logger log = Logger.getLogger(SubjectServiceImp.class);
 

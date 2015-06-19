@@ -2,13 +2,9 @@ package nla.local.controller;
 
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
-import nla.local.pojos.dict.CatalogConstants;
-import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
 import nla.local.services.IObjectService;
 import nla.local.services.impl.CatalogServiceImp;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.Predicate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
