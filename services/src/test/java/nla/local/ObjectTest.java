@@ -59,7 +59,7 @@ public class ObjectTest{
 
         bindObjectbyAddressCommon();
 
-        bindObjectbyInventoryNumCommon();
+       // bindObjectbyInventoryNumCommon();
 
         long endTime = System.nanoTime();
 
