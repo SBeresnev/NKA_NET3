@@ -1,6 +1,5 @@
 package nla.local.controller.forms;
 
-import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.subjects.SubjectClass;
 
 /**
