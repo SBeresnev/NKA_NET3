@@ -38,17 +38,9 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
     public Object_dest bindObject( Object_dest object_dest) throws ServiceDaoException, ServiceException
     {
 
-        if (object_dest.getAddress_dest() != null )
-        {
-                if (object_dest.getAddress_dest().getAddress_id() == null) {
+        object_dest.setAddress_dest(ias.bindAddress(object_dest.getAddress_dest()));
 
-                    object_dest.setAddress_dest(ias.bindAddress(object_dest.getAddress_dest()));
-                }
-                 else {
-                    object_dest.setAddress_id(object_dest.getAddress_dest().getAddress_id());
-                }
-
-            } else throw new ServiceException(new Exception(),"No address found by object");
+        object_dest.setAddress_id( object_dest.getAddress_dest() == null ? null : object_dest.getAddress_dest().getAddress_id() );
 
 
         if( object_dest.getObj_id() != null )

@@ -2,6 +2,7 @@ package nla.local.controller;
 
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
+import nla.local.pojos.object.Object_dest;
 import nla.local.services.IObjectService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,16 @@ public class ObjectController {
         return objectServiceImp.findObjectbyCadastreNumCommon(cadastre_number);
 
     }
+
+    @RequestMapping(value = "/bindObject", method = {RequestMethod.GET})
+    public Object_dest bindObject(Object_dest obj_dest) throws ServiceDaoException, ServiceException {
+
+        logger.info("root - /object/bindObject");
+
+        return objectServiceImp.bindObject(obj_dest);
+
+    }
+
 
 
 }

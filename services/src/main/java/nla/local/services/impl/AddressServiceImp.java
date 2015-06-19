@@ -1,6 +1,7 @@
 package nla.local.services.impl;
 
 import nla.local.exception.ServiceDaoException;
+import nla.local.exception.ServiceException;
 import nla.local.pojos.address.*;
 import nla.local.services.IAddressService;
 
@@ -322,17 +323,20 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
     public Address_dest bindAddress( Address_dest new_adr) throws  ServiceDaoException  {
 
 
-        if (new_adr.getAddress_id() != null)
-        {
+        if (new_adr != null ) {
 
 
-            this.update(new_adr);
-
-        } else {
+            if (new_adr.getAddress_id() != null) {
 
 
+                this.update(new_adr);
 
-            this.add(new_adr);
+            } else {
+
+
+                this.add(new_adr);
+            }
+
         }
 
         return new_adr;

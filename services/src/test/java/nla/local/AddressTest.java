@@ -66,13 +66,13 @@ public class AddressTest {
 
         long startTime = System.nanoTime();
 
-        //AteTest();
+        AteTest();
 
-        //treeExpand();
+        treeExpand();
 
-        //addressTest();
+        addressTest();
 
-        //addAddress();
+        addAddress();
 
         bindAddress();
 
@@ -203,7 +203,7 @@ public class AddressTest {
         asi.bindAddress(adr_dst_t);
 
         //List<Address_src> test_address = asi.findHomeAddress(17030, "румян", 17, 8);
-        // List<Address_src> test_address = asi.findHomeAddress(25595, "гриш", 7, null);
+        //List<Address_src> test_address = asi.findHomeAddress(25595, "гриш", 7, null);
 
     }
 

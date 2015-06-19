@@ -9,6 +9,7 @@ import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.object.Object_src;
 import nla.local.services.IAddressService;
 import nla.local.services.impl.CatalogServiceImp;
+import nla.local.util.BaseClean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.junit.Test;
@@ -38,6 +39,9 @@ import java.util.List;
 public class ObjectTest{
 
     @Autowired
+    public BaseClean baseClean;
+
+    @Autowired
     private IObjectService osi;
 
     @Autowired
@@ -48,6 +52,8 @@ public class ObjectTest{
 
     @Test
     public void ObjectTestController() throws ServiceDaoException, ServiceException {
+
+        baseClean.ObjectClean();
 
         long startTime = System.nanoTime();
 

@@ -31,6 +31,14 @@ public class BaseClean {
     private static String cleanOfficialuser = "delete from OFFICIALUSERS";
 
 
+    private static String cleanObjectsdata = "delete from OBJECTDATA";
+    private static String cleanObjectreg_inv = "delete from OBJECTREG_INV";
+    private static String cleanOjects = "delete from OBJECTS";
+
+    private static String cleanAddress = "delete from ADDRESSES where ADDRESS_ID in (select ADDRESS_ID from MLOG$_ADDRESSES)";
+
+
+
     public void SubjectClean()
     {
         scg.update(cleanDecluser);
@@ -55,4 +63,12 @@ public class BaseClean {
         scg.update(cleanDecl);
     }
 
+    public void ObjectClean()
+    {
+        scg.update(cleanObjectsdata);
+        scg.update(cleanObjectreg_inv);
+        scg.update(cleanOjects);
+        scg.update(cleanAddress);
+
+    }
 }
