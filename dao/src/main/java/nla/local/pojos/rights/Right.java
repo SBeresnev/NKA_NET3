@@ -57,6 +57,7 @@ public class Right {
     @Column(name = "OBJECT_ENTITY_ID")
     private Integer object_entity_id;               //  object refrence
 
+
     @OneToOne
     @JoinColumn( name = "RIGHT_ID")
     private Right right_entity_id;                   //  right refrence
@@ -66,24 +67,31 @@ public class Right {
     @JoinColumn(name = "RIGHT_OWNER_ID")
     private Set<RightOwners> right_owner_lst;
 
+
     @Column(name = "BOUND_ID")
     private Integer bound_id;
+
 
     @Column(name = "COMMENTS")
     private String comments;
 
+
     @Column(name = "OOPER_ID")
     private Integer ooper_id;
+
 
     @Column(name = "IS_NEEDED")
     private Integer is_needed;
 
+
     @Column(name = "STATUS")
     private Integer status;
+
 
     @Column(name = "BEGIN_DATE")
     @JsonSerialize(using=DateSerializer.class)
     private Date begin_date;
+
 
     @Column(name = "END_DATE")
     @JsonSerialize(using=DateSerializer.class)
@@ -115,7 +123,6 @@ public class Right {
         this.right_type = right_type;
     }
 
-
     public CatalogItem getRight_entyty_type() {
         return right_entyty_type;
     }
@@ -123,7 +130,6 @@ public class Right {
     public void setRight_entyty_type(CatalogItem right_entyty_type) {
         this.right_entyty_type = right_entyty_type;
     }
-
 
     public Integer getObject_entity_id() {
         return object_entity_id;
