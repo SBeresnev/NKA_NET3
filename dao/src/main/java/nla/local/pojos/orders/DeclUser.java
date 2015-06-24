@@ -31,8 +31,6 @@ public class DeclUser {
     @JoinColumn(name = "SUBJECT_ID")
     private OPerson oPerson;
 
-
-
     @Column(name = "DATE_IN")
     @JsonSerialize(using = DateSerializer.class)
     private Date date_in;
