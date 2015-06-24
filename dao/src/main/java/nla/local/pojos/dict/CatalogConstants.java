@@ -35,6 +35,4 @@ public interface CatalogConstants {
 
     public static final String RIGHT_COUNT_TYPE = "21";
 
-
-
 }

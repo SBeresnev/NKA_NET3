@@ -35,8 +35,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
     private CodeGenerator scg;
 
     @Transactional( rollbackFor=Exception.class)
-    public Object_dest bindObject( Object_dest object_dest) throws ServiceDaoException, ServiceException
-    {
+    public Object_dest bindObject( Object_dest object_dest) throws ServiceDaoException, ServiceException  {
 
         object_dest.setAddress_dest(ias.bindAddress(object_dest.getAddress_dest()));
 
@@ -228,8 +227,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
         return ret_val_dest;
     }
 
-    public List<? extends Object> findObjectbyAddress(Class<? extends Object> cobj, List<Long> address_id) throws ServiceDaoException
-    {
+    public List<? extends Object> findObjectbyAddress(Class<? extends Object> cobj, List<Long> address_id) throws ServiceDaoException {
         List<? extends Object> ret_val = null;
 
         DetachedCriteria query_ = DetachedCriteria.forClass(cobj);
@@ -242,8 +240,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
     }
 
-    public List<? extends Object>  findObjectbyCadastreNum(Class<? extends Object> cobj, String cadastre_number) throws ServiceDaoException
-    {
+    public List<? extends Object>  findObjectbyCadastreNum(Class<? extends Object> cobj, String cadastre_number) throws ServiceDaoException  {
         List<? extends Object> ret_val = null;
 
         DetachedCriteria query_ = DetachedCriteria.forClass(cobj);
@@ -258,8 +255,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
         return  ret_val;
     }
 
-    public List<? extends Object>  findObjectbyInventoryNum(Class<? extends Object> cobj, Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException
-    {
+    public List<? extends Object>  findObjectbyInventoryNum(Class<? extends Object> cobj, Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException {
         List<? extends Object> ret_val = null;
 
         DetachedCriteria query_ = DetachedCriteria.forClass(cobj);
@@ -279,8 +275,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
     }
 
-    private Address_dest findbyAdrnum(Long address_id,Long adr_num, Integer obj_type) throws ServiceDaoException
-    {
+    private Address_dest findbyAdrnum(Long address_id,Long adr_num, Integer obj_type) throws ServiceDaoException  {
 
         Address_dest ade = ias.getdestbyIDs(address_id,adr_num);
 
@@ -294,5 +289,6 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         return ade;
     }
+
 
 }

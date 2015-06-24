@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
+import nla.local.pojos.object.Object_dest;
 import org.hibernate.annotations.JoinColumnOrFormula;
 import org.hibernate.annotations.JoinColumnsOrFormulas;
 import org.hibernate.annotations.JoinFormula;
@@ -59,7 +60,7 @@ public class Right {
 
 
     @OneToOne
-    @JoinColumn( name = "RIGHT_ID")
+    @JoinColumn( name = "RIGHT_ID", referencedColumnName = "RIGHT_ENTITY_ID")
     private Right right_entity_id;                   //  right refrence
 
 
@@ -97,7 +98,18 @@ public class Right {
     @JsonSerialize(using=DateSerializer.class)
     private Date end_date;
 
+    @Transient
+    private Object_dest bindedObj;
 
+
+
+    public Object_dest getBindedObj() {
+        return bindedObj;
+    }
+
+    public void setBindedObj(Object_dest bindedObj) {
+        this.bindedObj = bindedObj;
+    }
 
     public CatalogItem getRight_count_type() {
         return right_count_type;
