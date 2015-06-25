@@ -16,34 +16,34 @@ import java.util.Date;
 public class RightOwners {
 
     @Column(name = "RIGHT_OWNER_ID")
-    Integer right_owner_id;
+    private Integer right_owner_id;
 
     @ManyToOne
     @JoinColumn(name = "OWNER_ID")
-    Person owner_id;
+    private Person owner_id;
 
     @Column(name = "RIGHT_ID")
-    Integer right_id;
+    private Integer right_id;
 
     @Column(name="NUMERATOR_PART")
-    Integer numerator_part;
+    private Integer numerator_part;
 
     @Column(name="DENOMINATOR_PART")
-    Integer denominator_part;
+    private Integer denominator_part;
 
     @Column(name = "DATE_IN")
     @JsonSerialize(using=DateSerializer.class)
-    Date date_in;
+    private Date date_in;
 
     @Column(name = "DATE_OUT")
     @JsonSerialize(using=DateSerializer.class)
-    Date date_out;
+    private Date date_out;
 
     @Column(name = "STATUS")
-    Integer status;
+    private Integer status;
 
     @Column(name = "OOPER_ID")
-    Integer ooper_id;
+    private Integer ooper_id;
 
 
 

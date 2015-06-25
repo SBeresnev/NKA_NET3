@@ -58,14 +58,13 @@ public class Right {
     @Column(name = "OBJECT_ENTITY_ID")
     private Integer object_entity_id;               //  object refrence
 
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn( name = "RIGHT_ID", referencedColumnName = "RIGHT_ENTITY_ID")
-    private Right right_entity_id;                   //  right refrence
+    private RightOwners parent_owner;                   //  right refrence
 
 
     @OneToMany
-    @JoinColumn(name = "RIGHT_OWNER_ID")
+    @JoinColumn(name = "RIGHT_ENTITY_ID")
     private Set<RightOwners> right_owner_lst;
 
 
@@ -151,12 +150,12 @@ public class Right {
         this.object_entity_id = object_entity_id;
     }
 
-    public Right getRight_entity_id() {
-        return right_entity_id;
+    public RightOwners getParent_owner() {
+        return parent_owner;
     }
 
-    public void setRight_entity_id(Right right_entity_id) {
-        this.right_entity_id = right_entity_id;
+    public void setParent_owner(RightOwners parent_owner) {
+        this.parent_owner = parent_owner;
     }
 
     public Set<RightOwners> getRight_owner_lst() {
