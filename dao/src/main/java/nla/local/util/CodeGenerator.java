@@ -2,6 +2,7 @@ package nla.local.util;
 
 import nla.local.pojos.orders.Decl;
 import nla.local.pojos.orders.Declarant;
+import nla.local.pojos.rights.Right;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
@@ -60,6 +61,12 @@ public class CodeGenerator implements IdentifierGenerator, Configurable {
         if(object instanceof Declarant) {
 
             ((Declarant)object).setDeclarantId(id);
+
+        }
+
+        if(object instanceof Right) {
+
+            ((Right)object).fillRightId(id);
 
         }
 

@@ -26,7 +26,7 @@ public class Decl implements Serializable {
     private Integer decl_id;
 
     @OneToMany(mappedBy = "decl_id", fetch = FetchType.EAGER ,orphanRemoval = true, cascade = CascadeType.ALL)
-     private Set<Declarant> declarants;
+    private Set<Declarant> declarants;
 
     @OneToMany(mappedBy = "decl_id", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
     private Set<DeclResolution> dclresolution;

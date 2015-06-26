@@ -5,11 +5,13 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
-import org.hibernate.annotations.JoinColumnOrFormula;
-import org.hibernate.annotations.JoinColumnsOrFormulas;
-import org.hibernate.annotations.JoinFormula;
+import nla.local.pojos.orders.DeclUser;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.CascadeType;
 import java.util.Date;
 import java.util.Set;
 
@@ -21,10 +23,14 @@ import java.util.Set;
 @Table( name = "V_RIGHT")
 public class Right {
 
+
     @Id
+    @GeneratedValue(generator="seq_id")
+    @GenericGenerator(
+            name="seq_id",
+            strategy = "nla.local.util.CodeGenerator",
+            parameters = @org.hibernate.annotations.Parameter(name = "seq_name", value = "SEQ_RIGHT_ID"))
     @Column(name="RIGHT_ID", unique=true, nullable=false )
-    @SequenceGenerator(name="right_seq", sequenceName="SEQ_RIGHT_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO ,generator="right_seq")
     private Integer right_id;
 
 
@@ -48,7 +54,7 @@ public class Right {
 
     @ManyToOne
     @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column=@JoinColumn(name = "RIGHT_CONUNT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
+            @JoinColumnOrFormula(column=@JoinColumn(name = "RIGHT_COUNT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
             @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.RIGHT_COUNT_TYPE,referencedColumnName="ANALYTIC_TYPE")
             )
     })
@@ -56,15 +62,15 @@ public class Right {
 
 
     @Column(name = "OBJECT_ENTITY_ID")
-    private Integer object_entity_id;               //  object refrence
-
-    @ManyToOne
-    @JoinColumn( name = "RIGHT_ID", referencedColumnName = "RIGHT_ENTITY_ID")
-    private RightOwners parent_owner;                   //  right refrence
+    private Long object_entity_id;               //  object refrence
 
 
-    @OneToMany
-    @JoinColumn(name = "RIGHT_ENTITY_ID")
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn( name = "RIGHT_ENTITY_ID", referencedColumnName = "RIGHT_ID")
+    private RightOwners parent_owner;               //  right refrence
+
+
+    @OneToMany(mappedBy = "right_owner_id",  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<RightOwners> right_owner_lst;
 
 
@@ -100,6 +106,24 @@ public class Right {
     @Transient
     private Object_dest bindedObj;
 
+    public void fillRightId(Integer r_id) {
+
+        if( right_owner_lst != null ) {
+
+            for (RightOwners row : right_owner_lst) {
+
+                row.setRight_id(r_id);
+
+            }
+        }
+
+        if( parent_owner != null ) {
+
+            parent_owner.setRight_id(r_id);
+
+        }
+
+    }
 
 
     public Object_dest getBindedObj() {
@@ -107,7 +131,11 @@ public class Right {
     }
 
     public void setBindedObj(Object_dest bindedObj) {
+
+        this.setObject_entity_id(bindedObj.getObj_id());
+
         this.bindedObj = bindedObj;
+
     }
 
     public CatalogItem getRight_count_type() {
@@ -142,11 +170,11 @@ public class Right {
         this.right_entyty_type = right_entyty_type;
     }
 
-    public Integer getObject_entity_id() {
+    public Long getObject_entity_id() {
         return object_entity_id;
     }
 
-    public void setObject_entity_id(Integer object_entity_id) {
+    public void setObject_entity_id(Long object_entity_id) {
         this.object_entity_id = object_entity_id;
     }
 

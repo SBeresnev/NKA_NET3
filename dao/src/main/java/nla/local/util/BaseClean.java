@@ -37,6 +37,9 @@ public class BaseClean {
 
     private static String cleanAddress = "delete from ADDRESSES where ADDRESS_ID in (select ADDRESS_ID from MLOG$_ADDRESSES)";
 
+    private static String cleanRightOwn = "delete from RIGHTOWNERS";
+    private static String cleanRightDat = "delete from RIGHTSDATA";
+    private static String cleanRight = "delete from RIGHTS";
 
 
     public void SubjectClean()
@@ -69,6 +72,14 @@ public class BaseClean {
         scg.update(cleanObjectreg_inv);
         scg.update(cleanOjects);
         scg.update(cleanAddress);
+
+    }
+
+    public void RightClean()
+    {
+        scg.update(cleanRightOwn);
+        scg.update(cleanRightDat);
+        scg.update(cleanRight);
 
     }
 }

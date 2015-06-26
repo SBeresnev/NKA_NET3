@@ -12,10 +12,13 @@ import java.util.Date;
  */
 
 @Entity
-@Table( name = "RIGHTOWNERS")
+@Table( name = "RIGHTOWNERS", schema = "NKA_NET3_DEV")
 public class RightOwners {
 
+    @Id
     @Column(name = "RIGHT_OWNER_ID")
+    @SequenceGenerator(name="right_seq", sequenceName="SEQ_RIGHT_OWNERS")
+    @GeneratedValue(strategy = GenerationType.AUTO ,generator="right_seq")
     private Integer right_owner_id;
 
     @ManyToOne
@@ -46,7 +49,6 @@ public class RightOwners {
     private Integer ooper_id;
 
 
-
     public Integer getRight_owner_id() {
         return right_owner_id;
     }
@@ -62,6 +64,7 @@ public class RightOwners {
     public void setOwner_id(Person owner_id) {
         this.owner_id = owner_id;
     }
+
 
     public Integer getRight_id() {
         return right_id;
