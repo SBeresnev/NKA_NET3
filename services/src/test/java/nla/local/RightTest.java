@@ -80,7 +80,7 @@ public class RightTest {
 
     }
 
-    void generateSingleRight() throws ServiceDaoException, ServiceException {
+    public void generateSingleRight() throws ServiceDaoException, ServiceException {
 
         // int rtl  = r.nextInt(rightTypeList.size() - 1);
 
@@ -178,15 +178,20 @@ public class RightTest {
 
     }
 
-    void generatesharedRight()
+
+    public void generatesharedRight()
     {
+
+        Right rgt = new Right();
+
+        RightOwners orgt = new RightOwners();
+
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
         Calendar cal = Calendar.getInstance();
 
         Random r = new Random();
-
 
         CatalogItem  rightType = CollectionUtils.find(rightTypeList, new Predicate() {
             public boolean evaluate(Object o) {
@@ -209,6 +214,19 @@ public class RightTest {
             }
         });
 
+
+
+        orgt.setOoper_id(rgt.getOoper_id());
+
+        orgt.setStatus(0);
+
+        orgt.setDate_in(cal.getTime());
+
+        //orgt.setOwner_id(lp.get(p_index));
+
+        orgt.setNumerator_part(1);
+
+        orgt.setDenominator_part(1);
 
 
 
