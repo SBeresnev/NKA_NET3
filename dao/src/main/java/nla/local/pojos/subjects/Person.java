@@ -104,4 +104,5 @@ public class Person implements Serializable {
     public void setSubjectType(CatalogItem subjectType) {
         this.subjectType = subjectType;
     }
+
 }

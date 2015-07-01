@@ -5,7 +5,7 @@ import nla.local.exception.ServiceException;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.rights.Right;
-import nla.local.pojos.rights.RightOwners;
+import nla.local.pojos.rights.RightOwner;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
@@ -62,7 +62,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-        baseClean.RightClean();
+        //baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -70,7 +70,9 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-        generateSingleRight();
+        generatesharedRight();
+
+        // generateSingleRight();
 
         long endTime = System.nanoTime();
 
@@ -124,67 +126,77 @@ public class RightTest {
 
         /////-------------------------------------set Rights-----------------------------------------------//////
 
-            Right rgt = new Right();
+        Right rgt = new Right();
 
-            RightOwners orgt = new RightOwners();
+        RightOwner orgt = new RightOwner();
 
-         ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            rgt.setRight_type(rightType);
+        rgt.setRight_type(rightType);
 
-            rgt.setRight_entyty_type(directType);
+        rgt.setRight_entyty_type(directType);
 
-            rgt.setRight_count_type(rightCountType);
+        rgt.setRight_count_type(rightCountType);
 
-            rgt.setBegin_date(cal.getTime());
+        rgt.setBegin_date(cal.getTime());
 
-            rgt.setIs_needed(0);
+        rgt.setIs_needed(0);
 
-            rgt.setParent_owner(null);
+        rgt.setComments("Object number = " + 0);
 
-            //rgt.setComments("Object number = " + i);
+        rgt.setOoper_id(152);
 
-            //rgt.setOoper_id(152+i);
+        rgt.setBindedObj(ret_val_dest.get(0));
 
-            rgt.setBindedObj(ret_val_dest.get(0));
+        rgt.setStatus(0);
 
-            rgt.setStatus(0);
-
-            int p_index  = r.nextInt(lp.size() - 1);
+        int p_index  = r.nextInt(lp.size() - 1);
 
 
-            /////-------------------------------------set RightOwners-----------------------------------------------//////
+        /////-------------------------------------set RightOwner-----------------------------------------------//////
 
-            orgt.setOoper_id(rgt.getOoper_id());
+        orgt.setOoper_id(rgt.getOoper_id());
 
-            orgt.setStatus(0);
+        orgt.setStatus(0);
 
-            orgt.setDate_in(cal.getTime());
+        orgt.setDate_in(cal.getTime());
 
-            orgt.setOwner_id(lp.get(p_index));
+        orgt.setOwner(lp.get(p_index));
 
-            orgt.setNumerator_part(1);
+        orgt.setNumerator_part(1);
 
-            orgt.setDenominator_part(1);
+        orgt.setDenominator_part(1);
 
-            /////---------------------------------bind ------------------------------------------------------------//////
+        /////---------------------------------bind ------------------------------------------------------------//////
 
-            rgt.setRight_owner_lst( new HashSet<RightOwners>(Arrays.asList(orgt)));
+        rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
 
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            rsi.addRight(rgt);
+        rsi.addRight(rgt);
 
 
     }
 
+    public void findbySubjectId() throws ServiceDaoException {
 
-    public void generatesharedRight()
-    {
+        List<Right> lrt = rsi.findbySubject(1047);
+
+    }
+
+    public void generatesharedRight() throws ServiceDaoException {
+
+        List<Right> lrt = rsi.findbySubject(1047);
+
+        Set<Right> foo = new HashSet<Right>(lrt);
+
+        List<Right> los = rsi.findbyObjectSubject((long) 65, 1047);
+
+
 
         Right rgt = new Right();
 
-        RightOwners orgt = new RightOwners();
+        RightOwner orgt = new RightOwner();
 
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

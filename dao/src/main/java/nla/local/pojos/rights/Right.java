@@ -5,13 +5,13 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
-import nla.local.pojos.orders.DeclUser;
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.CascadeType;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -21,7 +21,7 @@ import java.util.Set;
 
 @Entity
 @Table( name = "V_RIGHT")
-public class Right {
+public class Right implements Serializable {
 
 
     @Id
@@ -65,13 +65,9 @@ public class Right {
     private Long object_entity_id;               //  object refrence
 
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn( name = "RIGHT_ENTITY_ID", referencedColumnName = "RIGHT_ID")
-    private RightOwners parent_owner;               //  right refrence
-
-
-    @OneToMany(mappedBy = "right_owner_id",  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<RightOwners> right_owner_lst;
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn (name = "RIGHT_ID")
+    private Set<RightOwner> right_owner_lst;
 
 
     @Column(name = "BOUND_ID")
@@ -106,25 +102,22 @@ public class Right {
     @Transient
     private Object_dest bindedObj;
 
+
+
     public void fillRightId(Integer r_id) {
 
         if( right_owner_lst != null ) {
 
-            for (RightOwners row : right_owner_lst) {
+            for (RightOwner row : right_owner_lst) {
 
                 row.setRight_id(r_id);
 
             }
         }
 
-        if( parent_owner != null ) {
 
-            parent_owner.setRight_id(r_id);
-
-        }
 
     }
-
 
     public Object_dest getBindedObj() {
         return bindedObj;
@@ -178,19 +171,11 @@ public class Right {
         this.object_entity_id = object_entity_id;
     }
 
-    public RightOwners getParent_owner() {
-        return parent_owner;
-    }
-
-    public void setParent_owner(RightOwners parent_owner) {
-        this.parent_owner = parent_owner;
-    }
-
-    public Set<RightOwners> getRight_owner_lst() {
+    public Set<RightOwner> getRight_owner_lst() {
         return right_owner_lst;
     }
 
-    public void setRight_owner_lst(Set<RightOwners> right_owner_lst) {
+    public void setRight_owner_lst(Set<RightOwner> right_owner_lst) {
         this.right_owner_lst = right_owner_lst;
     }
 
@@ -249,5 +234,24 @@ public class Right {
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Right)) return false;
+        Right right = (Right) o;
+        if (right_id != null ? !right_id.equals(right.getRight_id()) : right.getRight_id() != null) return false;
+        if (right_type != null ? !right_type.equals(right.getRight_type()) : right.getRight_type() != null) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = right_id != null ? right_id.hashCode() : 0;
+        result = 31 * result + (right_type != null ? right_type.hashCode() : 0);
+        return result;
+    }
+
 
 }

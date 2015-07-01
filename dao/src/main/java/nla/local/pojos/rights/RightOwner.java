@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table( name = "RIGHTOWNERS", schema = "NKA_NET3_DEV")
-public class RightOwners {
+public class RightOwner {
 
     @Id
     @Column(name = "RIGHT_OWNER_ID")
@@ -22,8 +22,8 @@ public class RightOwners {
     private Integer right_owner_id;
 
     @ManyToOne
-    @JoinColumn(name = "OWNER_ID")
-    private Person owner_id;
+    @JoinColumn(name = "OWNER_ID",nullable = false)
+    private Person owner;
 
     @Column(name = "RIGHT_ID")
     private Integer right_id;
@@ -33,6 +33,13 @@ public class RightOwners {
 
     @Column(name="DENOMINATOR_PART")
     private Integer denominator_part;
+
+    //@Column(name="PARENT_OWNER")
+   // private Integer parent_owner;
+
+    @OneToOne
+    @JoinColumn( name = "PARENT_OWNER", referencedColumnName = "RIGHT_OWNER_ID")
+    private RightOwner parent_owner;
 
     @Column(name = "DATE_IN")
     @JsonSerialize(using=DateSerializer.class)
@@ -57,14 +64,21 @@ public class RightOwners {
         this.right_owner_id = right_owner_id;
     }
 
-    public Person getOwner_id() {
-        return owner_id;
+    public Person getOwner() {
+        return owner;
     }
 
-    public void setOwner_id(Person owner_id) {
-        this.owner_id = owner_id;
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 
+    public RightOwner getParent_owner() {
+        return parent_owner;
+    }
+
+    public void setParent_owner(RightOwner parent_owner) {
+        this.parent_owner = parent_owner;
+    }
 
     public Integer getRight_id() {
         return right_id;
