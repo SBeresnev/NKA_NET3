@@ -42,7 +42,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     @Override
     public Right addRight(Right rght) throws ServiceDaoException, ServiceException {
 
-        rght.setBindedObj(ios.bindObject(rght.getBindedObj()));
+        if(rght.getObject_entity_id() == null) rght.setBindedObj(ios.bindObject(rght.getBindedObj()));
 
         super.add(rght);
 

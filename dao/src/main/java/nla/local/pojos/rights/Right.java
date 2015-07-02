@@ -65,8 +65,7 @@ public class Right implements Serializable {
     private Long object_entity_id;               //  object refrence
 
 
-    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn (name = "RIGHT_ID")
+    @OneToMany(mappedBy = "right_id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<RightOwner> right_owner_lst;
 
 
@@ -113,9 +112,8 @@ public class Right implements Serializable {
                 row.setRight_id(r_id);
 
             }
+
         }
-
-
 
     }
 
@@ -234,24 +232,5 @@ public class Right implements Serializable {
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Right)) return false;
-        Right right = (Right) o;
-        if (right_id != null ? !right_id.equals(right.getRight_id()) : right.getRight_id() != null) return false;
-        if (right_type != null ? !right_type.equals(right.getRight_type()) : right.getRight_type() != null) return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = right_id != null ? right_id.hashCode() : 0;
-        result = 31 * result + (right_type != null ? right_type.hashCode() : 0);
-        return result;
-    }
-
 
 }
