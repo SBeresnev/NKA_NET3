@@ -150,10 +150,9 @@ public class RightTest {
 
         rgt.setStatus(0);
 
-        int p_index  = r.nextInt(lp.size() - 1);
-
-
         /////-------------------------------------set RightOwner-----------------------------------------------//////
+
+        int p_index  = r.nextInt(lp.size() - 1);
 
         orgt.setOoper_id(rgt.getOoper_id());
 
@@ -184,19 +183,19 @@ public class RightTest {
 
     }
 
-    public void generatesharedRight() throws ServiceDaoException {
+    public void generatesharedRight() throws ServiceDaoException, ServiceException {
 
-        List<Right> lrt = rsi.findbySubject(1047);
+        final Integer f_subject_id = 1047;
 
-        Set<Right> foo = new HashSet<Right>(lrt);
+        Set<Right> r_lrt = new HashSet<Right>(rsi.findbySubject(f_subject_id));
 
-        List<Right> los = rsi.findbyObjectSubject((long) 65, 1047);
+        Right lrt = r_lrt.iterator().next();
 
+        List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
 
+        /***********************************************************************************/
 
         Right rgt = new Right();
-
-        RightOwner orgt = new RightOwner();
 
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -215,7 +214,7 @@ public class RightTest {
         CatalogItem  directType = CollectionUtils.find(rightEntytyTypeList, new Predicate() {
             public boolean evaluate(Object o) {
                 CatalogItem c = (CatalogItem) o;
-                return c.getCode_name().toLowerCase().contains("право");
+                return c.getCode_name().toLowerCase().contains("доля в праве");
             }
         });
 
@@ -226,20 +225,78 @@ public class RightTest {
             }
         });
 
+        /*************************find parent owner**********************************************************/
 
+        Set<RightOwner> ro_list = new HashSet<RightOwner>();
 
-        orgt.setOoper_id(rgt.getOoper_id());
+        Set<RightOwner> sro = lrt.getRight_owner_lst();
 
-        orgt.setStatus(0);
+        RightOwner rown = CollectionUtils.find(sro, new Predicate() {
+            public boolean evaluate(Object o) {
+                RightOwner c = (RightOwner) o;
+                return c.getOwner().getSubjectId() == f_subject_id.intValue();
+            }
+        });
 
-        orgt.setDate_in(cal.getTime());
+        /***************************init shred owners***************************************************************/
 
-        //orgt.setOwner_id(lp.get(p_index));
+       for (int i = 0 ; i< 3; i++)
+       {
+           RightOwner orgt = new RightOwner();
 
-        orgt.setNumerator_part(1);
+           orgt.setOoper_id(152);
 
-        orgt.setDenominator_part(1);
+           orgt.setStatus(1);
 
+           orgt.setDate_in(cal.getTime());
+
+           orgt.setOwner(lp.get(i));
+
+           orgt.setNumerator_part(1);
+
+           orgt.setDenominator_part(3);
+
+           orgt.setParent_owner(rown);
+
+           ro_list.add(orgt);
+
+       }
+
+        /***************************init right***************************************************************/
+
+        rgt.setRight_type(rightType);
+
+        rgt.setRight_entyty_type(directType);
+
+        rgt.setRight_count_type(rightCountType);
+
+        rgt.setBegin_date(cal.getTime());
+
+        rgt.setRight_owner_lst(ro_list);
+
+        rgt.setIs_needed(0);
+
+        rgt.setComments("Object number ");
+
+        rgt.setOoper_id(152);
+
+        rgt.setObject_entity_id(lrt.getObject_entity_id() );
+
+        rgt.setStatus(1);
+
+        /***************************** update parent owner **********************************************************/
+
+        rown.setDate_out(cal.getTime());
+
+        rown.setOoper_id(156);
+
+        rown.setStatus(0);
+
+        rsi.updateRightOwner(rown);
+
+        /******************************* add right and current right owner by cascade *********************************/
+
+        rsi.addRight(rgt);
 
 
     }

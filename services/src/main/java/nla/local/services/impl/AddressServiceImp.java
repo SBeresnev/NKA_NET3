@@ -328,11 +328,9 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
             if (new_adr.getAddress_id() != null) {
 
-
                 this.update(new_adr);
 
             } else {
-
 
                 this.add(new_adr);
             }
