@@ -25,9 +25,6 @@ public class RightOwner {
     @JoinColumn(name = "OWNER_ID",nullable = false)
     private Person owner;
 
-    //@Column(name = "RIGHT_ID")
-    //private Integer right_id;
-
     @ManyToOne
     @JoinColumn(name = "RIGHT_ID",nullable = false)
     private Right right;

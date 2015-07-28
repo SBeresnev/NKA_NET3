@@ -2,6 +2,7 @@ package nla.local.pojos.bargain;
 
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
+import nla.local.pojos.rights.RightOwner;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JoinColumnOrFormula;
 import org.hibernate.annotations.JoinColumnsOrFormulas;
