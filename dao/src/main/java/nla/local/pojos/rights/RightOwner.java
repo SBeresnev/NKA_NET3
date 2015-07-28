@@ -25,17 +25,18 @@ public class RightOwner {
     @JoinColumn(name = "OWNER_ID",nullable = false)
     private Person owner;
 
-    @Column(name = "RIGHT_ID")
-    private Integer right_id;
+    //@Column(name = "RIGHT_ID")
+    //private Integer right_id;
+
+    @ManyToOne
+    @JoinColumn(name = "RIGHT_ID",nullable = false)
+    private Right right;
 
     @Column(name="NUMERATOR_PART")
     private Integer numerator_part;
 
     @Column(name="DENOMINATOR_PART")
     private Integer denominator_part;
-
-    //@Column(name="PARENT_OWNER")
-   // private Integer parent_owner;
 
     @OneToOne
     @JoinColumn( name = "PARENT_OWNER", referencedColumnName = "RIGHT_OWNER_ID")
@@ -55,6 +56,23 @@ public class RightOwner {
     @Column(name = "OOPER_ID")
     private Integer ooper_id;
 
+    /*
+    public Integer getRight_id() {
+        return right_id;
+    }
+
+    public void setRight_id(Integer right_id) {
+        this.right_id = right_id;
+    }*/
+
+
+    public Right getRight() {
+        return right;
+    }
+
+    public void setRight(Right right) {
+        this.right = right;
+    }
 
     public Integer getRight_owner_id() {
         return right_owner_id;
@@ -78,14 +96,6 @@ public class RightOwner {
 
     public void setParent_owner(RightOwner parent_owner) {
         this.parent_owner = parent_owner;
-    }
-
-    public Integer getRight_id() {
-        return right_id;
-    }
-
-    public void setRight_id(Integer right_id) {
-        this.right_id = right_id;
     }
 
     public Integer getNumerator_part() {

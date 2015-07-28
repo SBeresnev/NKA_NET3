@@ -65,7 +65,7 @@ public class Right implements Serializable {
     private Long object_entity_id;               //  object refrence
 
 
-    @OneToMany(mappedBy = "right_id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "right", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<RightOwner> right_owner_lst;
 
 
@@ -102,7 +102,7 @@ public class Right implements Serializable {
     private Object_dest bindedObj;
 
 
-
+   /*
     public void fillRightId(Integer r_id) {
 
         if( right_owner_lst != null ) {
@@ -115,7 +115,7 @@ public class Right implements Serializable {
 
         }
 
-    }
+    } */
 
     public Object_dest getBindedObj() {
         return bindedObj;

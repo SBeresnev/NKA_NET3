@@ -64,11 +64,12 @@ public class CodeGenerator implements IdentifierGenerator, Configurable {
 
         }
 
+        /*
         if(object instanceof Right) {
 
             ((Right)object).fillRightId(id);
 
-        }
+        }*/
 
     }
 

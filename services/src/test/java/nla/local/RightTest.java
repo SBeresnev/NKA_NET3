@@ -62,7 +62,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-        //baseClean.RightClean();
+       // baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -70,9 +70,11 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-        //generateSingleRight();
+       // generateSingleRight();
 
-        generatesharedRight();
+       // generatesharedRight();
+
+        findbySubjectId();
 
         long endTime = System.nanoTime();
 
@@ -83,12 +85,6 @@ public class RightTest {
     }
 
     public void generateSingleRight() throws ServiceDaoException, ServiceException {
-
-        // int rtl  = r.nextInt(rightTypeList.size() - 1);
-
-        // int retl = r.nextInt(rightEntytyTypeList.size() - 1);
-
-        // int rct  = r.nextInt(rightCountType.size() - 1);
 
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -150,11 +146,19 @@ public class RightTest {
 
         rgt.setStatus(1);
 
+        /******************************* add right *********************************/
+
+        /* Можно раскоменчивавть, а можно и нет*/
+
+       // rsi.addRight(rgt);
+
         /////-------------------------------------set RightOwner-----------------------------------------------//////
 
         int p_index  = r.nextInt(lp.size() - 1);
 
         orgt.setOoper_id(rgt.getOoper_id());
+
+        orgt.setRight(rgt);
 
         orgt.setStatus(0);
 
@@ -168,11 +172,11 @@ public class RightTest {
 
         /////---------------------------------bind ------------------------------------------------------------//////
 
-        rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
+        //rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        rsi.addRight(rgt);
+        rsi.addRightOwner(orgt);
 
 
     }
@@ -206,9 +210,6 @@ public class RightTest {
 
         /***********************************************************************************/
 
-        Right rgt = new Right();
-
-
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
         Calendar cal = Calendar.getInstance();
@@ -238,8 +239,6 @@ public class RightTest {
 
         /*************************find parent owner**********************************************************/
 
-        Set<RightOwner> ro_list = new HashSet<RightOwner>();
-
         Set<RightOwner> sro = lrt.getRight_owner_lst();
 
         RightOwner rown = CollectionUtils.find(sro, new Predicate() {
@@ -249,31 +248,9 @@ public class RightTest {
             }
         });
 
-        /***************************init shred owners***************************************************************/
-
-       for (int i = 0 ; i< 3; i++)
-       {
-           RightOwner orgt = new RightOwner();
-
-           orgt.setOoper_id(152);
-
-           orgt.setStatus(1);
-
-           orgt.setDate_in(cal.getTime());
-
-           orgt.setOwner(lp.get(i));
-
-           orgt.setNumerator_part(1);
-
-           orgt.setDenominator_part(3);
-
-           orgt.setParent_owner(rown);
-
-           ro_list.add(orgt);
-
-       }
-
         /***************************init right***************************************************************/
+
+        Right rgt = new Right();
 
         rgt.setRight_type(rightType);
 
@@ -282,8 +259,6 @@ public class RightTest {
         rgt.setRight_count_type(rightCountType);
 
         rgt.setBegin_date(cal.getTime());
-
-        rgt.setRight_owner_lst(ro_list);
 
         rgt.setIs_needed(0);
 
@@ -305,9 +280,38 @@ public class RightTest {
 
         rsi.updateRightOwner(rown);
 
-        /******************************* add right and current right owner by cascade *********************************/
+        /******************************* add right********************************************************/
 
-        rsi.addRight(rgt);
+        /* Можно раскоменчивавть, а можно и нет*/
+       // rsi.addRight(rgt);
+
+        /***************************init shred owners***************************************************************/
+
+       for (int i = 0 ; i< 3; i++)
+       {
+           RightOwner orgt = new RightOwner();
+
+           orgt.setOoper_id(152);
+
+           orgt.setStatus(1);
+
+           orgt.setDate_in(cal.getTime());
+
+           orgt.setOwner(lp.get(i));
+
+           orgt.setNumerator_part(1);
+
+           orgt.setDenominator_part(3);
+
+           orgt.setParent_owner(rown);
+
+           orgt.setRight(rgt);
+
+           rsi.addRightOwner(orgt);
+
+       }
+
+
 
 
     }

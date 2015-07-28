@@ -17,6 +17,8 @@ public interface IRightService extends IService {
 
     public Right addRight(Right rght) throws ServiceDaoException, ServiceException;
 
+    public RightOwner addRightOwner(RightOwner rght_own) throws ServiceDaoException, ServiceException ;
+
     public List<Right> findbyObject(Long obj_id) throws ServiceDaoException;
 
     public List<Right> findbySubject(Integer person_id) throws ServiceDaoException;

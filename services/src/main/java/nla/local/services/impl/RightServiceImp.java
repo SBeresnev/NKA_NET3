@@ -51,6 +51,22 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+    @Override
+    public RightOwner addRightOwner(RightOwner rght_own) throws ServiceDaoException, ServiceException {
+
+
+        if(rght_own.getRight() != null && rght_own.getRight().getRight_id() == null)
+        {
+            this.addRight(rght_own.getRight());
+        }
+
+        super.add(rght_own);
+
+        return rght_own;
+
+    }
+
+
     public List<Right> findbyObjectSubject(Long obj_id,  Integer person_id)throws ServiceDaoException
     {
 
@@ -124,7 +140,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     {
         RightOwner ro =new RightOwner();
 
-        List<Right> ret_val = null;
+        List<Right> ret_val = new ArrayList<Right>();
 
         DetachedCriteria query = (DetachedCriteria) SerializationUtils.clone(query_Right);
 
@@ -139,7 +155,14 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
             List<RightOwner> ret_val_own = super.getCriterion(query_own);
 
-            Integer[] right_ids = new Integer[ret_val_own.size()];
+            for (RightOwner row_l : ret_val_own) {
+
+                ret_val.add(row_l.getRight());
+
+            }
+
+
+            /*Integer[] right_ids = new Integer[ret_val_own.size()];
 
             for (int i =0 ; i < ret_val_own.size() ; i++) {
 
@@ -148,7 +171,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
             query = query.add(Restrictions.in("right_id",right_ids));
 
-            ret_val =  super.getCriterion(query);
+            ret_val =  super.getCriterion(query); */
 
         }
 
