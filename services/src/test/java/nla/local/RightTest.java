@@ -70,9 +70,9 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-        generatesharedRight();
+        //generateSingleRight();
 
-        // generateSingleRight();
+        generatesharedRight();
 
         long endTime = System.nanoTime();
 
@@ -148,7 +148,7 @@ public class RightTest {
 
         rgt.setBindedObj(ret_val_dest.get(0));
 
-        rgt.setStatus(0);
+        rgt.setStatus(1);
 
         /////-------------------------------------set RightOwner-----------------------------------------------//////
 
@@ -179,19 +179,30 @@ public class RightTest {
 
     public void findbySubjectId() throws ServiceDaoException {
 
-        List<Right> lrt = rsi.findbySubject(1047);
+        List<Right> lrt = rsi.findbySubject(1046);
 
     }
 
     public void generatesharedRight() throws ServiceDaoException, ServiceException {
 
-        final Integer f_subject_id = 1047;
 
-        Set<Right> r_lrt = new HashSet<Right>(rsi.findbySubject(f_subject_id));
+
+        CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("право одного лица");
+            }
+        });
+
+        //final Integer f_subject_id = 1046;
+
+        Set<Right> r_lrt = new HashSet<Right>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
 
         Right lrt = r_lrt.iterator().next();
 
-        List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
+        final Integer f_subject_id = lrt.getRight_owner_lst().iterator().next().getOwner().subjectId;
+
+         List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
 
         /***********************************************************************************/
 

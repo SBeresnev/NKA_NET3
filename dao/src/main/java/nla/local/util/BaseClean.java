@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Использовать аккуратно чистит базу :)
+ * Использовать аккуратно, чистит базу :)
  * Created by beresnev on 24.04.2015.
  */
 
