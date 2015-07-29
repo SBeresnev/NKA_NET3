@@ -19,7 +19,7 @@ public class RightOwner {
     @Column(name = "RIGHT_OWNER_ID")
     @SequenceGenerator(name="right_seq", sequenceName="SEQ_RIGHT_OWNERS")
     @GeneratedValue(strategy = GenerationType.AUTO ,generator="right_seq")
-    private Integer right_owner_id;
+    private Long right_owner_id;
 
     @ManyToOne
     @JoinColumn(name = "OWNER_ID",nullable = false)
@@ -71,11 +71,11 @@ public class RightOwner {
         this.right = right;
     }
 
-    public Integer getRight_owner_id() {
+    public Long getRight_owner_id() {
         return right_owner_id;
     }
 
-    public void setRight_owner_id(Integer right_owner_id) {
+    public void setRight_owner_id(Long right_owner_id) {
         this.right_owner_id = right_owner_id;
     }
 

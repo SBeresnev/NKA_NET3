@@ -31,7 +31,7 @@ public class Right implements Serializable {
             strategy = "nla.local.util.CodeGenerator",
             parameters = @org.hibernate.annotations.Parameter(name = "seq_name", value = "SEQ_RIGHT_ID"))
     @Column(name="RIGHT_ID", unique=true, nullable=false )
-    private Integer right_id;
+    private Long right_id;
 
 
     @ManyToOne
@@ -137,11 +137,11 @@ public class Right implements Serializable {
         this.right_count_type = right_count_type;
     }
 
-    public Integer getRight_id() {
+    public Long getRight_id() {
         return right_id;
     }
 
-    public void setRight_id(Integer right_id) {
+    public void setRight_id(Long right_id) {
         this.right_id = right_id;
     }
 

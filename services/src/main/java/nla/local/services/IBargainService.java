@@ -4,8 +4,7 @@ import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.bargain.Bargain;
 import nla.local.pojos.bargain.BargainContent;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -15,14 +14,14 @@ import java.util.List;
 
 public interface IBargainService {
 
-    public Bargain addBargain(Bargain rght) throws ServiceDaoException, ServiceException;
+    public BargainContent addBargain(BargainContent brg_cont) throws ServiceDaoException, ServiceException;
 
-    public BargainContent addBargainRight(BargainContent brg_cont) throws ServiceDaoException, ServiceException ;
+    public List<BargainContent> findbyObject(Long obj_id) throws ServiceDaoException;
 
-    public List<Bargain> findbyObject(Long obj_id) throws ServiceDaoException;
+    public List<BargainContent> findbySubject(Integer person_id) throws ServiceDaoException;
 
-    public List<Bargain> findbySubject(Integer person_id) throws ServiceDaoException;
+    public List<BargainContent> findbyObjectSubject(Long obj_id, Integer person_id) throws ServiceDaoException;
 
-    public List<Bargain> findbyObjectSubject(Long obj_id, Integer person_id)throws ServiceDaoException;
+    public BargainContent updateBargain(BargainContent brg_cont) throws ServiceDaoException, ServiceException ;
 
 }

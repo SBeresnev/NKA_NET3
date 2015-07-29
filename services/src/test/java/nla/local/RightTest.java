@@ -62,7 +62,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-       // baseClean.RightClean();
+        baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -70,9 +70,9 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-       // generateSingleRight();
+        generateSingleRight();
 
-       // generatesharedRight();
+        generatesharedRight();
 
         findbySubjectId();
 
@@ -310,9 +310,6 @@ public class RightTest {
            rsi.addRightOwner(orgt);
 
        }
-
-
-
 
     }
 

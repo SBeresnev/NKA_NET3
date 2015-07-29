@@ -41,10 +41,10 @@ public class BargainContent {
     private Bargain bargain;
 
     @Column(name = "RIGHT_ENTITY_ID")
-    private Integer right_entity_id;             //  right refrence
+    private Long right_entity_id;             //  right refrence
 
     @Column(name = "OBJECT_ENTITY_ID")
-    private Integer object_entity_id;            //  object refrence
+    private Long object_entity_id;            //  object refrence
 
     @Transient
     private Object_dest bindedObj;
@@ -52,7 +52,18 @@ public class BargainContent {
     @Transient
     private RightOwner bindedRight;
 
+    @Column(name = "STATUS")
+    private Integer Status;
 
+
+
+    public Integer getStatus() {
+        return Status;
+    }
+
+    public void setStatus(Integer status) {
+        Status = status;
+    }
 
     public Object_dest getBindedObj() {
         return bindedObj;
@@ -86,19 +97,19 @@ public class BargainContent {
         this.bargain_entity_type = bargain_entity_type;
     }
 
-    public Integer getRight_entity_id() {
+    public Long getRight_entity_id() {
         return right_entity_id;
     }
 
-    public void setRight_entity_id(Integer right_entity_id) {
+    public void setRight_entity_id(Long right_entity_id) {
         this.right_entity_id = right_entity_id;
     }
 
-    public Integer getObject_entity_id() {
+    public Long getObject_entity_id() {
         return object_entity_id;
     }
 
-    public void setObject_entity_id(Integer object_entity_id) {
+    public void setObject_entity_id(Long object_entity_id) {
         this.object_entity_id = object_entity_id;
     }
 
@@ -109,6 +120,5 @@ public class BargainContent {
     public void setBargain(Bargain bargain) {
         this.bargain = bargain;
     }
-
 
 }
