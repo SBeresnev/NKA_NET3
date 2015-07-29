@@ -31,9 +31,9 @@ import java.util.Set;
 public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     @Autowired
-    IObjectService ios;
+    private IObjectService ios;
 
-    private static Logger log = Logger.getLogger(AddressServiceImp.class);
+    private static Logger log = Logger.getLogger(RightServiceImp.class);
 
     private DetachedCriteria query_Right = DetachedCriteria.forClass(Right.class);
 
