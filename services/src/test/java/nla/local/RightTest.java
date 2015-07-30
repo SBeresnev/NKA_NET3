@@ -9,6 +9,7 @@ import nla.local.pojos.rights.RightOwner;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
+import nla.local.services.impl.BaseServiceImp;
 import nla.local.services.impl.CatalogServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
 import nla.local.util.BaseClean;
@@ -33,11 +34,14 @@ import java.util.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
 @TransactionConfiguration(defaultRollback = false)
-@Transactional
 public class RightTest {
 
     @Autowired
     public BaseClean baseClean;
+
+    @Qualifier("baseServiceImp")
+    @Autowired
+    public BaseServiceImp bsi;
 
     @Autowired
     public IRightService rsi;
@@ -62,7 +66,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-        // baseClean.RightClean();
+        baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -70,13 +74,13 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-      //  generateSingleRight();
+        generateSingleRight();
 
-     //   generatesharedRight();
+        generatesharedRight();
 
-     //   findbySubjectId();
+      //  findbySubjectId();
 
-        getRightbyObject();
+         getRightbyObject();
 
         long endTime = System.nanoTime();
 
@@ -86,6 +90,7 @@ public class RightTest {
 
     }
 
+    @Transactional
     public void generateSingleRight() throws ServiceDaoException, ServiceException {
 
 
@@ -152,7 +157,7 @@ public class RightTest {
 
         /* Можно раскоменчивавть, а можно и нет*/
 
-       // rsi.addRight(rgt);
+        rsi.addRight(rgt);
 
         /////-------------------------------------set RightOwner-----------------------------------------------//////
 
@@ -160,9 +165,7 @@ public class RightTest {
 
         orgt.setOoper_id(rgt.getOoper_id());
 
-        orgt.setRight(rgt);
-
-        orgt.setStatus(0);
+        orgt.setStatus(1);
 
         orgt.setDate_in(cal.getTime());
 
@@ -174,11 +177,15 @@ public class RightTest {
 
         /////---------------------------------bind ------------------------------------------------------------//////
 
-        //rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
+        orgt.setRight(rgt);
+
+        rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         rsi.addRightOwner(orgt);
+
+
 
 
     }
@@ -202,6 +209,7 @@ public class RightTest {
 
     }
 
+    @Transactional
     public void generatesharedRight() throws ServiceDaoException, ServiceException {
 
         CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
@@ -211,7 +219,6 @@ public class RightTest {
             }
         });
 
-        //final Integer f_subject_id = 1046;
 
         Set<Right> r_lrt = new HashSet<Right>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
 

@@ -3,8 +3,12 @@ package nla.local.pojos.rights;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.subjects.Person;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -27,6 +31,7 @@ public class RightOwner {
 
     @ManyToOne
     @JoinColumn(name = "RIGHT_ID",nullable = false)
+    @Cascade(CascadeType.ALL)
     private Right right;
 
     @Column(name="NUMERATOR_PART")
