@@ -25,14 +25,14 @@ public class  DeclResolution {
     @Column(name="DECL_RESOLUTION_ID", unique=true, nullable=false )
     @SequenceGenerator(name="decl_resolution_seq", sequenceName="SEQ_DECLRESOLUTION_ID")
     @GeneratedValue(strategy = GenerationType.AUTO ,generator="decl_resolution_seq")
-    private Integer decl_resolution_id;
+    private Long decl_resolution_id;
 
     @OneToOne
     @JoinColumn(name = "SUBJECT_ID")
     private OPerson oPerson;
 
     @Column(name = "DECL_ID")
-    private Integer decl_id;
+    private Long decl_id;
 
     @ManyToOne
     @JoinColumnsOrFormulas({
@@ -49,11 +49,11 @@ public class  DeclResolution {
     private Date resolutionDateOut;
 
 
-    public Integer getDecl_resolution_id() {
+    public Long getDecl_resolution_id() {
         return decl_resolution_id;
     }
 
-    public void setDecl_resolution_id(Integer decl_resolution_id) {
+    public void setDecl_resolution_id(Long decl_resolution_id) {
         this.decl_resolution_id = decl_resolution_id;
     }
 
@@ -81,11 +81,11 @@ public class  DeclResolution {
         this.resolutionDateOut = resolutionDateOut;
     }
 
-    public Integer getDecl_id() {
+    public Long getDecl_id() {
         return decl_id;
     }
 
-    public void setDecl_id(Integer decl_id) {
+    public void setDecl_id(Long decl_id) {
         this.decl_id = decl_id;
     }
 

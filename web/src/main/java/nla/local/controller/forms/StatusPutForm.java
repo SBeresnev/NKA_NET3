@@ -4,8 +4,10 @@ package nla.local.controller.forms;
  * Created by belonovich on 24.03.2015.
  */
 public class StatusPutForm {
+
     private Integer status;
-    private Integer declId;
+
+    private Long declId;
 
     public Integer getStatus() {
         return status;
@@ -15,11 +17,11 @@ public class StatusPutForm {
         this.status = status;
     }
 
-    public Integer getDeclId() {
+    public Long getDeclId() {
         return declId;
     }
 
-    public void setDeclId(Integer declId) {
+    public void setDeclId(Long declId) {
         this.declId = declId;
     }
 }

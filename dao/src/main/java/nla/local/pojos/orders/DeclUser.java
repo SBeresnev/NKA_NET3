@@ -18,10 +18,10 @@ public class DeclUser {
     @Column(name = "decluser_id", unique = true, nullable = false)
     @SequenceGenerator(name = "decluser_seq", sequenceName = "SEQ_DECLUSER_ID")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "decluser_seq")
-    private Integer decluser_id;
+    private Long decluser_id;
 
     @Column(name = "DECL_ID")
-    private Integer decl_id;
+    private Long decl_id;
 
      @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
      @JoinColumn(name = "DECL_ID")
@@ -40,19 +40,19 @@ public class DeclUser {
     private Date date_out;
 
 
-    public Integer getDecluser_id() {
+    public Long getDecluser_id() {
         return decluser_id;
     }
 
-    public void setDecluser_id(Integer decluser_id) {
+    public void setDecluser_id(Long decluser_id) {
         this.decluser_id = decluser_id;
     }
 
-    public Integer getDecl_id() {
+    public Long getDecl_id() {
         return decl_id;
     }
 
-    public void setDecl_id(Integer decl_id) {
+    public void setDecl_id(Long decl_id) {
         this.decl_id = decl_id;
     }
 

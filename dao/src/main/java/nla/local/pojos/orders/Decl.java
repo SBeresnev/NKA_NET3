@@ -23,7 +23,7 @@ public class Decl implements Serializable {
             strategy = "nla.local.util.CodeGenerator",
             parameters = @org.hibernate.annotations.Parameter(name = "seq_name", value = "SEQ_DECL_ID"))
     @Column(name="DECL_ID", unique=true, nullable=false )
-    private Integer decl_id;
+    private Long decl_id;
 
     @OneToMany(mappedBy = "decl_id", fetch = FetchType.EAGER ,orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<Declarant> declarants;
@@ -61,7 +61,7 @@ public class Decl implements Serializable {
 
 
 
-    public void fillDeclId(Integer d_id){
+    public void fillDeclId(Long d_id){
 
         if( oUsers != null ) for(DeclUser du : oUsers){
             du.setDecl_id(d_id);
@@ -112,11 +112,11 @@ public class Decl implements Serializable {
         this.urgency = urgency;
     }
 
-    public Integer getDecl_id() {
+    public Long getDecl_id() {
         return decl_id;
     }
 
-    public void setDecl_id(Integer decl_id) {
+    public void setDecl_id(Long decl_id) {
         this.decl_id = decl_id;
     }
 

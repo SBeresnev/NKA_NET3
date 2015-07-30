@@ -31,16 +31,16 @@ public interface IDeclService extends IService<Decl> {
 
     public Decl addNewEmptyDecl(OPerson person, CatalogItem declResolutionType) throws ServiceDaoException ;
 
-    public Decl addNewDeclarantInDecl(Person person, Integer type, Integer idDecl , Integer[] clients) throws ServiceDaoException;
+    public Decl addNewDeclarantInDecl(Person person, Integer type, Long idDecl , Long[] clients) throws ServiceDaoException;
 
     public Decl deleteDeclarantInDecl(Serializable declarantId, Serializable idDecl) throws ServiceDaoException;
 
     public List<Decl> getOrderByUser(OPerson oPerson)  throws ServiceException;
 
-    public Decl changeDeclType(Integer declId) throws  ServiceDaoException;
+    public Decl changeDeclType(Long declId) throws  ServiceDaoException;
 
-    public Decl changeDeclUser(Integer declId, Integer decluser_id, OPerson user) throws  ServiceDaoException;
+    public Decl changeDeclUser(Long declId, Long decluser_id, OPerson user) throws  ServiceDaoException;
 
-    public Decl setStatus(CatalogItem dict, Integer declId, OPerson user) throws ServiceDaoException ;
+    public Decl setStatus(CatalogItem dict, Long declId, OPerson user) throws ServiceDaoException ;
 
 }

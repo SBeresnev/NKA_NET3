@@ -2,9 +2,13 @@ package nla.local.services.impl;
 
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
+import nla.local.pojos.address.Address_dest;
+import nla.local.pojos.address.Address_src;
 import nla.local.pojos.dict.CatalogItem;
+import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
+import nla.local.services.IAddressService;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
 import org.apache.commons.collections4.CollectionUtils;
@@ -32,6 +36,9 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     @Autowired
     private IObjectService ios;
+
+    @Autowired
+    private IAddressService ias;
 
     private static Logger log = Logger.getLogger(RightServiceImp.class);
 
@@ -66,8 +73,36 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+    public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException
+    {
+        List<Right> ret_val = new ArrayList<Right>();
 
-    public List<Right> findbyObjectSubject(Long obj_id,  Integer person_id)throws ServiceDaoException
+        List<Address_dest> addr_list  = ias.findAddressDest(Adr, soato);
+
+        if(!addr_list.isEmpty())
+        {
+            List<Long> adr_ids = new ArrayList<Long>();
+
+            for (Address_dest addr : addr_list ) {
+
+                adr_ids.add(addr.getAddress_id());
+
+            }
+
+            List<Object_dest> object_list = (List<Object_dest>) ios.findObjectbyAddress(Object_dest.class,adr_ids);
+
+            for (Object_dest obj :object_list)
+            {
+                ret_val.addAll(findbyObject(obj.getObj_id()));
+            }
+
+        }
+
+        return ret_val;
+
+    }
+
+    public List<Right> findbyObjectSubject(Long obj_id,  Integer person_id) throws ServiceDaoException
     {
 
         final Integer f_person_id = person_id;
@@ -84,7 +119,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
             RightOwner row = CollectionUtils.find(ro_list, new Predicate() {
             public boolean evaluate(Object o) {
                 RightOwner c = (RightOwner) o;
-                return (c.getOwner().getSubjectId() == f_person_id.intValue() && c.getDate_out() == null);
+                return (c.getOwner().getSubjectId() == f_person_id.intValue() && c.getDate_out() == null && c.getStatus() == 1);
             }
         });
 
@@ -96,45 +131,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
-    public List<Right> findbyObject(Long obj_id) throws ServiceDaoException
-    {
-
-        List<Right> ret_val = null;
-
-        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
-
-        if( obj_id != null )
-        {
-            query_ = query_.add(Restrictions.eq("object_entity_id", obj_id));
-
-            query_ = query_.add(Restrictions.eq("status", 1));
-
-            ret_val = super.getCriterion(query_);
-
-        }
-
-        return ret_val;
-
-    }
-
-
-    @Deprecated
-    public List<Right> findbyrightCountType( CatalogItem countType) throws ServiceDaoException {
-
-        List<Right> ret_val = null;
-
-        DetachedCriteria query = (DetachedCriteria) SerializationUtils.clone(query_Right);
-
-        if( countType != null )
-        {
-            query = query.add(Restrictions.eq("right_count_type",countType));
-
-            ret_val =  super.getCriterion(query);
-
-        }
-
-        return ret_val;
-    }
 
     public List<Right> findbySubject(Integer person_id) throws ServiceDaoException
     {
@@ -179,6 +175,46 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+
+    public List<Right> findbyObject(Long obj_id) throws ServiceDaoException
+    {
+
+        List<Right> ret_val = null;
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
+
+        if( obj_id != null )
+        {
+            query_ = query_.add(Restrictions.eq("object_entity_id", obj_id));
+
+            query_ = query_.add(Restrictions.eq("status", 1));
+
+            ret_val = super.getCriterion(query_);
+
+        }
+
+        return ret_val;
+
+    }
+
+
+    @Deprecated
+    public List<Right> findbyrightCountType( CatalogItem countType) throws ServiceDaoException {
+
+        List<Right> ret_val = null;
+
+        DetachedCriteria query = (DetachedCriteria) SerializationUtils.clone(query_Right);
+
+        if( countType != null )
+        {
+            query = query.add(Restrictions.eq("right_count_type",countType));
+
+            ret_val =  super.getCriterion(query);
+
+        }
+
+        return ret_val;
+    }
 
 
     public RightOwner updateRightOwner(RightOwner rightowner) throws ServiceDaoException {

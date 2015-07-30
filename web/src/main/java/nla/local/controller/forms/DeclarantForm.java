@@ -4,15 +4,20 @@ package nla.local.controller.forms;
  * Created by belonovich on 27.04.2015.
  */
 public class DeclarantForm {
-    private  Integer idDecl, idSubject, type;
 
-    private Integer[] clients;
+    private  Long idDecl;
 
-    public Integer getIdDecl() {
+    private  Integer idSubject;
+
+    private  Integer type;
+
+    private Long[] clients;
+
+    public Long getIdDecl() {
         return idDecl;
     }
 
-    public void setIdDecl(Integer idDecl) {
+    public void setIdDecl(Long idDecl) {
         this.idDecl = idDecl;
     }
 
@@ -32,11 +37,11 @@ public class DeclarantForm {
         this.type = type;
     }
 
-    public Integer[] getClients() {
+    public Long[] getClients() {
         return clients;
     }
 
-    public void setClients(Integer[] clients) {
+    public void setClients(Long[] clients) {
         this.clients = clients;
     }
 }

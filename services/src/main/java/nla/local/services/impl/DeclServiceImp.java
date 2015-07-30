@@ -169,7 +169,7 @@ public class DeclServiceImp extends BaseServiceImp<Decl> implements IDeclService
         return decl;
     }
 
-    public Decl addNewDeclarantInDecl(Person person, Integer type, Integer idDecl, Integer[] clients) throws ServiceDaoException {
+    public Decl addNewDeclarantInDecl(Person person, Integer type, Long idDecl, Long[] clients) throws ServiceDaoException {
         // logger.info("Called method service addNewDeclarantInDecl");
 
         // logger.info("Called method service addNewDeclarantInDecl");
@@ -189,7 +189,7 @@ public class DeclServiceImp extends BaseServiceImp<Decl> implements IDeclService
 
         } else {
             List<Declarant> declarants = new ArrayList<Declarant>();
-            for (Integer clientId : clients) {
+            for (Long clientId : clients) {
                 Declarant declarant = new Declarant();
 
                 declarant.setDecl_id(idDecl);
@@ -244,7 +244,7 @@ public class DeclServiceImp extends BaseServiceImp<Decl> implements IDeclService
 
     }
 
-    public Decl deleteDeclarantInDecl(final Integer[] declarantId, Serializable idDecl) throws DaoException {
+    public Decl deleteDeclarantInDecl(final Long[] declarantId, Serializable idDecl) throws DaoException {
 
         Decl dc = get(Decl.class, idDecl);
 
@@ -269,7 +269,7 @@ public class DeclServiceImp extends BaseServiceImp<Decl> implements IDeclService
     }
 
     @Override
-    public Decl setStatus(CatalogItem catalogItem, Integer declId, OPerson user) throws ServiceDaoException {
+    public Decl setStatus(CatalogItem catalogItem, Long declId, OPerson user) throws ServiceDaoException {
         //  logger.info("Called method service setStatus");
         Decl decl = get(declId);
 
@@ -308,7 +308,7 @@ public class DeclServiceImp extends BaseServiceImp<Decl> implements IDeclService
     }
 
     @Override
-    public Decl changeDeclType(Integer declId) throws ServiceDaoException {
+    public Decl changeDeclType(Long declId) throws ServiceDaoException {
 
         Decl decl = get(declId);
 
@@ -321,11 +321,11 @@ public class DeclServiceImp extends BaseServiceImp<Decl> implements IDeclService
     }
 
     @Override
-    public Decl changeDeclUser(Integer declId, Integer decluser_id, OPerson user) throws ServiceDaoException {
+    public Decl changeDeclUser(Long declId, Long decluser_id, OPerson user) throws ServiceDaoException {
         return null;
     }
 
-    private Declarant getSelectedDeclarant(Set<Declarant> declarants, Integer id) {
+    private Declarant getSelectedDeclarant(Set<Declarant> declarants, Long id) {
         Declarant d = null;
         for (Declarant declarant : declarants) {
             if (declarant.getDeclarantId().equals(id)) d = declarant;

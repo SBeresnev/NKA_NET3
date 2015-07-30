@@ -71,13 +71,13 @@ public class DeclController {
     }
 
     @RequestMapping(value = "/get_decl", method = {RequestMethod.GET})
-    public Decl getDecl(Integer id) throws DaoException, ServiceException {
+    public Decl getDecl(Long id) throws DaoException, ServiceException {
         logger.info("root - decl/get_decl");
         return orderServiceImp.get(id);
     }
 
     @RequestMapping(value = "/delete_subject_in_decl", method = {RequestMethod.DELETE})
-    public Decl deleteSubject(Integer idDecl,Integer... declarantIds) throws DaoException, ServiceException {
+    public Decl deleteSubject(Long idDecl,Long... declarantIds) throws DaoException, ServiceException {
 
         logger.info("root - decl/delete_subject_in_decl");
 
@@ -102,7 +102,7 @@ public class DeclController {
     }
 
     @RequestMapping(value = "/change_decltype", method = {RequestMethod.PUT})
-    public Decl changeDecltype(@RequestBody Integer declId) throws DaoException, ServiceException {
+    public Decl changeDecltype(@RequestBody Long declId) throws DaoException, ServiceException {
         logger.info("root - decl/change_decltype");
         return orderServiceImp.changeDeclType(declId);
     }

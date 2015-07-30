@@ -62,7 +62,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-        baseClean.RightClean();
+        // baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -70,11 +70,13 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-        generateSingleRight();
+      //  generateSingleRight();
 
-        generatesharedRight();
+     //   generatesharedRight();
 
-        findbySubjectId();
+     //   findbySubjectId();
+
+        getRightbyObject();
 
         long endTime = System.nanoTime();
 
@@ -187,9 +189,20 @@ public class RightTest {
 
     }
 
+    public void getRightbyObject() {
+        try {
+
+            Set<Right> lr = new HashSet<Right>(rsi.getRightbyObject("минск, авиации 14", null));
+
+            long endTime = System.nanoTime();
+
+        } catch (ServiceDaoException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void generatesharedRight() throws ServiceDaoException, ServiceException {
-
-
 
         CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
             public boolean evaluate(Object o) {

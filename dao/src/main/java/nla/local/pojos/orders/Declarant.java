@@ -18,10 +18,10 @@ public class Declarant {
     @SequenceGenerator(name="declarant_seq", sequenceName="SEQ_DECLARANT_ID")
     @GeneratedValue(strategy = GenerationType.AUTO ,generator="declarant_seq")
     @Column(name="DECLARANT_ID", unique=true, nullable=false )
-    private  Integer declarantId;
+    private  Long declarantId;
 
     @Column(name = "DECL_ID")
-    private Integer decl_id;
+    private Long decl_id;
 
     @OneToOne
     @JoinColumn(name = "SUBJECT_ID")
@@ -36,19 +36,19 @@ public class Declarant {
     private Integer declrepr_type = 1;
 
 
-    public Integer getDeclarantId() {
+    public Long getDeclarantId() {
         return declarantId;
     }
 
-    public void setDeclarantId(Integer declarantId) {
+    public void setDeclarantId(Long declarantId) {
         this.declarantId = declarantId;
     }
 
-    public Integer getDecl_id() {
+    public Long getDecl_id() {
         return decl_id;
     }
 
-    public void setDecl_id(Integer decl_id) {
+    public void setDecl_id(Long decl_id) {
         this.decl_id = decl_id;
     }
 

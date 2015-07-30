@@ -11,7 +11,7 @@ import java.util.Set;
  */
 public class Journal {
 
-    private Integer decl_id;
+    private Long decl_id;
 
     private String declnumber;
 
@@ -43,11 +43,11 @@ public class Journal {
         this.declResolution = declResolution;
     }
 
-    public Integer getDecl_id() {
+    public Long getDecl_id() {
         return decl_id;
     }
 
-    public void setDecl_id(Integer decl_id) {
+    public void setDecl_id(Long decl_id) {
         this.decl_id = decl_id;
     }
 

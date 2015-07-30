@@ -128,7 +128,7 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
         if( Adr != null) {
 
-            query_Address_dest =  query_Address_dest.add(Restrictions.like("Adr", Adr, MatchMode.ANYWHERE).ignoreCase());
+            query_Address_dest =  query_Address_dest.add(Restrictions.like("adr", Adr, MatchMode.ANYWHERE).ignoreCase());
 
             query_Address_dest =  soato != null ? query_Address_dest.add(Restrictions.eq("soato", soato)) : query_Address_dest;
 

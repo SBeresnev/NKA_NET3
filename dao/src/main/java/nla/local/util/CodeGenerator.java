@@ -48,7 +48,7 @@ public class CodeGenerator implements IdentifierGenerator, Configurable {
         this.sessionFactory = sessionFactory;
     }
 
-    private void fillObject(Object object, Integer id)
+    private void fillObject(Object object, Long id)
     {
 
         if (object instanceof Decl) {
@@ -88,7 +88,7 @@ public class CodeGenerator implements IdentifierGenerator, Configurable {
 
             if (rs.next()) {
 
-                Integer id = rs.getInt("nextval");
+                Long id = rs.getLong("nextval");
 
                 fillObject(object,id);
 

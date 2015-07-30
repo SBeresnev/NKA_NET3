@@ -27,6 +27,8 @@ public interface IRightService extends IService {
 
     public RightOwner updateRightOwner(RightOwner rightowner) throws ServiceDaoException ;
 
+    public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException;
+
     @Deprecated
     public List<Right> findbyrightCountType( CatalogItem countType) throws ServiceDaoException ;
 }
