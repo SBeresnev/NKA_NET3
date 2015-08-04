@@ -3,7 +3,6 @@ package nla.local.services.impl;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.address.Address_dest;
-import nla.local.pojos.address.Address_src;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.rights.Right;
@@ -15,7 +14,6 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
-import org.hibernate.FetchMode;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 
 /**
@@ -74,6 +70,8 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+
+
     public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException
     {
         List<Right> ret_val = new ArrayList<Right>();
@@ -103,34 +101,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
-    public List<Right> findbyObjectSubject(Long obj_id,  Integer person_id) throws ServiceDaoException
-    {
 
-        final Integer f_person_id = person_id;
-
-        List<Right> ret_val = new ArrayList<Right>();
-
-        Set<Right> obj_list =  new HashSet<Right>(findbyObject(obj_id));
-
-        for(Right obj : obj_list)
-        {
-
-            Set<RightOwner> ro_list = obj.getRight_owner_lst();
-
-            RightOwner row = CollectionUtils.find(ro_list, new Predicate() {
-            public boolean evaluate(Object o) {
-                RightOwner c = (RightOwner) o;
-                return (c.getOwner().getSubjectId() == f_person_id.intValue() && c.getDate_out() == null && c.getStatus() == 1);
-            }
-        });
-
-            if (row != null) ret_val.add(obj);
-
-        }
-
-        return ret_val;
-
-    }
 
 
     public List<Right> findbySubject(Integer person_id) throws ServiceDaoException
@@ -176,7 +147,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
-
     public List<Right> findbyObject(Long obj_id) throws ServiceDaoException
     {
 
@@ -199,22 +169,25 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
 
+
+
     @Deprecated
-    public List<Right> findbyrightCountType( CatalogItem countType) throws ServiceDaoException {
+    public List<RightOwner> findbyrightCountTypeOwn( CatalogItem countType) throws ServiceDaoException {
 
-        List<Right> ret_val = null;
+        List<RightOwner> ret_val = null;
 
-        DetachedCriteria query = (DetachedCriteria) SerializationUtils.clone(query_Right);
+        DetachedCriteria query_own_ = (DetachedCriteria) SerializationUtils.clone(query_RightOwn);
 
 
         if( countType != null )
         {
-            query = query.add(Restrictions.eq("right_count_type",countType));
+            query_own_ = query_own_.add(Restrictions.eq("owner.right_count_type",countType));
 
-            //query.setFetchMode("rght.right_owner_lst", FetchMode.SELECT);
-            //query.createCriteria("rght.right_owner_lst").add(Restrictions.eq("status",1 ));
+            query_own_ = query_own_.add(Restrictions.eq("status", 1));
 
-            ret_val =  super.getCriterion(query);
+            query_own_ = query_own_.add(Restrictions.isNull("date_out"));
+
+            ret_val =  super.getCriterion(query_own_);
 
         }
 
@@ -227,6 +200,73 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         super.update(rightowner);
 
         return rightowner;
+    }
+
+
+    public List<RightOwner> getRightbyObjectOwn(String Adr, String soato ) throws ServiceDaoException {
+
+        List<RightOwner> ret_val = new ArrayList<RightOwner>();
+
+        List<Address_dest> addr_list  = ias.findAddressDest(Adr, soato);
+
+            if(!addr_list.isEmpty())
+            {
+                List<Long> adr_ids = new ArrayList<Long>();
+
+                for (Address_dest addr : addr_list ) {
+
+                    adr_ids.add(addr.getAddress_id());
+
+                }
+
+                List<Object_dest> object_list = (List<Object_dest>) ios.findObjectbyAddress(Object_dest.class,adr_ids);
+
+                 Long[] obj_ids = new Long[object_list.size()];
+
+                 for (int i =0 ; i < object_list.size() ; i++) {
+
+                     obj_ids[i] = object_list.get(i).getObj_id();
+                 }
+
+
+                ret_val.addAll(findbyObjectPersonOwn(obj_ids, null));
+
+            }
+
+        return ret_val;
+
+    }
+
+
+    public List<RightOwner> findbyObjectPersonOwn(Long[] obj_ids, Integer person_id) throws ServiceDaoException
+    {
+
+        List<RightOwner> ret_val = null;
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_RightOwn);
+
+        query_ = person_id != null ?  query_.add(Restrictions.eq("owner.subjectId",person_id)) : query_ ;
+
+        if( obj_ids != null && obj_ids.length > 0 )
+        {
+            query_ = query_.add(Restrictions.eq("status", 1));
+
+            query_ = query_.add(Restrictions.isNull("date_out"));
+
+            query_ = query_.createCriteria("right").add(Restrictions.in("object_entity_id",obj_ids));
+
+            ret_val = super.getCriterion(query_);
+
+        }
+
+        return ret_val;
+
+    }
+
+    public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException {
+
+        this.addRightOwner(rght_own);
+
     }
 
 }

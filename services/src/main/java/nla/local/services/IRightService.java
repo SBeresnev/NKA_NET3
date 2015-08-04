@@ -23,12 +23,20 @@ public interface IRightService extends IService {
 
     public List<Right> findbySubject(Integer person_id) throws ServiceDaoException;
 
-    public List<Right> findbyObjectSubject(Long obj_id, Integer person_id)throws ServiceDaoException;
-
     public RightOwner updateRightOwner(RightOwner rightowner) throws ServiceDaoException ;
 
     public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException;
 
+
+    public List<RightOwner> findbyObjectPersonOwn(Long[] obj_ids, Integer person_id) throws ServiceDaoException;
+
+    public List<RightOwner> getRightbyObjectOwn(String Adr, String soato ) throws ServiceDaoException;
+
+
+    public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException ;
+
+   // public List<Right> findbyObjectSubject(Long obj_id, Integer person_id)throws ServiceDaoException;
+
     @Deprecated
-    public List<Right> findbyrightCountType( CatalogItem countType) throws ServiceDaoException ;
+    public List<RightOwner> findbyrightCountTypeOwn( CatalogItem countType) throws ServiceDaoException ;
 }

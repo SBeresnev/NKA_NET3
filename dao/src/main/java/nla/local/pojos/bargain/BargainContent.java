@@ -52,7 +52,18 @@ public class BargainContent {
     @Column(name = "STATUS")
     private Integer Status;
 
+    @Column( name ="OOPER_ID")
+    private Integer ooper_id;
 
+
+
+    public Integer getOoper_id() {
+        return ooper_id;
+    }
+
+    public void setOoper_id(Integer ooper_id) {
+        this.ooper_id = ooper_id;
+    }
 
     public Integer getStatus() {
         return Status;

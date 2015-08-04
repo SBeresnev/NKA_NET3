@@ -147,11 +147,14 @@ public class BargainTest {
         });
 
 
+
         brg_cont.setBargain_entity_type(bargainentyty);
 
         brg_cont.setRight_entity_id(row.getRight_owner_id());
 
         brg_cont.setStatus(1);
+
+        brg_cont.setOoper_id(156);
 
         brg_cont.setBargain(brg);
 

@@ -75,13 +75,16 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-        generateSingleRight();
+      //  generateSingleRight();
 
-        generatesharedRight();
 
-      //  findbySubjectId();
+      //  generateSingleRightPass();
 
-         getRightbyObject();
+          generatesharedRight();
+
+       // findbySubjectId();
+
+      //   getRightbyObject();
 
         long endTime = System.nanoTime();
 
@@ -92,8 +95,8 @@ public class RightTest {
     }
 
 
-    public void generateSingleRight() throws ServiceDaoException, ServiceException {
-
+    public void generateSingleRightPass()  throws ServiceDaoException, ServiceException
+    {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
@@ -154,11 +157,6 @@ public class RightTest {
 
         rgt.setStatus(1);
 
-        /******************************* add right *********************************/
-
-        /* Можно раскоменчивавть, а можно и нет*/
-
-        rsi.addRight(rgt);
 
         /////-------------------------------------set RightOwner-----------------------------------------------//////
 
@@ -180,20 +178,22 @@ public class RightTest {
 
         orgt.setRight(rgt);
 
-        rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
+       // rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        rsi.addRightOwner(orgt);
-
-      //  bsi.getSessionFactory().getCurrentSession().flush();
-
+        rsi.passSingleRight(orgt);//.addRightOwner(orgt);
 
     }
 
     public void findbySubjectId() throws ServiceDaoException {
 
         List<Right> lrt = rsi.findbySubject(1046);
+
+        List<RightOwner> lrt_own_ = rsi.getRightbyObjectOwn("минск, авиации 14", null);
+
+        lrt_own_ = rsi.findbyObjectPersonOwn(new Long[] {Long.valueOf(82)},1046);
+
 
     }
 
@@ -206,6 +206,130 @@ public class RightTest {
 
         } catch (ServiceDaoException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    public void generatesharedRightPass() throws ServiceDaoException, ServiceException {
+
+
+        CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("право одного лица");
+            }
+        });
+
+
+        Set<Right> r_lrt = new HashSet<Right>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
+
+        Right lrt = r_lrt.iterator().next();
+
+        final Integer f_subject_id = lrt.getRight_owner_lst().iterator().next().getOwner().subjectId;
+
+        List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
+
+        /***********************************************************************************/
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+        Calendar cal = Calendar.getInstance();
+
+        Random r = new Random();
+
+        CatalogItem  rightType = CollectionUtils.find(rightTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("собств");
+            }
+        });
+
+        CatalogItem  directType = CollectionUtils.find(rightEntytyTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("доля в праве");
+            }
+        });
+
+        CatalogItem   rightCountType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("долевое право");
+            }
+        });
+
+        /*************************find parent owner**********************************************************/
+
+        Set<RightOwner> sro = lrt.getRight_owner_lst();
+
+        RightOwner rown = CollectionUtils.find(sro, new Predicate() {
+            public boolean evaluate(Object o) {
+                RightOwner c = (RightOwner) o;
+                return c.getOwner().getSubjectId() == f_subject_id.intValue();
+            }
+        });
+
+        /***************************init right***************************************************************/
+
+        Right rgt = new Right();
+
+        rgt.setRight_type(rightType);
+
+        rgt.setRight_entyty_type(directType);
+
+        rgt.setRight_count_type(rightCountType);
+
+        rgt.setBegin_date(cal.getTime());
+
+        rgt.setIs_needed(0);
+
+        rgt.setComments("Object number ");
+
+        rgt.setOoper_id(152);
+
+        rgt.setObject_entity_id(lrt.getObject_entity_id() );
+
+        rgt.setStatus(1);
+
+        /***************************** update parent owner **********************************************************/
+
+        rown.setDate_out(cal.getTime());
+
+        rown.setOoper_id(156);
+
+        rown.setStatus(0);
+
+        rsi.updateRightOwner(rown);
+
+        /******************************* add right********************************************************/
+
+        /* Можно раскоменчивавть, а можно и нет*/
+        // rsi.addRight(rgt);
+
+        /***************************init shred owners***************************************************************/
+
+        for (int i = 0 ; i< 3; i++)
+        {
+            RightOwner orgt = new RightOwner();
+
+            orgt.setOoper_id(152);
+
+            orgt.setStatus(1);
+
+            orgt.setDate_in(cal.getTime());
+
+            orgt.setOwner(lp.get(i));
+
+            orgt.setNumerator_part(1);
+
+            orgt.setDenominator_part(3);
+
+            orgt.setParent_owner(rown);
+
+            orgt.setRight(rgt);
+
+            rsi.addRightOwner(orgt);
+
         }
 
     }

@@ -65,8 +65,8 @@ public class Right implements Serializable {
     private Long object_entity_id;               //  object refrence
 
 
-    @OneToMany(mappedBy = "right", fetch = FetchType.EAGER)
-    private Set<RightOwner> right_owner_lst;
+    //@OneToMany(mappedBy = "right", fetch = FetchType.EAGER)
+    //private Set<RightOwner> right_owner_lst;
 
 
     @Column(name = "BOUND_ID")
@@ -117,10 +117,6 @@ public class Right implements Serializable {
 
     }
 
-
-
-    */
-
     public Set<RightOwner> getRight_owner_lst() {
         return right_owner_lst;
     }
@@ -129,6 +125,7 @@ public class Right implements Serializable {
         this.right_owner_lst = right_owner_lst;
     }
 
+    */
 
     public Object_dest getBindedObj() {
         return bindedObj;
