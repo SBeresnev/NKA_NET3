@@ -29,9 +29,8 @@ public class RightOwner {
     @JoinColumn(name = "OWNER_ID",nullable = false)
     private Person owner;
 
-    @ManyToOne
+    @ManyToOne(cascade = javax.persistence.CascadeType.ALL)
     @JoinColumn(name = "RIGHT_ID",nullable = false)
-    @Cascade(CascadeType.ALL)
     private Right right;
 
     @Column(name="NUMERATOR_PART")

@@ -15,6 +15,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
+import org.hibernate.FetchMode;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +43,9 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     private static Logger log = Logger.getLogger(RightServiceImp.class);
 
-    private DetachedCriteria query_Right = DetachedCriteria.forClass(Right.class);
+    private DetachedCriteria query_Right = DetachedCriteria.forClass(Right.class,"rght");
 
-    private DetachedCriteria query_RightOwn = DetachedCriteria.forClass(RightOwner.class);
+    private DetachedCriteria query_RightOwn = DetachedCriteria.forClass(RightOwner.class,"rght_own");
 
 
     @Override
@@ -205,9 +206,13 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         DetachedCriteria query = (DetachedCriteria) SerializationUtils.clone(query_Right);
 
+
         if( countType != null )
         {
             query = query.add(Restrictions.eq("right_count_type",countType));
+
+            //query.setFetchMode("rght.right_owner_lst", FetchMode.SELECT);
+            //query.createCriteria("rght.right_owner_lst").add(Restrictions.eq("status",1 ));
 
             ret_val =  super.getCriterion(query);
 

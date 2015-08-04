@@ -24,7 +24,7 @@ public class Bargain {
             strategy = "nla.local.util.CodeGenerator",
             parameters = @org.hibernate.annotations.Parameter(name = "seq_name", value = "SEQ_BARGAINS_ID"))
     @Column(name="BARGAIN_ID", unique=true, nullable=false )
-    private Integer bargain_id;
+    private Long bargain_id;
 
     @ManyToOne
     @JoinColumnsOrFormulas({
@@ -45,9 +45,6 @@ public class Bargain {
 
     @Column( name ="AFFILIATES")
     private Integer affiliates;
-
-    @Column( name ="LISING")
-    private Integer listing;
 
     @Column( name ="DONE")
     private Integer done;
@@ -70,6 +67,17 @@ public class Bargain {
     @Column( name ="VAT_COMPLEX")
     private Integer vat_complex;
 
+    public Integer getCount_object() {
+        return count_object;
+    }
+
+    public void setCount_object(Integer count_object) {
+        this.count_object = count_object;
+    }
+
+    @Column( name ="COUNT_OBJECT")
+    private Integer count_object;
+
 
     public Integer getDoc_id() {
         return doc_id;
@@ -79,11 +87,11 @@ public class Bargain {
         this.doc_id = doc_id;
     }
 
-    public Integer getBargain_id() {
+    public Long getBargain_id() {
         return bargain_id;
     }
 
-    public void setBargain_id(Integer bargain_id) {
+    public void setBargain_id(Long bargain_id) {
         this.bargain_id = bargain_id;
     }
 
@@ -127,13 +135,7 @@ public class Bargain {
         this.affiliates = affiliates;
     }
 
-    public Integer getListing() {
-        return listing;
-    }
 
-    public void setListing(Integer listing) {
-        this.listing = listing;
-    }
 
     public Integer getDone() {
         return done;

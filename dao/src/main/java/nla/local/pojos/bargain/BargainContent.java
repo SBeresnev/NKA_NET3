@@ -19,14 +19,11 @@ import javax.persistence.*;
 @Table( name = "BARGAINCONTENT")
 public class BargainContent {
 
-    @Id
-    @GeneratedValue(generator="seq_id")
-    @GenericGenerator(
-            name="seq_id",
-            strategy = "nla.local.util.CodeGenerator",
-            parameters = @org.hibernate.annotations.Parameter(name = "seq_name", value = "SEQ_BARGAINS_ID"))
-    @Column(name="BARGAIN_CONTENT_ID", unique=true, nullable=false )
-    private Integer bargain_content_id;
+     @Id
+    @Column(name = "BARGAIN_CONTENT_ID",unique=true, nullable=false)
+    @SequenceGenerator(name="bar_cont_seq", sequenceName="SEQ_BARGAIN_CONTENT_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO ,generator="bar_cont_seq")
+    private Long bargain_content_id;
 
     @ManyToOne
     @JoinColumnsOrFormulas({
@@ -36,7 +33,7 @@ public class BargainContent {
     })
     private CatalogItem bargain_entity_type;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "BARGAIN_ID")
     private Bargain bargain;
 
@@ -81,11 +78,11 @@ public class BargainContent {
         this.bindedRight = bindedRight;
     }
 
-    public Integer getBargain_content_id() {
+    public Long getBargain_content_id() {
         return bargain_content_id;
     }
 
-    public void setBargain_content_id(Integer bargain_content_id) {
+    public void setBargain_content_id(Long bargain_content_id) {
         this.bargain_content_id = bargain_content_id;
     }
 

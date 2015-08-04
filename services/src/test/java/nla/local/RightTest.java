@@ -34,6 +34,7 @@ import java.util.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
 @TransactionConfiguration(defaultRollback = false)
+@Transactional
 public class RightTest {
 
     @Autowired
@@ -90,7 +91,7 @@ public class RightTest {
 
     }
 
-    @Transactional
+
     public void generateSingleRight() throws ServiceDaoException, ServiceException {
 
 
@@ -185,7 +186,7 @@ public class RightTest {
 
         rsi.addRightOwner(orgt);
 
-
+      //  bsi.getSessionFactory().getCurrentSession().flush();
 
 
     }
@@ -209,7 +210,7 @@ public class RightTest {
 
     }
 
-    @Transactional
+
     public void generatesharedRight() throws ServiceDaoException, ServiceException {
 
         CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
