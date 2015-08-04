@@ -221,11 +221,9 @@ public class RightTest {
         });
 
 
-        Set<Right> r_lrt = new HashSet<Right>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountTypeOwn(countType));//(rsi.findbySubject(f_subject_id));
 
-        Right lrt = r_lrt.iterator().next();
-
-        final Integer f_subject_id = lrt.getRight_owner_lst().iterator().next().getOwner().subjectId;
+        final Integer f_subject_id = r_lrt.iterator().next().getOwner().subjectId;
 
         List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
 
