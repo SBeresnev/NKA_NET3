@@ -35,6 +35,10 @@ public interface IRightService extends IService {
 
     public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException ;
 
+    public List<Right> getlimitationsRight (Long[] right_ids) throws ServiceDaoException, ServiceException;
+
+    public List<RightOwner> getRightOwnersbyRight (Long[] right_ids) throws ServiceDaoException, ServiceException; ;
+
    // public List<Right> findbyObjectSubject(Long obj_id, Integer person_id)throws ServiceDaoException;
 
     @Deprecated

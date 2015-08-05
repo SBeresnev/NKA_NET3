@@ -127,9 +127,9 @@ public class BargainTest {
         });
 
 
-         Set<Right> r_lrt = new HashSet<Right>(rsi.findbyrightCountType(directType));
+         Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountTypeOwn(directType));
 
-         RightOwner row = CollectionUtils.find( r_lrt.iterator().next().getRight_owner_lst(), new Predicate() {
+         RightOwner row = CollectionUtils.find( r_lrt, new Predicate() {
                 public boolean evaluate(Object o) {
                     RightOwner c = (RightOwner) o;
                     return (c.getDate_out() == null && c.getStatus() == 1);

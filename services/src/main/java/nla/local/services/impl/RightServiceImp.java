@@ -10,10 +10,9 @@ import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IAddressService;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +38,9 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     private static Logger log = Logger.getLogger(RightServiceImp.class);
 
-    private DetachedCriteria query_Right = DetachedCriteria.forClass(Right.class,"rght");
+    private DetachedCriteria query_Right = DetachedCriteria.forClass(Right.class,"rght").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
-    private DetachedCriteria query_RightOwn = DetachedCriteria.forClass(RightOwner.class,"rght_own");
+    private DetachedCriteria query_RightOwn = DetachedCriteria.forClass(RightOwner.class,"rght_own").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
 
     @Override
@@ -169,8 +168,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
 
-
-
     @Deprecated
     public List<RightOwner> findbyrightCountTypeOwn( CatalogItem countType) throws ServiceDaoException {
 
@@ -179,13 +176,15 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         DetachedCriteria query_own_ = (DetachedCriteria) SerializationUtils.clone(query_RightOwn);
 
 
+
         if( countType != null )
         {
-            query_own_ = query_own_.add(Restrictions.eq("owner.right_count_type",countType));
 
             query_own_ = query_own_.add(Restrictions.eq("status", 1));
 
             query_own_ = query_own_.add(Restrictions.isNull("date_out"));
+
+            query_own_ = query_own_.createCriteria("right").add(Restrictions.eq("right_count_type", countType));
 
             ret_val =  super.getCriterion(query_own_);
 
@@ -262,6 +261,70 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val;
 
     }
+
+    public List<Right> getlimitationsObject (Long[] obj_ids)  throws ServiceDaoException, ServiceException
+    {
+
+        List<Right> ret_val = null;
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
+
+        query_ = query_.add(Restrictions.in("object_entity_id", obj_ids));
+
+        query_ = query_.add(Restrictions.between("right_type", 200 , 499));
+
+        ret_val = super.getCriterion(query_);
+
+        return ret_val;
+
+
+   }
+
+    public List<Right> getlimitationsRight (Long[] right_ids)  throws ServiceDaoException, ServiceException
+    {
+        List<Right> ret_val = null;
+
+        List<RightOwner> ret_val_own = null;
+
+        DetachedCriteria query_r = (DetachedCriteria) SerializationUtils.clone(query_Right);
+
+        ret_val_own = getRightOwnersbyRight(right_ids);
+
+
+        Right[] right_array = new Right[ret_val_own.size()];
+
+        ret_val_own.toArray(right_array);
+
+        query_r = query_r.add(Restrictions.in("limit_righ",right_array));
+
+        query_r = query_r.add(Restrictions.eq("status", 1));
+
+        query_r = query_r.add(Restrictions.isNull("date_out"));
+
+        ret_val = super.getCriterion(query_r);
+
+        return ret_val;
+
+    }
+
+    @Override
+    public List<RightOwner> getRightOwnersbyRight(Long[] right_ids) throws ServiceDaoException, ServiceException {
+
+        List<RightOwner> ret_val_own = null;
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_RightOwn);
+
+        query_ = query_.add(Restrictions.eq("status", 1));
+
+        query_ = query_.add(Restrictions.isNull("date_out"));
+
+        query_ = query_.createCriteria("right").add(Restrictions.in("right_id", right_ids ));
+
+        ret_val_own =  super.getCriterion(query_);
+
+        return ret_val_own;
+    }
+
 
     public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException {
 

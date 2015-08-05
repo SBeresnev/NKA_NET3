@@ -65,8 +65,14 @@ public class Right implements Serializable {
     private Long object_entity_id;               //  object refrence
 
 
-    //@OneToMany(mappedBy = "right", fetch = FetchType.EAGER)
-    //private Set<RightOwner> right_owner_lst;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "LIMIT_RIGHT_ID",nullable = true)
+    private Right limit_righ;               //  right refrence
+
+
+   /* @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "limit_right_id",nullable = false)
+    private Right right;*/
 
 
     @Column(name = "BOUND_ID")
@@ -126,6 +132,15 @@ public class Right implements Serializable {
     }
 
     */
+
+
+    public Right getLimit_righ() {
+        return limit_righ;
+    }
+
+    public void setLimit_righ(Right limit_righ) {
+        this.limit_righ = limit_righ;
+    }
 
     public Object_dest getBindedObj() {
         return bindedObj;
