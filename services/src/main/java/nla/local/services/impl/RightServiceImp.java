@@ -10,16 +10,21 @@ import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IAddressService;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -43,12 +48,66 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     private DetachedCriteria query_RightOwn = DetachedCriteria.forClass(RightOwner.class,"rght_own").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
 
+
+    public Right CloseRight(Right rgt)  throws ServiceDaoException, ServiceException
+    {
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
+
+        Long[] right_ids = new Long[] {rgt.getRight_id()};
+
+        query_ = query_.add(Restrictions.eq("status",1));
+
+        query_ = query_.add(Restrictions.isNull("date_out"));
+
+        query_ = query_.add(Restrictions.not(Restrictions.between("right_type", 200 , 499)));
+
+        query_.addOrder(Order.desc("begin_date"));
+
+        List<Right> right_list = super.getCriterion(query_);
+
+        List<RightOwner> rown_list = null;
+
+        RightOwner test_number = null;
+
+        if( ! right_list.isEmpty())
+        {
+            rown_list = this.getRightOwnersbyRight(new Long[]{right_list.get(0).getRight_id()});
+
+            test_number  = CollectionUtils.find(rown_list, new Predicate() {
+                public boolean evaluate(Object o) {
+                    RightOwner c = (RightOwner) o;
+                    return c.getStatus() == 1;
+                }
+            });
+
+        }
+
+        if( test_number == null ) {
+            rgt.setStatus(0);  this.updateRight(rgt);
+        }
+
+        return rgt;
+    }
+
+    public void updateRight(Right right) throws ServiceDaoException {
+
+        super.update(right);
+
+    }
+
+    public void updateRightOwner(RightOwner right_own) throws ServiceDaoException {
+
+        super.update(right_own);
+
+    }
+
     @Override
     public Right addRight(Right rght) throws ServiceDaoException, ServiceException {
 
         if(rght.getObject_entity_id() == null) rght.setBindedObj(ios.bindObject(rght.getBindedObj()));
 
-        super.add(rght);
+        if(rght.getRight_id() == null)
+            super.add(rght);
 
         return rght;
 
@@ -68,6 +127,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return rght_own;
 
     }
+
 
 
 
@@ -146,6 +206,8 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+
+
     public List<Right> findbyObject(Long obj_id) throws ServiceDaoException
     {
 
@@ -175,8 +237,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         DetachedCriteria query_own_ = (DetachedCriteria) SerializationUtils.clone(query_RightOwn);
 
-
-
         if( countType != null )
         {
 
@@ -191,14 +251,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         }
 
         return ret_val;
-    }
-
-
-    public RightOwner updateRightOwner(RightOwner rightowner) throws ServiceDaoException {
-
-        super.update(rightowner);
-
-        return rightowner;
     }
 
 
@@ -330,6 +382,51 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         this.addRightOwner(rght_own);
 
+    }
+
+    @Override
+    public void joinSharedRight(HashMap<RightOwner,RightOwner> right_own) throws ServiceDaoException, ServiceException {
+
+        /***************************** update parent owner **********************************************************/
+
+        Right main_right =  right_own.get(right_own.keySet().iterator().next()).getRight();
+
+        this.addRight(main_right);
+
+        for (RightOwner parent_owner : right_own.keySet() )  {
+
+            RightOwner child_own = right_own.get(parent_owner);
+
+            parent_owner.setStatus(0);
+
+            this.updateRightOwner(parent_owner);
+
+            child_own.setParent_owner(parent_owner);
+
+            child_own.setRight(main_right);
+
+            this.addRightOwner(child_own);
+
+        }
+
+
+    }
+
+    @Override
+    public void splitSharedRight(List<RightOwner> child_owners, RightOwner parent_owner) throws ServiceDaoException, ServiceException {
+
+        /***************************** update parent owner **********************************************************/
+
+        this.updateRightOwner(parent_owner);
+
+        /***************************** *********************************************************************************/
+
+        for (RightOwner child_owner : child_owners )
+        {
+            child_owner.setParent_owner(parent_owner);
+
+            this.addRightOwner(child_owner);
+        }
     }
 
 }

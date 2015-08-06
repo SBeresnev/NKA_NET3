@@ -3,6 +3,7 @@ package nla.local.pojos.dict;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by belonovich on 06.03.2015.
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ANALYTICCODES")
 @IdClass(CatalogPk.class)
-public class CatalogItem {
+public class CatalogItem implements Serializable {
 
     @Id
     @Column(name = "ANALYTIC_CODE", nullable = false)

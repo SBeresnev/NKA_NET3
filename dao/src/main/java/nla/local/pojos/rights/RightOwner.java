@@ -9,6 +9,7 @@ import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -17,7 +18,7 @@ import java.util.Date;
 
 @Entity
 @Table( name = "RIGHTOWNERS", schema = "NKA_NET3_DEV")
-public class RightOwner {
+public class RightOwner implements Serializable {
 
     @Id
     @Column(name = "RIGHT_OWNER_ID")

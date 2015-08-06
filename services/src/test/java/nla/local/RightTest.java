@@ -15,6 +15,7 @@ import nla.local.services.impl.subjects.PSubjectServiceImp;
 import nla.local.util.BaseClean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
+import org.apache.commons.lang3.SerializationUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-       // baseClean.RightClean();
+        baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -76,11 +77,13 @@ public class RightTest {
         long startTime = System.nanoTime();
 
 
-       // generateSingleRightPass();
+        generateSingleRightPass();
 
-       // generatesharedRightPass();
+        //generatesharedRightPass();
 
-         generatesharedRight();
+        //splitsharedRight();
+
+       //joinsharedRight();
 
        // findbySubjectId();
 
@@ -125,7 +128,7 @@ public class RightTest {
         });
 
 
-        List<Object_dest> ret_val_dest = (List<Object_dest>) ios.findObjectbyInventoryNumCommon(11, 3, 0);
+        List<Object_dest> ret_val_dest = (List<Object_dest>) ios.findObjectbyInventoryNumCommon(888, 2, 0);
 
         List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
 
@@ -335,7 +338,231 @@ public class RightTest {
 
     }
 
-    public void generatesharedRight()  throws ServiceDaoException, ServiceException {
+    public void splitsharedRight()  throws ServiceDaoException, ServiceException {
+
+        CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("долевое право");
+            }
+        });
+
+
+        CatalogItem  rightType = CollectionUtils.find(rightTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("собств");
+            }
+        });
+
+        CatalogItem  directType = CollectionUtils.find(rightEntytyTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("доля в праве");
+            }
+        });
+
+        CatalogItem   rightCountType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("долевое право");
+            }
+        });
+
+
+        /***************************init right***************************************************************/
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+        Calendar cal = Calendar.getInstance();
+
+        Random r = new Random();
+
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountTypeOwn(countType));//(rsi.findbySubject(f_subject_id));
+
+        RightOwner par_row = r_lrt.iterator().next();
+
+        Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
+
+        List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
+
+        /**************************** Parent owner update ****************************************************/
+
+        par_row.setStatus(0);
+
+        par_row.setDate_out(cal.getTime());
+
+        /*****************************************************************************************************/
+
+        Right rgt = new Right();
+
+        rgt.setRight_type(rightType);
+
+        rgt.setRight_entyty_type(directType);
+
+        rgt.setRight_count_type(rightCountType);
+
+        rgt.setBegin_date(cal.getTime());
+
+        rgt.setIs_needed(0);
+
+        rgt.setComments("Object number ");
+
+        rgt.setOoper_id(152);
+
+        rgt.setObject_entity_id(object_id);
+
+        rgt.setStatus(1);
+
+
+        /******************************* add right********************************************************/
+
+        /* Можно раскоменчивавть, а можно и нет*/
+        // rsi.addRight(rgt);
+
+        /***************************init shred owners***************************************************************/
+
+        List<RightOwner> own_list = new ArrayList<RightOwner>();
+
+        for (int i = 0 ; i< 3; i++)
+        {
+            RightOwner orgt = new RightOwner();
+
+            orgt.setOoper_id(152);
+
+            orgt.setStatus(1);
+
+            orgt.setDate_in(cal.getTime());
+
+            orgt.setOwner(lp.get(i));
+
+            orgt.setNumerator_part(1);
+
+            orgt.setDenominator_part(3);
+
+            orgt.setRight(rgt);
+
+            own_list.add(orgt);
+
+
+        }
+
+        rsi.splitSharedRight(own_list, par_row);
+
+    }
+
+    public void joinsharedRight()  throws ServiceDaoException, ServiceException{
+
+
+        CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("долевое право");
+            }
+        });
+
+
+        CatalogItem  rightType = CollectionUtils.find(rightTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("собств");
+            }
+        });
+
+        CatalogItem  directType = CollectionUtils.find(rightEntytyTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("доля в праве");
+            }
+        });
+
+        CatalogItem   rightCountType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("долевое право");
+            }
+        });
+
+        /***************************init right***************************************************************/
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
+        Calendar cal = Calendar.getInstance();
+
+        Random r = new Random();
+
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountTypeOwn(countType));//(rsi.findbySubject(f_subject_id));
+
+        Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
+
+        List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
+
+        r_lrt = new HashSet<RightOwner>(rsi.getRightOwnersbyRight(new Long[] { r_lrt.iterator().next().getRight().getRight_id()}));
+
+        /***************************************************************************************************/
+
+        Right rgt = new Right();
+
+        rgt.setRight_type(rightType);
+
+        rgt.setRight_entyty_type(directType);
+
+        rgt.setRight_count_type(rightCountType);
+
+        rgt.setBegin_date(cal.getTime());
+
+        rgt.setIs_needed(0);
+
+        rgt.setComments("Object number ");
+
+        rgt.setOoper_id(152);
+
+        rgt.setObject_entity_id(object_id);
+
+        rgt.setStatus(1);
+
+        RightOwner orgt = new RightOwner();
+
+        orgt.setOoper_id(152);
+
+        orgt.setStatus(1);
+
+        orgt.setDate_in(cal.getTime());
+
+        orgt.setOwner(lp.get(0));
+
+        orgt.setRight(rgt);
+
+        /***************************init shred owners ***************************************************************/
+
+        HashMap<RightOwner,RightOwner> h_own_list =  new HashMap<RightOwner,RightOwner>();
+
+        /***************************set compatibility between parent and child owner. Fill Hash*********************************/
+
+        for (RightOwner parent_owner :  r_lrt)
+        {
+            parent_owner.setStatus(0);
+
+            parent_owner.setDate_out(cal.getTime());
+
+            parent_owner.setOoper_id(159);
+
+            RightOwner child_own = new RightOwner();
+
+            child_own = SerializationUtils.clone(orgt) ;
+
+            child_own.setNumerator_part(parent_owner.getNumerator_part());
+
+            child_own.setDenominator_part(parent_owner.getDenominator_part());
+
+            child_own.setStatus(1);
+
+            h_own_list.put(parent_owner,child_own);
+
+
+        }
+
+        rsi.joinSharedRight(h_own_list);
 
     }
 
