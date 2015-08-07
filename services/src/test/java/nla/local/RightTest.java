@@ -128,7 +128,10 @@ public class RightTest {
         });
 
 
-        List<Object_dest> ret_val_dest = (List<Object_dest>) ios.findObjectbyInventoryNumCommon(888, 2, 0);
+        List<Object_dest> ret_val_dest = (List<Object_dest>) ios.findObjectbyInventoryNumCommon(1, 2, 100);
+
+        ret_val_dest.get(0).setReg_type(1);
+        ret_val_dest.get(0).setStatus(1);
 
         List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
 

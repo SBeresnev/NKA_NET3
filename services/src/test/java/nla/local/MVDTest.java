@@ -1,5 +1,7 @@
 package nla.local;
 
+import nla.local.dao.IMinustDAO;
+import nla.local.dao.impl.MinustDAO;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.subjects.PPerson;
@@ -32,7 +34,10 @@ public class MVDTest {
     //private static String mvdsubjectsinputcleaner = "delete from MVD_SUBJECTS_INPUT";
 
     @Autowired
-    PassportServiceImp psi;
+    private  PassportServiceImp psi;
+
+    @Autowired
+    private IMinustDAO md;
 
     private List<PassportNCA> pl;
 
@@ -40,6 +45,14 @@ public class MVDTest {
     public  void setList()
     {
         pl = psi.getBaseDao().getSession().createCriteria(PassportNCA.class).add(Restrictions.between("rownum", 256, 500)).list();
+
+    }
+
+    @Test
+    public void MINUSTTest()
+    {
+        md.getDatabyName("ленин");
+
 
     }
 

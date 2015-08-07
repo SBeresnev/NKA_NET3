@@ -76,33 +76,34 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
     }
 
-    public Object_dest convertSrctoDest(Object_src adr_src) throws ServiceDaoException    {
+    public Object_dest convertSrctoDest(Object_src obj_src) throws ServiceDaoException    {
 
         Object_dest ret_val = new Object_dest();
 
-        ret_val.setObj_id_inv(adr_src.getObj_id());
+        ret_val.setObj_id_inv(obj_src.getObj_id());
 
-        ret_val.setCadaster_number(adr_src.getCadaster_number());
+        ret_val.setCadaster_number(obj_src.getCadaster_number());
 
-        ret_val.setOrg_id(adr_src.getOrg_id());
+        ret_val.setOrg_id(obj_src.getOrg_id());
 
-        ret_val.setObjectType(adr_src.getObjectType());
+        ret_val.setObjectType(obj_src.getObjectType());
 
-        ret_val.setInventory_number(adr_src.getInventory_number());
+        ret_val.setInventory_number(obj_src.getInventory_number());
 
-        ret_val.setSquare(adr_src.getSquare());
+        ret_val.setSquare(obj_src.getSquare());
 
-        ret_val.setRoomscount(adr_src.getRoomscount());
+        ret_val.setRoomscount(obj_src.getRoomscount());
 
-        ret_val.setReadiness(adr_src.getReadiness());
+        ret_val.setReadiness(obj_src.getReadiness() );
 
-        ret_val.setObject_name(adr_src.getObject_name());
+        ret_val.setObject_name(obj_src.getObject_name());
 
-        ret_val.setUse_purpose(adr_src.getUse_purpose());
+        ret_val.setUse_purpose(obj_src.getUse_purpose());
 
-        ret_val.setLand_category(adr_src.getLand_category());
+        ret_val.setLand_category(obj_src.getLand_category());
 
-        ret_val.setAdr_num(adr_src.getAddress_id());
+        ret_val.setAdr_num(obj_src.getAddress_id());
+
 
 
         return ret_val;
