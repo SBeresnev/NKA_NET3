@@ -51,6 +51,8 @@ public class SubjectTest
     @Qualifier("PSubjectServiceImp")
     public PSubjectServiceImp pService;
 
+
+    @Qualifier("JSubjectServiceImp")
     @Autowired
     public JSubjectServiceImp jService;
 

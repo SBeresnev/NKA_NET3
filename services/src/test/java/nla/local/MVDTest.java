@@ -1,7 +1,6 @@
 package nla.local;
 
-import nla.local.dao.IMinustDAO;
-import nla.local.dao.impl.MinustDAO;
+import nla.local.dao.IMinjstDAO;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.subjects.*;

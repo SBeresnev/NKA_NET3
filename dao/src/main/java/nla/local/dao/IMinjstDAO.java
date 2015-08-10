@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by beresnev on 07.08.2015.
  */
-public interface IMinustDAO {
+public interface IMinjstDAO {
 
     public List<JurMINJST> getDatabyName(String name);
 

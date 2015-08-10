@@ -1,6 +1,6 @@
 package nla.local.services.impl.subjects;
 
-import nla.local.dao.IMinustDAO;
+import nla.local.dao.IMinjstDAO;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.dict.CatalogConstants;
@@ -27,7 +27,7 @@ public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeSer
     private static Logger log = Logger.getLogger(PassportServiceImp.class);
 
     @Autowired
-    private IMinustDAO minustDAO;
+    private IMinjstDAO minustDAO;
 
 
     @Autowired

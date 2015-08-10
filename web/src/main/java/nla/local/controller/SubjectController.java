@@ -94,11 +94,13 @@ public class SubjectController {
         PPerson pp = this.passService.casttoPerson(resp);
         List<PPerson> list = new ArrayList();
         list.add(pp);
+
         return list;
     }
 
     @RequestMapping(value = {"/minjust"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<JPerson> getJusticePerson(Integer unp, String name) throws Exception {
+
         logger.info("root - /subject/minjust");
 
         List<JPerson> ret_val = new ArrayList<JPerson>() ;
