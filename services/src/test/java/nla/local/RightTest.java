@@ -77,17 +77,17 @@ public class RightTest {
         long startTime = System.nanoTime();
 
 
-        generateSingleRightPass();
+        //generateSingleRightPass();
 
         //generatesharedRightPass();
 
         //splitsharedRight();
 
-       //joinsharedRight();
+        //joinsharedRight();
 
-       // findbySubjectId();
+        //findbySubjectId();
 
-       // getRightbyObject();
+        //getRightbyObject();
 
         long endTime = System.nanoTime();
 
@@ -566,6 +566,20 @@ public class RightTest {
         }
 
         rsi.joinSharedRight(h_own_list);
+
+    }
+
+    public void generateLimitations()
+    {
+
+        CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("долевое право");
+            }
+        });
+
+
 
     }
 

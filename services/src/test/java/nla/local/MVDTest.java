@@ -1,6 +1,5 @@
 package nla.local;
 
-import nla.local.dao.IMinjstDAO;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.subjects.*;
@@ -67,12 +66,9 @@ public class MVDTest {
 
         int o = 0;
 
-
-
     }
 
-    //@Test
-   // @Transactional
+    @Test
     public void MVDSingleTest()
     {
         PassportNCA ps = new PassportNCA();

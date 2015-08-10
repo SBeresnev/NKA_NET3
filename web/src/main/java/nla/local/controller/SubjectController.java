@@ -143,9 +143,8 @@ public class SubjectController {
             result_j.clear();
             result_j = this.jService.findByNameType("Upd", null, subjectForm.getSubjectId());
 
-        } catch (ServiceDaoException e) {
-            e.printStackTrace();
-        }
+        } catch (ServiceDaoException e) {  e.printStackTrace();  }
+
         return result_j;
     }
 
