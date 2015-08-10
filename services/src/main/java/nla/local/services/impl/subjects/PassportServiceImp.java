@@ -32,7 +32,7 @@ public class PassportServiceImp extends PSubjectServiceImp implements IPassportS
     private static Logger log = Logger.getLogger(PassportServiceImp.class);
 
     @Autowired
-    WebServiceTemplate webServiceTemplate;
+    private WebServiceTemplate webServiceTemplate;
 
     @Autowired
     public CodeGenerator scg;

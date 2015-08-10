@@ -1,6 +1,6 @@
 package nla.local.dao;
 
-import nla.local.pojos.subjects.JurMINUST;
+import nla.local.pojos.subjects.JurMINJST;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface IMinustDAO {
 
-    public List<JurMINUST> getDatabyName(String name);
+    public List<JurMINJST> getDatabyName(String name);
 
-    public JurMINUST getDatabyUnp(Integer unp);
+    public JurMINJST getDatabyNumber(Integer unp);
 
 }

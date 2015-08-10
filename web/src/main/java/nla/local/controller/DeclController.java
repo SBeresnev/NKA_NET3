@@ -53,6 +53,7 @@ public class DeclController {
     @Autowired
     private PSubjectServiceImp pServices;
 
+    @Qualifier("JSubjectServiceImp")
     @Autowired
     private JSubjectServiceImp jServices;
 

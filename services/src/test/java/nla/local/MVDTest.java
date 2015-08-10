@@ -4,9 +4,9 @@ import nla.local.dao.IMinustDAO;
 import nla.local.dao.impl.MinustDAO;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
-import nla.local.pojos.subjects.PPerson;
-import nla.local.pojos.subjects.PassportNCA;
-import nla.local.pojos.subjects.RespNCA;
+import nla.local.pojos.subjects.*;
+import nla.local.services.IJusticeService;
+import nla.local.services.ISubjectService;
 import nla.local.services.impl.subjects.PassportServiceImp;
 import nla.local.util.Converter;
 import org.hibernate.criterion.Restrictions;
@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -27,7 +28,7 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class MVDTest {
 
@@ -37,7 +38,12 @@ public class MVDTest {
     private  PassportServiceImp psi;
 
     @Autowired
-    private IMinustDAO md;
+    private IJusticeService jsi;
+
+    @Qualifier("JSubjectServiceImp")
+    @Autowired
+    private ISubjectService<JPerson> ssi;
+
 
     private List<PassportNCA> pl;
 
@@ -49,15 +55,25 @@ public class MVDTest {
     }
 
     @Test
-    public void MINUSTTest()
-    {
-        md.getDatabyName("ленин");
+    public void MINUSTTest() throws ServiceDaoException, ServiceException {
+
+
+       // List<JurMINUST> list_ust = jsi.findSubjectName("ленин");
+
+        JurMINJST get_jur =jsi.findSubjectUnp(390383368);
+
+        JPerson jp = jsi.casttoPerson(get_jur);
+
+        ssi.add(jp);
+
+        int o = 0;
+
 
 
     }
 
-    @Test
-    @Transactional
+    //@Test
+   // @Transactional
     public void MVDSingleTest()
     {
         PassportNCA ps = new PassportNCA();

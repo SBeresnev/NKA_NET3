@@ -8,10 +8,8 @@ import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.subjects.*;
-import nla.local.services.impl.subjects.JSubjectServiceImp;
-import nla.local.services.impl.subjects.OSubjectServiceImp;
-import nla.local.services.impl.subjects.PSubjectServiceImp;
-import nla.local.services.impl.subjects.PassportServiceImp;
+import nla.local.services.IJusticeService;
+import nla.local.services.impl.subjects.*;
 import nla.local.util.CodeGenerator;
 import org.apache.log4j.Logger;
 import org.hibernate.criterion.DetachedCriteria;
@@ -30,18 +28,22 @@ public class SubjectController {
 
     private static final Logger logger = Logger.getLogger(SubjectController.class);
 
-    @Autowired
-    public OSubjectServiceImp oService;
-
     @Qualifier("PSubjectServiceImp")
     @Autowired
     public PSubjectServiceImp pService;
+
+    @Qualifier("JSubjectServiceImp")
+    @Autowired
+    public JSubjectServiceImp jService;
 
     @Autowired
     public PassportServiceImp passService;
 
     @Autowired
-    public JSubjectServiceImp jService;
+    public OSubjectServiceImp oService;
+
+    @Autowired
+    public JusticeServiceImp justiceService;
 
     @Autowired
     public CodeGenerator scg;
@@ -93,6 +95,35 @@ public class SubjectController {
         List<PPerson> list = new ArrayList();
         list.add(pp);
         return list;
+    }
+
+    @RequestMapping(value = {"/minjust"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<JPerson> getJusticePerson(Integer unp, String name) throws Exception {
+        logger.info("root - /subject/minjust");
+
+        List<JPerson> ret_val = new ArrayList<JPerson>() ;
+
+         if(unp != null) {
+
+             JurMINJST jum = justiceService.findSubjectUnp(unp);
+
+             JPerson jp = justiceService.casttoPerson(jum);
+
+             ret_val.add(jp);
+
+         } else {
+
+             List<JurMINJST> jum_list = justiceService.findSubjectName(name);
+
+             for (JurMINJST jum : jum_list)
+             {
+                 JPerson jp  = justiceService.casttoPerson(jum);
+
+                 ret_val.add(jp);
+             }
+         }
+
+        return ret_val;
     }
 
     @RequestMapping(value = {"/juridical"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
