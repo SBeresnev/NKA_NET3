@@ -89,6 +89,7 @@ public class SubjectController {
 
     @RequestMapping(value = {"/mvd"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm) throws Exception {
+
         logger.info("root - /subject/mvd");
         RespNCA resp = this.passService.findSubject(searchMvdForm.createOrGetPassportNCAObj());
         PPerson pp = this.passService.casttoPerson(resp);
