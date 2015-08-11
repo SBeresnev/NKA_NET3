@@ -5,6 +5,7 @@ import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
+import nla.local.pojos.dict.CatalogPk;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.JurMINJST;
 import nla.local.services.IJusticeService;
@@ -72,6 +73,15 @@ public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeSer
 
         jp.shortname = resp.getVN();
 
+
+        CatalogPk cp_test = new CatalogPk();
+
+        cp_test.setAnalytic_type(Integer.decode(CatalogConstants.ORG_STRUCTURE));
+
+        cp_test.setCode_id(resp.getNkOpf());
+
+        jp.orgRightForm = commonDict.getCatalogItem(cp_test);
+
         jp.subjectType =  CollectionUtils.find(commonDict.getCatalogItemsByTyp(Integer.decode(CatalogConstants.SUBJECT_TYP)), new Predicate() {
             public boolean evaluate(Object o) {
                 CatalogItem c = (CatalogItem) o;
@@ -85,7 +95,7 @@ public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeSer
 
         jp.address += resp.getVntnpk() != null ?   resp.getVntnpk() +" " + resp.getVnp() + "; " :"" ;
 
-        jp.address += resp.getVulitsa() != null ?   resp.getVntulk() +" " + resp.getVulitsa() + "; " :"" ;
+        jp.address += resp.getVulitsa() != null ?   resp.getVntulk() +" " + resp.getVulitsa() + " " :"" ;
 
         jp.address += resp.getVdom() != null ?   " д. " + resp.getVdom() + ", " :"" ;
 

@@ -19,4 +19,6 @@ public interface IJusticeService {
 
     public JPerson casttoPerson(JurMINJST resp) throws ServiceException, ServiceDaoException;
 
+
+
 }

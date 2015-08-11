@@ -1,6 +1,8 @@
 package nla.local.pojos.subjects;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.HashMap;
 
@@ -94,24 +96,6 @@ public class JurMINJST {
 
     private String VN;
 
-    private String voblast;
-
-    private String vraion;
-
-    private String vntnpk;
-
-    private String vnp;
-
-    private String vntulk;
-
-    private String vulitsa;
-
-    private String vdom;
-
-    private String vkorp;
-
-    private String vpom;
-
     private Date RegDate;
 
     private Date UnRegDate;
@@ -120,13 +104,68 @@ public class JurMINJST {
 
     private String UnRegName;
 
-    private Integer NkOpf;
-
     private String Opf;
 
+    private String fullAddress;
 
+    @JsonIgnore
+    private Integer NkOpf;
+
+    @JsonIgnore
+    private String voblast;
+
+    @JsonIgnore
+    private String vraion;
+
+    @JsonIgnore
+    private String vntnpk;
+
+    @JsonIgnore
+    private String vnp;
+
+    @JsonIgnore
+    private String vntulk;
+
+    @JsonIgnore
+    private String vulitsa;
+
+    @JsonIgnore
+    private String vdom;
+
+    @JsonIgnore
+    private String vkorp;
+
+    @JsonIgnore
+    private String vpom;
+
+
+    public String getFullAddress() {
+
+        fullAddress = this.getVoblast() != null ?   this.getVoblast() +" обл; " :"" ;
+
+        fullAddress += this.getVraion() != null ?   this.getVraion() +" р-н; " :"" ;
+
+        fullAddress += this.getVntnpk() != null ?   this.getVntnpk() +" " + this.getVnp() + "; " :"" ;
+
+        fullAddress += this.getVulitsa() != null ?   this.getVntulk() +" " + this.getVulitsa() + " " :"" ;
+
+        fullAddress += this.getVdom() != null ?   " д. " + this.getVdom() + ", " :"" ;
+
+        fullAddress += this.getVkorp() != null ?   " корп. " + this.getVdom() + ", " :"" ;
+
+        fullAddress += this.getVkorp() != null ?   " кв. " + this.getVpom() + "" :"" ;
+
+        return fullAddress;
+    }
+
+    public void setFullAddress(String fullAddress) {
+        this.fullAddress = fullAddress;
+    }
 
     public String getOpf() {
+
+        Opf = opf.get(this.getNkOpf());
+
         return Opf;
     }
 

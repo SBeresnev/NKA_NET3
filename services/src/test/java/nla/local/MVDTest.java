@@ -56,9 +56,9 @@ public class MVDTest {
     public void MINUSTTest() throws ServiceDaoException, ServiceException {
 
 
-       // List<JurMINUST> list_ust = jsi.findSubjectName("ленин");
+        // List<JurMINJST> list_ust = jsi.findSubjectName("ленин");
 
-        JurMINJST get_jur =jsi.findSubjectUnp(390383368);
+        JurMINJST get_jur =jsi.findSubjectUnp(700569133);
 
         JPerson jp = jsi.casttoPerson(get_jur);
 

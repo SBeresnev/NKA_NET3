@@ -129,6 +129,29 @@ public class SubjectController {
         return ret_val;
     }
 
+    @RequestMapping(value = {"/minjust_serv"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<JurMINJST> getJusticeService(Integer unp, String name) throws Exception {
+
+        logger.info("root - /subject/minjust");
+
+        List<JurMINJST> ret_val = new ArrayList<JurMINJST>() ;
+
+        if(unp != null) {
+
+            JurMINJST jum = justiceService.findSubjectUnp(unp);
+
+            ret_val.add(jum);
+
+        } else {
+
+            List<JurMINJST> jum_list = justiceService.findSubjectName(name);
+
+            for (JurMINJST jum : jum_list) { ret_val.add(jum); }
+        }
+
+        return ret_val;
+    }
+
     @RequestMapping(value = {"/juridical"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<JPerson> getJuridicalPerson(SubjectForm subjectForm) {
         logger.info("root - /subject/juridical");
