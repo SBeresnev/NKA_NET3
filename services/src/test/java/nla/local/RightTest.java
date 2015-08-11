@@ -16,6 +16,8 @@ import nla.local.util.BaseClean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.SerializationUtils;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +70,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-        baseClean.RightClean();
+        //baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -76,8 +78,9 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-
         //generateSingleRightPass();
+
+        generateLimitations();
 
         //generatesharedRightPass();
 
@@ -193,11 +196,11 @@ public class RightTest {
 
     public void findbySubjectId() throws ServiceDaoException {
 
-        List<Right> lrt = rsi.findbySubject(1046);
+        List<Right> lrt = rsi.getRightbySubject(1046);
 
         List<RightOwner> lrt_own_ = rsi.getRightbyObjectOwn("минск, авиации 14", null);
 
-        lrt_own_ = rsi.findbyObjectPersonOwn(new Long[] {Long.valueOf(82)},1046);
+        lrt_own_ = rsi.getRightbyObjectPersonOwn(new Long[]{Long.valueOf(82)}, 1046);
 
 
     }
@@ -569,17 +572,53 @@ public class RightTest {
 
     }
 
-    public void generateLimitations()
-    {
+    public void generateLimitations() throws ServiceDaoException, ServiceException {
 
-        CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+        CatalogItem  directType = CollectionUtils.find(rightEntytyTypeList, new Predicate() {
             public boolean evaluate(Object o) {
                 CatalogItem c = (CatalogItem) o;
-                return c.getCode_name().toLowerCase().contains("долевое право");
+                return c.getCode_name().toLowerCase().contains("право");
             }
         });
 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
+        Calendar cal = Calendar.getInstance();
+
+        Right rght = new Right();
+
+        rght.setStatus(1);
+
+        rght.setBegin_date(cal.getTime());
+
+        rght.setOoper_id(159);
+
+        rght.setIs_needed(0);
+
+        rght.setRight_count_type(null);
+
+        rght.setRight_entyty_type(directType); //200
+
+        CatalogItem  rightType = CollectionUtils.find(rightTypeList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_name().toLowerCase().contains("ограничения (обременения) прав, установленные законодательством");
+            }
+        });
+
+        rght.setRight_type(rightType);
+
+        DetachedCriteria dc =  DetachedCriteria.forClass(Right.class);
+
+        dc.add(Restrictions.eq("status",1));
+
+        List<Right> all_right = rsi.getCriterion(dc);
+
+        rght.setLimit_righ(all_right.get(0));
+
+        rght.setObject_entity_id(all_right.get(0).getObject_entity_id());
+
+        rsi.addRight(rght);
 
     }
 

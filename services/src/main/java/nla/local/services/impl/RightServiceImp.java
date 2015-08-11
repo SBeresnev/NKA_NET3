@@ -17,7 +17,6 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,9 +47,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     private DetachedCriteria query_RightOwn = DetachedCriteria.forClass(RightOwner.class,"rght_own").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
 
-
-    public Right CloseRight(Right rgt)  throws ServiceDaoException, ServiceException
-    {
+    public Right CloseRight(Right rgt)  throws ServiceDaoException, ServiceException  {
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
 
         Long[] right_ids = new Long[] {rgt.getRight_id()};
@@ -101,6 +98,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+
     @Override
     public Right addRight(Right rght) throws ServiceDaoException, ServiceException {
 
@@ -128,9 +126,19 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+    @Override
+    public Right getRight(Long id) throws ServiceDaoException
+    {
+       return (Right) super.get(Right.class,id);
+    }
 
+    @Override
+    public RightOwner getRightOwner(Long id) throws ServiceDaoException
+    {
+        return (RightOwner) super.get(RightOwner.class,id);
+    }
 
-
+    @Override
     public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException
     {
         List<Right> ret_val = new ArrayList<Right>();
@@ -151,7 +159,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
             for (Object_dest obj :object_list)
             {
-                ret_val.addAll(findbyObject(obj.getObj_id()));
+                ret_val.addAll(getRightbyObject(obj.getObj_id()));
             }
 
         }
@@ -160,10 +168,8 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
-
-
-
-    public List<Right> findbySubject(Integer person_id) throws ServiceDaoException
+    @Override
+    public List<Right> getRightbySubject(Integer person_id) throws ServiceDaoException
     {
         RightOwner ro =new RightOwner();
 
@@ -206,9 +212,8 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
-
-
-    public List<Right> findbyObject(Long obj_id) throws ServiceDaoException
+    @Override
+    public List<Right> getRightbyObject(Long obj_id) throws ServiceDaoException
     {
 
         List<Right> ret_val = null;
@@ -228,7 +233,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val;
 
     }
-
 
     @Deprecated
     public List<RightOwner> findbyrightCountTypeOwn( CatalogItem countType) throws ServiceDaoException {
@@ -254,42 +258,42 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
 
+    @Override
     public List<RightOwner> getRightbyObjectOwn(String Adr, String soato ) throws ServiceDaoException {
 
         List<RightOwner> ret_val = new ArrayList<RightOwner>();
 
         List<Address_dest> addr_list  = ias.findAddressDest(Adr, soato);
 
-            if(!addr_list.isEmpty())
-            {
-                List<Long> adr_ids = new ArrayList<Long>();
+        if(!addr_list.isEmpty())
+        {
+            List<Long> adr_ids = new ArrayList<Long>();
 
-                for (Address_dest addr : addr_list ) {
+            for (Address_dest addr : addr_list ) {
 
-                    adr_ids.add(addr.getAddress_id());
-
-                }
-
-                List<Object_dest> object_list = (List<Object_dest>) ios.findObjectbyAddress(Object_dest.class,adr_ids);
-
-                 Long[] obj_ids = new Long[object_list.size()];
-
-                 for (int i =0 ; i < object_list.size() ; i++) {
-
-                     obj_ids[i] = object_list.get(i).getObj_id();
-                 }
-
-
-                ret_val.addAll(findbyObjectPersonOwn(obj_ids, null));
+                adr_ids.add(addr.getAddress_id());
 
             }
+
+            List<Object_dest> object_list = (List<Object_dest>) ios.findObjectbyAddress(Object_dest.class,adr_ids);
+
+            Long[] obj_ids = new Long[object_list.size()];
+
+            for (int i =0 ; i < object_list.size() ; i++) {
+
+                obj_ids[i] = object_list.get(i).getObj_id();
+            }
+
+            ret_val.addAll(getRightbyObjectPersonOwn(obj_ids, null));
+
+        }
 
         return ret_val;
 
     }
 
-
-    public List<RightOwner> findbyObjectPersonOwn(Long[] obj_ids, Integer person_id) throws ServiceDaoException
+    @Override
+    public List<RightOwner> getRightbyObjectPersonOwn(Long[] obj_ids, Integer person_id) throws ServiceDaoException
     {
 
         List<RightOwner> ret_val = null;
@@ -314,6 +318,25 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+    @Override
+    public List<RightOwner> getRightOwnersbyRight(Long[] right_ids) throws ServiceDaoException, ServiceException {
+
+        List<RightOwner> ret_val_own = null;
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_RightOwn);
+
+        query_ = query_.add(Restrictions.eq("status", 1));
+
+        query_ = query_.add(Restrictions.isNull("date_out"));
+
+        query_ = query_.createCriteria("right").add(Restrictions.in("right_id", right_ids));
+
+        ret_val_own =  super.getCriterion(query_);
+
+        return ret_val_own;
+    }
+
+
     public List<Right> getlimitationsObject (Long[] obj_ids)  throws ServiceDaoException, ServiceException
     {
 
@@ -323,17 +346,15 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         query_ = query_.add(Restrictions.in("object_entity_id", obj_ids));
 
-        query_ = query_.add(Restrictions.between("right_type", 200 , 499));
+        query_ = query_.add(Restrictions.between("right_type", 200, 499));
 
         ret_val = super.getCriterion(query_);
 
         return ret_val;
 
+    }
 
-   }
-
-    public List<Right> getlimitationsRight (Long[] right_ids)  throws ServiceDaoException, ServiceException
-    {
+    public List<Right> getlimitationsRight(Long[] right_ids)  throws ServiceDaoException, ServiceException {
         List<Right> ret_val = null;
 
         List<RightOwner> ret_val_own = null;
@@ -342,6 +363,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         ret_val_own = getRightOwnersbyRight(right_ids);
 
+        query_r = query_r.add(Restrictions.between("right_type", 200, 499));
 
         Right[] right_array = new Right[ret_val_own.size()];
 
@@ -360,24 +382,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     @Override
-    public List<RightOwner> getRightOwnersbyRight(Long[] right_ids) throws ServiceDaoException, ServiceException {
-
-        List<RightOwner> ret_val_own = null;
-
-        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_RightOwn);
-
-        query_ = query_.add(Restrictions.eq("status", 1));
-
-        query_ = query_.add(Restrictions.isNull("date_out"));
-
-        query_ = query_.createCriteria("right").add(Restrictions.in("right_id", right_ids ));
-
-        ret_val_own =  super.getCriterion(query_);
-
-        return ret_val_own;
-    }
-
-
     public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException {
 
         this.addRightOwner(rght_own);
