@@ -80,7 +80,7 @@ public class RightTest {
 
         //generateSingleRightPass();
 
-        generateLimitations();
+        // generateLimitations();
 
         //generatesharedRightPass();
 
