@@ -17,7 +17,7 @@ import java.util.Date;
  */
 
 @Entity
-@Table( name = "RIGHTOWNERS", schema = "NKA_NET3_DEV")
+@Table( name = "V_RIGHTOWNERS", schema = "NKA_NET3_DEV")
 public class RightOwner implements Serializable {
 
     @Id

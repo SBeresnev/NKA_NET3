@@ -33,7 +33,7 @@ public interface IRightService extends IService {
     /*************************Main operations***********************************************************************************/
     public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException ;
 
-    public void joinSharedRight(HashMap<RightOwner,RightOwner> right_own) throws ServiceDaoException, ServiceException ;
+    public void passSharedRight(HashMap<RightOwner,RightOwner> right_own) throws ServiceDaoException, ServiceException ;
 
     public void splitSharedRight(List<RightOwner> child_owners, RightOwner parent_owner) throws ServiceDaoException, ServiceException ;
 

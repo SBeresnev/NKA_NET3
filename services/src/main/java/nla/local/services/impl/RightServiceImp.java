@@ -48,6 +48,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
 
     public Right CloseRight(Right rgt)  throws ServiceDaoException, ServiceException  {
+
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
 
         Long[] right_ids = new Long[] {rgt.getRight_id()};
@@ -139,8 +140,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     @Override
-    public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException
-    {
+    public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException   {
         List<Right> ret_val = new ArrayList<Right>();
 
         List<Address_dest> addr_list  = ias.findAddressDest(Adr, soato);
@@ -169,8 +169,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     @Override
-    public List<Right> getRightbySubject(Integer person_id) throws ServiceDaoException
-    {
+    public List<Right> getRightbySubject(Integer person_id) throws ServiceDaoException {
         RightOwner ro =new RightOwner();
 
         List<Right> ret_val = new ArrayList<Right>();
@@ -213,8 +212,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     @Override
-    public List<Right> getRightbyObject(Long obj_id) throws ServiceDaoException
-    {
+    public List<Right> getRightbyObject(Long obj_id) throws ServiceDaoException {
 
         List<Right> ret_val = null;
 
@@ -257,7 +255,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val;
     }
 
-
     @Override
     public List<RightOwner> getRightbyObjectOwn(String Adr, String soato ) throws ServiceDaoException {
 
@@ -293,8 +290,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     @Override
-    public List<RightOwner> getRightbyObjectPersonOwn(Long[] obj_ids, Integer person_id) throws ServiceDaoException
-    {
+    public List<RightOwner> getRightbyObjectPersonOwn(Long[] obj_ids, Integer person_id) throws ServiceDaoException {
 
         List<RightOwner> ret_val = null;
 
@@ -337,8 +333,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
 
-    public List<Right> getlimitationsObject (Long[] obj_ids)  throws ServiceDaoException, ServiceException
-    {
+    public List<Right> getlimitationsObject (Long[] obj_ids)  throws ServiceDaoException, ServiceException {
 
         List<Right> ret_val = null;
 
@@ -389,7 +384,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     @Override
-    public void joinSharedRight(HashMap<RightOwner,RightOwner> right_own) throws ServiceDaoException, ServiceException {
+    public void passSharedRight(HashMap<RightOwner,RightOwner> right_own) throws ServiceDaoException, ServiceException {
 
         /***************************** update parent owner **********************************************************/
 
@@ -420,6 +415,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     public void splitSharedRight(List<RightOwner> child_owners, RightOwner parent_owner) throws ServiceDaoException, ServiceException {
 
         /***************************** update parent owner **********************************************************/
+
 
         this.updateRightOwner(parent_owner);
 

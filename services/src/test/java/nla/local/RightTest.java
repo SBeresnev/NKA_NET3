@@ -78,15 +78,17 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
+        getLimitation();
+
         //generateSingleRightPass();
 
-        // generateLimitations();
+        //generateLimitations();
 
         //generatesharedRightPass();
 
         //splitsharedRight();
 
-        //joinsharedRight();
+        //passsharedRight();
 
         //findbySubjectId();
 
@@ -457,7 +459,7 @@ public class RightTest {
 
     }
 
-    public void joinsharedRight()  throws ServiceDaoException, ServiceException{
+    public void passsharedRight()  throws ServiceDaoException, ServiceException {
 
 
         CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
@@ -568,7 +570,7 @@ public class RightTest {
 
         }
 
-        rsi.joinSharedRight(h_own_list);
+        rsi.passSharedRight(h_own_list);
 
     }
 
@@ -622,4 +624,10 @@ public class RightTest {
 
     }
 
+    public void getLimitation() throws ServiceDaoException, ServiceException {
+
+        List<Right> lri = rsi.getRightbyObject(Long.valueOf(126));
+
+
+    }
 }
