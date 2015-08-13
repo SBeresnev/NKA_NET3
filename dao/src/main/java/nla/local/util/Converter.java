@@ -1,8 +1,12 @@
 package nla.local.util;
 
+import nla.local.pojos.rights.RightOwner;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by beresnev on 26.02.2015.
@@ -53,4 +57,17 @@ public class Converter {
         return line;
     }
 
+    public static <T> HashMap<T, T> getCastHash(ArrayList<T> key_list, ArrayList<T> val_list ) {
+
+        HashMap<T,T> ret_val = new HashMap<T, T>();
+
+        if( key_list != null && val_list != null && ( key_list.size() == val_list.size() ) ) {
+
+            for (int i = 0; i < key_list.size(); i++) {
+                ret_val.put(key_list.get(i), val_list.get(i));
+            }
+        }
+
+        return ret_val;
+    }
 }
