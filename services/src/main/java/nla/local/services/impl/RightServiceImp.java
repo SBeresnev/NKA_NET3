@@ -159,23 +159,32 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     @Override
     public List<RightOwner> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException {
 
+        boolean lakmus = false;
+
         List<RightOwner> ret_val = new ArrayList<RightOwner>();
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_RightOwn);
 
-        query_ = person_id != null ?  query_.add(Restrictions.eq("owner.subjectId",person_id)) : query_ ;
+        query_ = query_.add(Restrictions.eq("status", 1));
+
+        query_ = query_.add(Restrictions.isNull("date_out"));
+
+        if(person_id != null) {
+
+          lakmus = true;
+
+          query_.add(Restrictions.eq("owner.subjectId", person_id)) ;
+        }
 
         if( obj_ids != null && obj_ids.length > 0 )
         {
-            query_ = query_.add(Restrictions.eq("status", 1));
-
-            query_ = query_.add(Restrictions.isNull("date_out"));
+            lakmus = true;
 
             query_ = query_.createCriteria("right").add(Restrictions.in("object_entity_id",obj_ids));
 
-            ret_val = super.getCriterion(query_);
-
         }
+
+        ret_val = lakmus ? super.getCriterion(query_): null;
 
         return ret_val;
 
@@ -249,7 +258,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
             this.addRightOwner(child_own);
 
         }
-
 
     }
 

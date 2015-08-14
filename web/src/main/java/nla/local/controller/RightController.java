@@ -2,7 +2,6 @@ package nla.local.controller;
 
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
-import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IRightService;
 import nla.local.util.Converter;
@@ -10,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class RightController {
     @Autowired
     private IRightService irs;
 
-    @RequestMapping(value = {"/addSingleRight"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(value = {"/addSingleRight"}, method = {RequestMethod.GET})
     public RightOwner passSingleRight(@RequestBody RightOwner rght_own) throws Exception {
 
         irs.passSingleRight(rght_own);
@@ -38,7 +38,7 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/addSharedRight"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(value = {"/addSharedRight"}, method = {RequestMethod.GET})
     public  ArrayList<RightOwner> passSharedRight(@RequestBody ArrayList<RightOwner> rght_key, ArrayList<RightOwner> rght_val ) throws Exception {
 
             HashMap<RightOwner, RightOwner> right_own = new HashMap<RightOwner, RightOwner>();
@@ -52,7 +52,7 @@ public class RightController {
     }
 
 
-    @RequestMapping(value = {"/splitSharedRight"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(value = {"/splitSharedRight"}, method = {RequestMethod.GET})
     public RightOwner splitSharedRight(List<RightOwner> child_owners, RightOwner parent_owner) throws ServiceDaoException, ServiceException {
 
         irs.splitSharedRight(child_owners, parent_owner);
@@ -61,17 +61,8 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/addLimitation"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
-    public Right addLimitationRight( Right rght) throws ServiceDaoException, ServiceException {
 
-        irs.addRight(rght);
-
-        return rght;
-
-    }
-
-
-    @RequestMapping(value = {"/getRightObjectPerson"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(value = {"/getRightObjectPerson"}, method = {RequestMethod.GET})
     public List<RightOwner> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
 
         List<RightOwner> ret_val = irs.getRightbyObjectPerson(obj_ids,person_id);
@@ -80,12 +71,28 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/getRightbyObjectAddr"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(value = {"/getRightbyObjectAddr"}, method = {RequestMethod.GET})
     public List<RightOwner> getRightbyObjectAddr(String adr, String soato ) throws ServiceDaoException
     {
         List<RightOwner> ret_val = irs.getRightbyObjectAddr(adr, soato);
 
         return ret_val;
+    }
+
+    @RequestMapping(value = {"/getRight"}, method = {RequestMethod.GET})
+    public RightOwner getRightOwn(Long right_own_id ) throws ServiceDaoException, ServiceException {
+
+
+        RightOwner ret_val = irs.getRightOwner(right_own_id);
+
+        return ret_val;
+    }
+
+    @RequestMapping(value = {"/getRight"}, method = {RequestMethod.PUT})
+    public void updateRightOwn(RightOwner right_own ) throws ServiceDaoException, ServiceException {
+
+          irs.updateRightOwner(right_own);
+
     }
 
 
