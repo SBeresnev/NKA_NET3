@@ -18,17 +18,20 @@ public interface IRightService extends IService {
 
 
     /*************************Close right need for update***********************************************************************/
-    public Right CloseRight(Right rgt)  throws ServiceDaoException, ServiceException;
+    //public Right CloseRight(Right rgt)  throws ServiceDaoException, ServiceException;
 
     /*************************Operation block***********************************************************************************/
-    public Right getRight(Long rght) throws ServiceDaoException, ServiceException;
+    public Right getRight(Long rght_id) throws ServiceDaoException, ServiceException;
 
-    public RightOwner getRightOwner(Long rght_own) throws ServiceDaoException;
+    public RightOwner getRightOwner(Long rght_own_id) throws ServiceDaoException;
 
     public Right addRight(Right rght) throws ServiceDaoException, ServiceException;
 
     public RightOwner addRightOwner(RightOwner rght_own) throws ServiceDaoException, ServiceException ;
 
+    public void updateRight(Right right) throws ServiceDaoException ;
+
+    public void updateRightOwner(RightOwner rightowner) throws ServiceDaoException ;
 
     /*************************Main operations***********************************************************************************/
     public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException ;
@@ -39,29 +42,23 @@ public interface IRightService extends IService {
 
     /*************************Serch function block***********************************************************************************/
 
-    public List<Right> getRightbySubject(Integer person_id) throws ServiceDaoException;
+    public List<RightOwner> getRightbyObjectAddr(String Adr, String soato ) throws ServiceDaoException;
 
-    public List<Right> getRightbyObject(Long obj_id) throws ServiceDaoException;
-
-    public List<RightOwner> getRightbyObjectOwn(String Adr, String soato ) throws ServiceDaoException;
-
-    public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException;
-
-    public List<RightOwner> getRightbyObjectPersonOwn(Long[] obj_ids, Integer person_id) throws ServiceDaoException;
-
-
-
-    public List<Right> getlimitationsRight (Long[] right_ids) throws ServiceDaoException, ServiceException;
-
-    public List<RightOwner> getRightOwnersbyRight (Long[] right_ids) throws ServiceDaoException, ServiceException; ;
-
-    /************************* update operations *****************************************************************************************/
-
-    public void updateRight(Right right) throws ServiceDaoException ;
-
-    public void updateRightOwner(RightOwner rightowner) throws ServiceDaoException ;
+    public List<RightOwner> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException;
 
     /************************* Only for Test *****************************************************************************************/
     @Deprecated
-    public List<RightOwner> findbyrightCountTypeOwn( CatalogItem countType) throws ServiceDaoException ;
+    public List<RightOwner> findbyrightCountType( CatalogItem countType) throws ServiceDaoException ;
+
+    @Deprecated
+    public List<RightOwner> getRightOwnersbyRight (Long[] right_ids) throws ServiceDaoException, ServiceException;
+
+
+    //public List<Right> getlimitationsRight (Long[] right_ids) throws ServiceDaoException, ServiceException;
+
+    //public List<Right> getRightbySubject(Integer person_id) throws ServiceDaoException;
+
+    //public List<Right> getRightbyObject(Long obj_id) throws ServiceDaoException;
+
+    //public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException;
 }

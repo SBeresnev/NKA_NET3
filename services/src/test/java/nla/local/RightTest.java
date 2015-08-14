@@ -70,7 +70,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-        //baseClean.RightClean();
+       // baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -78,9 +78,7 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-        getLimitation();
-
-        //generateSingleRightPass();
+        generateSingleRightPass();
 
         //generateLimitations();
 
@@ -198,19 +196,17 @@ public class RightTest {
 
     public void findbySubjectId() throws ServiceDaoException {
 
-        List<Right> lrt = rsi.getRightbySubject(1046);
+        List<RightOwner> lrt_own_ = rsi.getRightbyObjectAddr("минск, авиации 14", null);
 
-        List<RightOwner> lrt_own_ = rsi.getRightbyObjectOwn("минск, авиации 14", null);
-
-        lrt_own_ = rsi.getRightbyObjectPersonOwn(new Long[]{Long.valueOf(82)}, 1046);
-
+        lrt_own_ = rsi.getRightbyObjectPerson(new Long[]{Long.valueOf(82)}, 1046);
 
     }
 
     public void getRightbyObject() {
         try {
 
-            Set<Right> lr = new HashSet<Right>(rsi.getRightbyObject("минск, авиации 14", null));
+
+            Set<RightOwner> lr = new HashSet<RightOwner>(rsi.getRightbyObjectAddr("минск, авиации 14", null));
 
             long endTime = System.nanoTime();
 
@@ -231,7 +227,7 @@ public class RightTest {
         });
 
 
-        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountTypeOwn(countType));//(rsi.findbySubject(f_subject_id));
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
 
         final Integer f_subject_id = r_lrt.iterator().next().getOwner().subjectId;
 
@@ -386,7 +382,7 @@ public class RightTest {
 
         Random r = new Random();
 
-        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountTypeOwn(countType));//(rsi.findbySubject(f_subject_id));
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
 
         RightOwner par_row = r_lrt.iterator().next();
 
@@ -499,7 +495,7 @@ public class RightTest {
 
         Random r = new Random();
 
-        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountTypeOwn(countType));//(rsi.findbySubject(f_subject_id));
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
 
         Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
 
@@ -624,10 +620,4 @@ public class RightTest {
 
     }
 
-    public void getLimitation() throws ServiceDaoException, ServiceException {
-
-        List<Right> lri = rsi.getRightbyObject(Long.valueOf(126));
-
-
-    }
 }

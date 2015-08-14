@@ -71,4 +71,22 @@ public class RightController {
     }
 
 
+    @RequestMapping(value = {"/getRightObjectPerson"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<RightOwner> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
+
+        List<RightOwner> ret_val = irs.getRightbyObjectPerson(obj_ids,person_id);
+
+        return ret_val;
+
+    }
+
+    @RequestMapping(value = {"/getRightbyObjectAddr"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<RightOwner> getRightbyObjectAddr(String adr, String soato ) throws ServiceDaoException
+    {
+        List<RightOwner> ret_val = irs.getRightbyObjectAddr(adr, soato);
+
+        return ret_val;
+    }
+
+
 }

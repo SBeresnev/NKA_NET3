@@ -130,6 +130,9 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
             query_Address_dest =  query_Address_dest.add(Restrictions.like("adr", Adr, MatchMode.ANYWHERE).ignoreCase());
 
+
+            soato = soato == "" ? null :soato;
+
             query_Address_dest =  soato != null ? query_Address_dest.add(Restrictions.eq("soato", soato)) : query_Address_dest;
 
             ret_val = super.getCriterion(query_Address_dest);
@@ -255,7 +258,7 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
         query_ = query_.add(Restrictions.in("ate_id",paret_int.toArray()));
 
-        ret_ate = super.getCriterion(query_.addOrder(Order.desc("tree_ids")));
+        ret_ate = super.getCriterion(query_.addOrder(Order.asc("tree_ids")));
 
         return ret_ate;
 
