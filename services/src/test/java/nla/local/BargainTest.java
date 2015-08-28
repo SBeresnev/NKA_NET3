@@ -64,14 +64,14 @@ public class BargainTest {
     @Test
     public void BargainTestController() throws ServiceDaoException, ServiceException {
 
-        baseClean.BargainClean();
+       // baseClean.BargainClean();
 
         bargainEntytyType = catalogService.getCatalogItemsByTyp(35);
         bargainType = catalogService.getCatalogItemsByTyp(4);
 
         long startTime = System.nanoTime();
 
-        addBargain();
+        //addBargain();
 
         updBargain();
 
@@ -85,9 +85,9 @@ public class BargainTest {
 
     public void updBargain() throws ServiceDaoException, ServiceException {
 
+       Long[] obj_id =  {Long.valueOf(144)};
 
-
-
+       List<BargainContent> bar_cont = bsi.getBargainbyObjectPerson(obj_id, null);
 
     }
 

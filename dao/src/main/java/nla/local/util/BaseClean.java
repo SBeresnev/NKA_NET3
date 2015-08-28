@@ -54,7 +54,6 @@ public class BaseClean {
         RightClean();
         ObjectClean();
 
-
         scg.update(cleanSubjectData);
         scg.update(cleanSubjectDataF);
         scg.update(cleanSubjectDataJ);
