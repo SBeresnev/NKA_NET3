@@ -4,15 +4,19 @@ import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.bargain.Bargain;
 import nla.local.pojos.bargain.BargainContent;
+import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IBargainService;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
+import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,8 +35,6 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
     private IRightService irs;
 
     private static Logger log = Logger.getLogger(BargainServiceImp.class);
-
-    private DetachedCriteria query_Bargain = DetachedCriteria.forClass(Bargain.class);
 
     private DetachedCriteria query_BargainContent = DetachedCriteria.forClass(BargainContent.class);
 
@@ -76,23 +78,61 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
     }
 
 
-    @Override
-    public List<BargainContent> findbyObject(Long obj_id) throws ServiceDaoException {
+    public List<BargainContent> getbyRightOwner(Long[] right_owner_id) throws ServiceDaoException {
 
-        return null;
+        List<BargainContent> ret_val = null;
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_BargainContent);
+
+        query_.add(Restrictions.in("right_entity_id",right_owner_id));
+
+        ret_val = super.getCriterion(query_);
+
+       return ret_val;
     }
 
-    @Override
-    public List<BargainContent> findbySubject(Integer person_id) throws ServiceDaoException {
-
-        return null;
-    }
 
     @Override
-    public List<BargainContent> findbyObjectSubject(Long obj_id, Integer person_id) throws ServiceDaoException {
+    public List<BargainContent> getRightbyObjectAddr(String Adr, String soato ) throws ServiceDaoException {
 
-        return null;
+        List<BargainContent> ret_val = new ArrayList<BargainContent>();
+
+        List<RightOwner> rown_list = irs.getRightbyObjectAddr(Adr, soato);
+
+        Long[] obj_ids = new Long[rown_list.size()];
+
+        for (int i =0 ; i < rown_list.size() ; i++) {
+
+            obj_ids[i] = rown_list.get(i).getRight_owner_id();
+        }
+
+        ret_val = this.getbyRightOwner(obj_ids);
+
+        return ret_val;
+
     }
+
+
+    @Override
+    public List<BargainContent> getBargainbyObjectPerson(Long[] obj_id, Integer person_id) throws ServiceDaoException {
+
+         List<BargainContent> ret_val = new ArrayList<BargainContent>();
+
+         List<RightOwner> rown_list = irs.getRightbyObjectPerson(obj_id, person_id);
+
+         Long[] obj_ids = new Long[rown_list.size()];
+
+            for (int i =0 ; i < rown_list.size() ; i++) {
+
+                obj_ids[i] = rown_list.get(i).getRight_owner_id();
+            }
+
+            ret_val = this.getbyRightOwner(obj_ids);
+
+
+        return ret_val;
+    }
+
 
     @Override
     public BargainContent updateBargain(BargainContent brg_cont) throws ServiceDaoException, ServiceException {

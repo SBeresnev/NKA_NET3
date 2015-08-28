@@ -88,7 +88,7 @@ public class RightController {
         return ret_val;
     }
 
-    @RequestMapping(value = {"/getRight"}, method = {RequestMethod.PUT})
+    @RequestMapping(value = {"/updRight"}, method = {RequestMethod.PUT})
     public void updateRightOwn(RightOwner right_own ) throws ServiceDaoException, ServiceException {
 
           irs.updateRightOwner(right_own);

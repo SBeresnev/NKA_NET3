@@ -1,7 +1,6 @@
 package nla.local.services.impl;
 
 import nla.local.exception.ServiceDaoException;
-import nla.local.exception.ServiceException;
 import nla.local.pojos.address.*;
 import nla.local.services.IAddressService;
 
@@ -12,8 +11,6 @@ import org.hibernate.criterion.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 

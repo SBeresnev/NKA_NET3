@@ -62,9 +62,9 @@ public class BargainTest {
 
 
     @Test
-    public void RightTestController() throws ServiceDaoException, ServiceException {
+    public void BargainTestController() throws ServiceDaoException, ServiceException {
 
-       // baseClean.RightClean();
+        baseClean.BargainClean();
 
         bargainEntytyType = catalogService.getCatalogItemsByTyp(35);
         bargainType = catalogService.getCatalogItemsByTyp(4);
@@ -72,6 +72,8 @@ public class BargainTest {
         long startTime = System.nanoTime();
 
         addBargain();
+
+        updBargain();
 
         long endTime = System.nanoTime();
 
@@ -81,6 +83,13 @@ public class BargainTest {
 
     }
 
+    public void updBargain() throws ServiceDaoException, ServiceException {
+
+
+
+
+
+    }
 
     public void addBargain() throws ServiceDaoException, ServiceException {
 

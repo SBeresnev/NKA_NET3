@@ -70,7 +70,7 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-       // baseClean.RightClean();
+         baseClean.RightClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -80,13 +80,11 @@ public class RightTest {
 
         generateSingleRightPass();
 
-        //generateLimitations();
+        generatesharedRightPass();
 
-        //generatesharedRightPass();
+       // splitsharedRight();
 
-        //splitsharedRight();
-
-        //passsharedRight();
+        passsharedRight();
 
         //findbySubjectId();
 
@@ -301,11 +299,7 @@ public class RightTest {
 
         /***************************** update parent owner **********************************************************/
 
-        rown.setDate_out(cal.getTime());
-
         rown.setOoper_id(156);
-
-        rown.setStatus(0);
 
         rsi.updateRightOwner(rown);
 
@@ -316,7 +310,7 @@ public class RightTest {
 
         /***************************init shred owners***************************************************************/
 
-        for (int i = 0 ; i< 3; i++)
+       for (int i = 0 ; i< 3; i++)
         {
             RightOwner orgt = new RightOwner();
 
@@ -394,6 +388,8 @@ public class RightTest {
 
         par_row.setStatus(0);
 
+        par_row.setOoper_id(156);
+
         par_row.setDate_out(cal.getTime());
 
         /*****************************************************************************************************/
@@ -455,6 +451,7 @@ public class RightTest {
 
     }
 
+    //////////// Соединяем много прав в один //////////////////
     public void passsharedRight()  throws ServiceDaoException, ServiceException {
 
 

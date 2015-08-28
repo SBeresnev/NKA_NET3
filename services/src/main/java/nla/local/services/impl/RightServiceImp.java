@@ -86,11 +86,12 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     /*************************************finds***************************************************************************/
-
+    @Override
     public Right getRight(Long id) throws ServiceDaoException
     {
        return (Right) super.get(Right.class,id);
     }
+
 
     @Override
     public RightOwner getRightOwner(Long id) throws ServiceDaoException

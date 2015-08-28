@@ -60,7 +60,6 @@ public class Decl implements Serializable {
     private String info;
 
 
-
     public void fillDeclId(Long d_id){
 
         if( oUsers != null ) for(DeclUser du : oUsers){

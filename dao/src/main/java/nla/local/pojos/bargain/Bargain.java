@@ -67,6 +67,10 @@ public class Bargain {
     @Column( name ="VAT_COMPLEX")
     private Integer vat_complex;
 
+    @Column( name ="COUNT_OBJECT")
+    private Integer count_object;
+
+
     public Integer getCount_object() {
         return count_object;
     }
@@ -74,10 +78,6 @@ public class Bargain {
     public void setCount_object(Integer count_object) {
         this.count_object = count_object;
     }
-
-    @Column( name ="COUNT_OBJECT")
-    private Integer count_object;
-
 
     public Integer getDoc_id() {
         return doc_id;
@@ -134,8 +134,6 @@ public class Bargain {
     public void setAffiliates(Integer affiliates) {
         this.affiliates = affiliates;
     }
-
-
 
     public Integer getDone() {
         return done;
