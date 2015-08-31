@@ -95,6 +95,8 @@ public class BargainTest {
 
             bar_cont = bar_cont_list.get(0);
 
+
+
             Bargain bar = bar_cont.getBargain();
 
             bar.setVat_complex(80);

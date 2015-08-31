@@ -40,8 +40,8 @@ public class BargainContent {
     @Column(name = "RIGHT_ENTITY_ID")
     private Long right_entity_id;             //  right refrence
 
-    @Column(name = "OBJECT_ENTITY_ID")
-    private Long object_entity_id;            //  object refrence
+    //@Column(name = "OBJECT_ENTITY_ID")
+    //private Long object_entity_id;            //  object refrence
 
     @Transient
     private Object_dest bindedObj;
@@ -113,6 +113,7 @@ public class BargainContent {
         this.right_entity_id = right_entity_id;
     }
 
+    /*
     public Long getObject_entity_id() {
         return object_entity_id;
     }
@@ -120,6 +121,7 @@ public class BargainContent {
     public void setObject_entity_id(Long object_entity_id) {
         this.object_entity_id = object_entity_id;
     }
+    */
 
     public Bargain getBargain() {
         return bargain;

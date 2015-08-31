@@ -62,7 +62,7 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
 
         }
 
-        if (rght.getObject_entity_id() == null && rght.getBindedObj() != null)
+       /* if (rght.getObject_entity_id() == null && rght.getBindedObj() != null)
         {
 
             if(rght.getBindedObj().getObj_id() == null )
@@ -74,9 +74,9 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
 
             rght.setObject_entity_id(rght.getBindedObj().getObj_id());
 
-        }
+        }*/
 
-        if( rght.getRight_entity_id() != null || rght.getObject_entity_id() != null)
+        if( rght.getRight_entity_id() != null)
         {
             super.add(rght);
         }
