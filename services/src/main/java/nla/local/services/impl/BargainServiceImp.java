@@ -38,6 +38,13 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
 
     private DetachedCriteria query_BargainContent = DetachedCriteria.forClass(BargainContent.class);
 
+    public BargainContent getBargain(Long bar_cont_id) throws ServiceDaoException {
+
+
+        BargainContent ret_val = (BargainContent) super.get(BargainContent.class, bar_cont_id);
+
+        return ret_val;
+    }
 
     @Override
     public BargainContent addBargain(BargainContent rght) throws ServiceDaoException, ServiceException {

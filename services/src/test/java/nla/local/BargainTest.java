@@ -87,11 +87,21 @@ public class BargainTest {
 
        Long[] obj_id =  {Long.valueOf(144)};
 
-       List<BargainContent> bar_cont = bsi.getBargainbyObjectPerson(obj_id, null);
+       List<BargainContent> bar_cont_list = bsi.getBargainbyObjectPerson(obj_id, null);
 
-        if (bar_cont.size() > 0) {
+        BargainContent bar_cont = new BargainContent();
 
+        if (bar_cont_list.size() > 0) {
 
+            bar_cont = bar_cont_list.get(0);
+
+            Bargain bar = bar_cont.getBargain();
+
+            bar.setVat_complex(80);
+
+            bar.setOoper_id(186);
+
+            bsi.updateBargain(bar_cont);
 
         }
 

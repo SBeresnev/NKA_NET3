@@ -14,6 +14,8 @@ import java.util.List;
 
 public interface IBargainService {
 
+    public BargainContent getBargain(Long bar_cont_id) throws ServiceDaoException;
+
     public BargainContent addBargain(BargainContent brg_cont) throws ServiceDaoException, ServiceException;
 
     public BargainContent updateBargain(BargainContent brg_cont) throws ServiceDaoException, ServiceException ;
