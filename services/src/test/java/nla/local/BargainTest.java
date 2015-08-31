@@ -89,6 +89,13 @@ public class BargainTest {
 
        List<BargainContent> bar_cont = bsi.getBargainbyObjectPerson(obj_id, null);
 
+        if (bar_cont.size() > 0) {
+
+
+
+        }
+
+
     }
 
     public void addBargain() throws ServiceDaoException, ServiceException {
