@@ -16,7 +16,7 @@ import javax.persistence.*;
  * Created by beresnev on 28.07.2015.
  */
 @Entity
-@Table( name = "BARGAINCONTENT")
+@Table( name = "V_BARGAINCONTENT")
 public class BargainContent {
 
      @Id

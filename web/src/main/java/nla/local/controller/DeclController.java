@@ -11,7 +11,6 @@ import nla.local.pojos.orders.Decl;
 import nla.local.pojos.orders.Journal;
 import nla.local.pojos.subjects.OPerson;
 import nla.local.pojos.subjects.Person;
-import nla.local.pojos.subjects.SubjectClass;
 import nla.local.services.impl.CatalogServiceImp;
 import nla.local.services.impl.DeclServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;

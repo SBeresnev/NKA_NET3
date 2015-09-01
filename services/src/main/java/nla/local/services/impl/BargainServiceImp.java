@@ -87,6 +87,8 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
 
     public List<BargainContent> getbyRightOwner(Long[] right_owner_id) throws ServiceDaoException {
 
+        //Object bar =   super.get(Bargain.class,Long.valueOf(82));
+
         List<BargainContent> ret_val = null;
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_BargainContent);

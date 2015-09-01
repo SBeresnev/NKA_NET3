@@ -9,6 +9,7 @@ import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.subjects.*;
 import nla.local.services.IJusticeService;
+import nla.local.services.impl.CatalogServiceImp;
 import nla.local.services.impl.subjects.*;
 import nla.local.util.CodeGenerator;
 import org.apache.log4j.Logger;
@@ -36,8 +37,10 @@ public class SubjectController {
     @Autowired
     public JSubjectServiceImp jService;
 
+
     @Autowired
     public PassportServiceImp passService;
+
 
     @Autowired
     public OSubjectServiceImp oService;

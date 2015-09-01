@@ -71,7 +71,7 @@ public class BargainTest {
 
         long startTime = System.nanoTime();
 
-       //  addBargain();
+       // addBargain();
 
         updBargain();
 
@@ -95,9 +95,7 @@ public class BargainTest {
 
             bar_cont = bar_cont_list.get(0);
 
-
-            //bar_cont.setRight_entity_id();
-
+            bar_cont.setRight_entity_id(Long.valueOf(600));
 
             Bargain bar = bar_cont.getBargain();
 
@@ -186,7 +184,7 @@ public class BargainTest {
 
         brg_cont.setOoper_id(156);
 
-        brg_cont.setBargain(brg);
+        //brg_cont.setBargain(brg);
 
         bsi.addBargain(brg_cont);
 
