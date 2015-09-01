@@ -108,6 +108,8 @@ public class JurMINJST {
 
     private String fullAddress;
 
+    private Integer NkStran;
+
     @JsonIgnore
     private Integer NkOpf;
 
@@ -182,6 +184,14 @@ public class JurMINJST {
         this.setOpf(opf.get(nkOpf));
 
         NkOpf = nkOpf;
+    }
+
+    public Integer getNkStran() {
+        return NkStran;
+    }
+
+    public void setNkStran(Integer nkStran) {
+        NkStran = nkStran;
     }
 
     public Integer getUNP() {

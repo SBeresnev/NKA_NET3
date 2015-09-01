@@ -43,8 +43,8 @@ public class BargainContent {
     //@Column(name = "OBJECT_ENTITY_ID")
     //private Long object_entity_id;            //  object refrence
 
-    @Transient
-    private Object_dest bindedObj;
+   // @Transient
+   // private Object_dest bindedObj;
 
     @Transient
     private RightOwner bindedRight;
@@ -73,6 +73,7 @@ public class BargainContent {
         Status = status;
     }
 
+    /*
     public Object_dest getBindedObj() {
         return bindedObj;
     }
@@ -80,6 +81,7 @@ public class BargainContent {
     public void setBindedObj(Object_dest bindedObj) {
         this.bindedObj = bindedObj;
     }
+    */
 
     public RightOwner getBindedRight() {
         return bindedRight;

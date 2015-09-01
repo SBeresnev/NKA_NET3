@@ -158,6 +158,10 @@ public class MinjstDAO extends  BaseDao implements IMinjstDAO{
 
             newur.setNkOpf(nkopf);
 
+            Integer nkstran = rs.getInt("NKSTRAN");
+
+            newur.setNkStran(nkstran);
+
             ret_val.add(newur);
 
         }

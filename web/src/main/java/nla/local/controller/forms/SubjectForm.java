@@ -34,7 +34,7 @@ public class SubjectForm {
     private CatalogItem orgRightForm;
     private String isOwner;
     private String dtype;
-    private  String subjectdataid;
+    private String subjectdataid;
 
     public Integer getSubjectId() {
         return subjectId;

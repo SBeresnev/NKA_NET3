@@ -96,6 +96,8 @@ public class BargainTest {
             bar_cont = bar_cont_list.get(0);
 
 
+            //bar_cont.setRight_entity_id();
+
 
             Bargain bar = bar_cont.getBargain();
 

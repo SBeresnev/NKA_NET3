@@ -144,7 +144,9 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
     @Override
     public BargainContent updateBargain(BargainContent brg_cont) throws ServiceDaoException, ServiceException {
 
-        return null;
+        super.update(brg_cont);
+
+        return brg_cont;
     }
 
 
