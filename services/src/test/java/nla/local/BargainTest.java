@@ -71,7 +71,7 @@ public class BargainTest {
 
         long startTime = System.nanoTime();
 
-        //addBargain();
+       //  addBargain();
 
         updBargain();
 

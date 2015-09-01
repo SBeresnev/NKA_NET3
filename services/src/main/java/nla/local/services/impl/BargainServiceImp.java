@@ -10,6 +10,7 @@ import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,9 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
 
     private static Logger log = Logger.getLogger(BargainServiceImp.class);
 
-    private DetachedCriteria query_BargainContent = DetachedCriteria.forClass(BargainContent.class);
+    private DetachedCriteria query_BargainContent = DetachedCriteria.forClass(BargainContent.class);//.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
     public BargainContent getBargain(Long bar_cont_id) throws ServiceDaoException {
-
 
         BargainContent ret_val = (BargainContent) super.get(BargainContent.class, bar_cont_id);
 
