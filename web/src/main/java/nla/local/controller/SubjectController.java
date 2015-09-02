@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Date;
@@ -72,24 +73,31 @@ public class SubjectController {
             this.pService.update(subjectForm.updatePPerson(pPerson));
     }
 
-    @RequestMapping(value = {"/add"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(value = {"/add"}, method = {RequestMethod.POST})
     public void addPerson(@RequestBody SubjectForm subjectForm) throws Exception {
+
         logger.info("root - /subject/add");
 
         if (subjectForm.getSubjectClass() == SubjectClass.PRV) {
             if (pService.findByFIOType("", "", "", subjectForm.getPersonalNumber(), subjectForm.getSubjectType().getAnalytic_type()).size() != 0)
                 throw new Exception("Субъект уже существует");
+
             PPerson pPerson = new PPerson();
             subjectForm.updatePPerson(pPerson);
             pPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
             pService.add(pPerson);
         }
        if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
+           if ( jService.findByNameType("",subjectForm.getUnp(),null).size() != 0)
+               throw new Exception("Объект уже существует");
+
             JPerson jPerson = new JPerson();
             subjectForm.updateJPerson(jPerson);
             jPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
             jService.add(jPerson);
+
         }
+
     }
 
     @RequestMapping(value = {"/mvd"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})

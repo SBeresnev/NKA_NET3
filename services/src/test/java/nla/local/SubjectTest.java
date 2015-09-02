@@ -100,9 +100,7 @@ public class SubjectTest
     @Test
     public void SubjectsTestController() {
 
-        addJurperson();
-        fndJur();
-         /*
+
         baseClean.SubjectClean();
 
         AddJurSubject();
@@ -115,58 +113,12 @@ public class SubjectTest
 
         AddPhysSubject();
         GetPhysSubject();
-        UpdatePhysSubject();*/
+        UpdatePhysSubject();
 
     }
 
 
-     void addJurperson()  {
 
-         try {
-
-         SubjectForm subjectForm = new SubjectForm();
-         subjectForm.setAddress("Могилевская обл; Горецкий р-н; д. Ленино; ул. ЛЕНИНА  д. 23, ");
-         subjectForm.setActual(1);
-         subjectForm.setBothRegDate(new Date());
-         subjectForm.setFullname("Унитарное коммунальное предприятие \"Жилищно-коммунальное хозяйство Ленино\"");
-         subjectForm.setUnp("700101816");
-         subjectForm.setRegNumber("700101816");
-         subjectForm.setSubjectClass(SubjectClass.JUR);
-         CatalogItem ci = new CatalogItem();
-         ci.setCode_id(210);
-         ci.setAnalytic_type(110);
-         subjectForm.setSubjectType(ci);
-
-         if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
-             JPerson jPerson = new JPerson();
-             subjectForm.updateJPerson(jPerson);
-             jPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
-             jService.add(jPerson);
-
-         }
-            int ui = 0;
-         } catch (ServiceDaoException e) {
-             e.printStackTrace();
-         }
-
-
-     }
-
-    void fndJur()  {
-
-        try {
-
-            List<JPerson> jp = jService.findByNameType("","700101816",null);
-
-            int cnt = jp.size();
-
-        } catch (ServiceDaoException e) {
-            e.printStackTrace();
-        }
-
-        int u = 0;
-
-    }
 
     public void AddOffSubject() {
 

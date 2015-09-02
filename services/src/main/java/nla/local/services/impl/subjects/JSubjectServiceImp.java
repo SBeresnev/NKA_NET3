@@ -44,6 +44,7 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
     }
 
+
     public List<JPerson> getAll() throws ServiceDaoException {
 
         return super.findSubjects(query);
@@ -67,10 +68,10 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
 
         List<JPerson> retval = new ArrayList<JPerson>();
 
-        if(fullName != null || regNumberOrUnp != null) {
+         if(fullName != null || regNumberOrUnp != null) {
 
-            regNumberOrUnp = regNumberOrUnp == null ? "":regNumberOrUnp;
-            fullName = fullName==null? "":fullName;
+                regNumberOrUnp = regNumberOrUnp == null ? "":regNumberOrUnp;
+                fullName = fullName==null? "":fullName;
 
             query_ = query_
                     .add(Restrictions.or(
