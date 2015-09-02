@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -71,9 +72,10 @@ public class SubjectController {
             this.pService.update(subjectForm.updatePPerson(pPerson));
     }
 
-    @RequestMapping(value = {"/add"}, method = {org.springframework.web.bind.annotation.RequestMethod.POST})
+    @RequestMapping(value = {"/add"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public void addPerson(@RequestBody SubjectForm subjectForm) throws Exception {
         logger.info("root - /subject/add");
+
         if (subjectForm.getSubjectClass() == SubjectClass.PRV) {
             if (pService.findByFIOType("", "", "", subjectForm.getPersonalNumber(), subjectForm.getSubjectType().getAnalytic_type()).size() != 0)
                 throw new Exception("Субъект уже существует");

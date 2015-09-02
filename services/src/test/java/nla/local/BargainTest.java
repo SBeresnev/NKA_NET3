@@ -64,14 +64,14 @@ public class BargainTest {
     @Test
     public void BargainTestController() throws ServiceDaoException, ServiceException {
 
-       // baseClean.BargainClean();
+        baseClean.BargainClean();
 
         bargainEntytyType = catalogService.getCatalogItemsByTyp(35);
         bargainType = catalogService.getCatalogItemsByTyp(4);
 
         long startTime = System.nanoTime();
 
-       // addBargain();
+        addBargain();
 
         updBargain();
 
@@ -184,7 +184,7 @@ public class BargainTest {
 
         brg_cont.setOoper_id(156);
 
-        //brg_cont.setBargain(brg);
+        brg_cont.setBargain(brg);
 
         bsi.addBargain(brg_cont);
 

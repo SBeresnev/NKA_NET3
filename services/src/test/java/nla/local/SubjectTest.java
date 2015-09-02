@@ -5,10 +5,7 @@ import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.dict.CatalogPk;
-import nla.local.pojos.subjects.JPerson;
-import nla.local.pojos.subjects.OPerson;
-import nla.local.pojos.subjects.PPerson;
-import nla.local.pojos.subjects.Person;
+import nla.local.pojos.subjects.*;
 import nla.local.services.impl.CatalogServiceImp;
 import nla.local.services.impl.subjects.JSubjectServiceImp;
 import nla.local.services.impl.subjects.OSubjectServiceImp;
@@ -26,6 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +31,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class SubjectTest
 {
@@ -75,7 +73,7 @@ public class SubjectTest
 
     @Before
     public void setUp() throws Exception {
-        baseClean.SubjectClean();
+        //baseClean.SubjectClean();
 
         /*small dictionary test */
 
@@ -102,7 +100,9 @@ public class SubjectTest
     @Test
     public void SubjectsTestController() {
 
-
+        addJurperson();
+        fndJur();
+         /*
         baseClean.SubjectClean();
 
         AddJurSubject();
@@ -115,10 +115,58 @@ public class SubjectTest
 
         AddPhysSubject();
         GetPhysSubject();
-        UpdatePhysSubject();
+        UpdatePhysSubject();*/
 
     }
 
+
+     void addJurperson()  {
+
+         try {
+
+         SubjectForm subjectForm = new SubjectForm();
+         subjectForm.setAddress("Могилевская обл; Горецкий р-н; д. Ленино; ул. ЛЕНИНА  д. 23, ");
+         subjectForm.setActual(1);
+         subjectForm.setBothRegDate(new Date());
+         subjectForm.setFullname("Унитарное коммунальное предприятие \"Жилищно-коммунальное хозяйство Ленино\"");
+         subjectForm.setUnp("700101816");
+         subjectForm.setRegNumber("700101816");
+         subjectForm.setSubjectClass(SubjectClass.JUR);
+         CatalogItem ci = new CatalogItem();
+         ci.setCode_id(210);
+         ci.setAnalytic_type(110);
+         subjectForm.setSubjectType(ci);
+
+         if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
+             JPerson jPerson = new JPerson();
+             subjectForm.updateJPerson(jPerson);
+             jPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
+             jService.add(jPerson);
+
+         }
+            int ui = 0;
+         } catch (ServiceDaoException e) {
+             e.printStackTrace();
+         }
+
+
+     }
+
+    void fndJur()  {
+
+        try {
+
+            List<JPerson> jp = jService.findByNameType("","700101816",null);
+
+            int cnt = jp.size();
+
+        } catch (ServiceDaoException e) {
+            e.printStackTrace();
+        }
+
+        int u = 0;
+
+    }
 
     public void AddOffSubject() {
 
