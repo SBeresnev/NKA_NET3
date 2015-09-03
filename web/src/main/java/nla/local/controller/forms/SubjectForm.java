@@ -130,10 +130,10 @@ public class SubjectForm {
     }
 
     public void setSubjectType(CatalogItem type) {
-        if (type.getCode_id() < 200)
+        if (type.getCode_id() < SubjectClass.toInt(SubjectClass.JUR))
             setSubjectClass(SubjectClass.PRV);
         else {
-            if (type.getCode_id() < 500)
+            if (type.getCode_id() < SubjectClass.toInt(SubjectClass.OFC))
                 setSubjectClass(SubjectClass.JUR);
             else
                 setSubjectClass(SubjectClass.OFC);
@@ -256,8 +256,8 @@ public class SubjectForm {
             jPerson.subjectType.setAnalytic_type(Integer.decode(CatalogConstants.SUBJECT_TYP));
             jPerson.subjectType.getCatalogPk().setAnalytic_type(Integer.decode(CatalogConstants.SUBJECT_TYP));
         }
-       if (jPerson.orgRightForm.getCatalogPk().getAnalytic_type() == null)
-           jPerson.orgRightForm.getCatalogPk().setAnalytic_type(Integer.decode(CatalogConstants.ORG_STRUCTURE));
+        if(jPerson.subjectType.getParent_code() == null)
+            jPerson.subjectType.setParent_code(SubjectClass.toInt(SubjectClass.JUR));
         return jPerson;
     }
 
