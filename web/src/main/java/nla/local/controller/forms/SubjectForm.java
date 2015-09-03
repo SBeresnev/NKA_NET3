@@ -1,5 +1,6 @@
 package nla.local.controller.forms;
 
+import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.PPerson;
@@ -251,6 +252,12 @@ public class SubjectForm {
         jPerson.dtype = this.dtype;
         jPerson.reestrdataID = this.reestrdataID != null ? Integer.decode(this.reestrdataID) : null;
         jPerson.subjectType = this.subjectType;
+        if(jPerson.subjectType.getAnalytic_type() == null) {
+            jPerson.subjectType.setAnalytic_type(Integer.decode(CatalogConstants.SUBJECT_TYP));
+            jPerson.subjectType.getCatalogPk().setAnalytic_type(Integer.decode(CatalogConstants.SUBJECT_TYP));
+        }
+       if (jPerson.orgRightForm.getCatalogPk().getAnalytic_type() == null)
+           jPerson.orgRightForm.getCatalogPk().setAnalytic_type(Integer.decode(CatalogConstants.ORG_STRUCTURE));
         return jPerson;
     }
 
