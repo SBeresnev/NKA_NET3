@@ -58,7 +58,6 @@ public class Operation {
     private Integer status;
 
 
-
     public Integer getStatus() {
         return status;
     }
@@ -99,13 +98,6 @@ public class Operation {
         this.operSubtype = operSubtype;
     }
 
-    /* public nla.local.pojos.object.Object getObjectId() {
-        return objectId;
-    }
-
-    public void setObjectId(nla.local.pojos.object.Object objectId) {
-        this.objectId = objectId;
-    } */
     public Person getExecutor() {
         return executor;
     }
@@ -114,7 +106,6 @@ public class Operation {
         this.executor = executor;
     }
 
-
     public Integer getDeclId() {
         return declId;
     }
@@ -122,4 +113,13 @@ public class Operation {
     public void setDeclId(Integer declId) {
         this.declId = declId;
     }
+
+
+    /* public nla.local.pojos.object.Object getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(nla.local.pojos.object.Object objectId) {
+        this.objectId = objectId;
+    } */
 }

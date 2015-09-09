@@ -38,7 +38,7 @@ import java.util.*;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
-@TransactionConfiguration(defaultRollback = true)
+@TransactionConfiguration(defaultRollback = false)
 @Transactional
 public class DeclTest {
 
@@ -86,9 +86,9 @@ public class DeclTest {
 
          // AddDecl();
 
-         // AddNewDecl();
+          AddNewDecl();
 
-          GetDecl();
+         // GetDecl();
 
          // GetJournal();
 

@@ -12,6 +12,8 @@ import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
 import nla.local.util.BaseClean;
 import nla.local.util.CodeGenerator;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.Predicate;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -68,12 +70,13 @@ public class SubjectTest
 
     private List<CatalogItem> allDictList;
 
-    private Integer GLOBAL_INDEX = 5;
+    private Integer GLOBAL_INDEX = 1;
 
 
     @Before
     public void setUp() throws Exception {
-        //baseClean.SubjectClean();
+
+        // baseClean.SubjectClean();
 
         /*small dictionary test */
 
@@ -103,6 +106,7 @@ public class SubjectTest
 
         baseClean.SubjectClean();
 
+
         AddJurSubject();
         GetJurSubject();
         UpdateJurSubject();
@@ -124,6 +128,16 @@ public class SubjectTest
 
         log.info("Invoked SubjectTest.AddOffSubject" );
 
+        CatalogItem ci = new CatalogItem();
+
+        CatalogItem sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_id() == 699;
+            }
+        });
+
+
         boolean retval = true;
 
         try {
@@ -131,7 +145,7 @@ public class SubjectTest
             for (int i = 0; i < GLOBAL_INDEX; i++) {
 
                 OPerson op = new OPerson();
-                op.subjectType = subjectServDictList.get(2);
+                op.subjectType = sbj_typ;//subjectServDictList.get(2);
                 op.isOwner = 0;
 
                 op.firstname = "Дударык" + String.valueOf(i);
@@ -179,13 +193,22 @@ public class SubjectTest
 
         boolean retval = true;
 
+        CatalogItem ci = new CatalogItem();
+
+        CatalogItem sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_id() == 699;
+            }
+        });
+
         try {
 
             for(int i=0; i<GLOBAL_INDEX; i++) {
 
 
                 OPerson op = new OPerson();
-                op.subjectType = subjectServDictList.get(2);
+                op.subjectType = sbj_typ;
                 op.isOwner = 0;
 
                 op.surname = "Иванов" + String.valueOf(20+i);
@@ -231,15 +254,25 @@ public class SubjectTest
 
         boolean retval = true;
 
+        CatalogItem ci = new CatalogItem();
+
+        CatalogItem sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_id() == 210;
+            }
+        });
+
+
         try {
 
             for(int i=0; i<GLOBAL_INDEX; i++) {
 
                 JPerson jp = new JPerson();
-                jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
+                jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_J_ID.nextval").toString());
                 jp.isOwner = 1;
 
-                jp.subjectType = subjectServDictList.get(17);
+                jp.subjectType = sbj_typ;
                 jp.orgRightForm =  orgStructDictList.get(6);
 
                 jp.fullname = "Валенки"+"_"+i;
@@ -265,6 +298,13 @@ public class SubjectTest
 
         log.info("Invoked SubjectTest.GetJurSubject" );
 
+        CatalogItem sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_id() == 210;
+            }
+        });
+
         boolean retval = true;
 
         try {
@@ -273,7 +313,7 @@ public class SubjectTest
 
             List<JPerson> result_j_1 = jService.findByNameType("", "",null);
 
-            List<JPerson> result_j_2 = jService.findByNameType("Вал", "", subjectServDictList.get(17).getCode_id());
+            List<JPerson> result_j_2 = jService.findByNameType("Вал", "", sbj_typ.getCode_id());
 
             JPerson dc = null;
 
@@ -294,26 +334,43 @@ public class SubjectTest
 
         log.info("Invoked SubjectTest.UpdateJurSubject" );
 
+        CatalogItem sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_id() == 210;
+            }
+        });
+
+
         boolean retval = true;
 
         try {
 
             for(int i=0; i<GLOBAL_INDEX; i++) {
                 JPerson jp = new JPerson();
-                jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
+                jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_J_ID.nextval").toString());
                 jp.fullname = "ОАО Update_" + String.valueOf(i) ;
                 jp.isOwner = 1;
                 jp.orgRightForm =  orgStructDictList.get(6);
-                jp.subjectType = subjectServDictList.get(14);
+                jp.subjectType = sbj_typ;
                 jp.regNumber = String.valueOf(124566000+i) ;
                 jp.unp = String.valueOf(159777758+i);
                 jp.bothRegDate = new Date();
                 jService.add(jp);
             }
 
-            List<JPerson> result_j= jService.findByNameType("Upd", null, subjectServDictList.get(14).getCode_id());
+            List<JPerson> result_j= jService.findByNameType("Upd", null, sbj_typ.getCode_id());
 
             int i = GLOBAL_INDEX;
+
+            sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+                public boolean evaluate(Object o) {
+                    CatalogItem c = (CatalogItem) o;
+                    return c.getCode_id() == 250;
+                }
+            });
+
+
 
             for(Person p : result_j)
             {
@@ -323,7 +380,7 @@ public class SubjectTest
                 jp.regNumber =  String.valueOf(124566000+i);
 
                 jp.orgRightForm =  orgStructDictList.get(7);
-                jp.subjectType = subjectServDictList.get(12);
+                jp.subjectType = sbj_typ;
 
                 jService.refreshSubject(jp);
                 i++;
@@ -346,6 +403,13 @@ public class SubjectTest
 
         boolean retval = true;
 
+        CatalogItem sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_id() == 110;
+            }
+        });
+
 
         try {
 
@@ -353,11 +417,11 @@ public class SubjectTest
             for(int i=0; i<GLOBAL_INDEX; i++) {
 
                 PPerson pp = new PPerson();
-                pp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
+                pp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_F_ID.nextval").toString());
                 pp.surname = "Иванов"+"_"+i;
                 pp.firstname = "Иван"+"_"+i;
                 pp.fathername = "Иванович"+"_"+i;
-                pp.subjectType = subjectServDictList.get(24);
+                pp.subjectType = sbj_typ;
                 pp.isOwner = 1;
                 pp.bothRegDate = new Date();
                 pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE" ;
@@ -383,14 +447,21 @@ public class SubjectTest
 
         log.info("Invoked SubjectTest.GetPhysSubject()" );
 
+        CatalogItem sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_id() == 110;
+            }
+        });
+
         boolean retval = true;
         try {
 
             List<PPerson> result_p_0 = pService.getAll();
 
-            List<PPerson> result_p_1 = pService.findByFIOType("", "", null, null, subjectServDictList.get(24).getCode_id());
+            List<PPerson> result_p_1 = pService.findByFIOType("", "", null, null, sbj_typ.getCode_id());
 
-            List<PPerson> result_p_2 = pService.findByFIOType("Ив", "И", null, null, subjectServDictList.get(24).getCode_id());
+            List<PPerson> result_p_2 = pService.findByFIOType("Ив", "И", null, null, sbj_typ.getCode_id());
 
             PPerson dc = null;
 
@@ -414,17 +485,24 @@ public class SubjectTest
 
         boolean retval = true;
 
+        CatalogItem sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+            public boolean evaluate(Object o) {
+                CatalogItem c = (CatalogItem) o;
+                return c.getCode_id() == 120;
+            }
+        });
+
         try {
 
             for(int i=0; i<GLOBAL_INDEX; i++) {
 
                 PPerson pp = new PPerson();
-                pp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
+                pp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_F_ID.nextval").toString());
 
                 pp.surname = "Дженкинс"+"_"+i;
                 pp.firstname = "Владимир"+"_"+i;
                 pp.fathername = "Обамович"+"_"+i;
-                pp.subjectType = subjectServDictList.get(3);
+                pp.subjectType = sbj_typ;
                 pp.isOwner = 1;
                 pp.sitizens = stateDictList.get(2);
                 pp.bothRegDate = new Date();
@@ -437,7 +515,14 @@ public class SubjectTest
 
             }
 
-            List<PPerson> result_p= pService.findByFIOType("Дж", "", "Об", "311", subjectServDictList.get(3).getCode_id());
+            List<PPerson> result_p= pService.findByFIOType("Дж", "", "Об", "311", sbj_typ.getCode_id());
+
+            sbj_typ = CollectionUtils.find(subjectServDictList, new Predicate() {
+                public boolean evaluate(Object o) {
+                    CatalogItem c = (CatalogItem) o;
+                    return c.getCode_id() == 110;
+                }
+            });
 
             int i = 0;
 
@@ -450,7 +535,7 @@ public class SubjectTest
                 pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
                 pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
 
-                pp.subjectType = subjectServDictList.get(2);
+                pp.subjectType = sbj_typ;
                 pp.sitizens = stateDictList.get(3);
 
                 pService.refreshSubject(pp);

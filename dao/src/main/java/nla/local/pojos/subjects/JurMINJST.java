@@ -147,15 +147,15 @@ public class JurMINJST {
 
         fullAddress += this.getVraion() != null ?   this.getVraion() +" р-н; " :"" ;
 
-        fullAddress += this.getVntnpk() != null ?   this.getVntnpk() +" " + this.getVnp() + "; " :"" ;
+        fullAddress += this.getVntnpk() != null ?   this.getVntnpk() +" " + this.getVnp() != null ? this.getVnp() : "" + "; " :"" ;
 
-        fullAddress += this.getVulitsa() != null ?   this.getVntulk() +" " + this.getVulitsa() + " " :"" ;
+        fullAddress += this.getVulitsa() != null?   this.getVntulk() != null ? this.getVntulk() : "" +" " + this.getVulitsa() + " " :"" ;
 
         fullAddress += this.getVdom() != null ?   " д. " + this.getVdom() + ", " :"" ;
 
         fullAddress += this.getVkorp() != null ?   " корп. " + this.getVdom() + ", " :"" ;
 
-        fullAddress += this.getVkorp() != null ?   " кв. " + this.getVpom() + "" :"" ;
+        fullAddress += this.getVpom() != null ?   " кв. " + this.getVpom() + "" :"" ;
 
         return fullAddress;
     }

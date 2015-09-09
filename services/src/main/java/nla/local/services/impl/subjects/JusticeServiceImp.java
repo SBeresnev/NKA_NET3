@@ -14,8 +14,10 @@ import nla.local.util.CodeGenerator;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.apache.log4j.Logger;
+import org.minustserv.ArrayOfSubjectData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.tempuri.Subjects;
 
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeSer
     @Autowired
     private IMinjstDAO minustDAO;
 
+    @Autowired
+    private Subjects webServiceMinjust;
+
 
     @Autowired
     public CodeGenerator scg;
@@ -40,6 +45,8 @@ public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeSer
 
     @Override
     public JurMINJST findSubjectUnp(Integer unp) throws ServiceDaoException {
+
+        ArrayOfSubjectData ss = webServiceMinjust.getSubjectData(191430607);
 
         JurMINJST ret_val = minustDAO.getDatabyNumber(unp);
 

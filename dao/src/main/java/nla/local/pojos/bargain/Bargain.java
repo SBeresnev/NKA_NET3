@@ -46,6 +46,9 @@ public class Bargain {
     @Column( name ="AFFILIATES")
     private Integer affiliates;
 
+    @Column( name ="LISING")
+    private Integer lising;
+
     @Column( name ="DONE")
     private Integer done;
 
@@ -70,6 +73,14 @@ public class Bargain {
     @Column( name ="COUNT_OBJECT")
     private Integer count_object;
 
+
+    public Integer getLising() {
+        return lising;
+    }
+
+    public void setLising(Integer lising) {
+        this.lising = lising;
+    }
 
     public Integer getCount_object() {
         return count_object;

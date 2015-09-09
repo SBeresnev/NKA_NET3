@@ -84,7 +84,7 @@ public class SubjectController {
 
             PPerson pPerson = new PPerson();
             subjectForm.updatePPerson(pPerson);
-            pPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
+            pPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_F_ID.nextval").toString());
             pService.add(pPerson);
         }
        if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
@@ -93,7 +93,7 @@ public class SubjectController {
 
             JPerson jPerson = new JPerson();
             subjectForm.updateJPerson(jPerson);
-            jPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_ID.nextval").toString());
+            jPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_J_ID.nextval").toString());
             jService.add(jPerson);
 
         }
@@ -145,7 +145,7 @@ public class SubjectController {
     @RequestMapping(value = {"/minjust_serv"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<JurMINJST> getJusticeService(Integer unp, String name) throws Exception {
 
-        logger.info("root - /subject/minjust");
+        logger.info("root - /subject/minjust_serv");
 
         List<JurMINJST> ret_val = new ArrayList<JurMINJST>() ;
 
