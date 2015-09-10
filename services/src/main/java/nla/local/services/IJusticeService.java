@@ -5,7 +5,6 @@ import nla.local.exception.ServiceException;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.JurMINJST;
 
-
 import java.util.List;
 
 /**

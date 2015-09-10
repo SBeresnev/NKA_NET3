@@ -1,6 +1,6 @@
 package nla.local.services.impl.subjects;
 
-import nla.local.dao.IMinjstDAO;
+
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.dict.CatalogConstants;
@@ -20,8 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tempuri.Subjects;
 
-import javax.security.auth.Subject;
-import java.util.List;
+
+import java.util.*;
 
 /**
  * Created by beresnev on 10.08.2015.
@@ -30,9 +30,6 @@ import java.util.List;
 public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeService {
 
     private static Logger log = Logger.getLogger(PassportServiceImp.class);
-
-    @Autowired
-    private IMinjstDAO minustDAO;
 
     @Autowired
     private Subjects webServiceMinjust;
@@ -48,23 +45,48 @@ public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeSer
     @Override
     public JurMINJST findSubjectUnp(Integer unp) throws ServiceDaoException {
 
+        JurMINJST ret_val = new JurMINJST();
+
         ArrayOfSubjectData ss = webServiceMinjust.getSubjectData(unp);
 
-        List<SubjectData> ret_val_list = ss.getSubjectData();
+        List<SubjectData> ret_val_list =  ss.getSubjectData();
 
-        //JurMINJST ret_val = minustDAO.getDatabyNumber(unp);
+        if ( ret_val_list.size() > 0 ) { ret_val.setSubjectData(ret_val_list.get(0)); };
 
-        return ret_val_list.size() >0 ? (JurMINJST) ret_val_list.get(0) : null;
+        return  ret_val;
 
     }
 
     @Override
     public List<JurMINJST> findSubjectName(String name ) throws ServiceDaoException {
 
-        List<JurMINJST> ret_val = minustDAO.getDatabyName(name);
+        List<JurMINJST> ret_val = null;
+
+        ArrayOfSubjectData ss = webServiceMinjust.getSubjectDataName(name);
+
+        ret_val = casttoJust(ss.getSubjectData());
 
         return ret_val;
 
+    }
+
+    private List<JurMINJST> casttoJust(List<SubjectData> data_list)
+    {
+        List<JurMINJST> ret_val = new ArrayList<JurMINJST>();
+
+        //HashSet<SubjectData>  ret_sbj = new HashSet<SubjectData>( data_list);
+
+        for (SubjectData sub_dat : data_list )
+        {
+            JurMINJST jmr = new JurMINJST();
+
+            jmr.setSubjectData(sub_dat);
+
+            ret_val.add(jmr);
+
+        }
+
+        return ret_val;
     }
 
     @Override

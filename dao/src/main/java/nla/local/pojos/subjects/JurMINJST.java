@@ -4,13 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.minustserv.SubjectData;
 
 import javax.security.auth.Subject;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
 /**
  * Created by beresnev on 07.08.2015.
  */
-public class JurMINJST extends SubjectData {
+public class JurMINJST implements Serializable{
+
+
 
     private static final HashMap<Integer,String > opf = new HashMap<Integer, String>();
     static
@@ -112,6 +116,10 @@ public class JurMINJST extends SubjectData {
     private Integer NkStran;
 
     @JsonIgnore
+    private SubjectData subjectData;
+
+
+    @JsonIgnore
     private Integer NkOpf;
 
     @JsonIgnore
@@ -142,6 +150,16 @@ public class JurMINJST extends SubjectData {
     private String vpom;
 
 
+    public SubjectData getSubjectData() {
+        return subjectData;
+    }
+
+    public void setSubjectData(SubjectData subjectData) {
+        this.subjectData = subjectData;
+    }
+
+
+
     public String getFullAddress() {
 
        /* fullAddress = this.getVoblast() != null ?   this.getVoblast() +" обл; " :"" ;
@@ -158,7 +176,7 @@ public class JurMINJST extends SubjectData {
 
         fullAddress += this.getVpom() != null ?   " кв. " + this.getVpom() + "" :"" ; */
 
-        fullAddress = fullAddress != null ? fullAddress : super.getADDRESS().getValue();
+        fullAddress = fullAddress != null ? fullAddress : subjectData.getADDRESS().getValue();
 
         return fullAddress;
     }
@@ -170,7 +188,7 @@ public class JurMINJST extends SubjectData {
 
     public String getOpf() {
 
-        Opf = Opf != null ? Opf : opf.get(super.getNKOPF().intValue());
+        Opf = Opf != null ? Opf : opf.get(subjectData.getNKOPF().intValue());
 
         return Opf;
     }
@@ -181,7 +199,7 @@ public class JurMINJST extends SubjectData {
 
     public Integer getNkOpf() {
 
-        NkOpf = NkOpf != null ? NkOpf : super.getNKOPF().intValue();
+        NkOpf = NkOpf != null ? NkOpf : subjectData.getNKOPF().intValue();
 
         return NkOpf ;
 
@@ -196,7 +214,7 @@ public class JurMINJST extends SubjectData {
 
     public Integer getNkStran() {
 
-        NkStran = NkStran != null ? NkStran : super.getNKSTRAN().intValue();
+        NkStran = NkStran != null ? NkStran : subjectData.getNKSTRAN().intValue();
 
         return NkStran;
 
@@ -208,7 +226,7 @@ public class JurMINJST extends SubjectData {
 
     public Integer getUNP() {
 
-        UNP = UNP != null ? UNP : super.getNGRN().intValue();
+        UNP = UNP != null ? UNP : subjectData.getNGRN().intValue();
 
         return UNP;
     }
@@ -219,7 +237,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVNAIM() {
 
-        VNAIM = VNAIM != null ? VNAIM : super.getVNAIM_().getValue();
+        VNAIM = VNAIM != null ? VNAIM : subjectData.getVNAIM_().getValue();
 
         return VNAIM;
     }
@@ -230,7 +248,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVN() {
 
-        VN = VN != null ? VN : super.getVN_().getValue();
+        VN = VN != null ? VN : subjectData.getVN_().getValue();
 
         return VN;
     }
@@ -242,7 +260,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVoblast() {
 
-        voblast = voblast != null ? voblast : super.getVOBLAST().getValue();
+        voblast = voblast != null ? voblast : subjectData.getVOBLAST().getValue();
 
         return voblast;
     }
@@ -254,7 +272,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVraion() {
 
-        vraion = vraion != null ? vraion : super.getVRAION().getValue();
+        vraion = vraion != null ? vraion : subjectData.getVRAION().getValue();
 
         return vraion;
     }
@@ -266,7 +284,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVntnpk() {
 
-        vntnpk = vntnpk != null ? vntnpk : super.getVNTNPK().getValue();
+        vntnpk = vntnpk != null ? vntnpk : subjectData.getVNTNPK().getValue();
 
         return vntnpk;
     }
@@ -277,7 +295,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVnp() {
 
-        vnp = vnp != null ? vnp : super.getVNP().getValue();
+        vnp = vnp != null ? vnp : subjectData.getVNP().getValue();
 
         return vnp;
     }
@@ -288,7 +306,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVntulk() {
 
-        vntulk = vntulk != null ? vntulk : super.getVNTULK().getValue();
+        vntulk = vntulk != null ? vntulk : subjectData.getVNTULK().getValue();
 
         return vntulk;
     }
@@ -301,7 +319,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVulitsa() {
 
-        vulitsa = vulitsa != null ? vulitsa : super.getVULITSA().getValue();
+        vulitsa = vulitsa != null ? vulitsa : subjectData.getVULITSA().getValue();
 
         return vulitsa;
     }
@@ -312,7 +330,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVdom() {
 
-        vdom = vdom != null ? vdom : super.getVDOM().getValue();
+        vdom = vdom != null ? vdom : subjectData.getVDOM().getValue();
 
         return vdom;
     }
@@ -325,7 +343,7 @@ public class JurMINJST extends SubjectData {
 
     public String getVkorp() {
 
-        vkorp = vkorp != null ? vkorp : super.getVKORP().getValue();
+        vkorp = vkorp != null ? vkorp : subjectData.getVKORP().getValue();
 
         return vkorp;
 
@@ -339,19 +357,25 @@ public class JurMINJST extends SubjectData {
 
     public String getVpom() {
 
-        vpom = vpom != null ? vpom : super.getVPOM().getValue();
+        vpom = vpom != null ? vpom : subjectData.getVPOM().getValue();
 
         return vpom;
 
     }
 
     public void setVpom(String vpom) {
+
         this.vpom = vpom;
     }
 
     public Date getRegDate() {
 
-        RegDate = RegDate != null ? RegDate : super.getDCRT().toGregorianCalendar().getTime();
+
+        if (RegDate == null && subjectData.getDCRT().toGregorianCalendar().getTimeInMillis() > 0) {
+
+            RegDate = subjectData.getDCRT().toGregorianCalendar().getTime();
+        }
+
 
         return RegDate;
 
@@ -362,6 +386,13 @@ public class JurMINJST extends SubjectData {
     }
 
     public Date getUnRegDate() {
+
+           if (UnRegDate == null && subjectData.getDISKL().toGregorianCalendar().getTimeInMillis() > 0) {
+
+               UnRegDate = subjectData.getDISKL().toGregorianCalendar().getTime();
+           }
+
+
         return UnRegDate;
     }
 
@@ -370,19 +401,46 @@ public class JurMINJST extends SubjectData {
     }
 
     public String getRegName() {
+
+        RegName = RegName != null ? RegName : subjectData.getVORGCRT().getValue();
+
         return RegName;
     }
 
     public void setRegName(String regName) {
+
         RegName = regName;
+
     }
 
     public String getUnRegName() {
+
+        UnRegName = UnRegName != null ? UnRegName : subjectData.getVORGISKL().getValue();
+
         return UnRegName;
     }
 
     public void setUnRegName(String unRegName) {
         UnRegName = unRegName;
+    }
+
+    @Override
+    public int hashCode() {
+
+        int result = getUNP() != null ? UNP.hashCode() : 0;
+
+        return result;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof JurMINJST)) return false;
+        JurMINJST jur_prs = (JurMINJST) o;
+        if (this.getUNP() != null ? !UNP.equals(jur_prs.getUNP()) : jur_prs.getUNP() != null) return false;
+
+        return true;
     }
 
 }

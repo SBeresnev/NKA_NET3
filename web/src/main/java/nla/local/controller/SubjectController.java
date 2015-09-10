@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping({"/subject"})
@@ -157,9 +158,9 @@ public class SubjectController {
 
         } else {
 
-            List<JurMINJST> jum_list = justiceService.findSubjectName(name);
+            ret_val = justiceService.findSubjectName(name);
 
-            for (JurMINJST jum : jum_list) { ret_val.add(jum); }
+            //for (JurMINJST jum : jum_list) { ret_val.add(jum); }
         }
 
         return ret_val;
