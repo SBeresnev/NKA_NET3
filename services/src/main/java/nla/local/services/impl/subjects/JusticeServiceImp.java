@@ -15,10 +15,12 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.apache.log4j.Logger;
 import org.minustserv.ArrayOfSubjectData;
+import org.minustserv.SubjectData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.tempuri.Subjects;
 
+import javax.security.auth.Subject;
 import java.util.List;
 
 /**
@@ -46,11 +48,13 @@ public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeSer
     @Override
     public JurMINJST findSubjectUnp(Integer unp) throws ServiceDaoException {
 
-        ArrayOfSubjectData ss = webServiceMinjust.getSubjectData(191430607);
+        ArrayOfSubjectData ss = webServiceMinjust.getSubjectData(unp);
 
-        JurMINJST ret_val = minustDAO.getDatabyNumber(unp);
+        List<SubjectData> ret_val_list = ss.getSubjectData();
 
-        return ret_val;
+        //JurMINJST ret_val = minustDAO.getDatabyNumber(unp);
+
+        return ret_val_list.size() >0 ? (JurMINJST) ret_val_list.get(0) : null;
 
     }
 

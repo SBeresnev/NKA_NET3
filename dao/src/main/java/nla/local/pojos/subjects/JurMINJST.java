@@ -1,15 +1,16 @@
 package nla.local.pojos.subjects;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.minustserv.SubjectData;
 
+import javax.security.auth.Subject;
 import java.util.Date;
 import java.util.HashMap;
 
 /**
  * Created by beresnev on 07.08.2015.
  */
-public class JurMINJST {
+public class JurMINJST extends SubjectData {
 
     private static final HashMap<Integer,String > opf = new HashMap<Integer, String>();
     static
@@ -143,7 +144,7 @@ public class JurMINJST {
 
     public String getFullAddress() {
 
-        fullAddress = this.getVoblast() != null ?   this.getVoblast() +" обл; " :"" ;
+       /* fullAddress = this.getVoblast() != null ?   this.getVoblast() +" обл; " :"" ;
 
         fullAddress += this.getVraion() != null ?   this.getVraion() +" р-н; " :"" ;
 
@@ -155,18 +156,21 @@ public class JurMINJST {
 
         fullAddress += this.getVkorp() != null ?   " корп. " + this.getVdom() + ", " :"" ;
 
-        fullAddress += this.getVpom() != null ?   " кв. " + this.getVpom() + "" :"" ;
+        fullAddress += this.getVpom() != null ?   " кв. " + this.getVpom() + "" :"" ; */
+
+        fullAddress = fullAddress != null ? fullAddress : super.getADDRESS().getValue();
 
         return fullAddress;
     }
 
     public void setFullAddress(String fullAddress) {
+
         this.fullAddress = fullAddress;
     }
 
     public String getOpf() {
 
-        Opf = opf.get(this.getNkOpf());
+        Opf = Opf != null ? Opf : opf.get(super.getNKOPF().intValue());
 
         return Opf;
     }
@@ -176,7 +180,11 @@ public class JurMINJST {
     }
 
     public Integer getNkOpf() {
-        return NkOpf;
+
+        NkOpf = NkOpf != null ? NkOpf : super.getNKOPF().intValue();
+
+        return NkOpf ;
+
     }
 
     public void setNkOpf(Integer nkOpf) {
@@ -187,7 +195,11 @@ public class JurMINJST {
     }
 
     public Integer getNkStran() {
+
+        NkStran = NkStran != null ? NkStran : super.getNKSTRAN().intValue();
+
         return NkStran;
+
     }
 
     public void setNkStran(Integer nkStran) {
@@ -195,6 +207,9 @@ public class JurMINJST {
     }
 
     public Integer getUNP() {
+
+        UNP = UNP != null ? UNP : super.getNGRN().intValue();
+
         return UNP;
     }
 
@@ -203,6 +218,9 @@ public class JurMINJST {
     }
 
     public String getVNAIM() {
+
+        VNAIM = VNAIM != null ? VNAIM : super.getVNAIM_().getValue();
+
         return VNAIM;
     }
 
@@ -211,30 +229,45 @@ public class JurMINJST {
     }
 
     public String getVN() {
+
+        VN = VN != null ? VN : super.getVN_().getValue();
+
         return VN;
     }
 
     public void setVN(String VN) {
+
         this.VN = VN;
     }
 
     public String getVoblast() {
+
+        voblast = voblast != null ? voblast : super.getVOBLAST().getValue();
+
         return voblast;
     }
 
     public void setVoblast(String voblast) {
+
         this.voblast = voblast;
     }
 
     public String getVraion() {
+
+        vraion = vraion != null ? vraion : super.getVRAION().getValue();
+
         return vraion;
     }
 
     public void setVraion(String vraion) {
+
         this.vraion = vraion;
     }
 
     public String getVntnpk() {
+
+        vntnpk = vntnpk != null ? vntnpk : super.getVNTNPK().getValue();
+
         return vntnpk;
     }
 
@@ -243,6 +276,9 @@ public class JurMINJST {
     }
 
     public String getVnp() {
+
+        vnp = vnp != null ? vnp : super.getVNP().getValue();
+
         return vnp;
     }
 
@@ -251,14 +287,22 @@ public class JurMINJST {
     }
 
     public String getVntulk() {
+
+        vntulk = vntulk != null ? vntulk : super.getVNTULK().getValue();
+
         return vntulk;
     }
 
     public void setVntulk(String vntulk) {
+
         this.vntulk = vntulk;
+
     }
 
     public String getVulitsa() {
+
+        vulitsa = vulitsa != null ? vulitsa : super.getVULITSA().getValue();
+
         return vulitsa;
     }
 
@@ -267,23 +311,38 @@ public class JurMINJST {
     }
 
     public String getVdom() {
+
+        vdom = vdom != null ? vdom : super.getVDOM().getValue();
+
         return vdom;
     }
 
     public void setVdom(String vdom) {
+
         this.vdom = vdom;
+
     }
 
     public String getVkorp() {
+
+        vkorp = vkorp != null ? vkorp : super.getVKORP().getValue();
+
         return vkorp;
+
     }
 
     public void setVkorp(String vkorp) {
+
         this.vkorp = vkorp;
+
     }
 
     public String getVpom() {
+
+        vpom = vpom != null ? vpom : super.getVPOM().getValue();
+
         return vpom;
+
     }
 
     public void setVpom(String vpom) {
@@ -291,7 +350,11 @@ public class JurMINJST {
     }
 
     public Date getRegDate() {
+
+        RegDate = RegDate != null ? RegDate : super.getDCRT().toGregorianCalendar().getTime();
+
         return RegDate;
+
     }
 
     public void setRegDate(Date regDate) {
