@@ -13,25 +13,25 @@ import java.util.List;
  */
 public interface ICatalogDependencyService {
 
-  public List<CatalogDependency> getAllCatalogDependencies() throws DaoException;
+  public List<CatalogDependency> getAllCatalogDependencies() throws ServiceDaoException;
 
-    public Serializable add(CatalogDependency catalogDependency) throws DaoException;
+    public Serializable add(CatalogDependency catalogDependency) throws ServiceDaoException;
 
-    public CatalogDependency getCatalogDependency(Serializable id) throws DaoException;
+    public CatalogDependency getCatalogDependency(Serializable id) throws ServiceDaoException;
 
-    public void update(CatalogDependency catalogDependency) throws DaoException;
+    public void update(CatalogDependency catalogDependency) throws ServiceDaoException;
 
-    public List<CatalogDependency> getDependencyByParentId(Integer id) throws DaoException;
+    public List<CatalogDependency> getDependencyByParentId(Integer id) throws ServiceDaoException;
 
-    public void delete(CatalogDependency catalogDependency) throws DaoException;
+    public void delete(CatalogDependency catalogDependency) throws ServiceDaoException;
 
     public List<DependencyData> findByParentCodeAndTypes(Integer id, Integer type, Integer parentType) throws ServiceDaoException;
 
     public List<DependencyData> findByParentCodeAndDependencyId(Integer id, Integer parentId) throws ServiceDaoException;
 
-    public DependencyData get(Serializable id) throws DaoException;
+    public DependencyData get(Serializable id) throws ServiceDaoException;
 
-    public void delete(DependencyData dependencyData) throws DaoException;
+    public void delete(DependencyData dependencyData) throws ServiceDaoException;
 
-    public Serializable add(DependencyData dependencyData) throws DaoException;
+    public Serializable add(DependencyData dependencyData) throws ServiceDaoException;
 }

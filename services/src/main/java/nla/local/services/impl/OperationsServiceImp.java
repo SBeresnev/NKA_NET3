@@ -1,7 +1,9 @@
 package nla.local.services.impl;
 
 import nla.local.exception.ServiceDaoException;
+import nla.local.pojos.operations.EntityType;
 import nla.local.pojos.operations.Operation;
+import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IOperationsService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
@@ -31,20 +33,29 @@ public class OperationsServiceImp extends BaseServiceImp<Operation> implements I
         return super.get(Operation.class, id);
     }
 
+
+
     @Override
-    public List<Operation> getFromDecl(Integer declId) throws ServiceDaoException {
+    public List<Operation> getEntytyOper (Integer declId, EntityType et) throws ServiceDaoException {
 
         DetachedCriteria dc = DetachedCriteria.forClass(Operation.class);
 
         if (declId != null) {
 
-            dc.add(Restrictions.eq("DECL_ID", declId));
+            dc = dc.add(Restrictions.eq("DECL_ID", declId));
+
+            dc = dc.add(Restrictions.eq("STATUS",1));
+
+            dc = dc.add(Restrictions.eq("entytyType",et));
 
             return super.getCriterion(dc);
 
         } else {
+
             return Collections.EMPTY_LIST;
+
         }
+
     }
 
 }

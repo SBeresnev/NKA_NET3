@@ -18,10 +18,10 @@ public class Object_dest extends Object  {
     @Column(name="OBJECT_ID", unique=true, nullable=false )
     private Long obj_id;
 
-    //@ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn( name = "OOPER_ID")
-    @Column(name = "OOPER_ID")
-    private Integer ooper;
+    //@Column(name = "OOPER_ID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn( name = "OOPER_ID")
+    private Operation ooper;
 
     @Column( name = "CONSERV")
     private Integer conserv;        // 0  не законсерв, 1 законсерв
@@ -130,11 +130,11 @@ public class Object_dest extends Object  {
         this.bound_id = bound_id;
     }
 
-    public Integer getOoper() {
+    public Operation getOoper() {
         return ooper;
     }
 
-    public void setOoper(Integer ooper) {
+    public void setOoper(Operation ooper) {
         this.ooper = ooper;
     }
 

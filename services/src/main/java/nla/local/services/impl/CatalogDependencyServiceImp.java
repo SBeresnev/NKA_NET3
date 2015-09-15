@@ -25,7 +25,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
     private ICatalogDependencyDAO catalogDependencyDAO;
 
     //region CatalogDependency
-    public List<CatalogDependency> getAllCatalogDependencies() throws DaoException {
+    public List<CatalogDependency> getAllCatalogDependencies() throws ServiceDaoException {
         try {
             return catalogDependencyDAO.getAllCatalogDependencies();
         } catch (DaoException e) {
@@ -33,7 +33,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
-    public Serializable add(CatalogDependency catalogDependency) throws DaoException {
+    public Serializable add(CatalogDependency catalogDependency) throws ServiceDaoException {
         try {
             return catalogDependencyDAO.add(catalogDependency);
         } catch (DaoException e) {
@@ -41,7 +41,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
-    public CatalogDependency getCatalogDependency(Serializable id) throws DaoException {
+    public CatalogDependency getCatalogDependency(Serializable id) throws ServiceDaoException {
         try {
             return catalogDependencyDAO.getCatalogDependency(id);
         } catch (DaoException e) {
@@ -49,7 +49,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
-    public void update(CatalogDependency catalogDependency) throws DaoException {
+    public void update(CatalogDependency catalogDependency) throws ServiceDaoException {
         try {
             catalogDependencyDAO.update(catalogDependency);
         } catch (DaoException e) {
@@ -57,7 +57,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
-    public List<CatalogDependency> getDependencyByParentId(Integer id) throws DaoException {
+    public List<CatalogDependency> getDependencyByParentId(Integer id) throws ServiceDaoException {
         try {
             return catalogDependencyDAO.getDependencyByParentId(id);
         } catch (DaoException e) {
@@ -65,7 +65,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
-    public void delete(CatalogDependency catalogDependency) throws DaoException {
+    public void delete(CatalogDependency catalogDependency) throws ServiceDaoException {
         try {
             catalogDependencyDAO.delete(catalogDependency);
         } catch (DaoException e) {
@@ -91,7 +91,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
-    public DependencyData get(Serializable id) throws DaoException {
+    public DependencyData get(Serializable id) throws ServiceDaoException {
         try {
             return catalogDependencyDAO.get(id);
         } catch (DaoException e) {
@@ -99,7 +99,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
-    public void delete(DependencyData dependencyData) throws DaoException {
+    public void delete(DependencyData dependencyData) throws ServiceDaoException {
         try {
             catalogDependencyDAO.delete(dependencyData);
         } catch (DaoException e) {
@@ -107,7 +107,7 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
-    public Serializable add(DependencyData dependencyData) throws DaoException {
+    public Serializable add(DependencyData dependencyData) throws ServiceDaoException {
         try {
             return catalogDependencyDAO.add(dependencyData);
         } catch (DaoException e) {

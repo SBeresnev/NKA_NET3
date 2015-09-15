@@ -1,10 +1,10 @@
 package nla.local.services;
 
-import nla.local.dao.exceptions.DaoException;
+
 import nla.local.exception.ServiceDaoException;
+import nla.local.pojos.operations.EntityType;
 import nla.local.pojos.operations.Operation;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -16,5 +16,7 @@ public interface IOperationsService extends IService<Operation>{
 
     public Operation get( Integer id) throws ServiceDaoException;
 
-    public List<Operation> getFromDecl(Integer declId) throws ServiceDaoException;
+    public List<Operation> getEntytyOper (Integer declId, EntityType et) throws ServiceDaoException;
+
+
 }

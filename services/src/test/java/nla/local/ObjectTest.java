@@ -1,13 +1,19 @@
 package nla.local;
 
+import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.address.Address_dest;
 import nla.local.pojos.address.Address_src;
 import nla.local.pojos.dict.CatalogConstants;
+import nla.local.pojos.dict.CatalogDependency;
 import nla.local.pojos.dict.CatalogItem;
+import nla.local.pojos.dict.CatalogPk;
 import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.object.Object_src;
-import nla.local.services.IAddressService;
+import nla.local.pojos.operations.EntityType;
+import nla.local.pojos.operations.Operation;
+import nla.local.services.*;
+import nla.local.services.impl.CatalogDependencyServiceImp;
 import nla.local.services.impl.CatalogServiceImp;
 import nla.local.util.BaseClean;
 import org.apache.commons.collections4.CollectionUtils;
@@ -16,7 +22,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import nla.local.exception.ServiceDaoException;
-import nla.local.services.IObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,6 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -42,22 +48,28 @@ public class ObjectTest{
     public BaseClean baseClean;
 
     @Autowired
+    public IOperationsService operSrv;
+
+    @Autowired
     private IObjectService osi;
 
     @Autowired
     private IAddressService asi;
 
     @Autowired
-    private CatalogServiceImp catalogService;
+    private ICatalogService catalogService;
+
+    @Autowired
+    private ICatalogDependencyService catalogServiceDep;
 
     @Test
-    public void ObjectTestController() throws ServiceDaoException, ServiceException {
+    public void ObjectTestController() throws DaoException, ServiceException {
 
         baseClean.ObjectClean();
 
         long startTime = System.nanoTime();
 
-        bindObjectbyAddressCommon();
+        //bindObjectbyAddressCommon();
 
         bindObjectbyInventoryNumCommon();
 
@@ -117,14 +129,49 @@ public class ObjectTest{
 
             }
 
-
-
         if(ret_val_dest.size() > 0) { osi.bindObject(ret_val_dest.get(0)); }
 
     }
 
+    public void setOperField( Operation oper ) throws ServiceDaoException {
+
+
+        oper.setDeclId(1108);
+
+        oper.setEntytyType(EntityType.toInt(EntityType.OBJECT));
+
+        oper.setOperDate(new Date());
+
+
+        CatalogPk cp = new CatalogPk();
+
+        cp.setAnalytic_type(61);
+
+        cp.setCode_id(10);
+
+        CatalogItem ci = catalogService.getCatalogItem(cp);
+
+
+        List<CatalogDependency> cd = catalogServiceDep.getDependencyByParentId(63);
+
+        int i= 0;
+
+
+        /*
+
+        oper.setOperType();
+
+        oper.setOperSubtype();
+
+        oper.setReason(); */
+
+    }
 
     public void bindObjectbyInventoryNumCommon() throws ServiceDaoException, ServiceException {
+
+        Operation oper = new Operation();
+
+        setOperField(oper);
 
         List<Object_dest> ret_val_dest = (List<Object_dest>) osi.findObjectbyInventoryNumCommon(11, 3, 0);
 
@@ -138,7 +185,7 @@ public class ObjectTest{
 
             ret_val_dest.get(0).setStatus(1);
 
-            ret_val_dest.get(0).setOoper(120);
+            //ret_val_dest.get(0).setOoper(120);
 
             List<CatalogItem> obj_pup = catalogService.getCatalogItemsByTyp(Integer.decode(CatalogConstants.USE_PURPOSE));
 

@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.Set;
+
 /**
  * Created by belonovich on 08.04.2015.
  */
@@ -25,9 +27,10 @@ public class Operation {
     @Column(name = "DECL_ID")
     private Integer declId;
 
-    /*@ManyToOne
-    @JoinColumn(name = "OBJECT_ID")
-    private Objects objectId;*/
+
+    @Column (name ="ENTITY_TYPE")
+    private Integer entytyType;
+
 
     @ManyToOne
     @JoinColumnsOrFormulas({
@@ -54,9 +57,51 @@ public class Operation {
     @Column( name = "REG_DATE", nullable = false)
     private Date regDate;
 
+    @Column( name = "OPER_DATE", nullable = false)
+    private Date operDate;
+
+    @OneToOne
+    @JoinColumn(name = "PARENT_ID_HIST", nullable = false)
+    private Operation parent_id_hist;
+
+    @OneToMany
+    @JoinColumn(name = "PARENT_ID_ORDER", nullable = false)
+    private Set<Operation> parent_id_order;
+
     @Column( name = "STATUS", nullable = false)
     private Integer status;
 
+    public Operation getParent_id_hist() {
+        return parent_id_hist;
+    }
+
+    public void setParent_id_hist(Operation parent_id_hist) {
+        this.parent_id_hist = parent_id_hist;
+    }
+
+    public Set<Operation> getParent_id_order() {
+        return parent_id_order;
+    }
+
+    public void setParent_id_order(Set<Operation> parent_id_order) {
+        this.parent_id_order = parent_id_order;
+    }
+
+    public CatalogItem getReason() {
+        return reason;
+    }
+
+    public void setReason(CatalogItem reason) {
+        this.reason = reason;
+    }
+
+    public Date getOperDate() {
+        return operDate;
+    }
+
+    public void setOperDate(Date operDate) {
+        this.operDate = operDate;
+    }
 
     public Integer getStatus() {
         return status;
@@ -114,12 +159,13 @@ public class Operation {
         this.declId = declId;
     }
 
-
-    /* public nla.local.pojos.object.Object getObjectId() {
-        return objectId;
+    public Integer getEntytyType() {
+        return entytyType;
     }
 
-    public void setObjectId(nla.local.pojos.object.Object objectId) {
-        this.objectId = objectId;
-    } */
+    public void setEntytyType(Integer entytyType) {
+        this.entytyType = entytyType;
+    }
+
+
 }

@@ -37,7 +37,7 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
 
     private static Logger log = Logger.getLogger(BargainServiceImp.class);
 
-    private DetachedCriteria query_BargainContent = DetachedCriteria.forClass(BargainContent.class);//.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+    private DetachedCriteria query_BargainContent = DetachedCriteria.forClass(BargainContent.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
     public BargainContent getBargain(Long bar_cont_id) throws ServiceDaoException {
 
