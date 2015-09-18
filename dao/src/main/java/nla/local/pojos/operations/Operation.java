@@ -15,14 +15,16 @@ import java.util.Set;
  * Created by belonovich on 08.04.2015.
  */
 @Entity
-@Table(name="OPERATIONS", schema = "NKA_NET3_DEV")
+@Table(name="V_OPERATIONS", schema = "NKA_NET3_DEV")
 public class Operation {
+
 
     @Id
     @Column(name="OOPER_ID", unique=true, nullable=false )
     @SequenceGenerator(name="operation_seq", sequenceName="SEQ_OPERATIONS_ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="operation_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO ,generator="operation_seq")
     private Integer ooperId;
+
 
     @Column(name = "DECL_ID")
     private Integer declId;
@@ -61,11 +63,11 @@ public class Operation {
     private Date operDate;
 
     @OneToOne
-    @JoinColumn(name = "PARENT_ID_HIST", nullable = false)
+    @JoinColumn(name = "PARENT_ID_HIST")
     private Operation parent_id_hist;
 
     @OneToMany
-    @JoinColumn(name = "PARENT_ID_ORDER", nullable = false)
+    @JoinColumn(name = "PARENT_ID_ORDER")
     private Set<Operation> parent_id_order;
 
     @Column( name = "STATUS", nullable = false)

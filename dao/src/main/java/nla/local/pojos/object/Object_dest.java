@@ -18,8 +18,7 @@ public class Object_dest extends Object  {
     @Column(name="OBJECT_ID", unique=true, nullable=false )
     private Long obj_id;
 
-    //@Column(name = "OOPER_ID")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn( name = "OOPER_ID")
     private Operation ooper;
 
@@ -137,5 +136,13 @@ public class Object_dest extends Object  {
     public void setOoper(Operation ooper) {
         this.ooper = ooper;
     }
+
+   /* public Integer getOoper() {
+        return ooper;
+    }
+
+    public void setOoper(Integer ooper) {
+        this.ooper = ooper;
+    }*/
 
 }

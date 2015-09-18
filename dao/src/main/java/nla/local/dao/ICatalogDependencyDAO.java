@@ -20,6 +20,8 @@ public interface ICatalogDependencyDAO extends Dao<CatalogDependency> {
     public List<CatalogDependency> getDependencyByParentId(Integer id) throws DaoException;
     //endregion
 
+    public List<DependencyData> findByChildCodeAndTypes(Integer id, Integer childType, Integer type) throws DaoException ;
+
     //region DependencyData
     public List<DependencyData> findByParentCodeAndTypes(Integer id, Integer type, Integer parentType) throws DaoException;
 
@@ -28,6 +30,8 @@ public interface ICatalogDependencyDAO extends Dao<CatalogDependency> {
     public DependencyData get(Serializable id) throws DaoException;
 
     public void delete(DependencyData dependencyData) throws DaoException;
+
+    public List<CatalogDependency> getDependencyByChildId(Integer id) throws DaoException;
 
     public Serializable add(DependencyData dependencyData) throws DaoException;
     //endregion

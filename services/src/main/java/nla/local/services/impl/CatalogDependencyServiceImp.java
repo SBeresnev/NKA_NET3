@@ -41,6 +41,18 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
         }
     }
 
+    public List<CatalogDependency> getDependencyByChildId(Integer id) throws ServiceDaoException
+    {
+        try{
+
+            return catalogDependencyDAO.getDependencyByChildId(id);
+
+        }catch (DaoException e) {
+            throw new ServiceDaoException(e.fillInStackTrace(), e.getCode(), e.getParams());
+        }
+    }
+
+
     public CatalogDependency getCatalogDependency(Serializable id) throws ServiceDaoException {
         try {
             return catalogDependencyDAO.getCatalogDependency(id);
@@ -78,6 +90,14 @@ public class CatalogDependencyServiceImp implements ICatalogDependencyService {
     public List<DependencyData> findByParentCodeAndTypes(Integer id, Integer type, Integer parentType) throws ServiceDaoException {
         try {
             return catalogDependencyDAO.findByParentCodeAndTypes(id, type, parentType);
+        } catch (DaoException e) {
+            throw new ServiceDaoException(e.fillInStackTrace(), e.getCode(), e.getParams());
+        }
+    }
+
+    public List<DependencyData> findByChildCodeAndTypes(Integer id, Integer childType, Integer type) throws ServiceDaoException {
+        try {
+            return catalogDependencyDAO.findByChildCodeAndTypes(id, childType, type);
         } catch (DaoException e) {
             throw new ServiceDaoException(e.fillInStackTrace(), e.getCode(), e.getParams());
         }

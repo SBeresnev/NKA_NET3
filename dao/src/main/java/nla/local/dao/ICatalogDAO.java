@@ -36,4 +36,6 @@ public interface ICatalogDAO extends Dao<CatalogItem> {
 
     public CatalogItem getCatalogItemByPk(CatalogPk catalogPk) throws DaoException;
 
+    public CatalogItem getCatalogItem(Integer catType, Integer catCode) throws DaoException;
+
 }

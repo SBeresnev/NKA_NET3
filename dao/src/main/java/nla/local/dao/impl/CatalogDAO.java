@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -160,4 +161,25 @@ public class CatalogDAO extends BaseDao<CatalogItem> implements ICatalogDAO {
             throw new DaoException(e, DaoErrorCode.NKANET_DAO_000);
         }
     }
+
+    public CatalogItem getCatalogItem(Integer catType, Integer catCode) throws DaoException {
+
+        List<CatalogItem> ret_val_list = new ArrayList<CatalogItem>();
+
+        try {
+            if ( catType != null && catCode != null) {
+
+                Criteria itemCri = getSession().createCriteria(CatalogItem.class).add(Restrictions.eq("analytic_type",catType)).add(Restrictions.eq("code_id", catCode));
+
+                ret_val_list = itemCri.list();
+
+            }
+
+        } catch (Exception e) {
+            throw new DaoException(e, DaoErrorCode.NKANET_DAO_000);
+        }
+
+        return ret_val_list.size() > 0 ? ret_val_list.get(0) : null ;
+    }
+
 }

@@ -69,6 +69,18 @@ public class CatalogServiceImp implements ICatalogService {
     }
 
     @Override
+    public CatalogItem getCatalogItem( Integer catType, Integer catCode) throws ServiceDaoException {
+        try {
+            return catalogDAO.getCatalogItem(catType, catCode);
+        } catch (DaoException e) {
+            throw new ServiceDaoException(e.fillInStackTrace(),e.getCode(),e.getParams());
+        }
+    }
+
+
+
+
+    @Override
     public List<CatalogItem> getAllCatalogItems() throws DaoException {
         try {
             return catalogDAO.getAllCatalogItems();

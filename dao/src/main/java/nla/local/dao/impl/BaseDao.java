@@ -157,6 +157,7 @@ public class BaseDao<T> implements Dao<T> {
         try {
 
             Criteria cria = crio.getExecutableCriteria(getSession());
+
             return cria.list();
         } catch (HibernateException e) {
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_005, typeName);

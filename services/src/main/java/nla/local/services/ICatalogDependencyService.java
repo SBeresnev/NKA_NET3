@@ -34,4 +34,9 @@ public interface ICatalogDependencyService {
     public void delete(DependencyData dependencyData) throws ServiceDaoException;
 
     public Serializable add(DependencyData dependencyData) throws ServiceDaoException;
+
+    public List<CatalogDependency> getDependencyByChildId(Integer id) throws ServiceDaoException;
+
+    public List<DependencyData> findByChildCodeAndTypes(Integer id, Integer childType, Integer type) throws ServiceDaoException;
+
 }

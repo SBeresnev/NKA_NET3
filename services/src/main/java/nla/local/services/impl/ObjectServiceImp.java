@@ -257,6 +257,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
     }
 
     public List<? extends Object>  findObjectbyInventoryNum(Class<? extends Object> cobj, Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException {
+
         List<? extends Object> ret_val = null;
 
         DetachedCriteria query_ = DetachedCriteria.forClass(cobj);

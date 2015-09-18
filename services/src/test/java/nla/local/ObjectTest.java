@@ -4,15 +4,15 @@ import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.address.Address_dest;
 import nla.local.pojos.address.Address_src;
-import nla.local.pojos.dict.CatalogConstants;
-import nla.local.pojos.dict.CatalogDependency;
-import nla.local.pojos.dict.CatalogItem;
-import nla.local.pojos.dict.CatalogPk;
+import nla.local.pojos.dict.*;
 import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.object.Object_src;
 import nla.local.pojos.operations.EntityType;
 import nla.local.pojos.operations.Operation;
+import nla.local.pojos.subjects.OPerson;
+import nla.local.pojos.subjects.Person;
 import nla.local.services.*;
+import nla.local.services.impl.BaseServiceImp;
 import nla.local.services.impl.CatalogDependencyServiceImp;
 import nla.local.services.impl.CatalogServiceImp;
 import nla.local.util.BaseClean;
@@ -23,6 +23,7 @@ import org.junit.runner.RunWith;
 
 import nla.local.exception.ServiceDaoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -48,6 +49,9 @@ public class ObjectTest{
     public BaseClean baseClean;
 
     @Autowired
+    public BaseServiceImp baseServiceImp;
+
+    @Autowired
     public IOperationsService operSrv;
 
     @Autowired
@@ -62,16 +66,22 @@ public class ObjectTest{
     @Autowired
     private ICatalogDependencyService catalogServiceDep;
 
+    @Qualifier("OSubjectServiceImp")
+    @Autowired
+    private ISubjectService<OPerson> oPers;
+
     @Test
     public void ObjectTestController() throws DaoException, ServiceException {
 
-        baseClean.ObjectClean();
+       // baseClean.ObjectClean();
 
         long startTime = System.nanoTime();
 
-        //bindObjectbyAddressCommon();
+       // bindObjectbyAddressCommon();
 
-        bindObjectbyInventoryNumCommon();
+       // bindObjectbyInventoryNumCommon();
+
+        updateObject();
 
         long endTime = System.nanoTime();
 
@@ -81,6 +91,40 @@ public class ObjectTest{
 
     }
 
+
+    public void updateObject() throws ServiceDaoException {
+
+       List<Object_dest> lod =  osi.findbyobjDestid((long) 96);
+
+        if (lod.size() > 0) {
+
+            Object_dest ode = lod.get(0);
+
+            Operation opr = ode.getOoper();
+
+
+            CatalogItem ci = catalogService.getCatalogItem(61, 3);
+
+            opr.setOperType(ci);
+
+
+            ci = catalogService.getCatalogItem(62, 4);
+
+            opr.setOperSubtype(ci);
+
+
+            ci = catalogService.getCatalogItem(63, 1170);
+
+            opr.setReason(ci);
+
+
+            ode.setOoper(opr);
+
+            osi.update(ode);
+
+        }
+
+    }
 
     // Поиск новых адресов через adr_num
     public void bindObjectbyAddressCommon() throws ServiceDaoException, ServiceException {
@@ -94,6 +138,11 @@ public class ObjectTest{
         }
 
         List<Object_dest> ret_val_dest =  osi.findObjectbyAddressCommon( Arrays.asList(adr_dest.getAdr_num()));
+
+
+        Operation oper = new Operation();
+
+        oper = getOperField(61, 1, 62, 1, 63, 1010, 1108);
 
          int i = 0;
 
@@ -123,6 +172,8 @@ public class ObjectTest{
 
                 dst_src.setAdr_num(adr_dest.getAdr_num());
 
+                dst_src.setOoper(oper);
+
                 ret_val_dest.set(i,dst_src);
 
                 i++;
@@ -133,10 +184,11 @@ public class ObjectTest{
 
     }
 
-    public void setOperField( Operation oper ) throws ServiceDaoException {
+    public Operation getOperField(int operType, int operCode, int operSubtype, int operSubcode, int resonType, int ReasonCode, int declId) throws ServiceDaoException {
 
+        Operation oper = new Operation();
 
-        oper.setDeclId(1108);
+        oper.setDeclId(declId);
 
         oper.setEntytyType(EntityType.toInt(EntityType.OBJECT));
 
@@ -145,35 +197,63 @@ public class ObjectTest{
 
         CatalogPk cp = new CatalogPk();
 
-        cp.setAnalytic_type(61);
+        cp.setAnalytic_type(operType);
 
-        cp.setCode_id(10);
+        cp.setCode_id(operCode);
 
-        CatalogItem ci = catalogService.getCatalogItem(cp);
+        CatalogItem ci = catalogService.getCatalogItem(cp);                         // формирование
+
+        oper.setOperType(ci);
+
+        baseServiceImp.getBaseDao().getSession().evict(ci);
 
 
-        List<CatalogDependency> cd = catalogServiceDep.getDependencyByParentId(63);
+        cp.setAnalytic_type(operSubtype);
 
-        int i= 0;
+        cp.setCode_id(operSubcode);
+
+        ci = catalogService.getCatalogItem(cp);
+
+        oper.setOperSubtype(ci);
+
+        baseServiceImp.getBaseDao().getSession().evict(ci);
 
 
-        /*
+        cp.setAnalytic_type(resonType);
 
-        oper.setOperType();
+        cp.setCode_id(ReasonCode);
 
-        oper.setOperSubtype();
+        ci = catalogService.getCatalogItem(cp);
 
-        oper.setReason(); */
+        oper.setReason(ci);
 
+        baseServiceImp.getBaseDao().getSession().evict(ci);
+
+
+
+        oper.setRegDate(new Date ());
+
+        Person prs = oPers.getSubject(2778);
+
+        oper.setExecutor(prs);
+
+        oper.setStatus(1);
+
+
+        return oper ;
     }
 
     public void bindObjectbyInventoryNumCommon() throws ServiceDaoException, ServiceException {
 
         Operation oper = new Operation();
 
-        setOperField(oper);
+        oper = getOperField(61, 1, 62, 1, 63, 1010, 1108);
 
-        List<Object_dest> ret_val_dest = (List<Object_dest>) osi.findObjectbyInventoryNumCommon(11, 3, 0);
+
+       // List<Object_dest> od = osi.findbyobjDestid((long) 174);
+
+        List<Object_dest> ret_val_dest = (List<Object_dest>) osi.findObjectbyInventoryNumCommon(3, 3, 0);
+
 
         if (ret_val_dest.size() >0 ) {
 
@@ -185,7 +265,8 @@ public class ObjectTest{
 
             ret_val_dest.get(0).setStatus(1);
 
-            //ret_val_dest.get(0).setOoper(120);
+            ret_val_dest.get(0).setOoper(oper);
+
 
             List<CatalogItem> obj_pup = catalogService.getCatalogItemsByTyp(Integer.decode(CatalogConstants.USE_PURPOSE));
 

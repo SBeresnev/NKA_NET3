@@ -24,5 +24,7 @@ public interface ICatalogService {
 
     public CatalogItem getCatalogItem(CatalogPk dPk) throws ServiceDaoException;
 
+    public CatalogItem getCatalogItem( Integer catType, Integer catCode) throws ServiceDaoException;
+
     public List<CatalogItem> getAllCatalogItems() throws DaoException;
 }

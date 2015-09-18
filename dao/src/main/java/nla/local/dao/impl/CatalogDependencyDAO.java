@@ -56,7 +56,21 @@ public class CatalogDependencyDAO extends BaseDao<CatalogDependency> implements 
     }
     //endregion
 
+    public List<CatalogDependency> getDependencyByChildId(Integer id) throws DaoException {
+
+        try {
+
+            Criteria criteria = getSession().createCriteria(CatalogDependency.class);
+            return criteria.add(Restrictions.eq("analyticTypeId", id)).list();
+
+        } catch (Exception e) {
+
+            throw new DaoException(e, DaoErrorCode.NKANET_DAO_001);
+        }
+
+    }
     //region DependencyData
+
     public List<DependencyData> findByParentCodeAndTypes(Integer id, Integer type, Integer parentType) throws DaoException {
         try {
             Criteria criteria = getSession().createCriteria(DependencyData.class);
@@ -67,6 +81,18 @@ public class CatalogDependencyDAO extends BaseDao<CatalogDependency> implements 
             throw new DaoException(e, DaoErrorCode.NKANET_DAO_001);
         }
     }
+
+    public List<DependencyData> findByChildCodeAndTypes(Integer id, Integer childType, Integer type) throws DaoException {
+        try {
+            Criteria criteria = getSession().createCriteria(DependencyData.class);
+            criteria.add(Restrictions.eq("analyticCode", id));
+            criteria.createCriteria("catalogDependency").add(Restrictions.eq("analyticTypeId", childType)).add(Restrictions.eq("parentAnalyticTypeId", type));
+            return criteria.list();
+        } catch (Exception e) {
+            throw new DaoException(e, DaoErrorCode.NKANET_DAO_001);
+        }
+    }
+
 
     public List<DependencyData> findByParentCodeAndDependencyId(Integer id, Integer parentId) throws DaoException {
         try {
