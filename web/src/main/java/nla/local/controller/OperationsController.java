@@ -1,6 +1,7 @@
 package nla.local.controller;
 
 import nla.local.dao.exceptions.DaoException;
+import nla.local.pojos.operations.EntityType;
 import nla.local.pojos.operations.Operation;
 import nla.local.services.impl.OperationsServiceImp;
 import org.apache.log4j.Logger;
@@ -44,9 +45,12 @@ public class OperationsController {
     }
 
     @RequestMapping(value={"/get_from_decl"}, method={RequestMethod.GET})
-    public List<Operation> getFromDecl(Integer declId) throws DaoException {
+    public List<Operation> getFrom(Integer Id, String entityType) throws DaoException {
         logger.info("root - /operations/get_from_decl");
-        return operationsService.getFromDecl(declId);
+
+        EntityType typ = EntityType.valueOf(entityType);
+
+        return null; //operationsService.getFromDecl(declId);
     }
 
     @RequestMapping(value={"/delete"}, method={RequestMethod.DELETE})

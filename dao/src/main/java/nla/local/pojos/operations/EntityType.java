@@ -5,17 +5,17 @@ package nla.local.pojos.operations;
  */
 public enum  EntityType {
 
-    RIGHT("RightOwner"),
+    RIGHT("RIGHT"),
 
-    OBJECT("Object_dest"),
+    OBJECT("OBJECT"),
 
-    BARGAIN("Bargain"),
+    BARGAIN("BARGAIN"),
 
-    PERSON("Person"),
+    PERSON("PERSON"),
 
-    ADDRESS("Address_dest"),
+    ADDRESS("ADDRESS"),
 
-    OPERATION("Operation"),
+    OPERATION("OPERATION"),
 
     UKW("unknown");
 

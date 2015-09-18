@@ -46,13 +46,19 @@ public class BaseClean {
     private static String cleanBarGainContent = "delete from BARGAINCONTENT";
 
 
+    private static String cleanOperations    = "delete from OPERATIONS";
+
+
     public void SubjectClean()
     {
 
-        DeclClean();
+
         BargainClean();
         RightClean();
         ObjectClean();
+
+        OperationsClean();
+        DeclClean();
 
         scg.update(cleanSubjectData);
         scg.update(cleanSubjectDataF);
@@ -61,8 +67,17 @@ public class BaseClean {
         scg.update(cleanSubject);
     }
 
-    public void DeclClean()
+    public void OperationsClean()
     {
+        scg.update(cleanOperations);
+    }
+
+
+        public void DeclClean()
+       {
+
+        OperationsClean();
+
         scg.update(cleanDecluser);
         scg.update(cleanDeclresolution);
         scg.update(cleanDeclarants);

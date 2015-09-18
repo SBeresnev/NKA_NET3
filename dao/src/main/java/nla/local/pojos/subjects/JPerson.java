@@ -40,7 +40,7 @@ public class JPerson extends Person implements Serializable{
 
     @ManyToOne
     @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column=@JoinColumn(name = "ORG_RIGHT_FORM", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
+            @JoinColumnOrFormula(column=@JoinColumn(name = "ORG_RIGHT_FORM", nullable = true, referencedColumnName = "ANALYTIC_CODE")),
             @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.ORG_STRUCTURE, referencedColumnName="ANALYTIC_TYPE"))
     })
     public CatalogItem orgRightForm;

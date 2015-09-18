@@ -69,13 +69,13 @@ public class DeclTest {
 
     private List<CatalogItem> resolutionType;
 
-    Integer GLOBAL_INDEX = 5;
+    Integer GLOBAL_INDEX = 1;
 
 
     @Before
     public void setDecl() throws ServiceDaoException {
 
-      //  baseClean.DeclClean();
+        baseClean.DeclClean();
 
         resolutionType = commonDict.getCatalogItemsByTyp(Integer.decode(CatalogConstants.RESOLUTION_TYP));
 
@@ -84,11 +84,11 @@ public class DeclTest {
     @Test
     public void OrderTestController() throws DaoException, ServiceException {
 
-         // AddDecl();
+          AddDecl();
 
-          AddNewDecl();
+         // AddNewDecl();
 
-         // GetDecl();
+         //  GetDecl();
 
          // GetJournal();
 
@@ -380,11 +380,10 @@ public class DeclTest {
 
     public void GetDecl() throws ServiceException, ServiceDaoException {
 
-       // List<Decl> ld = dsi.getAll(Decl.class);
+        List<Decl> ld = dsi.getAll(Decl.class);
 
-       // Decl dc = dsi.get(1052);
+        Decl dc = dsi.get( Long.valueOf("1108"));
 
-        //Assert.notNull(ld, " List<Decl> ld was null");
 
     }
 

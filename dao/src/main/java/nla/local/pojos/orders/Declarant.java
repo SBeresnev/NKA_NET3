@@ -2,6 +2,9 @@ package nla.local.pojos.orders;
 
 
 import nla.local.pojos.subjects.Person;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -29,7 +32,7 @@ public class Declarant {
 
     @OneToOne
     @JoinColumn( name = "PARENT_ID")
-    //@Cascade(CascadeType.SAVE_UPDATE)
+    @Cascade(CascadeType.SAVE_UPDATE)
     private Declarant parentPerson;
 
     @Column(name = "DECLREPR_TYPE")
