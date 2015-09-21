@@ -42,11 +42,11 @@ public class OperationsServiceImp extends BaseServiceImp<Operation> implements I
 
         if (declId != null) {
 
-            dc = dc.add(Restrictions.eq("DECL_ID", declId));
+            dc = dc.add(Restrictions.eq("declId", declId));
 
-            dc = dc.add(Restrictions.eq("STATUS",1));
+            dc = dc.add(Restrictions.eq("status",1));
 
-            dc = dc.add(Restrictions.eq("entytyType",et));
+            dc = dc.add(Restrictions.eq("entytyType",EntityType.toInt(et)));
 
             return super.getCriterion(dc);
 

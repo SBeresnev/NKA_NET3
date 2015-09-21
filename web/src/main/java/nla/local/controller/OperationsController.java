@@ -46,11 +46,14 @@ public class OperationsController {
 
     @RequestMapping(value={"/get_from_decl"}, method={RequestMethod.GET})
     public List<Operation> getFrom(Integer Id, String entityType) throws DaoException {
+
         logger.info("root - /operations/get_from_decl");
 
         EntityType typ = EntityType.valueOf(entityType);
 
-        return null; //operationsService.getFromDecl(declId);
+        List<Operation> oper_list = operationsService.getEntytyOper(Id,typ);
+
+        return  oper_list;
     }
 
     @RequestMapping(value={"/delete"}, method={RequestMethod.DELETE})

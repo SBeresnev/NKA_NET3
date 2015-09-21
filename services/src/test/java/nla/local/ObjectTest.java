@@ -73,15 +73,15 @@ public class ObjectTest{
     @Test
     public void ObjectTestController() throws DaoException, ServiceException {
 
-       // baseClean.ObjectClean();
+        baseClean.ObjectClean();
 
         long startTime = System.nanoTime();
 
-       // bindObjectbyAddressCommon();
+        bindObjectbyAddressCommon();
 
-       // bindObjectbyInventoryNumCommon();
+        //bindObjectbyInventoryNumCommon();
 
-        updateObject();
+        //updateObject();
 
         long endTime = System.nanoTime();
 
