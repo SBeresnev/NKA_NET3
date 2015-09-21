@@ -52,7 +52,6 @@ public class BaseClean {
     public void SubjectClean()
     {
 
-
         BargainClean();
         RightClean();
         ObjectClean();
@@ -73,9 +72,8 @@ public class BaseClean {
     }
 
 
-        public void DeclClean()
-       {
-
+    public void DeclClean()
+    {
         OperationsClean();
 
         scg.update(cleanDecluser);
@@ -85,13 +83,19 @@ public class BaseClean {
         scg.update(cleanDecl);
     }
 
+    public void AddressClean()
+    {
+        scg.update(cleanAddress);
+
+        ObjectClean();
+
+    }
+
     public void ObjectClean()
     {
         scg.update(cleanObjectsdata);
         scg.update(cleanObjectreg_inv);
         scg.update(cleanOjects);
-        scg.update(cleanAddress);
-
     }
 
     public void RightClean()

@@ -9,6 +9,7 @@ import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.object.Object_src;
 import nla.local.pojos.operations.EntityType;
 import nla.local.pojos.operations.Operation;
+import nla.local.pojos.orders.Decl;
 import nla.local.pojos.subjects.OPerson;
 import nla.local.pojos.subjects.Person;
 import nla.local.services.*;
@@ -18,6 +19,9 @@ import nla.local.services.impl.CatalogServiceImp;
 import nla.local.util.BaseClean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -49,6 +53,9 @@ public class ObjectTest{
     public BaseClean baseClean;
 
     @Autowired
+    public IDeclService ids;
+
+    @Autowired
     public BaseServiceImp baseServiceImp;
 
     @Autowired
@@ -73,15 +80,15 @@ public class ObjectTest{
     @Test
     public void ObjectTestController() throws DaoException, ServiceException {
 
-        baseClean.ObjectClean();
+        //baseClean.ObjectClean();
 
         long startTime = System.nanoTime();
 
         bindObjectbyAddressCommon();
 
-        //bindObjectbyInventoryNumCommon();
+        bindObjectbyInventoryNumCommon();
 
-        //updateObject();
+        updateObject();
 
         long endTime = System.nanoTime();
 
@@ -139,10 +146,9 @@ public class ObjectTest{
 
         List<Object_dest> ret_val_dest =  osi.findObjectbyAddressCommon( Arrays.asList(adr_dest.getAdr_num()));
 
-
         Operation oper = new Operation();
 
-        oper = getOperField(61, 1, 62, 1, 63, 1010, 1108);
+        oper = getOperField(61, 1, 62, 1, 63, 1010);
 
          int i = 0;
 
@@ -184,11 +190,17 @@ public class ObjectTest{
 
     }
 
-    public Operation getOperField(int operType, int operCode, int operSubtype, int operSubcode, int resonType, int ReasonCode, int declId) throws ServiceDaoException {
+    public Operation getOperField(int operType, int operCode, int operSubtype, int operSubcode, int resonType, int ReasonCode ) throws ServiceDaoException {
+
+
+        DetachedCriteria dc_crit =  DetachedCriteria.forClass(Decl.class).add(Restrictions.sqlRestriction("rownum = 1"));
+
+         List<Decl> dec_list = ids.getCriterion(dc_crit);
+
 
         Operation oper = new Operation();
 
-        oper.setDeclId(declId);
+        oper.setDeclId(dec_list.get(0).getDecl_id());
 
         oper.setEntytyType(EntityType.toInt(EntityType.OBJECT));
 
@@ -247,7 +259,7 @@ public class ObjectTest{
 
         Operation oper = new Operation();
 
-        oper = getOperField(61, 1, 62, 1, 63, 1010, 1108);
+        oper = getOperField(61, 1, 62, 1, 63, 1010);
 
 
        // List<Object_dest> od = osi.findbyobjDestid((long) 174);

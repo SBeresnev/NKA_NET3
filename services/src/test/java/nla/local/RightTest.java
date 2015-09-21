@@ -3,12 +3,20 @@ package nla.local;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.dict.CatalogItem;
+import nla.local.pojos.dict.CatalogPk;
 import nla.local.pojos.object.Object_dest;
+import nla.local.pojos.operations.EntityType;
+import nla.local.pojos.operations.Operation;
+import nla.local.pojos.orders.Decl;
 import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
+import nla.local.pojos.subjects.OPerson;
 import nla.local.pojos.subjects.PPerson;
+import nla.local.pojos.subjects.Person;
+import nla.local.services.IDeclService;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
+import nla.local.services.ISubjectService;
 import nla.local.services.impl.BaseServiceImp;
 import nla.local.services.impl.CatalogServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
@@ -41,6 +49,12 @@ import java.util.*;
 public class RightTest {
 
     @Autowired
+    public IDeclService ids;
+
+    @Autowired
+    public BaseServiceImp baseServiceImp;
+
+    @Autowired
     public BaseClean baseClean;
 
     @Qualifier("baseServiceImp")
@@ -54,6 +68,11 @@ public class RightTest {
     @Autowired
     @Qualifier("PSubjectServiceImp")
     public PSubjectServiceImp pService;
+
+    @Qualifier("OSubjectServiceImp")
+    @Autowired
+    private ISubjectService<OPerson> oPerson;
+
 
     @Autowired
     public IObjectService ios;
@@ -80,15 +99,15 @@ public class RightTest {
 
         generateSingleRightPass();
 
-        generatesharedRightPass();
+       // generatesharedRightPass();
 
        // splitsharedRight();
 
-        passsharedRight();
+       // passsharedRight();
 
-        //findbySubjectId();
+       // findbySubjectId();
 
-        //getRightbyObject();
+       // getRightbyObject();
 
         long endTime = System.nanoTime();
 
@@ -132,9 +151,13 @@ public class RightTest {
         List<Object_dest> ret_val_dest = (List<Object_dest>) ios.findObjectbyInventoryNumCommon(1, 2, 100);
 
         ret_val_dest.get(0).setReg_type(1);
+
         ret_val_dest.get(0).setStatus(1);
 
-        List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
+
+
+
+        List<PPerson> lp = pService.getAll();//findByFIOType("дженкинс", null, null, null, 110);
 
 
         /////-------------------------------------set Rights-----------------------------------------------//////
@@ -157,18 +180,19 @@ public class RightTest {
 
         rgt.setComments("Object number = " + 0);
 
-        rgt.setOoper_id(152);
-
         rgt.setBindedObj(ret_val_dest.get(0));
 
         rgt.setStatus(1);
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Operation opr = getOperField(61,10,62,1,63,3100);
+
+        rgt.setOoper(opr);
 
         /////-------------------------------------set RightOwner-----------------------------------------------//////
 
         int p_index  = r.nextInt(lp.size() - 1);
-
-        orgt.setOoper_id(rgt.getOoper_id());
 
         orgt.setStatus(1);
 
@@ -291,15 +315,19 @@ public class RightTest {
 
         rgt.setComments("Object number ");
 
-        rgt.setOoper_id(152);
-
         rgt.setObject_entity_id(object_id);
 
         rgt.setStatus(1);
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Operation opr = getOperField(61,10,62,1,63,3100);
+
+        rgt.setOoper(opr);
+
         /***************************** update parent owner **********************************************************/
 
-        rown.setOoper_id(156);
+        rown.setOoper(opr);
 
         rsi.updateRightOwner(rown);
 
@@ -314,7 +342,7 @@ public class RightTest {
         {
             RightOwner orgt = new RightOwner();
 
-            orgt.setOoper_id(152);
+            orgt.setOoper(opr);
 
             orgt.setStatus(1);
 
@@ -388,9 +416,11 @@ public class RightTest {
 
         par_row.setStatus(0);
 
-        par_row.setOoper_id(156);
-
         par_row.setDate_out(cal.getTime());
+
+        Operation opr = getOperField(61,10,62,1,63,3100);
+
+        par_row.setOoper(opr);
 
         /*****************************************************************************************************/
 
@@ -408,12 +438,11 @@ public class RightTest {
 
         rgt.setComments("Object number ");
 
-        rgt.setOoper_id(152);
-
         rgt.setObject_entity_id(object_id);
 
         rgt.setStatus(1);
 
+        rgt.setOoper(opr);
 
         /******************************* add right********************************************************/
 
@@ -428,7 +457,7 @@ public class RightTest {
         {
             RightOwner orgt = new RightOwner();
 
-            orgt.setOoper_id(152);
+            orgt.setOoper(opr);
 
             orgt.setStatus(1);
 
@@ -484,6 +513,8 @@ public class RightTest {
             }
         });
 
+        Operation opr = getOperField(61,10,62,1,63,3100);
+
         /***************************init right***************************************************************/
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -516,7 +547,7 @@ public class RightTest {
 
         rgt.setComments("Object number ");
 
-        rgt.setOoper_id(152);
+        rgt.setOoper(opr);
 
         rgt.setObject_entity_id(object_id);
 
@@ -524,7 +555,7 @@ public class RightTest {
 
         RightOwner orgt = new RightOwner();
 
-        orgt.setOoper_id(152);
+        orgt.setOoper(opr);
 
         orgt.setStatus(1);
 
@@ -546,7 +577,7 @@ public class RightTest {
 
             parent_owner.setDate_out(cal.getTime());
 
-            parent_owner.setOoper_id(159);
+            parent_owner.setOoper(opr);
 
             RightOwner child_own = new RightOwner();
 
@@ -569,6 +600,8 @@ public class RightTest {
 
     public void generateLimitations() throws ServiceDaoException, ServiceException {
 
+        Operation opr = getOperField(61,10,62,1,63,3100);
+
         CatalogItem  directType = CollectionUtils.find(rightEntytyTypeList, new Predicate() {
             public boolean evaluate(Object o) {
                 CatalogItem c = (CatalogItem) o;
@@ -586,7 +619,7 @@ public class RightTest {
 
         rght.setBegin_date(cal.getTime());
 
-        rght.setOoper_id(159);
+        rght.setOoper(opr);
 
         rght.setIs_needed(0);
 
@@ -616,5 +649,74 @@ public class RightTest {
         rsi.addRight(rght);
 
     }
+
+    public Operation getOperField(int operType, int operCode, int operSubtype, int operSubcode, int resonType, int ReasonCode ) throws ServiceDaoException {
+
+
+        DetachedCriteria dc_crit =  DetachedCriteria.forClass(Decl.class).add(Restrictions.sqlRestriction("rownum = 1"));
+
+        List<Decl> dec_list = ids.getCriterion(dc_crit);
+
+
+        Operation oper = new Operation();
+
+        oper.setDeclId(dec_list.get(0).getDecl_id());
+
+        oper.setEntytyType(EntityType.toInt(EntityType.OBJECT));
+
+        oper.setOperDate(new Date());
+
+
+        CatalogPk cp = new CatalogPk();
+
+        cp.setAnalytic_type(operType);
+
+        cp.setCode_id(operCode);
+
+        CatalogItem ci = catalogService.getCatalogItem(cp);                         // формирование
+
+        oper.setOperType(ci);
+
+        baseServiceImp.getBaseDao().getSession().evict(ci);
+
+
+        cp.setAnalytic_type(operSubtype);
+
+        cp.setCode_id(operSubcode);
+
+        ci = catalogService.getCatalogItem(cp);
+
+        oper.setOperSubtype(ci);
+
+        baseServiceImp.getBaseDao().getSession().evict(ci);
+
+
+       // cp.setAnalytic_type(resonType);
+
+       // cp.setCode_id(ReasonCode);
+
+        //ci = catalogService.getCatalogItem(cp);
+
+        ci = catalogService.getCatalogItem(63,3100);
+
+        oper.setReason(ci);
+
+        baseServiceImp.getBaseDao().getSession().evict(ci);
+
+
+
+        oper.setRegDate(new Date ());
+
+        Person prs = oPerson.getSubject(2778);
+
+        oper.setExecutor(prs);
+
+        oper.setStatus(1);
+
+
+        return oper ;
+    }
+
+
 
 }

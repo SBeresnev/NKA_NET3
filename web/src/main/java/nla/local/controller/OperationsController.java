@@ -45,7 +45,7 @@ public class OperationsController {
     }
 
     @RequestMapping(value={"/get_from_decl"}, method={RequestMethod.GET})
-    public List<Operation> getFrom(Integer Id, String entityType) throws DaoException {
+    public List<Operation> getFrom(Long Id, String entityType) throws DaoException {
 
         logger.info("root - /operations/get_from_decl");
 

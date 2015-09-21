@@ -3,7 +3,6 @@ package nla.local.services.impl;
 import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.operations.EntityType;
 import nla.local.pojos.operations.Operation;
-import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IOperationsService;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
@@ -36,7 +35,7 @@ public class OperationsServiceImp extends BaseServiceImp<Operation> implements I
 
 
     @Override
-    public List<Operation> getEntytyOper (Integer declId, EntityType et) throws ServiceDaoException {
+    public List<Operation> getEntytyOper (Long declId, EntityType et) throws ServiceDaoException {
 
         DetachedCriteria dc = DetachedCriteria.forClass(Operation.class);
 
@@ -48,7 +47,9 @@ public class OperationsServiceImp extends BaseServiceImp<Operation> implements I
 
             dc = dc.add(Restrictions.eq("entytyType",EntityType.toInt(et)));
 
-            return super.getCriterion(dc);
+            List<Operation> ret_val = super.getCriterion(dc);
+
+            return ret_val;
 
         } else {
 

@@ -64,7 +64,7 @@ public class CatalogController {
     @RequestMapping(value = {"/operationType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getOperationType() throws DaoException {
         logger.info("root - /dict/operationType");
-        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.OPERATION__TYP));
+        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.OPERATION_TYP));
     }
 
     @RequestMapping(value = {"/operationSubType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})

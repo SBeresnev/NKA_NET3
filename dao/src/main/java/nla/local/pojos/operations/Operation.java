@@ -27,7 +27,7 @@ public class Operation {
 
 
     @Column(name = "DECL_ID")
-    private Integer declId;
+    private Long declId;
 
 
     @Column (name ="ENTITY_TYPE")
@@ -37,7 +37,7 @@ public class Operation {
     @ManyToOne
     @JoinColumnsOrFormulas({
             @JoinColumnOrFormula(column= @JoinColumn(name = "OPER_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula(formula=@JoinFormula(value= CatalogConstants.OPERATION__TYP, referencedColumnName="ANALYTIC_TYPE"))})
+            @JoinColumnOrFormula(formula=@JoinFormula(value= CatalogConstants.OPERATION_TYP, referencedColumnName="ANALYTIC_TYPE"))})
     private CatalogItem operType;
 
     @ManyToOne
@@ -62,13 +62,13 @@ public class Operation {
     @Column( name = "OPER_DATE", nullable = false)
     private Date operDate;
 
-    @OneToOne
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "PARENT_ID_HIST")
     private Operation parent_id_hist;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "PARENT_ID_ORDER")
-    private Set<Operation> parent_id_order;
+    private Operation parent_id_order;
 
     @Column( name = "STATUS", nullable = false)
     private Integer status;
@@ -81,11 +81,11 @@ public class Operation {
         this.parent_id_hist = parent_id_hist;
     }
 
-    public Set<Operation> getParent_id_order() {
+    public Operation getParent_id_order() {
         return parent_id_order;
     }
 
-    public void setParent_id_order(Set<Operation> parent_id_order) {
+    public void setParent_id_order(Operation parent_id_order) {
         this.parent_id_order = parent_id_order;
     }
 
@@ -153,11 +153,11 @@ public class Operation {
         this.executor = executor;
     }
 
-    public Integer getDeclId() {
+    public Long getDeclId() {
         return declId;
     }
 
-    public void setDeclId(Integer declId) {
+    public void setDeclId(Long declId) {
         this.declId = declId;
     }
 

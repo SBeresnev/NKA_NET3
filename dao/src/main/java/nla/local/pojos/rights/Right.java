@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
+import nla.local.pojos.operations.Operation;
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
@@ -83,8 +84,9 @@ public class Right implements Serializable {
     private String comments;
 
 
-    @Column(name = "OOPER_ID")
-    private Integer ooper_id;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn( name = "OOPER_ID")
+    private Operation ooper;
 
 
     @Column(name = "IS_NEEDED")
@@ -210,12 +212,12 @@ public class Right implements Serializable {
         this.comments = comments;
     }
 
-    public Integer getOoper_id() {
-        return ooper_id;
+    public Operation getOoper() {
+        return ooper;
     }
 
-    public void setOoper_id(Integer ooper_id) {
-        this.ooper_id = ooper_id;
+    public void setOoper(Operation ooper) {
+        this.ooper = ooper;
     }
 
     public Integer getIs_needed() {

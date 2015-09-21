@@ -2,9 +2,8 @@ package nla.local.pojos.rights;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+import nla.local.pojos.operations.Operation;
 import nla.local.pojos.subjects.Person;
-import org.hibernate.annotations.*;
-import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -55,8 +54,11 @@ public class RightOwner implements Serializable {
     @Column(name = "STATUS")
     private Integer status;
 
-    @Column(name = "OOPER_ID")
-    private Integer ooper_id;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn( name = "OOPER_ID")
+    private Operation ooper;
+
+
 
     /*
     public Integer getRight_id() {
@@ -140,12 +142,13 @@ public class RightOwner implements Serializable {
         this.status = status;
     }
 
-    public Integer getOoper_id() {
-        return ooper_id;
+    public Operation getOoper() {
+        return ooper;
     }
 
-    public void setOoper_id(Integer ooper_id) {
-        this.ooper_id = ooper_id;
+    public void setOoper(Operation ooper_id) {
+
+        this.ooper = ooper_id;
     }
 
 

@@ -16,7 +16,7 @@ public interface IOperationsService extends IService<Operation>{
 
     public Operation get( Integer id) throws ServiceDaoException;
 
-    public List<Operation> getEntytyOper (Integer declId, EntityType et) throws ServiceDaoException;
+    public List<Operation> getEntytyOper (Long declId, EntityType et) throws ServiceDaoException;
 
 
 }

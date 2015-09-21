@@ -63,6 +63,12 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         if(rght.getObject_entity_id() == null) rght.setBindedObj(ios.bindObject(rght.getBindedObj()));
 
+        if(rght.getBindedObj().getOoper().getOoperId() != null && rght.getOoper() != null)
+        {
+            rght.getOoper().setParent_id_order(rght.getBindedObj().getOoper());
+
+        }
+
         if(rght.getRight_id() == null)
             super.add(rght);
 

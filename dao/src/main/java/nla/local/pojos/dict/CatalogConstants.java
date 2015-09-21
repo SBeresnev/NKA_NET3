@@ -15,7 +15,7 @@ public interface CatalogConstants {
 
     public static final String RESOLUTION_TYP  = "55";
 
-    public static final String OPERATION__TYP  = "61";
+    public static final String OPERATION_TYP  = "61";
 
     public static final String OPERATION_SUB_TYP  = "62";
 
