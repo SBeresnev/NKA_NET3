@@ -70,7 +70,7 @@ public class SubjectTest
 
     private List<CatalogItem> allDictList;
 
-    private Integer GLOBAL_INDEX = 1;
+    private Integer GLOBAL_INDEX = 15;
 
 
     @Before
@@ -105,7 +105,6 @@ public class SubjectTest
 
 
         baseClean.SubjectClean();
-
 
         AddJurSubject();
         GetJurSubject();

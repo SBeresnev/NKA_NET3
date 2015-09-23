@@ -2,6 +2,7 @@ package nla.local.pojos.bargain;
 
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
+import nla.local.pojos.operations.Operation;
 import nla.local.pojos.rights.RightOwner;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JoinColumnOrFormula;
@@ -58,8 +59,9 @@ public class Bargain {
     @Column( name ="DOC_ID")
     private Integer doc_id;
 
-    @Column( name ="OOPER_ID")
-    private Integer ooper_id;
+    @ManyToOne ( cascade = CascadeType.ALL)
+    @JoinColumn( name ="OOPER_ID")
+    private Operation ooper;
 
     @Column( name ="CURRENCY_COMPLEX")
     private Integer currency_complex;
@@ -162,12 +164,12 @@ public class Bargain {
         this.status = status;
     }
 
-    public Integer getOoper_id() {
-        return ooper_id;
+    public Operation getOoper() {
+        return ooper;
     }
 
-    public void setOoper_id(Integer ooper_id) {
-        this.ooper_id = ooper_id;
+    public void setOoper(Operation ooper) {
+        this.ooper = ooper;
     }
 
     public Integer getCurrency_complex() {

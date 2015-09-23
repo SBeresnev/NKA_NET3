@@ -19,6 +19,7 @@ import nla.local.services.IRightService;
 import nla.local.services.ISubjectService;
 import nla.local.services.impl.BaseServiceImp;
 import nla.local.services.impl.CatalogServiceImp;
+import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.services.impl.subjects.PSubjectServiceImp;
 import nla.local.util.BaseClean;
 import org.apache.commons.collections4.CollectionUtils;
@@ -64,6 +65,9 @@ public class RightTest {
     @Autowired
     public IRightService rsi;
 
+    @Autowired
+    private OSubjectServiceImp oServices;
+
 
     @Autowired
     @Qualifier("PSubjectServiceImp")
@@ -89,7 +93,12 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-         baseClean.RightClean();
+
+        baseClean.RightClean();
+
+        baseClean.ObjectClean();
+
+        baseClean.OperationsClean();
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -99,11 +108,11 @@ public class RightTest {
 
         generateSingleRightPass();
 
-       // generatesharedRightPass();
+        generateSharedRightPass();
 
        // splitsharedRight();
 
-       // passsharedRight();
+        passsharedRight();
 
        // findbySubjectId();
 
@@ -155,10 +164,11 @@ public class RightTest {
         ret_val_dest.get(0).setStatus(1);
 
 
+        Operation opr = getOperField(61,1,62,1,63,1010);
 
+        ret_val_dest.get(0).setOoper(opr);
 
         List<PPerson> lp = pService.getAll();//findByFIOType("дженкинс", null, null, null, 110);
-
 
         /////-------------------------------------set Rights-----------------------------------------------//////
 
@@ -186,7 +196,7 @@ public class RightTest {
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Operation opr = getOperField(61,10,62,1,63,3100);
+        opr = getOperField(61,10,62,1,63,3100);
 
         rgt.setOoper(opr);
 
@@ -203,6 +213,10 @@ public class RightTest {
         orgt.setNumerator_part(1);
 
         orgt.setDenominator_part(1);
+
+        opr = getOperField(61,10,62,1,63,3270);
+
+        orgt.setOoper(opr);
 
         /////---------------------------------bind ------------------------------------------------------------//////
 
@@ -238,8 +252,7 @@ public class RightTest {
 
     }
 
-    public void generatesharedRightPass() throws ServiceDaoException, ServiceException {
-
+    public void generateSharedRightPass() throws ServiceDaoException, ServiceException {
 
         CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
             public boolean evaluate(Object o) {
@@ -253,7 +266,7 @@ public class RightTest {
 
         final Integer f_subject_id = r_lrt.iterator().next().getOwner().subjectId;
 
-        List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
+        List<PPerson> lp = pService.getAll();//findByFIOType("дженкинс", null, null, null, 110);
 
         /***********************************************************************************/
 
@@ -321,7 +334,7 @@ public class RightTest {
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        Operation opr = getOperField(61,10,62,1,63,3100);
+        Operation opr = getOperField(61,10,62,1,63,2250);
 
         rgt.setOoper(opr);
 
@@ -337,6 +350,8 @@ public class RightTest {
         // rsi.addRight(rgt);
 
         /***************************init shred owners***************************************************************/
+
+       opr = getOperField(61,10,62,1,63,3100);
 
        for (int i = 0 ; i< 3; i++)
         {
@@ -357,6 +372,8 @@ public class RightTest {
             orgt.setParent_owner(rown);
 
             orgt.setRight(rgt);
+
+            orgt.setOoper(opr);
 
             rsi.addRightOwner(orgt);
 
@@ -414,13 +431,13 @@ public class RightTest {
 
         /**************************** Parent owner update ****************************************************/
 
+        Operation opr = getOperField(61,5,62,3,63,1200);
+
+        par_row.setOoper(opr);
+
         par_row.setStatus(0);
 
         par_row.setDate_out(cal.getTime());
-
-        Operation opr = getOperField(61,10,62,1,63,3100);
-
-        par_row.setOoper(opr);
 
         /*****************************************************************************************************/
 
@@ -442,6 +459,8 @@ public class RightTest {
 
         rgt.setStatus(1);
 
+        opr = getOperField(61,10,62,1,63,3100);
+
         rgt.setOoper(opr);
 
         /******************************* add right********************************************************/
@@ -452,6 +471,7 @@ public class RightTest {
         /***************************init shred owners***************************************************************/
 
         List<RightOwner> own_list = new ArrayList<RightOwner>();
+
 
         for (int i = 0 ; i< 3; i++)
         {
@@ -565,6 +585,9 @@ public class RightTest {
 
         orgt.setRight(rgt);
 
+        opr = getOperField(61,10,62,1,63,3100);
+
+        orgt.setOoper(opr);
         /***************************init shred owners ***************************************************************/
 
         HashMap<RightOwner,RightOwner> h_own_list =  new HashMap<RightOwner,RightOwner>();
@@ -577,7 +600,6 @@ public class RightTest {
 
             parent_owner.setDate_out(cal.getTime());
 
-            parent_owner.setOoper(opr);
 
             RightOwner child_own = new RightOwner();
 
@@ -586,6 +608,8 @@ public class RightTest {
             child_own.setNumerator_part(parent_owner.getNumerator_part());
 
             child_own.setDenominator_part(parent_owner.getDenominator_part());
+
+            child_own.setOoper(opr);
 
             child_own.setStatus(1);
 
@@ -707,7 +731,9 @@ public class RightTest {
 
         oper.setRegDate(new Date ());
 
-        Person prs = oPerson.getSubject(2778);
+        List<OPerson> ops = oServices.findOffUser("", "", "", null, "", null);
+
+        Person prs = ops.get(0);
 
         oper.setExecutor(prs);
 

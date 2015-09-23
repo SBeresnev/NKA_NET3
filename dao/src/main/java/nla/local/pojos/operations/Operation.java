@@ -8,6 +8,7 @@ import org.hibernate.annotations.*;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name="V_OPERATIONS", schema = "NKA_NET3_DEV")
-public class Operation {
+public class Operation implements Serializable {
 
 
     @Id
@@ -62,24 +63,18 @@ public class Operation {
     @Column( name = "OPER_DATE", nullable = false)
     private Date operDate;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "PARENT_ID_HIST")
-    private Operation parent_id_hist;
-
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PARENT_ID_ORDER")
     private Operation parent_id_order;
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "PARENT_ID_HIST")
+    private Operation parent_id_hist;
 
     @Column( name = "STATUS", nullable = false)
     private Integer status;
 
-    public Operation getParent_id_hist() {
-        return parent_id_hist;
-    }
-
-    public void setParent_id_hist(Operation parent_id_hist) {
-        this.parent_id_hist = parent_id_hist;
-    }
 
     public Operation getParent_id_order() {
         return parent_id_order;
@@ -87,6 +82,15 @@ public class Operation {
 
     public void setParent_id_order(Operation parent_id_order) {
         this.parent_id_order = parent_id_order;
+    }
+
+    public Operation getParent_id_hist() {
+        return parent_id_hist;
+    }
+
+
+    public void setParent_id_hist(Operation parent_id_hist) {
+        this.parent_id_hist = parent_id_hist;
     }
 
     public CatalogItem getReason() {

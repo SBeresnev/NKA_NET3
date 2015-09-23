@@ -16,6 +16,7 @@ import nla.local.services.*;
 import nla.local.services.impl.BaseServiceImp;
 import nla.local.services.impl.CatalogDependencyServiceImp;
 import nla.local.services.impl.CatalogServiceImp;
+import nla.local.services.impl.subjects.OSubjectServiceImp;
 import nla.local.util.BaseClean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
@@ -76,6 +77,9 @@ public class ObjectTest{
     @Qualifier("OSubjectServiceImp")
     @Autowired
     private ISubjectService<OPerson> oPers;
+
+    @Autowired
+    private OSubjectServiceImp oServices;
 
     @Test
     public void ObjectTestController() throws DaoException, ServiceException {
@@ -245,7 +249,10 @@ public class ObjectTest{
 
         oper.setRegDate(new Date ());
 
-        Person prs = oPers.getSubject(2778);
+        List<OPerson> ops = oServices.findOffUser("", "", "", null, "", null);
+
+        Person prs = ops.get(0);
+
 
         oper.setExecutor(prs);
 
