@@ -33,7 +33,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:beans-services.xml","classpath:beans-dao.xml"})
-@TransactionConfiguration(defaultRollback = false)
+@TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class SubjectTest
 {
@@ -76,7 +76,7 @@ public class SubjectTest
     @Before
     public void setUp() throws Exception {
 
-        // baseClean.SubjectClean();
+         baseClean.SubjectClean();
 
         /*small dictionary test */
 
