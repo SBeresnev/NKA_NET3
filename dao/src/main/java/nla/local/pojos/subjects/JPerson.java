@@ -1,5 +1,6 @@
 package nla.local.pojos.subjects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.CatalogConstants;

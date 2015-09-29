@@ -1,5 +1,7 @@
 package nla.local.pojos.subjects;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import org.hibernate.annotations.JoinColumnOrFormula;
@@ -36,6 +38,7 @@ public class PPerson extends Person implements Serializable{
     public CatalogItem sitizens;
 
     @Column(name = "BOTH_REG_DATE")
+    @JsonSerialize(using= DateSerializer.class)
     public Date bothRegDate;
 
     @Column(name = "PERSONAL_NUMBER")
