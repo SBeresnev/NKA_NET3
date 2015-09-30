@@ -121,7 +121,6 @@ public class JurMINJST implements Serializable{
     @JsonIgnore
     private SubjectData subjectData;
 
-
     @JsonIgnore
     private Integer NkOpf;
 
