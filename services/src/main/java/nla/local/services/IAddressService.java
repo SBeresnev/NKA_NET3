@@ -28,6 +28,8 @@ public interface IAddressService extends IService {
 
     public List<Ate> getAllATE() throws  ServiceDaoException ;
 
+    public String fillParentAte(Ate in_ate) throws ServiceDaoException;
+
     /************************************************************************/
 
     public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer room_num) throws ServiceDaoException;

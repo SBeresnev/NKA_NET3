@@ -127,7 +127,6 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
             query_Address_dest =  query_Address_dest.add(Restrictions.like("adr", Adr, MatchMode.ANYWHERE).ignoreCase());
 
-
             soato = soato == "" ? null :soato;
 
             query_Address_dest =  soato != null ? query_Address_dest.add(Restrictions.eq("soato", soato)) : query_Address_dest;
@@ -208,6 +207,8 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
         query_ = parentate_id != null ? query_.add(Restrictions.eq("parentate_id", parentate_id)) : query_.add(Restrictions.isNull("parentate_id") ) ;
 
+        query_.addOrder(Order.asc("ate_name"));
+
         ret_ate = super.getCriterion(query_);
 
         return  ret_ate;
@@ -218,7 +219,9 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
     public List<Ate> findATEbyParentLike(Integer parentate_id, String ate_name) throws ServiceDaoException
     {
 
-        List<Ate> ret_ate = null;
+        List<Ate> ret_ates = new ArrayList<Ate>();
+
+        if( parentate_id == null && (ate_name == null || ate_name == "" ) ) return ret_ates;
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_ate);
 
@@ -232,11 +235,31 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
         }
 
-        ret_ate = super.getCriterion(query_);
+        ret_ates = super.getCriterion(query_);
 
-        return ret_ate;
+        return ret_ates;
 
     }
+
+    @Override
+    public String fillParentAte(Ate in_ate) throws ServiceDaoException {
+
+        String ret_val = "";
+
+        List<Ate> ate_s = expandATE(in_ate.getTree_ids());
+
+        for (Ate ate : ate_s) {
+
+            ret_val += ate.getAte_name() + "; ";
+
+        }
+
+        if (ret_val.length() > 2) { in_ate.setParent_ate(ret_val); }
+
+        return ret_val;
+
+    }
+
 
     @Override
     public List<Ate> expandATE(String Tree_ids) throws ServiceDaoException

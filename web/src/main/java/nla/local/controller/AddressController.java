@@ -60,6 +60,8 @@ public class AddressController {
 
         ret_val = addressServiceImp.findATEbyParentLike(parent_id, ate_name);
 
+        if ( parent_id == null && ret_val.size() >0)  for (Ate val : ret_val ) addressServiceImp.fillParentAte(val);
+
         return ret_val;
 
     }

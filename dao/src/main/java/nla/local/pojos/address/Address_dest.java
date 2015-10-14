@@ -15,7 +15,7 @@ public class Address_dest {
     @Column(name="ADDRESS_ID", unique=true, nullable=false )
     @SequenceGenerator(name="adr_seq", sequenceName="SEQ_ADDRESS_ID")
     @GeneratedValue(strategy = GenerationType.AUTO ,generator="adr_seq")
-     private Long address_id;
+    private Long address_id;
 
     @Column(name = "ADR_NUM")
     private Long adr_num;

@@ -26,6 +26,9 @@ public class Ate {
     @Column(name = "SOATO")
     private String soato;
 
+    @Transient
+    private String full_ate;
+
 
     public String getSoato() {
         return soato;
@@ -67,12 +70,12 @@ public class Ate {
         this.ate_name = ate_name;
     }
 
-    public Integer getParent_ate() {
-        return parentate_id;
+    public String getParent_ate() {
+        return full_ate;
     }
 
-    public void setParent_ate(Integer parentate_id) {
-        this.parentate_id = parentate_id;
+    public void setParent_ate(String full_ate) {
+        this.full_ate = full_ate;
     }
 
 }
