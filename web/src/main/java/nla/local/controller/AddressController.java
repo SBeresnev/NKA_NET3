@@ -60,7 +60,7 @@ public class AddressController {
 
         ret_val = addressServiceImp.findATEbyParentLike(parent_id, ate_name);
 
-        if ( parent_id == null && ret_val.size() >0)  for (Ate val : ret_val ) addressServiceImp.fillParentAte(val);
+        if (ret_val.size() >0)  for (Ate val : ret_val ) addressServiceImp.fillParentAte(val);
 
         return ret_val;
 
@@ -93,11 +93,11 @@ public class AddressController {
     }
 
     @RequestMapping(value = {"/findHomeAddress"}, method = {RequestMethod.GET})
-    public List<Address_src> findHomeAddress(Integer ate_id, String street_name , Integer house_num, Integer room_num) throws ServiceDaoException {
+    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer corp_num, Integer room_num) throws ServiceDaoException {
 
         logger.info("root - /address/findHomeAddress");
 
-        List<Address_src> ret_val = addressServiceImp.findHomeAddress( ate_id,  street_name,  house_num, room_num);
+        List<Address_src> ret_val = addressServiceImp.findHomeAddress( ate_id,  street_name, house_num, corp_num, room_num);
 
         return ret_val;
 

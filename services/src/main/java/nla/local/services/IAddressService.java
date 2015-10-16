@@ -32,7 +32,7 @@ public interface IAddressService extends IService {
 
     /************************************************************************/
 
-    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer room_num) throws ServiceDaoException;
+    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer corp_num, Integer room_num ) throws ServiceDaoException;
 
     public List<Address_src> findAddress(Integer ate_id, String elementName, Integer objectType, Integer objectPlace, Integer house_num, Integer room_num )  throws ServiceDaoException;
 

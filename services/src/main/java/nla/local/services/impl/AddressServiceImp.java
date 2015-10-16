@@ -139,7 +139,7 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
     }
 
     @Override
-    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer room_num ) throws ServiceDaoException
+    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer corp_num, Integer room_num ) throws ServiceDaoException
     {
         // в населенном пункте (1) , (Строение, Часть строения ) (2,3)
         List<Address_src> ret_val = null;
@@ -152,9 +152,13 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
             query_ = query_.add(Restrictions.like("elementName", street_name, MatchMode.ANYWHERE).ignoreCase());
 
+
             query_ = house_num != null ?  query_.add(Restrictions.eq("houseNum", house_num)) : query_;
 
             query_ = room_num != null ?  query_.add(Restrictions.eq("roomNum", room_num)) : query_;
+
+            query_ = corp_num != null ?  query_.add(Restrictions.eq("corpNum", corp_num)) : query_;
+
 
             query_ = query_.add(Restrictions.in("propType", new Integer[]{2, 3})); //(Строение, Часть строения ) (2,3)
 
@@ -231,7 +235,7 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
             query_ =  query_.add(Restrictions.ne("ate_id", parentate_id));
 
-            query_ =  query_.add(Restrictions.like("tree_ids", String.valueOf(parentate_id) , MatchMode.ANYWHERE).ignoreCase());
+            query_ =  query_.add(Restrictions.like("tree_ids", ";" + String.valueOf(parentate_id) + ";" , MatchMode.ANYWHERE).ignoreCase());
 
         }
 
