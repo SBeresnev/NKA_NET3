@@ -103,6 +103,17 @@ public class AddressController {
 
     }
 
+    @RequestMapping(value = {"/findParcelAddress"}, method = {RequestMethod.GET})
+    public List<Address_src> findParcelAddress(Integer ate_id, String street_name, Integer house_num, Integer elem_type_dep) throws ServiceDaoException {
+
+        logger.info("root - /address/findParcelAddress");
+
+        List<Address_src> ret_val = addressServiceImp.findParcelAddress(ate_id, street_name, house_num, elem_type_dep);
+
+        return ret_val;
+
+    }
+
 
     @RequestMapping(value = {"/findAddress"}, method = {RequestMethod.GET})
     public List<Address_src> findAddress(Integer ate_id, String elementName, Integer objectType, Integer objectPlace, Integer house_num, Integer room_num) throws ServiceDaoException {

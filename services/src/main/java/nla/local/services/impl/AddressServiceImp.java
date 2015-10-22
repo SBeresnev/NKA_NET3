@@ -152,17 +152,42 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
             query_ = query_.add(Restrictions.like("elementName", street_name, MatchMode.ANYWHERE).ignoreCase());
 
-
             query_ = house_num != null ?  query_.add(Restrictions.eq("houseNum", house_num)) : query_;
 
             query_ = room_num != null ?  query_.add(Restrictions.eq("roomNum", room_num)) : query_;
 
             query_ = corp_num != null ?  query_.add(Restrictions.eq("corpNum", corp_num)) : query_;
 
-
             query_ = query_.add(Restrictions.in("propType", new Integer[]{2, 3})); //(Строение, Часть строения ) (2,3)
 
             query_ = query_.add(Restrictions.eq("elementtypeDepend", 1)); // (в населенном пункте) (1)
+
+            ret_val = super.getCriterion(query_);
+        }
+
+        return ret_val;
+
+    }
+
+    @Override
+    public List<Address_src> findParcelAddress(Integer ate_id, String street_name, Integer house_num , Integer elem_type_dep ) throws ServiceDaoException
+    {
+        // в населенном пункте (1) , (Строение, Часть строения ) (2,3)
+        List<Address_src> ret_val = null;
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Address);
+
+        if( ate_id != null && street_name != null) {
+
+            query_ = query_.add(Restrictions.eq("ateId", ate_id));
+
+            query_ = query_.add(Restrictions.like("elementName", street_name, MatchMode.ANYWHERE).ignoreCase());
+
+            query_ = house_num != null ?  query_.add(Restrictions.eq("houseNum", house_num)) : query_;
+
+            query_ = query_.add(Restrictions.in("propType", new Integer[]{1})); //(земельный участок) (2,3)
+
+            query_ = query_.add(Restrictions.eq("elementtypeDepend", elem_type_dep)); // (в населенном пункте) (1)
 
             ret_val = super.getCriterion(query_);
         }

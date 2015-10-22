@@ -109,7 +109,7 @@ public class AddressTest {
         });
 
 
-        List<Address_src> test_address = asi.findHomeAddress(ate.getAte_id(), "некр", 35, 177);
+        List<Address_src> test_address = asi.findHomeAddress(ate.getAte_id(), "некр", 35, null ,177);
 
         assertTrue(test_address.size() == 1);
 

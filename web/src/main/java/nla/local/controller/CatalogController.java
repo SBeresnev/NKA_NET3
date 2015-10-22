@@ -39,50 +39,57 @@ public class CatalogController {
 
     @RequestMapping(value = {"/states"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getStates() throws DaoException {
-        logger.info("root - /dict/states");
+        logger.info("root - /catalog/states");
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.STATE));
     }
 
     @RequestMapping(value = {"/subjectTypes"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getSubjectType() throws DaoException {
-        logger.info("root - /dict/subjectTypes");
+        logger.info("root - /catalog/subjectTypes");
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.SUBJECT_TYP));
     }
 
     @RequestMapping(value = {"/OrgStruct"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getOrgStruct() throws DaoException {
-        logger.info("root - /dict/OrgStruct");
+        logger.info("root - /catalog/OrgStruct");
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.ORG_STRUCTURE));
     }
 
     @RequestMapping(value = {"/TorStruct"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getTorStruct() throws DaoException {
-        logger.info("root - /dict/TorStruct");
+        logger.info("root - /catalog/TorStruct");
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.TOR_STRUCTURE));
     }
 
     @RequestMapping(value = {"/operationType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getOperationType() throws DaoException {
-        logger.info("root - /dict/operationType");
+        logger.info("root - /catalog/operationType");
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.OPERATION_TYP));
     }
 
     @RequestMapping(value = {"/operationSubType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getOperationSubType() throws DaoException {
-        logger.info("root - /dict/operationSubType");
+        logger.info("root - /catalog/operationSubType");
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.OPERATION_SUB_TYP));
     }
 
     @RequestMapping(value = {"/operationBase"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getOperationBase() throws DaoException {
-        logger.info("root - /dict/operationBase");
+        logger.info("root - /catalog/operationBase");
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.OPERATION_BASE));
+    }
+
+
+    @RequestMapping(value = {"/elementTypeDepend"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<CatalogItem> getElementTypeDepend() throws DaoException {
+        logger.info("root - /catalog/elementTypeDepend");
+        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.ELEMENT_TYPE_DEPEND));
     }
 
     @RequestMapping(value = "get_catalogs_by_type", method = {RequestMethod.GET})
     public List<CatalogItem> getByType(int type) throws ServiceDaoException {
         logger.info("root - catalog/get_catalogs_by_type");
-        return this.catalogServiceImpl.getCatalogItemsByTyp(type);
+        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.OPERATION_BASE));
     }
 
     @RequestMapping(value = "get_catalog_by_id", method = {RequestMethod.GET})

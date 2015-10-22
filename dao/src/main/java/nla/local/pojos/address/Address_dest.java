@@ -1,7 +1,5 @@
 package nla.local.pojos.address;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 /**

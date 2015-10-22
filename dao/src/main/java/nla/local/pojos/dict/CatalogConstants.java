@@ -39,4 +39,8 @@ public interface CatalogConstants {
 
     public static final String BARGAIN_ENTITY_TYPE = "35";
 
+    public static final String ELEMENT_TYPE_DEPEND = "90";
+
+    public static final String PROP_TYPE = "2";
+
 }

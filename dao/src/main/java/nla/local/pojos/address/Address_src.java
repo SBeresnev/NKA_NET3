@@ -1,6 +1,7 @@
 package nla.local.pojos.address;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by beresnev on 04.06.2015.
@@ -43,11 +44,11 @@ public class Address_src{
     @Column(name = "ROOM_IND")
     private String roomId;
 
-    @Column(name = "LCOORD")
-    private Long lCoord;
+    @Column(name = "LCOORD", precision = 38)
+    private BigDecimal lCoord;
 
-    @Column(name = "BCOORD")
-    private Long bCoord;
+    @Column(name = "BCOORD",  precision = 38)
+    private BigDecimal bCoord;
 
     @Column(name = "COMMENTS")
     private String comments;
@@ -93,19 +94,19 @@ public class Address_src{
         this.adr_num = adr_num;
     }
 
-    public Long getlCoord() {
+    public BigDecimal getlCoord() {
         return lCoord;
     }
 
-    public void setlCoord(Long lCoord) {
+    public void setlCoord(BigDecimal lCoord) {
         this.lCoord = lCoord;
     }
 
-    public Long getbCoord() {
+    public BigDecimal getbCoord() {
         return bCoord;
     }
 
-    public void setbCoord(Long bCoord) {
+    public void setbCoord(BigDecimal bCoord) {
         this.bCoord = bCoord;
     }
 

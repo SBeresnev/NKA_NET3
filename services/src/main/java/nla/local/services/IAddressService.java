@@ -36,6 +36,8 @@ public interface IAddressService extends IService {
 
     public List<Address_src> findAddress(Integer ate_id, String elementName, Integer objectType, Integer objectPlace, Integer house_num, Integer room_num )  throws ServiceDaoException;
 
+    public List<Address_src> findParcelAddress(Integer ate_id, String street_name, Integer house_num , Integer elem_type_dep ) throws ServiceDaoException;
+
     public void addLinear(String elementName, String comments)  throws ServiceDaoException;
 
     public Address_dest bindAddress( Address_dest new_adr) throws ServiceDaoException;
