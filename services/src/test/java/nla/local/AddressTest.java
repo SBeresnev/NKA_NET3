@@ -66,13 +66,11 @@ public class AddressTest {
 
         long startTime = System.nanoTime();
 
-        AteTest();
+       // AteTest();
 
-        treeExpand();
+       // treeExpand();
 
         addressTest();
-
-        addAddress();
 
         bindAddress();
 
@@ -109,7 +107,7 @@ public class AddressTest {
         });
 
 
-        List<Address_src> test_address = asi.findHomeAddress(ate.getAte_id(), "некр", 35, null ,177);
+        List<Address_src> test_address = asi.findHomeAddress(ate.getAte_id(), "некр", 35, null ,177,1);
 
         assertTrue(test_address.size() == 1);
 
@@ -186,12 +184,6 @@ public class AddressTest {
 
     }
 
-    public void addAddress() throws  ServiceDaoException {
-
-        asi.addLinear("Минск - Козлы","Линейный объект труба");
-
-
-    }
 
 
     public void bindAddress() throws  ServiceDaoException {

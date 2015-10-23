@@ -7,7 +7,7 @@ import java.math.BigDecimal;
  * Created by beresnev on 04.06.2015.
  */
 @Entity
-@Table(name="V_ADDRESS")
+@Table(name="V_ADDRESSES_SRC")
 public class Address_src{
 
     @Id

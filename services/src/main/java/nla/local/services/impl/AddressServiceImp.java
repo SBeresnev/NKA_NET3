@@ -139,7 +139,7 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
     }
 
     @Override
-    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer corp_num, Integer room_num ) throws ServiceDaoException
+    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer corp_num, Integer room_num, Integer elem_type_dep ) throws ServiceDaoException
     {
         // в населенном пункте (1) , (Строение, Часть строения ) (2,3)
         List<Address_src> ret_val = null;
@@ -160,7 +160,7 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
             query_ = query_.add(Restrictions.in("propType", new Integer[]{2, 3})); //(Строение, Часть строения ) (2,3)
 
-            query_ = query_.add(Restrictions.eq("elementtypeDepend", 1)); // (в населенном пункте) (1)
+            query_ = query_.add(Restrictions.eq("elementtypeDepend", elem_type_dep));
 
             ret_val = super.getCriterion(query_);
         }
@@ -185,9 +185,9 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
             query_ = house_num != null ?  query_.add(Restrictions.eq("houseNum", house_num)) : query_;
 
-            query_ = query_.add(Restrictions.in("propType", new Integer[]{1})); //(земельный участок) (2,3)
+            query_ = query_.add(Restrictions.in("propType", new Integer[]{1})); //(земельный участок) (1)
 
-            query_ = query_.add(Restrictions.eq("elementtypeDepend", elem_type_dep)); // (в населенном пункте) (1)
+            query_ = query_.add(Restrictions.eq("elementtypeDepend", elem_type_dep));
 
             ret_val = super.getCriterion(query_);
         }
@@ -333,7 +333,7 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
         for(Ate ate : lst_ate)
         {
-            adr = adr + ate.getAte_name() + ",";
+            adr = adr + ate.getAte_name() + ", ";
 
         }
 
@@ -347,19 +347,19 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
         if(adr_src.getHouseId() != null && adr_src.getHouseId() != "")
 
-        adr = adr + " " + adr_src.getHouseId();
+        adr = adr + "" + adr_src.getHouseId();
 
         if(adr_src.getCorpNum() != null)
 
-        adr = adr + " , корп. " + adr_src.getCorpNum();
+        adr = adr + "/" + adr_src.getCorpNum();
 
         if(adr_src.getRoomNum() != null)
 
-        adr = adr + " , кв. " + adr_src.getRoomNum();
+        adr = adr + "-" + adr_src.getRoomNum();
 
         if(adr_src.getRoomId() != null && adr_src.getRoomId() != "")
 
-        adr = adr + " " + adr_src.getRoomId();
+        adr = adr + "" + adr_src.getRoomId();
 
         ret_val.setAdr(adr);
 
@@ -393,21 +393,5 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
     }
 
-    @Override
-    public void addLinear(String elementName, String comments) throws ServiceDaoException {
-
-        Address_src asr  = new Address_src();
-
-        asr.setId_adr(Long.valueOf(scg.generate("SEQ_LINEAR_ID.NEXTVAL").toString()));
-
-        asr.setElementName(elementName);
-
-        asr.setComments(comments);
-
-        asr.setPropType(5);
-
-        super.add(asr);
-
-    }
 
 }

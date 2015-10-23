@@ -66,16 +66,6 @@ public class AddressController {
 
     }
 
-    @RequestMapping(value = {"/addLAddress"}, method = {RequestMethod.POST})
-    public String addLAddress( String elementName, String comments) throws ServiceDaoException {
-
-        logger.info("root - /address/addLAddress");
-
-        addressServiceImp.addLinear(elementName,comments);
-
-        return "OK";
-
-    }
 
     @RequestMapping(value = {"/bindAddress"}, method = {RequestMethod.POST})
     public String bindAddress(Long id_adr, Long adr_num, Integer prop_type) throws ServiceDaoException {
@@ -93,11 +83,11 @@ public class AddressController {
     }
 
     @RequestMapping(value = {"/findHomeAddress"}, method = {RequestMethod.GET})
-    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer corp_num, Integer room_num) throws ServiceDaoException {
+    public List<Address_src> findHomeAddress(Integer ate_id, String street_name, Integer house_num, Integer corp_num, Integer room_num, Integer elem_type_dep) throws ServiceDaoException {
 
         logger.info("root - /address/findHomeAddress");
 
-        List<Address_src> ret_val = addressServiceImp.findHomeAddress( ate_id,  street_name, house_num, corp_num, room_num);
+        List<Address_src> ret_val = addressServiceImp.findHomeAddress( ate_id,  street_name, house_num, corp_num, room_num, elem_type_dep);
 
         return ret_val;
 
