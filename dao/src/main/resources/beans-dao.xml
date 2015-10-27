@@ -52,6 +52,22 @@
         </property>
     </bean>
 
+    <bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">
+        <property name="locateExistingServerIfPossible" value="true"/>
+    </bean>
+
+    <bean id="hibernateStatistics" class="nla.local.util.HibernateStatisticsFactoryBean"></bean>
+
+    <bean id="exporter" class="org.springframework.jmx.export.MBeanExporter">
+        <property name="beans"  >
+            <map>
+              <entry key="Hibernate:application=Statistics" value-ref="hibernateStatistics"/>
+            </map>
+        </property>
+        <property name="registrationBehaviorName" value="REGISTRATION_REPLACE_EXISTING"/>
+    </bean>
+
+
 </beans>
 
 
