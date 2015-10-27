@@ -66,15 +66,15 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
 
     @Override
-    public List<Address_src> getsrcbyID(Long id_adr, Long adr_num, Integer prop_type) throws ServiceDaoException {
+    public List<Address_src> getsrcbyID(Long adr_id, Long adr_num, Integer prop_type) throws ServiceDaoException {
 
             List<Address_src> ret_val = null ;
 
             DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Address);
 
-           if(id_adr != null || adr_num != null) {
+           if(adr_id != null || adr_num != null) {
 
-               query_ = id_adr != null ? query_.add(Restrictions.eq("id_adr", id_adr)) : query_;
+               query_ = adr_id != null ? query_.add(Restrictions.eq("id_adr", adr_id)) : query_;
 
                query_ = adr_num != null ? query_.add(Restrictions.eq("adr_num", adr_num)) : query_;
 

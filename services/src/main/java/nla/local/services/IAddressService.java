@@ -40,7 +40,8 @@ public interface IAddressService extends IService {
 
     public Address_dest bindAddress( Address_dest new_adr) throws ServiceDaoException;
 
-    public List<Address_src> getsrcbyID(Long id_adr, Long adr_num, Integer prop_type) throws ServiceDaoException;
+    public List<Address_src> getsrcbyID(Long adr_id, Long adr_num, Integer prop_type) throws ServiceDaoException;
+
 
 
     /************************************************************************/

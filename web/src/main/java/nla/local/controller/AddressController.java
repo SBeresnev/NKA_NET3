@@ -1,5 +1,6 @@
 package nla.local.controller;
 
+import nla.local.controller.forms.AddressForm;
 import nla.local.exception.ServiceDaoException;
 import nla.local.pojos.address.Address_dest;
 import nla.local.pojos.address.Address_src;
@@ -7,6 +8,7 @@ import nla.local.pojos.address.Ate;
 import nla.local.services.IAddressService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -68,17 +70,27 @@ public class AddressController {
 
 
     @RequestMapping(value = {"/bindAddress"}, method = {RequestMethod.POST})
-    public String bindAddress(Long id_adr, Long adr_num, Integer prop_type) throws ServiceDaoException {
+    public Address_dest bindAddress(@RequestBody AddressForm adressFrm ) throws ServiceDaoException {
 
         logger.info("root - /address/bindAddress");
 
-        List<Address_src> ad_src = addressServiceImp.getsrcbyID(id_adr, adr_num, prop_type);
+        Address_dest ad_dest  = addressServiceImp.getdestbyIDs(null, adressFrm.getAdr_num());
 
-        Address_dest ade = addressServiceImp.convertSrctoDest(ad_src.get(0));
+        if (ad_dest == null) {
 
-        if(ad_src.size() > 0) addressServiceImp.bindAddress(ade);
+            ad_dest = new Address_dest();
 
-        return "OK";
+            ad_dest.setAdr_num(adressFrm.getAdr_num());
+
+            ad_dest.setAdr(adressFrm.getAdr());
+
+            ad_dest.setSoato(adressFrm.getSoato());
+
+            ad_dest = addressServiceImp.bindAddress(ad_dest);
+
+        }
+
+        return ad_dest;
 
     }
 
