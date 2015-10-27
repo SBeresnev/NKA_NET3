@@ -184,8 +184,6 @@ public class AddressTest {
 
     }
 
-
-
     public void bindAddress() throws  ServiceDaoException {
 
         List<Address_src> test_address = asi.getsrcbyID(null, Long.valueOf(3129691), 2);

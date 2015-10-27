@@ -13,11 +13,9 @@
 
     <aop:aspectj-autoproxy/>
 
-
     <context:annotation-config/>
 
     <context:component-scan base-package="nla.local"/>
-
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="url" value="jdbc:oracle:thin:@nca-vm-db:1521/win.minsk.nca"/>
@@ -27,6 +25,8 @@
         <property name="password" value="123123"/>
         <property name="initialSize" value="5"/>
         <property name="maxActive" value="10"/>
+        <property name="maxWait" value="10000"/>
+        <property name="validationQueryTimeout" value="30"/>
     </bean>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -44,30 +44,7 @@
                 <prop key="debug">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
                 <prop key="hibernate.hbm2ddl.auto">validate</prop>
-
-                <!--prop key="cache.use_second_level_cache">true</prop>
-                <prop key="hibernate.cache.use_query_cache">true</prop>
-                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop-->
-            </props>
-        </property>
-    </bean>
-
-    <bean id="sessionFactoryMVDUST" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name= "packagesToScan">
-            <list>
-                <value>nla.local.pojos.*</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="default_schema">NKA_NET3_DEV</prop>
-                <prop key="default_catalog">NKA_NET3_DEV</prop>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="debug">true</prop>
-                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">validate</prop>
-
+                <prop key="hibernate.generate_statistics">true</prop>
                 <!--prop key="cache.use_second_level_cache">true</prop>
                 <prop key="hibernate.cache.use_query_cache">true</prop>
                 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop-->

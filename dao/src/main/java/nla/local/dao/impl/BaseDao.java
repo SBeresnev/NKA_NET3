@@ -54,7 +54,7 @@ public class BaseDao<T> implements Dao<T> {
 
     public Session getSession() {
 
-        return sessionFactory.getCurrentSession();
+        return  sessionFactory.getCurrentSession();
 
     }
 
@@ -68,6 +68,8 @@ public class BaseDao<T> implements Dao<T> {
             log.info("Save:" + t);
 
             id = getSession().save(t);
+
+
 
 
         } catch (HibernateException e ) {
