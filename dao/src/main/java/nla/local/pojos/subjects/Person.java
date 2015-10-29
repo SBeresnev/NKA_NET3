@@ -15,7 +15,7 @@ import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy= InheritanceType.JOINED)
-@Table(name="SUBJECTS")
+@Table(name="SUBJECTS" ,schema = "NKA_NET3_DEV")
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
