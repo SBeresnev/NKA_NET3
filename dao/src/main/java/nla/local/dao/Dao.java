@@ -26,6 +26,6 @@ public interface Dao<T> {
 
     public Session getSession() ;
 
-    public Class<T>  getType();
+    public Class<T> getType();
 
 }
