@@ -174,7 +174,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
                 Object_dest dest = convertSrctoDest(src);
 
-                Address_dest ret_dest_adr = findbyAdrnum(null, src.getAddress_id(),  src.getObjectType().getCode_id());
+                Address_dest ret_dest_adr = findbyAdrnum(null , src.getAddress_id(),  src.getObjectType().getCode_id());
 
                 dest.setAddress_dest(ret_dest_adr);
 
