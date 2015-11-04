@@ -339,7 +339,7 @@ public class AddressServiceImp extends BaseServiceImp implements IAddressService
 
         if(adr_src.getElementName() != null && adr_src.getElementName() != "")
 
-        adr = adr + " " + adr_src.getElementName();
+        adr = adr + adr_src.getElementName();
 
         if(adr_src.getHouseNum() != null)
 
