@@ -69,9 +69,6 @@ public class BaseDao<T> implements Dao<T> {
 
             id = getSession().save(t);
 
-
-
-
         } catch (HibernateException e ) {
 
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_002, t);
