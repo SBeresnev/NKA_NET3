@@ -88,11 +88,11 @@ public class ObjectTest{
 
         long startTime = System.nanoTime();
 
-        bindObjectbyAddressCommon();
+       // bindObjectbyAddressCommon();
 
         bindObjectbyInventoryNumCommon();
 
-        updateObject();
+       // updateObject();
 
         long endTime = System.nanoTime();
 

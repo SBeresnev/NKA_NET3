@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -111,17 +112,19 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
     public List<Object_dest> findObjectbyInventoryNumCommon(Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException {
 
-        List<Object_dest> ret_val_dest = null;
+        List<Object_dest> ret_val = new ArrayList<Object_dest>();
 
-        List<Object_src> ret_val_src = null;
+        List<Object_dest> val_dest = null;
 
-        ret_val_dest = (List<Object_dest>) findObjectbyInventoryNum(Object_dest.class, inventory_number, object_type, org_id);
+        List<Object_src> val_src = null;
 
-        if(ret_val_dest.size() == 0) {
+        val_dest = (List<Object_dest>) findObjectbyInventoryNum(Object_dest.class, inventory_number, object_type, org_id);
 
-            ret_val_src = (List<Object_src>) findObjectbyInventoryNum(Object_src.class, inventory_number, object_type, org_id);
+        if(val_dest.size() == 0) {
 
-            for (Object_src src : ret_val_src)
+            val_src = (List<Object_src>) findObjectbyInventoryNum(Object_src.class, inventory_number, object_type, org_id);
+
+            for (Object_src src : val_src)
             {
 
                 Object_dest dest = convertSrctoDest(src);
@@ -130,7 +133,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
                 dest.setAddress_dest(ret_dest_adr);
 
-                ret_val_dest.add(dest);
+                ret_val.add(dest);
 
             }
 
@@ -138,14 +141,14 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
             int i =0;
 
-            for (Object_dest dst : ret_val_dest)
+            for (Object_dest dst : val_dest)
             {
 
                 Address_dest ret_dest_adr = findbyAdrnum(dst.getAddress_id(),dst.getAdr_num(), dst.getObjectType().getCode_id());
 
                 dst.setAddress_dest(ret_dest_adr);
 
-                ret_val_dest.set(i, dst);
+                ret_val.set(i, dst);
 
                 i++;
 
@@ -153,23 +156,25 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         }
 
-        return ret_val_dest;
+        return ret_val;
 
     }
 
     public List<Object_dest> findObjectbyCadastreNumCommon(String cadastre_number) throws ServiceDaoException {
 
-        List<Object_dest> ret_val_dest = null;
+        List<Object_dest> ret_val = new ArrayList<Object_dest>();
 
-        List<Object_src> ret_val_src = null;
+        List<Object_dest> val_dest = null;
 
-        ret_val_dest = (List<Object_dest>) findObjectbyCadastreNum(Object_dest.class, cadastre_number);
+        List<Object_src> val_src = null;
 
-        if(ret_val_dest.size() == 0) {
+        val_dest = (List<Object_dest>) findObjectbyCadastreNum(Object_dest.class, cadastre_number);
 
-            ret_val_src = (List<Object_src>) findObjectbyCadastreNum(Object_src.class, cadastre_number);
+        if(val_dest.size() == 0) {
 
-            for (Object_src src : ret_val_src)
+            val_src = (List<Object_src>) findObjectbyCadastreNum(Object_src.class, cadastre_number);
+
+            for (Object_src src : val_src)
             {
 
                 Object_dest dest = convertSrctoDest(src);
@@ -178,28 +183,28 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
                 dest.setAddress_dest(ret_dest_adr);
 
-                ret_val_dest.add(dest);
+                ret_val.add(dest);
 
             }
-        }
+        } else
         {
 
             int i = 0;
 
-            for (Object_dest dst : ret_val_dest) {
+            for (Object_dest dst : val_dest) {
 
                 Address_dest ret_dest_adr = findbyAdrnum(dst.getAddress_id(), dst.getAdr_num(), dst.getObjectType().getCode_id());
 
                 dst.setAddress_dest(ret_dest_adr);
 
-                ret_val_dest.set(i, dst);
+                ret_val.set(i, dst);
 
                 i++;
 
             }
         }
 
-        return ret_val_dest;
+        return ret_val;
 
     }
 
