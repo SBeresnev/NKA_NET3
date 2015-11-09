@@ -10,7 +10,7 @@ import java.io.Serializable;
  */
 
 @Entity
-@Table(name = "ANALYTICCODES")
+@Table(name = "ANALYTICCODES", schema = "NKA_NET3_DEV")
 @IdClass(CatalogPk.class)
 public class CatalogItem implements Serializable {
 
