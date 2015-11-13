@@ -102,7 +102,7 @@ public class BaseDao<T> implements Dao<T> {
             return list;
         } catch (HibernateException e) {
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_001, typeName);
-            log.error(dEx.getMessage());
+            log.error(dEx.getMessage()) ;
             throw dEx;
         }
     }
