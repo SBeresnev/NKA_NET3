@@ -68,14 +68,15 @@ public class SubjectController {
     }
 
     @RequestMapping(value = {"/update"}, method = {org.springframework.web.bind.annotation.RequestMethod.PUT})
-    public void updatePerson(@RequestBody SubjectForm subjectForm) throws ServiceDaoException {
+    public Person updatePerson(@RequestBody SubjectForm subjectForm) throws ServiceDaoException {
         logger.info("root - /subject/update");
         PPerson pPerson = this.pService.getSubject(subjectForm.getSubjectId());
             this.pService.update(subjectForm.updatePPerson(pPerson));
+        return pPerson;
     }
 
     @RequestMapping(value = {"/add"}, method = {RequestMethod.POST})
-    public void addPerson(@RequestBody SubjectForm subjectForm) throws Exception {
+    public Person addPerson(@RequestBody SubjectForm subjectForm) throws Exception {
 
         logger.info("root - /subject/add");
 
@@ -87,6 +88,8 @@ public class SubjectController {
             subjectForm.updatePPerson(pPerson);
             pPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_F_ID.nextval").toString());
             pService.add(pPerson);
+
+            return pPerson;
         }
        if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
            if ( jService.findByNameType("",subjectForm.getUnp(),null).size() != 0)
@@ -97,8 +100,11 @@ public class SubjectController {
             jPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_J_ID.nextval").toString());
             jService.add(jPerson);
 
+           return jPerson;
+
         }
 
+        return null;
     }
 
     @RequestMapping(value = {"/mvd"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
