@@ -86,7 +86,7 @@ public class BaseDao<T> implements Dao<T> {
     public void update(T t) throws DaoException{
         try{
             getSession().update(t);
-            log.info("Update:" + t);
+            log.info("Update:" + t) ;
         } catch (HibernateException e) {
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_003, t);
             log.error(dEx.getMessage());
