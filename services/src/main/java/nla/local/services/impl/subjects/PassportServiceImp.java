@@ -75,22 +75,10 @@ public class PassportServiceImp extends PSubjectServiceImp implements IPassportS
             p.surname = resp.getSURNAME();
 
             if (resp.getDOCTYPE() == 54100001)
-                p.sitizens = CollectionUtils.find(commonDict.getCatalogItemsByTyp(Integer.decode(CatalogConstants.STATE)), new Predicate() {
-                    public boolean evaluate(Object o) {
-                        CatalogItem c = (CatalogItem) o;
-                        return c.getCode_id().equals(112);
-                    }
-                });
-        /*new Dict(new DictPk(112,200));      РЕСПУБЛИКА БЕЛАРУСЬ*/
+              p.sitizens= 112 ; /*new Dict(new DictPk(112,200));      РЕСПУБЛИКА БЕЛАРУСЬ*/
 
 
-            p.subjectType = CollectionUtils.find(commonDict.getCatalogItemsByTyp(Integer.decode(CatalogConstants.SUBJECT_TYP)), new Predicate() {
-                public boolean evaluate(Object o) {
-                    CatalogItem c = (CatalogItem) o;
-                    return c.getCode_id().equals(110);
-                }
-            });
-         /* new Dict(new DictPk(110,110)); /*Граждане Республики Беларусь, имеющие паспорт нового образца*/
+            p.subjectType =110; /* new Dict(new DictPk(110,110)); /*Граждане Республики Беларусь, имеющие паспорт нового образца*/
 
             p.address = "РЕСПУБЛИКА БЕЛАРУСЬ; " + resp.getAREALTXT() + "; ";
             p.address += resp.getREGIONLTXT() != null ? resp.getREGIONLTXT() + " р-н ; " : "";

@@ -70,7 +70,7 @@ public class SubjectTest
 
     private List<CatalogItem> allDictList;
 
-    private Integer GLOBAL_INDEX = 15;
+    private Integer GLOBAL_INDEX = 2;
 
 
     @Before
@@ -108,15 +108,15 @@ public class SubjectTest
 
         AddJurSubject();
         GetJurSubject();
-        UpdateJurSubject();
+        //UpdateJurSubject();
 
-        AddOffSubject();
-        GetOffSubject();
-        UpdateOffSubject();
+        //AddOffSubject();
+        //GetOffSubject();
+        //UpdateOffSubject();
 
         AddPhysSubject();
         GetPhysSubject();
-        UpdatePhysSubject();
+        //UpdatePhysSubject();
 
     }
 
@@ -144,7 +144,7 @@ public class SubjectTest
             for (int i = 0; i < GLOBAL_INDEX; i++) {
 
                 OPerson op = new OPerson();
-                op.subjectType = sbj_typ;//subjectServDictList.get(2);
+                op.subjectType = sbj_typ.getCode_id();//subjectServDictList.get(2);
                 op.isOwner = 0;
 
                 op.firstname = "Дударык" + String.valueOf(i);
@@ -207,7 +207,7 @@ public class SubjectTest
 
 
                 OPerson op = new OPerson();
-                op.subjectType = sbj_typ;
+                op.subjectType = sbj_typ.getCode_id();
                 op.isOwner = 0;
 
                 op.surname = "Иванов" + String.valueOf(20+i);
@@ -271,7 +271,7 @@ public class SubjectTest
                 jp.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_J_ID.nextval").toString());
                 jp.isOwner = 1;
 
-                jp.subjectType = sbj_typ;
+                jp.subjectType = sbj_typ.getCode_id();
                 jp.orgRightForm =  orgStructDictList.get(6);
 
                 jp.fullname = "Валенки"+"_"+i;
@@ -351,7 +351,7 @@ public class SubjectTest
                 jp.fullname = "ОАО Update_" + String.valueOf(i) ;
                 jp.isOwner = 1;
                 jp.orgRightForm =  orgStructDictList.get(6);
-                jp.subjectType = sbj_typ;
+                jp.subjectType = sbj_typ.getCode_id();
                 jp.regNumber = String.valueOf(124566000+i) ;
                 jp.unp = String.valueOf(159777758+i);
                 jp.bothRegDate = new Date();
@@ -379,7 +379,7 @@ public class SubjectTest
                 jp.regNumber =  String.valueOf(124566000+i);
 
                 jp.orgRightForm =  orgStructDictList.get(7);
-                jp.subjectType = sbj_typ;
+                jp.subjectType = sbj_typ.getCode_id();
 
                 jService.refreshSubject(jp);
                 i++;
@@ -420,12 +420,12 @@ public class SubjectTest
                 pp.surname = "Иванов"+"_"+i;
                 pp.firstname = "Иван"+"_"+i;
                 pp.fathername = "Иванович"+"_"+i;
-                pp.subjectType = sbj_typ;
+                pp.subjectType = sbj_typ.getCode_id();
                 pp.isOwner = 1;
                 pp.bothRegDate = new Date();
                 pp.personalNumber = "78"+String.valueOf(71000+i)+"F408AE" ;
                 pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
-                pp.sitizens = stateDictList.get(73);
+                pp.sitizens = stateDictList.get(73).getCode_id();
 
                 pService.add(pp);
 
@@ -501,9 +501,9 @@ public class SubjectTest
                 pp.surname = "Дженкинс"+"_"+i;
                 pp.firstname = "Владимир"+"_"+i;
                 pp.fathername = "Обамович"+"_"+i;
-                pp.subjectType = sbj_typ;
+                pp.subjectType = sbj_typ.getCode_id();
                 pp.isOwner = 1;
-                pp.sitizens = stateDictList.get(2);
+                pp.sitizens = stateDictList.get(2).getCode_id();
                 pp.bothRegDate = new Date();
 
 
@@ -534,8 +534,8 @@ public class SubjectTest
                 pp.personalNumber = "78"+String.valueOf(31158+i)+"F408AE" ;
                 pp.personalNumber += (String)scg.generate("SUBJECTS_PKG.GET_PN_CHECKDIGIT('"+pp.personalNumber+"0')");
 
-                pp.subjectType = sbj_typ;
-                pp.sitizens = stateDictList.get(3);
+                pp.subjectType = sbj_typ.getCode_id();
+                pp.sitizens = stateDictList.get(3).getCode_id();
 
                 pService.refreshSubject(pp);
                 i++;

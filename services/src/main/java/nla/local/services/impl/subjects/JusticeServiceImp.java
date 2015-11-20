@@ -116,12 +116,7 @@ public class JusticeServiceImp extends JSubjectServiceImp implements IJusticeSer
 
         jp.orgRightForm = commonDict.getCatalogItem(cp_test);
 
-        jp.subjectType =  CollectionUtils.find(commonDict.getCatalogItemsByTyp(Integer.decode(CatalogConstants.SUBJECT_TYP)), new Predicate() {
-            public boolean evaluate(Object o) {
-                CatalogItem c = (CatalogItem) o;
-                return c.getCode_id().equals(200); // Юридические лица
-            }
-        });
+        jp.subjectType = 200; // Юридические лица
 
         jp.address = resp.getVoblast() != null ?   resp.getVoblast() +" обл; " :"" ;
 

@@ -31,11 +31,8 @@ public class PPerson extends Person implements Serializable{
     @Column(name = "FATHERNAME")
     public String fathername;
 
-    @ManyToOne
-    @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column= @JoinColumn(name = "SITIZENS", referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.STATE, referencedColumnName="ANALYTIC_TYPE")) })
-    public CatalogItem sitizens;
+    @Column(name = "SITIZENS")
+    public Integer sitizens;
 
     @Column(name = "BOTH_REG_DATE")
     @JsonSerialize(using= DateSerializer.class)

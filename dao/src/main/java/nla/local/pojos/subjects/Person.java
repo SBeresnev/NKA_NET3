@@ -32,13 +32,8 @@ public class Person implements Serializable {
     @Column(name = "IS_OWNER")
     public Integer isOwner;
 
-    @ManyToOne
-    @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column=@JoinColumn(name = "SUBJECT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.SUBJECT_TYP,referencedColumnName="ANALYTIC_TYPE")
-            )
-    })
-    public CatalogItem subjectType;
+    @Column(name = "SUBJECT_TYPE")
+    public Integer subjectType;
 
     @Column(name = "SUBJECT_CLASS", insertable = false, updatable = false)
     public String dtype;
@@ -97,11 +92,11 @@ public class Person implements Serializable {
         this.isOwner = isOwner;
     }
 
-    public CatalogItem getSubjectType() {
+    public Integer getSubjectType() {
         return subjectType;
     }
 
-    public void setSubjectType(CatalogItem subjectType) {
+    public void setSubjectType(Integer subjectType) {
         this.subjectType = subjectType;
     }
 

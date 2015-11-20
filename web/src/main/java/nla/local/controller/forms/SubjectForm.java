@@ -24,9 +24,9 @@ public class SubjectForm {
     private String reestrdataID;
     private Integer actual;
     private String address;
-    private CatalogItem subjectType;
+    private Integer subjectType;
     private SubjectClass subjectClass;
-    private CatalogItem sitizens;
+    private Integer sitizens;
     private String remark;
     private String fullname;
     private String shortname;
@@ -35,7 +35,7 @@ public class SubjectForm {
     private CatalogItem orgRightForm;
     private String isOwner;
     private String dtype;
-    private  String subjectdataid;
+    private String subjectdataid;
 
     public Integer getSubjectId() {
         return subjectId;
@@ -125,15 +125,15 @@ public class SubjectForm {
         this.address = address;
     }
 
-    public CatalogItem getSubjectType() {
+    public Integer getSubjectType() {
         return subjectType;
     }
 
-    public void setSubjectType(CatalogItem type) {
-        if (type.getCode_id() < SubjectClass.toInt(SubjectClass.JUR))
+    public void setSubjectType(Integer type) {
+        if (type < SubjectClass.toInt(SubjectClass.JUR))
             setSubjectClass(SubjectClass.PRV);
         else {
-            if (type.getCode_id() < SubjectClass.toInt(SubjectClass.OFC))
+            if (type < SubjectClass.toInt(SubjectClass.OFC))
                 setSubjectClass(SubjectClass.JUR);
             else
                 setSubjectClass(SubjectClass.OFC);
@@ -149,11 +149,11 @@ public class SubjectForm {
         this.subjectClass = subjectClass;
     }
 
-    public CatalogItem getSitizens() {
+    public Integer getSitizens() {
         return sitizens;
     }
 
-    public void setSitizens(CatalogItem sitizens) {
+    public void setSitizens(Integer sitizens) {
         this.sitizens = sitizens;
     }
 
@@ -252,17 +252,12 @@ public class SubjectForm {
         jPerson.dtype = this.dtype;
         jPerson.reestrdataID = this.reestrdataID != null ? Integer.decode(this.reestrdataID) : null;
         jPerson.subjectType = this.subjectType;
-        if(jPerson.subjectType.getAnalytic_type() == null) {
-            jPerson.subjectType.setAnalytic_type(Integer.decode(CatalogConstants.SUBJECT_TYP));
-            jPerson.subjectType.getCatalogPk().setAnalytic_type(Integer.decode(CatalogConstants.SUBJECT_TYP));
-        }
-        if(jPerson.subjectType.getParent_code() == null)
-            jPerson.subjectType.setParent_code(SubjectClass.toInt(SubjectClass.JUR));
+
+
         return jPerson;
     }
 
-    public SubjectForm() {
-    }
+    public SubjectForm() { }
 
     public SubjectForm(HttpServletRequest request) {
         for(Field field : this.getClass().getDeclaredFields()){

@@ -66,7 +66,7 @@ public class OSubjectServiceImp extends SubjectServiceImp<OPerson> {
                     .add(Restrictions.or(Restrictions.like("orgname", orgname, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("orgname")));
 
             query_ = user_num != null ? query_.add(Restrictions.eq("user_num", user_num)): query_;
-            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query_;
+            query_ = subjectType != null ? query_.add(Restrictions.eq("subjectType", subjectType)):query_;
 
 
             retval = (List<OPerson>) this.findSubjects(query_);

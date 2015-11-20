@@ -81,7 +81,7 @@ public class SubjectController {
         logger.info("root - /subject/add");
 
         if (subjectForm.getSubjectClass() == SubjectClass.PRV) {
-            if (pService.findByFIOType("", "", "", subjectForm.getPersonalNumber(), subjectForm.getSubjectType().getAnalytic_type()).size() != 0)
+            if (pService.findByFIOType("", "", "", subjectForm.getPersonalNumber(), subjectForm.getSubjectType()).size() != 0)
                 throw new Exception("Субъект уже существует");
 
             PPerson pPerson = new PPerson();

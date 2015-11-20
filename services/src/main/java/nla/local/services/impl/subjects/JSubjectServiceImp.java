@@ -73,15 +73,14 @@ public class JSubjectServiceImp extends SubjectServiceImp<JPerson> {
                 regNumberOrUnp = regNumberOrUnp == null ? "":regNumberOrUnp;
                 fullName = fullName==null? "":fullName;
 
-            query_ = query_
-                    .add(Restrictions.or(
+            query_ = query_.add(Restrictions.or(
                                     Restrictions.or(Restrictions.like("regNumber", regNumberOrUnp , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("regNumber")),
                                     Restrictions.or(Restrictions.like("unp", regNumberOrUnp , MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("unp"))
                     ))
                     .add(Restrictions.or(Restrictions.like("fullname", fullName, MatchMode.ANYWHERE).ignoreCase(), Restrictions.isNull("fullname")));
 
 
-            query_ = subjectType != null ? query_.createCriteria("subjectType").add(Restrictions.eq("code_id", subjectType)):query_;
+            query_ = subjectType != null ? query_.add(Restrictions.eq("subjectType", subjectType)):query_;
 
 
             retval = (List<JPerson>) this.findSubjects(query_);
