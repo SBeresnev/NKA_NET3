@@ -2,11 +2,6 @@ package nla.local.pojos.subjects;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-import nla.local.pojos.dict.CatalogConstants;
-import nla.local.pojos.dict.CatalogItem;
-import org.hibernate.annotations.JoinColumnOrFormula;
-import org.hibernate.annotations.JoinColumnsOrFormulas;
-import org.hibernate.annotations.JoinFormula;
 
 import javax.persistence.*;
 import java.io.Serializable;

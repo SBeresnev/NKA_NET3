@@ -21,10 +21,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 @RestController
 @RequestMapping({"/subject"})
@@ -57,6 +55,7 @@ public class SubjectController {
     @RequestMapping(value = {"/search"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<Person> getPerson(SearchSubjectForm searchSubjectForm) throws DaoException {
         logger.info("root - /subject/search");
+
         ArrayList<Person> result_p = new ArrayList();
         if (searchSubjectForm.getSubjectClass() == SubjectClass.PRV) {
              result_p.addAll(this.pService.findByFIOType(searchSubjectForm.surname, searchSubjectForm.firstname, searchSubjectForm.lastname, searchSubjectForm.getNumber(), searchSubjectForm.getType()));

@@ -1,8 +1,5 @@
 package nla.local.pojos.subjects;
 
-import nla.local.pojos.dict.CatalogConstants;
-import nla.local.pojos.dict.CatalogItem;
-import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
