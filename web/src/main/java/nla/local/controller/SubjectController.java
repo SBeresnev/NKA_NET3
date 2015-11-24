@@ -5,11 +5,10 @@ import nla.local.controller.forms.SearchSubjectForm;
 import nla.local.controller.forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceDaoException;
+import nla.local.exception.SubjectAlreadyExistsException;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.subjects.*;
-import nla.local.services.IJusticeService;
-import nla.local.services.impl.CatalogServiceImp;
 import nla.local.services.impl.subjects.*;
 import nla.local.util.CodeGenerator;
 import org.apache.log4j.Logger;
@@ -17,10 +16,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -74,6 +70,7 @@ public class SubjectController {
         return pPerson;
     }
 
+    @ExceptionHandler(value = SubjectAlreadyExistsException.class)
     @RequestMapping(value = {"/add"}, method = {RequestMethod.POST})
     public Person addPerson(@RequestBody SubjectForm subjectForm) throws Exception {
 
@@ -81,7 +78,7 @@ public class SubjectController {
 
         if (subjectForm.getSubjectClass() == SubjectClass.PRV) {
             if (pService.findByFIOType("", "", "", subjectForm.getPersonalNumber(), subjectForm.getSubjectType()).size() != 0)
-                throw new Exception("Субъект уже существует");
+                throw new SubjectAlreadyExistsException("Субъект уже существует");
 
             PPerson pPerson = new PPerson();
             subjectForm.updatePPerson(pPerson);
@@ -92,7 +89,7 @@ public class SubjectController {
         }
        if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
            if ( jService.findByNameType("",subjectForm.getUnp(),null).size() != 0)
-               throw new Exception("Объект уже существует");
+               throw new SubjectAlreadyExistsException("Объект уже существует");
 
             JPerson jPerson = new JPerson();
             subjectForm.updateJPerson(jPerson);

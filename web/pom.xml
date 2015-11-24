@@ -148,7 +148,8 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://127.0.0.1:8080/manager/html</url>
+                    <url>http://localhost:8080/manager/text</url>
+                    <path>/nka_net3</path>
                     <warFile>target/nka_net3.war</warFile>
                     <server>TomcatServer</server>
                     <username>admin</username>
