@@ -1,11 +1,13 @@
 package nla.local.controller;
 
+import nla.local.controller.forms.ErrorForm;
 import nla.local.controller.forms.SearchMvdForm;
 import nla.local.controller.forms.SearchSubjectForm;
 import nla.local.controller.forms.SubjectForm;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceDaoException;
-import nla.local.exception.SubjectAlreadyExistsException;
+import nla.local.exception.ServiceException;
+import nla.local.exception.SubjectControllerException;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.subjects.*;
@@ -16,8 +18,10 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @RestController
@@ -70,7 +74,7 @@ public class SubjectController {
         return pPerson;
     }
 
-    @ExceptionHandler(value = SubjectAlreadyExistsException.class)
+
     @RequestMapping(value = {"/add"}, method = {RequestMethod.POST})
     public Person addPerson(@RequestBody SubjectForm subjectForm) throws Exception {
 
@@ -78,7 +82,7 @@ public class SubjectController {
 
         if (subjectForm.getSubjectClass() == SubjectClass.PRV) {
             if (pService.findByFIOType("", "", "", subjectForm.getPersonalNumber(), subjectForm.getSubjectType()).size() != 0)
-                throw new SubjectAlreadyExistsException("Субъект уже существует");
+                throw new SubjectControllerException("Субъект уже существует");
 
             PPerson pPerson = new PPerson();
             subjectForm.updatePPerson(pPerson);
@@ -89,7 +93,7 @@ public class SubjectController {
         }
        if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
            if ( jService.findByNameType("",subjectForm.getUnp(),null).size() != 0)
-               throw new SubjectAlreadyExistsException("Субъект уже существует");
+               throw new SubjectControllerException("Субъект уже существует");
 
             JPerson jPerson = new JPerson();
             subjectForm.updateJPerson(jPerson);
@@ -103,16 +107,40 @@ public class SubjectController {
         return null;
     }
 
+
     @RequestMapping(value = {"/mvd"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
-    public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm) throws Exception {
+    public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm)  {
 
         logger.info("root - /subject/mvd");
-        RespNCA resp = this.passService.findSubject(searchMvdForm.createOrGetPassportNCAObj());
-        PPerson pp = this.passService.casttoPerson(resp);
-        List<PPerson> list = new ArrayList();
-        list.add(pp);
 
-        return list;
+        List<PPerson> list = new ArrayList();
+
+        RespNCA resp = null;
+
+        try {
+
+            resp = this.passService.findSubject(searchMvdForm.createOrGetPassportNCAObj());
+
+            PPerson pp = this.passService.casttoPerson(resp);
+
+            list.add(pp);
+
+            return list;
+
+        } catch (ServiceDaoException e) {
+
+            throw new SubjectControllerException("Субъект не найден");
+
+        }
+        catch (ServiceException e) {
+
+            logger.error(e.getMessage());
+
+            throw new SubjectControllerException(resp.getError());
+
+        }
+
+
     }
 
     @RequestMapping(value = {"/minjust"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
@@ -186,5 +214,9 @@ public class SubjectController {
 
         return result_j;
     }
+
+
+
+
 
 }

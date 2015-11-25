@@ -80,7 +80,8 @@ public class PassportServiceImp extends PSubjectServiceImp implements IPassportS
 
             p.subjectType =110; /* new Dict(new DictPk(110,110)); /*Граждане Республики Беларусь, имеющие паспорт нового образца*/
 
-            p.address = "РЕСПУБЛИКА БЕЛАРУСЬ; " + resp.getAREALTXT() + "; ";
+            p.address = "РЕСПУБЛИКА БЕЛАРУСЬ; ";
+            p.address += resp.getAREALTXT() != null ? resp.getAREALTXT() : "";
             p.address += resp.getREGIONLTXT() != null ? resp.getREGIONLTXT() + " р-н ; " : "";
             p.address += resp.getTYPECITYLTXT() + ". " + resp.getCITYLTXT() + "; ";
             p.address += resp.getTYPESTREETLTXT() + ". " + resp.getSTREETLTXT() + " ";
