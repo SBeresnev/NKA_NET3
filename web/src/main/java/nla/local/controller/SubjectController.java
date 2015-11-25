@@ -89,7 +89,7 @@ public class SubjectController {
         }
        if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
            if ( jService.findByNameType("",subjectForm.getUnp(),null).size() != 0)
-               throw new SubjectAlreadyExistsException("Объект уже существует");
+               throw new SubjectAlreadyExistsException("Субъект уже существует");
 
             JPerson jPerson = new JPerson();
             subjectForm.updateJPerson(jPerson);
