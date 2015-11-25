@@ -80,14 +80,14 @@ public class PassportServiceImp extends PSubjectServiceImp implements IPassportS
 
             p.subjectType =110; /* new Dict(new DictPk(110,110)); /*Граждане Республики Беларусь, имеющие паспорт нового образца*/
 
-            p.address = "РЕСПУБЛИКА БЕЛАРУСЬ; ";
-            p.address += resp.getAREALTXT() != null ? resp.getAREALTXT() : "";
-            p.address += resp.getREGIONLTXT() != null ? resp.getREGIONLTXT() + " р-н ; " : "";
+            p.address = "";
+            p.address += resp.getAREALTXT() != null ? resp.getAREALTXT() + "; ": "";
+            p.address += resp.getREGIONLTXT() != null ? resp.getREGIONLTXT() + " Р-Н; " : "";
             p.address += resp.getTYPECITYLTXT() + ". " + resp.getCITYLTXT() + "; ";
             p.address += resp.getTYPESTREETLTXT() + ". " + resp.getSTREETLTXT() + " ";
-            p.address += resp.getHOUSE() != null ? " д. " + resp.getHOUSE() + " " : "";
-            p.address += resp.getKORPS() != null ? ", корп. " + resp.getKORPS() + " " : "";
-            p.address += resp.getAPP() != null ? ", кв. " + resp.getAPP() +  " " : "";
+            p.address += resp.getHOUSE() != null ? "" + resp.getHOUSE(): "";
+            p.address += resp.getKORPS() != null ? "/" + resp.getKORPS(): "";
+            p.address += resp.getAPP() != null ? "-" + resp.getAPP(): "";
 
             try {
                 p.bothRegDate = formatter.parse(resp.getBDATE());

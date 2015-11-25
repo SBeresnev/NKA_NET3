@@ -38,7 +38,6 @@ public class ExceptionController {
     }
 
 
-
     @ExceptionHandler(ServiceDaoException.class)
     public ResponseEntity<ErrorForm> subjectUpdateForm(HttpServletRequest req)
     {

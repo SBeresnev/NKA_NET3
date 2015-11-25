@@ -74,7 +74,6 @@ public class SubjectController {
         return pPerson;
     }
 
-
     @RequestMapping(value = {"/add"}, method = {RequestMethod.POST})
     public Person addPerson(@RequestBody SubjectForm subjectForm) throws Exception {
 
@@ -106,7 +105,6 @@ public class SubjectController {
 
         return null;
     }
-
 
     @RequestMapping(value = {"/mvd"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<PPerson> getMVDPerson(SearchMvdForm searchMvdForm)  {
@@ -214,9 +212,5 @@ public class SubjectController {
 
         return result_j;
     }
-
-
-
-
 
 }
