@@ -1,6 +1,5 @@
 package nla.local.controller;
 
-import nla.local.controller.forms.ErrorForm;
 import nla.local.controller.forms.SearchMvdForm;
 import nla.local.controller.forms.SearchSubjectForm;
 import nla.local.controller.forms.SubjectForm;

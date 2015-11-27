@@ -250,6 +250,7 @@ public class SubjectForm {
         jPerson.unp = this.unp;
         jPerson.isOwner = this.isOwner != null ? Integer.decode(this.isOwner) : null;
         jPerson.dtype = this.dtype;
+        jPerson.sitizens = this.sitizens;
         jPerson.reestrdataID = this.reestrdataID != null ? Integer.decode(this.reestrdataID) : null;
         jPerson.subjectType = this.subjectType;
 

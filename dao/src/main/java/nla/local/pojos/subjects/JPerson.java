@@ -53,6 +53,9 @@ public class JPerson extends Person implements Serializable{
     @Column(name = "REMARK")
     public String remark;
 
+    @Column(name = "SITIZENS")
+    public Integer sitizens;
+
     @Column(name = "PREV_ADDRESS")
     public String address;
 
