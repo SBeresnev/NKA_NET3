@@ -67,9 +67,17 @@ public class SubjectController {
 
     @RequestMapping(value = {"/update"}, method = {org.springframework.web.bind.annotation.RequestMethod.PUT})
     public Person updatePerson(@RequestBody SubjectForm subjectForm) throws ServiceDaoException {
+
         logger.info("root - /subject/update");
+
         PPerson pPerson = this.pService.getSubject(subjectForm.getSubjectId());
-            this.pService.update(subjectForm.updatePPerson(pPerson));
+
+        pPerson = subjectForm.updatePPerson(pPerson);
+
+        this.pService.update(pPerson);
+
+        this.pService.refreshSubject(pPerson);
+
         return pPerson;
     }
 

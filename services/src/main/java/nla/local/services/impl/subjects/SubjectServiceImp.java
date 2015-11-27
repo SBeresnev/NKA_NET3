@@ -19,7 +19,6 @@ import java.util.List;
  */
 
 @Service
-@Transactional
 public abstract class SubjectServiceImp<T extends Person> extends BaseServiceImp<T> implements ISubjectService<T> {
 
    private static Logger log = Logger.getLogger(SubjectServiceImp.class);
@@ -43,12 +42,14 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseServiceImp
         }
     }
 
+
     @Override
     public void refreshSubject(T t) throws ServiceDaoException
     {
         try {
 
-            super.update(t);
+            super.refresh(t);
+
 
         } catch (DaoException e) {
 
