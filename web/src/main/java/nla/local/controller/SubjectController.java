@@ -37,7 +37,6 @@ public class SubjectController {
     @Autowired
     public JSubjectServiceImp jService;
 
-
     @Autowired
     public PassportServiceImp passService;
 
