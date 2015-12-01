@@ -4,14 +4,17 @@ import nla.local.dao.Dao;
 import nla.local.dao.exceptions.DaoErrorCode;
 import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceDaoException;
+import nla.local.exception.ServiceException;
 import nla.local.services.IService;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.io.Serializable;
+
 import java.util.List;
 
 /**
@@ -70,6 +73,7 @@ public class BaseServiceImp<T> implements IService<T> {
             throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_003, t);
 
         }
+
 
     }
 

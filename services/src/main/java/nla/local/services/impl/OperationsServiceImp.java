@@ -15,6 +15,7 @@ import java.util.List;
 /**
  * Created by belonovich on 08.04.2015.
  */
+
 @Service
 @Transactional
 public class OperationsServiceImp extends BaseServiceImp<Operation> implements IOperationsService {

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -88,10 +89,15 @@ public class BaseDao<T> implements Dao<T> {
             getSession().update(t);
             log.info("Update:" + t) ;
         } catch (HibernateException e) {
+
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_003, t);
+
             log.error(dEx.getMessage());
+
             throw dEx;
+
         }
+
     }
 
     @Override

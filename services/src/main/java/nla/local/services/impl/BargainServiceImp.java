@@ -2,7 +2,6 @@ package nla.local.services.impl;
 
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
-import nla.local.pojos.bargain.Bargain;
 import nla.local.pojos.bargain.BargainContent;
 import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IBargainService;

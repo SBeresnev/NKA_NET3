@@ -1,5 +1,7 @@
 package nla.local.exception;
 
+import org.springframework.orm.hibernate4.HibernateJdbcException;
+
 import java.nio.charset.Charset;
 
 /**
@@ -14,8 +16,7 @@ public class SubjectControllerException extends RuntimeException {
 
         super(villageName);
 
-        String value = new String(villageName.getBytes(Charset.forName("UTF-8")));
-
 
     }
+
 }

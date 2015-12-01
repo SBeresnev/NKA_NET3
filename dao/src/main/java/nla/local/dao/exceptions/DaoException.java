@@ -1,5 +1,7 @@
 package nla.local.dao.exceptions;
 
+import java.sql.SQLException;
+
 /**
  *
  * Custom exception for dao layer

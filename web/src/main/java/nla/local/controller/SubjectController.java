@@ -17,10 +17,9 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
+import org.springframework.orm.hibernate4.HibernateJdbcException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
 @RestController
@@ -71,14 +70,14 @@ public class SubjectController {
 
         PPerson pPerson = this.pService.getSubject(subjectForm.getSubjectId());
 
-        pPerson = subjectForm.updatePPerson(pPerson);
+         pPerson = subjectForm.updatePPerson(pPerson);
 
-        this.pService.update(pPerson);
+         this.pService.update(pPerson);
 
-        this.pService.refreshSubject(pPerson);
+         this.pService.refreshSubject(pPerson);
 
-        return pPerson;
-    }
+         return pPerson;
+ }
 
     @RequestMapping(value = {"/add"}, method = {RequestMethod.POST})
     public Person addPerson(@RequestBody SubjectForm subjectForm) throws ServiceDaoException {
@@ -92,6 +91,7 @@ public class SubjectController {
             PPerson pPerson = new PPerson();
             subjectForm.updatePPerson(pPerson);
             pPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_F_ID.nextval").toString());
+
             pService.add(pPerson);
 
             return pPerson;
