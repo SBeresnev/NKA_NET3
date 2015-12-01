@@ -9,6 +9,7 @@ import nla.local.services.impl.BaseServiceImp;
 import org.apache.log4j.Logger;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -19,6 +20,7 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public abstract class SubjectServiceImp<T extends Person> extends BaseServiceImp<T> implements ISubjectService<T> {
 
    private static Logger log = Logger.getLogger(SubjectServiceImp.class);
@@ -41,7 +43,6 @@ public abstract class SubjectServiceImp<T extends Person> extends BaseServiceImp
             throw new ServiceDaoException(e, DaoErrorCode.NKANET_DAO_001, id);
         }
     }
-
 
     @Override
     public void refreshSubject(T t) throws ServiceDaoException

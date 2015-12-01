@@ -81,7 +81,7 @@ public class SubjectController {
     }
 
     @RequestMapping(value = {"/add"}, method = {RequestMethod.POST})
-    public Person addPerson(@RequestBody SubjectForm subjectForm) throws Exception {
+    public Person addPerson(@RequestBody SubjectForm subjectForm) throws ServiceDaoException {
 
         logger.info("root - /subject/add");
 
