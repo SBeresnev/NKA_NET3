@@ -17,7 +17,6 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.orm.hibernate4.HibernateJdbcException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -55,7 +54,7 @@ public class SubjectController {
 
         ArrayList<Person> result_p = new ArrayList();
         if (searchSubjectForm.getSubjectClass() == SubjectClass.PRV) {
-             result_p.addAll(this.pService.findByFIOType(searchSubjectForm.surname, searchSubjectForm.firstname, searchSubjectForm.lastname, searchSubjectForm.getNumber(), searchSubjectForm.getType()));
+            result_p.addAll(this.pService.findByFIOType(searchSubjectForm.surname, searchSubjectForm.firstname, searchSubjectForm.lastname, searchSubjectForm.getNumber(), searchSubjectForm.getType()));
         }
         if (searchSubjectForm.getSubjectClass() == SubjectClass.JUR) {
             result_p.addAll(this.jService.findByNameType(searchSubjectForm.getName(), searchSubjectForm.getNumber(), searchSubjectForm.getType()));
@@ -70,14 +69,14 @@ public class SubjectController {
 
         PPerson pPerson = this.pService.getSubject(subjectForm.getSubjectId());
 
-         pPerson = subjectForm.updatePPerson(pPerson);
+        pPerson = subjectForm.updatePPerson(pPerson);
 
-         this.pService.update(pPerson);
+        this.pService.update(pPerson);
 
-         this.pService.refreshSubject(pPerson);
+        this.pService.refreshSubject(pPerson);
 
-         return pPerson;
- }
+        return pPerson;
+    }
 
     @RequestMapping(value = {"/add"}, method = {RequestMethod.POST})
     public Person addPerson(@RequestBody SubjectForm subjectForm) throws ServiceDaoException {
@@ -96,16 +95,16 @@ public class SubjectController {
 
             return pPerson;
         }
-       if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
-           if ( jService.findByNameType("",subjectForm.getUnp(),null).size() != 0)
-               throw new SubjectControllerException("Субъект уже существует");
+        if(subjectForm.getSubjectClass() == SubjectClass.JUR ){
+            if ( jService.findByNameType("",subjectForm.getUnp(),null).size() != 0)
+                throw new SubjectControllerException("Субъект уже существует");
 
             JPerson jPerson = new JPerson();
             subjectForm.updateJPerson(jPerson);
             jPerson.subjectdataid = Integer.valueOf(scg.generate("SEQ_SUBJECTSDATA_J_ID.nextval").toString());
             jService.add(jPerson);
 
-           return jPerson;
+            return jPerson;
 
         }
 
@@ -154,25 +153,25 @@ public class SubjectController {
 
         List<JPerson> ret_val = new ArrayList<JPerson>() ;
 
-         if(unp != null) {
+        if(unp != null) {
 
-             JurMINJST jum = justiceService.findSubjectUnp(unp);
+            JurMINJST jum = justiceService.findSubjectUnp(unp);
 
-             JPerson jp = justiceService.casttoPerson(jum);
+            JPerson jp = justiceService.casttoPerson(jum);
 
-             ret_val.add(jp);
+            ret_val.add(jp);
 
-         } else {
+        } else {
 
-             List<JurMINJST> jum_list = justiceService.findSubjectName(name);
+            List<JurMINJST> jum_list = justiceService.findSubjectName(name);
 
-             for (JurMINJST jum : jum_list)
-             {
-                 JPerson jp  = justiceService.casttoPerson(jum);
+            for (JurMINJST jum : jum_list)
+            {
+                JPerson jp  = justiceService.casttoPerson(jum);
 
-                 ret_val.add(jp);
-             }
-         }
+                ret_val.add(jp);
+            }
+        }
 
         return ret_val;
     }
@@ -205,7 +204,7 @@ public class SubjectController {
         logger.info("root - /subject/juridical");
         List<JPerson> result_j = null;
 
-      try {
+        try {
             result_j = this.jService.getAll();
 
             JPerson jp = this.jService.getSubject(((JPerson) result_j.get(0)).getSubjectId());

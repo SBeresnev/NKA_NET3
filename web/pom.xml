@@ -149,6 +149,7 @@
                 <version>2.2</version>
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
+                    <!--http://172.31.14.71:8080/manager/text-->
                     <path>/nka_net3</path>
                     <warFile>target/nka_net3.war</warFile>
                     <server>TomcatServer</server>
