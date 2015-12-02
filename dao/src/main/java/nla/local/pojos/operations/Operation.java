@@ -93,13 +93,9 @@ public class Operation implements Serializable {
         this.parent_id_hist = parent_id_hist;
     }
 
-    public CatalogItem getReason() {
-        return reason;
-    }
+    public CatalogItem getReason() { return reason; }
 
-    public void setReason(CatalogItem reason) {
-        this.reason = reason;
-    }
+    public void setReason(CatalogItem reason) { this.reason = reason; }
 
     public Date getOperDate() {
         return operDate;

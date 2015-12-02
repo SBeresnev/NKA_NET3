@@ -58,6 +58,7 @@ public class RightOwner implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn( name = "OOPER_ID")
+    @Fetch(FetchMode.SUBSELECT)
     private Operation ooper;
 
 
