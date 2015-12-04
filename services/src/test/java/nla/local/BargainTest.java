@@ -192,7 +192,7 @@ public class BargainTest {
         });
 
 
-        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(directType));
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(directType.getCode_id()));
 
         RightOwner row = CollectionUtils.find( r_lrt, new Predicate() {
             public boolean evaluate(Object o) {

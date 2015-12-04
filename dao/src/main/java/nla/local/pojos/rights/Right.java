@@ -35,45 +35,42 @@ public class Right implements Serializable {
     private Long right_id;
 
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumnsOrFormulas({
             @JoinColumnOrFormula(column=@JoinColumn(name = "RIGHT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
             @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.RIGHT_TYPE,referencedColumnName="ANALYTIC_TYPE")
             )
-    })
-    private CatalogItem right_type;
+    })*/
+    @Column(name = "RIGHT_TYPE")
+    private Integer right_type;
 
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumnsOrFormulas({
             @JoinColumnOrFormula(column=@JoinColumn(name = "RIGHT_ENTITY_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
             @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.RIGHT_ENTYTY_TYPE,referencedColumnName="ANALYTIC_TYPE")
             )
-    })
-    private CatalogItem right_entyty_type;
+    })*/
+    @Column(name = "RIGHT_ENTITY_TYPE")
+    private Integer right_entyty_type;
 
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumnsOrFormulas({
             @JoinColumnOrFormula(column=@JoinColumn(name = "RIGHT_COUNT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
             @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.RIGHT_COUNT_TYPE,referencedColumnName="ANALYTIC_TYPE")
             )
-    })
-    private CatalogItem right_count_type;
+    })*/
+    @Column(name = "RIGHT_COUNT_TYPE")
+    private Integer right_count_type;
 
 
     @Column(name = "OBJECT_ENTITY_ID")
     private Long object_entity_id;               //  object refrence
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "LIMIT_RIGHT_ID",nullable = true)
-    private Right limit_righ;               //  right refrence
-
-
-   /* @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "limit_right_id",nullable = false)
-    private Right right;*/
+    @Column(name = "LIMIT_RIGHT_ID",nullable = true)
+    private Long limit_righ;                    //  right refrence указатель на ограниченное право
 
 
     @Column(name = "BOUND_ID")
@@ -106,41 +103,17 @@ public class Right implements Serializable {
     @JsonSerialize(using=DateSerializer.class)
     private Date end_date;
 
-    @Transient
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn( name = "OBJECT_ENTITY_ID",insertable = false, updatable = false, nullable = false)
     private Object_dest bindedObj;
 
 
-   /*
-    public void fillRightId(Integer r_id) {
 
-        if( right_owner_lst != null ) {
-
-            for (RightOwner row : right_owner_lst) {
-
-                row.setRight_id(r_id);
-
-            }
-
-        }
-
-    }
-
-    public Set<RightOwner> getRight_owner_lst() {
-        return right_owner_lst;
-    }
-
-    public void setRight_owner_lst(Set<RightOwner> right_owner_lst) {
-        this.right_owner_lst = right_owner_lst;
-    }
-
-    */
-
-
-    public Right getLimit_righ() {
+    public Long getLimit_righ() {
         return limit_righ;
     }
 
-    public void setLimit_righ(Right limit_righ) {
+    public void setLimit_righ(Long limit_righ) {
         this.limit_righ = limit_righ;
     }
 
@@ -156,11 +129,11 @@ public class Right implements Serializable {
 
     }
 
-    public CatalogItem getRight_count_type() {
+    public Integer getRight_count_type() {
         return right_count_type;
     }
 
-    public void setRight_count_type(CatalogItem right_count_type) {
+    public void setRight_count_type(Integer right_count_type) {
         this.right_count_type = right_count_type;
     }
 
@@ -172,19 +145,19 @@ public class Right implements Serializable {
         this.right_id = right_id;
     }
 
-    public CatalogItem getRight_type() {
+    public Integer getRight_type() {
         return right_type;
     }
 
-    public void setRight_type(CatalogItem right_type) {
+    public void setRight_type(Integer right_type) {
         this.right_type = right_type;
     }
 
-    public CatalogItem getRight_entyty_type() {
+    public Integer getRight_entyty_type() {
         return right_entyty_type;
     }
 
-    public void setRight_entyty_type(CatalogItem right_entyty_type) {
+    public void setRight_entyty_type(Integer right_entyty_type) {
         this.right_entyty_type = right_entyty_type;
     }
 

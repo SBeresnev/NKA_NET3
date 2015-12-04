@@ -99,21 +99,17 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     /*************************************finds***************************************************************************/
     @Override
-    public Right getRight(Long id) throws ServiceDaoException
-    {
+    public Right getRight(Long id) throws ServiceDaoException  {
        return (Right) super.get(Right.class,id);
     }
 
-
     @Override
-    public RightOwner getRightOwner(Long id) throws ServiceDaoException
-    {
+    public RightOwner getRightOwner(Long id) throws ServiceDaoException {
         return (RightOwner) super.get(RightOwner.class,id);
     }
 
-
     @Deprecated
-    public List<RightOwner> findbyrightCountType( CatalogItem countType) throws ServiceDaoException {
+    public List<RightOwner> findbyrightCountType( Integer countType) throws ServiceDaoException {
 
         List<RightOwner> ret_val = null;
 
@@ -221,7 +217,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val_own;
     }
 
-
     public List<Right> getlimitationsObject (Long[] obj_ids)  throws ServiceDaoException, ServiceException {
 
         List<Right> ret_val = null;
@@ -237,6 +232,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val;
 
     }
+
 
 
 
@@ -264,7 +260,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
             this.updateRightOwner(parent_owner);
 
-            child_own.setParent_owner(parent_owner);
+            child_own.setParent_owner(parent_owner.getRight_owner_id());
 
             child_own.setRight(main_right);
 
@@ -281,11 +277,11 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         this.updateRightOwner(parent_owner);
 
-        /***************************** *********************************************************************************/
+        /**************************************************************************************************************/
 
         for (RightOwner child_owner : child_owners )
         {
-            child_owner.setParent_owner(parent_owner);
+            child_owner.setParent_owner(parent_owner.getRight_owner_id());
 
             this.addRightOwner(child_owner);
         }

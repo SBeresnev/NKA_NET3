@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.operations.Operation;
 import nla.local.pojos.subjects.Person;
-import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
@@ -41,9 +40,10 @@ public class RightOwner implements Serializable {
     @Column(name="DENOMINATOR_PART")
     private Integer denominator_part;
 
-    @OneToOne
-    @JoinColumn( name = "PARENT_OWNER", referencedColumnName = "RIGHT_OWNER_ID")
-    private RightOwner parent_owner;
+    //@OneToOne
+    //@JoinColumn( name = "PARENT_OWNER", referencedColumnName = "RIGHT_OWNER_ID")
+    @Column(name="PARENT_OWNER")
+    private Long parent_owner;
 
     @Column(name = "DATE_IN")
     @JsonSerialize(using=DateSerializer.class)
@@ -58,10 +58,7 @@ public class RightOwner implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn( name = "OOPER_ID")
-    @Fetch(FetchMode.SUBSELECT)
     private Operation ooper;
-
-
 
     /*
     public Integer getRight_id() {
@@ -97,11 +94,11 @@ public class RightOwner implements Serializable {
         this.owner = owner;
     }
 
-    public RightOwner getParent_owner() {
+    public Long getParent_owner() {
         return parent_owner;
     }
 
-    public void setParent_owner(RightOwner parent_owner) {
+    public void setParent_owner(Long parent_owner) {
         this.parent_owner = parent_owner;
     }
 

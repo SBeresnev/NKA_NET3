@@ -202,6 +202,7 @@ public class SubjectForm {
     }
 
     public void setOrgRightForm(CatalogItem orgRightForm) {
+
         this.orgRightForm = orgRightForm;
     }
 

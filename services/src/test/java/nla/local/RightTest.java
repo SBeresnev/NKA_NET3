@@ -93,12 +93,12 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-
-        baseClean.RightClean();
+       /*
+       baseClean.RightClean();
 
         baseClean.ObjectClean();
 
-        baseClean.OperationsClean();
+        baseClean.OperationsClean(); */
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -106,13 +106,13 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-        generateSingleRightPass();
+       // generateSingleRightPass();
 
-        generateSharedRightPass();
+      //  generateSharedRightPass();
 
-       // splitsharedRight();
+        splitsharedRight();
 
-        passsharedRight();
+       // passsharedRight();
 
        // findbySubjectId();
 
@@ -178,17 +178,17 @@ public class RightTest {
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        rgt.setRight_type(rightType);
+        rgt.setRight_type(rightType.getCode_id());
 
-        rgt.setRight_entyty_type(directType);
+        rgt.setRight_entyty_type(directType.getCode_id());
 
-        rgt.setRight_count_type(rightCountType);
+        rgt.setRight_count_type(rightCountType.getCode_id());
 
         rgt.setBegin_date(cal.getTime());
 
         rgt.setIs_needed(0);
 
-        rgt.setComments("Object number = " + 0);
+        rgt.setComments("Object number" );
 
         rgt.setBindedObj(ret_val_dest.get(0));
 
@@ -230,28 +230,6 @@ public class RightTest {
 
     }
 
-    public void findbySubjectId() throws ServiceDaoException {
-
-        List<RightOwner> lrt_own_ = rsi.getRightbyObjectAddr("минск, авиации 14", null);
-
-        lrt_own_ = rsi.getRightbyObjectPerson(new Long[]{Long.valueOf(82)}, 1046);
-
-    }
-
-    public void getRightbyObject() {
-        try {
-
-
-            Set<RightOwner> lr = new HashSet<RightOwner>(rsi.getRightbyObjectAddr("минск, авиации 14", null));
-
-            long endTime = System.nanoTime();
-
-        } catch (ServiceDaoException e) {
-            e.printStackTrace();
-        }
-
-    }
-
     public void generateSharedRightPass() throws ServiceDaoException, ServiceException {
 
         CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
@@ -262,7 +240,7 @@ public class RightTest {
         });
 
 
-        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType.getCode_id()));//(rsi.findbySubject(f_subject_id));
 
         final Integer f_subject_id = r_lrt.iterator().next().getOwner().subjectId;
 
@@ -316,11 +294,11 @@ public class RightTest {
 
         Right rgt = new Right();
 
-        rgt.setRight_type(rightType);
+        rgt.setRight_type(rightType.getCode_id());
 
-        rgt.setRight_entyty_type(directType);
+        rgt.setRight_entyty_type(directType.getCode_id());
 
-        rgt.setRight_count_type(rightCountType);
+        rgt.setRight_count_type(rightCountType.getCode_id());
 
         rgt.setBegin_date(cal.getTime());
 
@@ -369,7 +347,7 @@ public class RightTest {
 
             orgt.setDenominator_part(3);
 
-            orgt.setParent_owner(rown);
+            orgt.setParent_owner(rown.getRight_owner_id());
 
             orgt.setRight(rgt);
 
@@ -381,6 +359,7 @@ public class RightTest {
 
     }
 
+    //////////// Соединяем один ко многим //////////////////
     public void splitsharedRight()  throws ServiceDaoException, ServiceException {
 
         CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
@@ -421,7 +400,7 @@ public class RightTest {
 
         Random r = new Random();
 
-        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(1));//(rsi.findbySubject(f_subject_id));
 
         RightOwner par_row = r_lrt.iterator().next();
 
@@ -443,11 +422,11 @@ public class RightTest {
 
         Right rgt = new Right();
 
-        rgt.setRight_type(rightType);
+        rgt.setRight_type(rightType.getCode_id());
 
-        rgt.setRight_entyty_type(directType);
+        rgt.setRight_entyty_type(directType.getCode_id());
 
-        rgt.setRight_count_type(rightCountType);
+        rgt.setRight_count_type(rightCountType.getCode_id());
 
         rgt.setBegin_date(cal.getTime());
 
@@ -543,7 +522,7 @@ public class RightTest {
 
         Random r = new Random();
 
-        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType));//(rsi.findbySubject(f_subject_id));
+        Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType.getCode_id()));//(rsi.findbySubject(f_subject_id));
 
         Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
 
@@ -555,11 +534,11 @@ public class RightTest {
 
         Right rgt = new Right();
 
-        rgt.setRight_type(rightType);
+        rgt.setRight_type(rightType.getCode_id());
 
-        rgt.setRight_entyty_type(directType);
+        rgt.setRight_entyty_type(directType.getCode_id());
 
-        rgt.setRight_count_type(rightCountType);
+        rgt.setRight_count_type(rightCountType.getCode_id());
 
         rgt.setBegin_date(cal.getTime());
 
@@ -649,7 +628,7 @@ public class RightTest {
 
         rght.setRight_count_type(null);
 
-        rght.setRight_entyty_type(directType); //200
+        rght.setRight_entyty_type(directType.getCode_id()); //200
 
         CatalogItem  rightType = CollectionUtils.find(rightTypeList, new Predicate() {
             public boolean evaluate(Object o) {
@@ -658,7 +637,7 @@ public class RightTest {
             }
         });
 
-        rght.setRight_type(rightType);
+        rght.setRight_type(rightType.getCode_id());
 
         DetachedCriteria dc =  DetachedCriteria.forClass(Right.class);
 
@@ -666,7 +645,7 @@ public class RightTest {
 
         List<Right> all_right = rsi.getCriterion(dc);
 
-        rght.setLimit_righ(all_right.get(0));
+        rght.setLimit_righ(all_right.get(0).getRight_id());
 
         rght.setObject_entity_id(all_right.get(0).getObject_entity_id());
 
@@ -674,7 +653,31 @@ public class RightTest {
 
     }
 
-    public Operation getOperField(int operType, int operCode, int operSubtype, int operSubcode, int resonType, int ReasonCode ) throws ServiceDaoException {
+    /////////// Поиск прав //////////////////////////////////////
+    public void findbySubjectId() throws ServiceDaoException {
+
+        List<RightOwner> lrt_own_ = rsi.getRightbyObjectAddr("минск, авиации 14", null);
+
+        lrt_own_ = rsi.getRightbyObjectPerson(new Long[]{Long.valueOf(255)}, null);
+
+    }
+
+    public void getRightbyObject() {
+        try {
+
+
+            Set<RightOwner> lr = new HashSet<RightOwner>(rsi.getRightbyObjectAddr("минск, авиации 14", null));
+
+            long endTime = System.nanoTime();
+
+        } catch (ServiceDaoException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public Operation getOperField(int operType, int operCode, int operSubtype, int operSubcode, int reasonType, int ReasonCode ) throws ServiceDaoException {
 
 
         DetachedCriteria dc_crit =  DetachedCriteria.forClass(Decl.class).add(Restrictions.sqlRestriction("rownum = 1"));

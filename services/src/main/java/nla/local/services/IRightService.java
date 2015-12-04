@@ -48,7 +48,7 @@ public interface IRightService extends IService {
 
     /************************* Only for Test *****************************************************************************************/
     @Deprecated
-    public List<RightOwner> findbyrightCountType( CatalogItem countType) throws ServiceDaoException ;
+    public List<RightOwner> findbyrightCountType( Integer countType) throws ServiceDaoException ;
 
     @Deprecated
     public List<RightOwner> getRightOwnersbyRight (Long[] right_ids) throws ServiceDaoException, ServiceException;

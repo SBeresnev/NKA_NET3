@@ -71,7 +71,7 @@ public class RightController {
 
         logger.info("root - /right/getRightObjectPerson");
 
-        List<RightOwner> ret_val = irs.getRightbyObjectPerson(obj_ids,person_id);
+        List<RightOwner> ret_val = irs.getRightbyObjectPerson(obj_ids, person_id);
 
         return ret_val;
 

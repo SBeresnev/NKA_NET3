@@ -12,7 +12,6 @@ public class SubjectControllerException extends RuntimeException {
 
         super(villageName);
 
-
     }
 
 }

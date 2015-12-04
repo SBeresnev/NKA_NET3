@@ -23,6 +23,7 @@ public class JurMINJST implements Serializable{
     static
     {
 
+        opf.put(0, "Не определено");
         opf.put(1000, "Коммерческая организация");
         opf.put(1100, "Хозяйственное товарищество/общество");
         opf.put(1110, "Полное товарищество");

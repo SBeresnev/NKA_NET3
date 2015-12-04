@@ -148,9 +148,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
                 dst.setAddress_dest(ret_dest_adr);
 
-                ret_val.set(i, dst);
-
-                i++;
+                ret_val.add(dst);
 
             }
 
