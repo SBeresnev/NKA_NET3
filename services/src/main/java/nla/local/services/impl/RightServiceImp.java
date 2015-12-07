@@ -234,8 +234,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
 
-
-
     @Override
     public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException {
 
