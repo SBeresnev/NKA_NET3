@@ -28,7 +28,7 @@ public class OperationsServiceImp extends BaseServiceImp<Operation> implements I
 
 
     @Override
-    public Operation get(Integer id) throws ServiceDaoException {
+    public Operation get(Long id) throws ServiceDaoException {
 
         return super.get(Operation.class, id);
     }

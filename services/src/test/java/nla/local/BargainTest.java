@@ -115,7 +115,7 @@ public class BargainTest {
 
         List<RightOwner> lor = rsi.getRightbyObjectPerson(obj_ids, null);
 
-        long obj_id = lor.get(0).getRight().getObject_entity_id();
+        long obj_id = lor.get(0).getRight().getBindedObj().getObj_id();
 
         Long[] lobj = new Long[]{obj_id};
 
@@ -135,7 +135,7 @@ public class BargainTest {
 
             bar.setVat_complex(80);
 
-            bar.getOoper().setOperSubtype(catalogService.getCatalogItem(62,3));
+            bar.getOoper().setOperSubtype(catalogService.getCatalogItem(62,3).getCode_id());
 
 
             bsi.updateBargain(bar_cont);
@@ -253,7 +253,7 @@ public class BargainTest {
 
         CatalogItem ci = catalogService.getCatalogItem(cp);                         // формирование
 
-        oper.setOperType(ci);
+        oper.setOperType(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
@@ -264,7 +264,7 @@ public class BargainTest {
 
         ci = catalogService.getCatalogItem(cp);
 
-        oper.setOperSubtype(ci);
+        oper.setOperSubtype(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
@@ -273,11 +273,11 @@ public class BargainTest {
 
         // cp.setCode_id(ReasonCode);
 
-        //ci = catalogService.getCatalogItem(cp);
+        // ci = catalogService.getCatalogItem(cp);
 
         ci = catalogService.getCatalogItem(63,3100);
 
-        oper.setReason(ci);
+        oper.setReason(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
@@ -289,7 +289,7 @@ public class BargainTest {
 
         Person prs = ops.get(0);
 
-        oper.setExecutor(prs);
+        oper.setExecutor(prs.getSubjectId());
 
         oper.setStatus(1);
 

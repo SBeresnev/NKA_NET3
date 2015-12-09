@@ -1,13 +1,14 @@
 package nla.local.pojos.address;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by beresnev on 04.06.2015.
  */
 @Entity
 @Table(name="V_ADDRESSES_DEST")
-public class Address_dest {
+public class Address_dest implements Serializable{
 
     @Id
     @Column(name="ADDRESS_ID", unique=true, nullable=false )

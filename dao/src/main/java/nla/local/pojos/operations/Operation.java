@@ -24,38 +24,25 @@ public class Operation implements Serializable {
     @Column(name="OOPER_ID", unique=true, nullable=false )
     @SequenceGenerator(name="operation_seq", sequenceName="SEQ_OPERATIONS_ID")
     @GeneratedValue(strategy = GenerationType.AUTO ,generator="operation_seq")
-    private Integer ooperId;
-
+    private Long ooperId;
 
     @Column(name = "DECL_ID")
     private Long declId;
 
-
     @Column (name ="ENTITY_TYPE")
     private Integer entytyType;
 
+    @Column(name = "OPER_TYPE")
+    private Integer operType;       //CatalogConstants.OPERATION_TYP
 
-    @ManyToOne
-    @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column= @JoinColumn(name = "OPER_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula(formula=@JoinFormula(value= CatalogConstants.OPERATION_TYP, referencedColumnName="ANALYTIC_TYPE"))})
-    private CatalogItem operType;
+    @Column(name = "OPER_SUBTYPE")
+    private Integer operSubtype;    //CatalogConstants.OPERATION_SUB_TYP
 
-    @ManyToOne
-    @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column= @JoinColumn(name = "OPER_SUBTYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula(formula=@JoinFormula(value=CatalogConstants.OPERATION_SUB_TYP, referencedColumnName="ANALYTIC_TYPE"))})
-    private CatalogItem operSubtype;
+    @Column(name = "REASON")
+    private Integer reason;         //CatalogConstants.OPERATION_BASE
 
-    @ManyToOne
-    @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column= @JoinColumn(name = "REASON", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula(formula=@JoinFormula(value=CatalogConstants.OPERATION_BASE, referencedColumnName="ANALYTIC_TYPE"))})
-    private CatalogItem reason;
-
-    @OneToOne
-    @JoinColumn(name = "EXECUTOR", nullable = false)
-    private Person executor;
+    @Column(name = "EXECUTOR", nullable = false)
+    private Integer executor;
 
     @Column( name = "REG_DATE", nullable = false)
     private Date regDate;
@@ -63,39 +50,35 @@ public class Operation implements Serializable {
     @Column( name = "OPER_DATE", nullable = false)
     private Date operDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "PARENT_ID_ORDER")
-    private Operation parent_id_order;
+    @Column(name = "PARENT_ID_ORDER")
+    private Long parent_id_order;
 
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "PARENT_ID_HIST")
-    private Operation parent_id_hist;
+    @Column(name = "PARENT_ID_HIST")
+    private Long parent_id_hist;
 
     @Column( name = "STATUS", nullable = false)
     private Integer status;
 
 
-    public Operation getParent_id_order() {
+    public Long getParent_id_order() {
         return parent_id_order;
     }
 
-    public void setParent_id_order(Operation parent_id_order) {
+    public void setParent_id_order(Long parent_id_order) {
         this.parent_id_order = parent_id_order;
     }
 
-    public Operation getParent_id_hist() {
+    public Long getParent_id_hist() {
         return parent_id_hist;
     }
 
-
-    public void setParent_id_hist(Operation parent_id_hist) {
+    public void setParent_id_hist(Long parent_id_hist) {
         this.parent_id_hist = parent_id_hist;
     }
 
-    public CatalogItem getReason() { return reason; }
+    public Integer getReason() { return reason; }
 
-    public void setReason(CatalogItem reason) { this.reason = reason; }
+    public void setReason(Integer reason) { this.reason = reason; }
 
     public Date getOperDate() {
         return operDate;
@@ -121,35 +104,35 @@ public class Operation implements Serializable {
         this.regDate = regDate;
     }
 
-    public Integer getOoperId() {
+    public Long getOoperId() {
         return ooperId;
     }
 
-    public void setOoperId(Integer ooperId) {
+    public void setOoperId(Long ooperId) {
         this.ooperId = ooperId;
     }
 
-    public CatalogItem getOperType() {
+    public Integer getOperType() {
         return operType;
     }
 
-    public void setOperType(CatalogItem operType) {
+    public void setOperType(Integer operType) {
         this.operType = operType;
     }
 
-    public CatalogItem getOperSubtype() {
+    public Integer getOperSubtype() {
         return operSubtype;
     }
 
-    public void setOperSubtype(CatalogItem operSubtype) {
+    public void setOperSubtype(Integer operSubtype) {
         this.operSubtype = operSubtype;
     }
 
-    public Person getExecutor() {
+    public Integer getExecutor() {
         return executor;
     }
 
-    public void setExecutor(Person executor) {
+    public void setExecutor(Integer executor) {
         this.executor = executor;
     }
 

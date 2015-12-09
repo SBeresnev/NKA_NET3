@@ -28,19 +28,19 @@ public class OperationsController {
 
     @RequestMapping(value={"/get_all"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<Operation> getAll() throws DaoException {
+
         logger.info("root - /operations/get_all");
+
         return operationsService.getAll();
+
     }
 
     @RequestMapping(value={"/add"}, method={RequestMethod.POST})
     public List<Operation> add(@RequestBody Operation operation) throws DaoException {
         logger.info("root - /operations/add");
-       /*
-        operation.setExecutor(fullSubjectService.getSubject(30200));
-        operation.setStatus(1);
-        operation.setRegDate(new Date());
-        */
+
         operationsService.add(operation);
+
         return operationsService.getAll();
     }
 
@@ -57,8 +57,10 @@ public class OperationsController {
     }
 
     @RequestMapping(value={"/delete"}, method={RequestMethod.DELETE})
-    public void deleteOperation(Integer ooperId) throws DaoException {
+    public void deleteOperation(Long ooperId) throws DaoException {
+
         logger.info("root - /operations/get_from_decl");
+
         operationsService.delete(operationsService.get(ooperId));
     }
 }

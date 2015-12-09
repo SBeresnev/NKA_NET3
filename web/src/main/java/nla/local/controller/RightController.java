@@ -78,8 +78,7 @@ public class RightController {
     }
 
     @RequestMapping(value = {"/getRightbyObjectAddr"}, method = {RequestMethod.GET})
-    public List<RightOwner> getRightbyObjectAddr(String adr, String soato ) throws ServiceDaoException
-    {
+    public List<RightOwner> getRightbyObjectAddr(String adr, String soato ) throws ServiceDaoException {
         logger.info("root - /right/getRightbyObjectAddr");
 
         List<RightOwner> ret_val = irs.getRightbyObjectAddr(adr, soato);

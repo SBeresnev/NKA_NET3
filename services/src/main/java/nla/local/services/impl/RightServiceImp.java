@@ -61,23 +61,16 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     @Override
     public Right addRight(Right rght) throws ServiceDaoException, ServiceException {
 
-        if(rght.getObject_entity_id() == null) rght.setBindedObj(ios.bindObject(rght.getBindedObj()));
-
         //////////////////////////// set parent operations by binding ////////////////////////////////////////////////////////
+        if(rght.getRight_id() == null)
+        {
+            rght.getOoper().setParent_id_order(rght.getBindedObj().getOoper().getOoperId());
 
-        if( rght.getOoper() != null ) {
-            if (rght.getBindedObj() != null) {
-                if (rght.getBindedObj().getOoper() != null)
-                    rght.getOoper().setParent_id_order(rght.getBindedObj().getOoper());
-            }
+            super.add(rght);
+
         }
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        if(rght.getRight_id() == null)  super.add(rght);
-
 
         return rght;
-
     }
 
     @Override
@@ -89,7 +82,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
             this.addRight(rght_own.getRight());
         }
 
-             rght_own.getOoper().setParent_id_order(rght_own.getRight().getOoper());
+        rght_own.getOoper().setParent_id_order(rght_own.getRight().getOoper().getOoperId());
 
         super.add(rght_own);
 
@@ -100,7 +93,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     /*************************************finds***************************************************************************/
     @Override
     public Right getRight(Long id) throws ServiceDaoException  {
-       return (Right) super.get(Right.class,id);
+        return (Right) super.get(Right.class,id);
     }
 
     @Override
@@ -180,9 +173,9 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         if(person_id != null) {
 
-          lakmus = true;
+            lakmus = true;
 
-          query_.add(Restrictions.eq("owner.subjectId", person_id)) ;
+            query_.add(Restrictions.eq("owner.subjectId", person_id)) ;
         }
 
         if( obj_ids != null && obj_ids.length > 0 )
@@ -233,6 +226,9 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////
+    //    все проводки по правам в случае дробления прав предполагают, что можно захрдкодить и опреацию закрытия того это право (часть прав) передается      //
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException {
@@ -254,11 +250,11 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
             RightOwner child_own = right_own.get(parent_owner);
 
-            parent_owner.setStatus(0);
-
             this.updateRightOwner(parent_owner);
 
             child_own.setParent_owner(parent_owner.getRight_owner_id());
+
+            child_own.getOoper().setParent_id_hist(parent_owner.getOoper().getOoperId());
 
             child_own.setRight(main_right);
 
@@ -281,8 +277,12 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         {
             child_owner.setParent_owner(parent_owner.getRight_owner_id());
 
+            child_owner.getOoper().setParent_id_hist(parent_owner.getOoper().getOoperId());
+
             this.addRightOwner(child_owner);
         }
+
+
     }
 
 

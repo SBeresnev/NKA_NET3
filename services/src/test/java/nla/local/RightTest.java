@@ -93,12 +93,14 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-       /*
-       baseClean.RightClean();
+        baseClean.RightClean();
+        /*
+        baseClean.RightClean();
 
         baseClean.ObjectClean();
 
-        baseClean.OperationsClean(); */
+        baseClean.OperationsClean();
+        */
 
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
@@ -106,17 +108,17 @@ public class RightTest {
 
         long startTime = System.nanoTime();
 
-       // generateSingleRightPass();
+          generateSingleRightPass();
 
-      //  generateSharedRightPass();
+        //  generateSharedRightPass();
 
-        splitsharedRight();
+          splitsharedRight();
 
-       // passsharedRight();
+          passsharedRight();
 
-       // findbySubjectId();
+        //  findbySubjectId();
 
-       // getRightbyObject();
+        //  getRightbyObject();
 
         long endTime = System.nanoTime();
 
@@ -166,7 +168,13 @@ public class RightTest {
 
         Operation opr = getOperField(61,1,62,1,63,1010);
 
-        ret_val_dest.get(0).setOoper(opr);
+
+        if(ret_val_dest.get(0).getObj_id() == null) {
+
+            opr = getOperField(61, 1, 62, 1, 63, 1010);
+
+            ret_val_dest.get(0).setOoper(opr);
+        }
 
         List<PPerson> lp = pService.getAll();//findByFIOType("дженкинс", null, null, null, 110);
 
@@ -196,6 +204,7 @@ public class RightTest {
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
         opr = getOperField(61,10,62,1,63,3100);
 
         rgt.setOoper(opr);
@@ -214,7 +223,7 @@ public class RightTest {
 
         orgt.setDenominator_part(1);
 
-        opr = getOperField(61,10,62,1,63,3270);
+        opr = getOperField(61, 10, 62, 1,63,3270);
 
         orgt.setOoper(opr);
 
@@ -222,7 +231,7 @@ public class RightTest {
 
         orgt.setRight(rgt);
 
-       // rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
+        // rgt.setRight_owner_lst( new HashSet<RightOwner>(Arrays.asList(orgt)));
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -268,7 +277,7 @@ public class RightTest {
             }
         });
 
-        CatalogItem   rightCountType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+        CatalogItem rightCountType = CollectionUtils.find(rightCountTypeList, new Predicate() {
             public boolean evaluate(Object o) {
                 CatalogItem c = (CatalogItem) o;
                 return c.getCode_name().toLowerCase().contains("долевое право");
@@ -277,7 +286,7 @@ public class RightTest {
 
         /*************************find parent owner**********************************************************/
 
-        Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
+        Object object = r_lrt.iterator().next().getRight().getBindedObj();
 
         Long [] r_id = new Long [] {r_lrt.iterator().next().getRight().getRight_id()};
 
@@ -306,7 +315,7 @@ public class RightTest {
 
         rgt.setComments("Object number ");
 
-        rgt.setObject_entity_id(object_id);
+        rgt.setBindedObj(r_lrt.iterator().next().getRight().getBindedObj());
 
         rgt.setStatus(1);
 
@@ -329,9 +338,9 @@ public class RightTest {
 
         /***************************init shred owners***************************************************************/
 
-       opr = getOperField(61,10,62,1,63,3100);
+        opr = getOperField(61,10,62,1,63,3100);
 
-       for (int i = 0 ; i< 3; i++)
+        for (int i = 0 ; i< 3; i++)
         {
             RightOwner orgt = new RightOwner();
 
@@ -384,7 +393,7 @@ public class RightTest {
             }
         });
 
-        CatalogItem   rightCountType = CollectionUtils.find(rightCountTypeList, new Predicate() {
+        CatalogItem rightCountType = CollectionUtils.find(rightCountTypeList, new Predicate() {
             public boolean evaluate(Object o) {
                 CatalogItem c = (CatalogItem) o;
                 return c.getCode_name().toLowerCase().contains("долевое право");
@@ -404,7 +413,7 @@ public class RightTest {
 
         RightOwner par_row = r_lrt.iterator().next();
 
-        Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
+        //Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
 
         List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
 
@@ -412,7 +421,11 @@ public class RightTest {
 
         Operation opr = getOperField(61,5,62,3,63,1200);
 
-        par_row.setOoper(opr);
+        par_row.getOoper().setOperType(opr.getOperType());
+
+        par_row.getOoper().setOperSubtype(opr.getOperSubtype());
+
+        par_row.getOoper().setReason(opr.getReason());
 
         par_row.setStatus(0);
 
@@ -434,11 +447,11 @@ public class RightTest {
 
         rgt.setComments("Object number ");
 
-        rgt.setObject_entity_id(object_id);
+        rgt.setBindedObj(r_lrt.iterator().next().getRight().getBindedObj());//setObject_entity_id(object_id);
 
         rgt.setStatus(1);
 
-        opr = getOperField(61,10,62,1,63,3100);
+        opr = getOperField(61,10, 62, 1, 63, 3100);
 
         rgt.setOoper(opr);
 
@@ -449,14 +462,15 @@ public class RightTest {
 
         /***************************init shred owners***************************************************************/
 
-        List<RightOwner> own_list = new ArrayList<RightOwner>();
+        Operation opr_new = getOperField(61,10, 62, 1, 63, 3100);
 
+        List<RightOwner> own_list = new ArrayList<RightOwner>();
 
         for (int i = 0 ; i< 3; i++)
         {
             RightOwner orgt = new RightOwner();
 
-            orgt.setOoper(opr);
+            orgt.setOoper(opr_new);
 
             orgt.setStatus(1);
 
@@ -524,7 +538,7 @@ public class RightTest {
 
         Set<RightOwner> r_lrt = new HashSet<RightOwner>(rsi.findbyrightCountType(countType.getCode_id()));//(rsi.findbySubject(f_subject_id));
 
-        Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
+        //Long object_id = r_lrt.iterator().next().getRight().getObject_entity_id();
 
         List<PPerson> lp = pService.findByFIOType("дженкинс", null, null, null, 110);
 
@@ -548,7 +562,7 @@ public class RightTest {
 
         rgt.setOoper(opr);
 
-        rgt.setObject_entity_id(object_id);
+        rgt.setBindedObj(r_lrt.iterator().next().getRight().getBindedObj());//setObject_entity_id(object_id);
 
         rgt.setStatus(1);
 
@@ -647,7 +661,7 @@ public class RightTest {
 
         rght.setLimit_righ(all_right.get(0).getRight_id());
 
-        rght.setObject_entity_id(all_right.get(0).getObject_entity_id());
+        rght.setBindedObj(all_right.get(0).getBindedObj());//setObject_entity_id(all_right.get(0).getObject_entity_id());
 
         rsi.addRight(rght);
 
@@ -676,7 +690,6 @@ public class RightTest {
 
     }
 
-
     public Operation getOperField(int operType, int operCode, int operSubtype, int operSubcode, int reasonType, int ReasonCode ) throws ServiceDaoException {
 
 
@@ -689,7 +702,7 @@ public class RightTest {
 
         oper.setDeclId(dec_list.get(0).getDecl_id());
 
-        oper.setEntytyType(EntityType.toInt(EntityType.OBJECT));
+        oper.setEntytyType(EntityType.toInt(EntityType.RIGHT));
 
         oper.setOperDate(new Date());
 
@@ -702,7 +715,7 @@ public class RightTest {
 
         CatalogItem ci = catalogService.getCatalogItem(cp);                         // формирование
 
-        oper.setOperType(ci);
+        oper.setOperType(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
@@ -713,20 +726,20 @@ public class RightTest {
 
         ci = catalogService.getCatalogItem(cp);
 
-        oper.setOperSubtype(ci);
+        oper.setOperSubtype(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
 
-       // cp.setAnalytic_type(resonType);
+        // cp.setAnalytic_type(resonType);
 
-       // cp.setCode_id(ReasonCode);
+        // cp.setCode_id(ReasonCode);
 
         //ci = catalogService.getCatalogItem(cp);
 
         ci = catalogService.getCatalogItem(63,3100);
 
-        oper.setReason(ci);
+        oper.setReason(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
@@ -738,14 +751,12 @@ public class RightTest {
 
         Person prs = ops.get(0);
 
-        oper.setExecutor(prs);
+        oper.setExecutor(prs.getSubjectId());
 
         oper.setStatus(1);
 
 
         return oper ;
     }
-
-
 
 }

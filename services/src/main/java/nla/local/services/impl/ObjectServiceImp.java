@@ -35,7 +35,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
     @Autowired
     private CodeGenerator scg;
 
-    @Transactional( rollbackFor=Exception.class)
+
     public Object_dest bindObject( Object_dest object_dest) throws ServiceDaoException, ServiceException  {
 
         object_dest.setAddress_dest(ias.bindAddress(object_dest.getAddress_dest()));

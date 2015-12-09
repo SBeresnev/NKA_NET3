@@ -35,7 +35,27 @@ public class CatalogController {
     @Autowired
     private ICatalogDependencyService catalogDependencyService;
 
-    //region methods Catalog
+    ////////////////////////////////////////rights//////////////////////////////////////////////////////////////////////
+
+    @RequestMapping(value = {"/rightCountType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<CatalogItem> getRightCountType() throws DaoException {
+        logger.info("root - /catalog/rightCountType");
+        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.RIGHT_COUNT_TYPE));
+    }
+
+    @RequestMapping(value = {"/rightEntytyType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<CatalogItem> getRightEntytyType() throws DaoException {
+        logger.info("root - /catalog/rightEntytyType");
+        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.RIGHT_ENTYTY_TYPE));
+    }
+
+    @RequestMapping(value = {"/rightType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<CatalogItem> getRightType() throws DaoException {
+        logger.info("root - /catalog/rightType");
+        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.RIGHT_TYPE));
+    }
+
+    ////////////////////////////////////////subjects///////////////////////////////////////////////////////////////////
 
     @RequestMapping(value = {"/states"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getStates() throws DaoException {
@@ -61,6 +81,8 @@ public class CatalogController {
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.TOR_STRUCTURE));
     }
 
+    ////////////////////////////////////////oprations///////////////////////////////////////////////////////////////////
+
     @RequestMapping(value = {"/operationType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getOperationType() throws DaoException {
         logger.info("root - /catalog/operationType");
@@ -85,6 +107,8 @@ public class CatalogController {
         logger.info("root - /catalog/elementTypeDepend");
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.ELEMENT_TYPE_DEPEND));
     }
+
+    ////////////////////////////////////////catalogs///////////////////////////////////////////////////////////////////
 
     @RequestMapping(value = "get_catalogs_by_type", method = {RequestMethod.GET})
     public List<CatalogItem> getByType(int type) throws ServiceDaoException {

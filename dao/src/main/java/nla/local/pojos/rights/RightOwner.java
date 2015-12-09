@@ -40,8 +40,6 @@ public class RightOwner implements Serializable {
     @Column(name="DENOMINATOR_PART")
     private Integer denominator_part;
 
-    //@OneToOne
-    //@JoinColumn( name = "PARENT_OWNER", referencedColumnName = "RIGHT_OWNER_ID")
     @Column(name="PARENT_OWNER")
     private Long parent_owner;
 

@@ -65,8 +65,8 @@ public class Right implements Serializable {
     private Integer right_count_type;
 
 
-    @Column(name = "OBJECT_ENTITY_ID")
-    private Long object_entity_id;               //  object refrence
+    //@Column(name = "OBJECT_ENTITY_ID")
+    //private Long object_entity_id;               //  object refrence
 
 
     @Column(name = "LIMIT_RIGHT_ID",nullable = true)
@@ -104,7 +104,7 @@ public class Right implements Serializable {
     private Date end_date;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn( name = "OBJECT_ENTITY_ID",insertable = false, updatable = false, nullable = false)
+    @JoinColumn( name = "OBJECT_ENTITY_ID",updatable = false, nullable = false)
     private Object_dest bindedObj;
 
 
@@ -123,7 +123,7 @@ public class Right implements Serializable {
 
     public void setBindedObj(Object_dest bindedObj) {
 
-        this.setObject_entity_id(bindedObj.getObj_id());
+       // this.setObject_entity_id(bindedObj.getObj_id());
 
         this.bindedObj = bindedObj;
 
@@ -161,13 +161,13 @@ public class Right implements Serializable {
         this.right_entyty_type = right_entyty_type;
     }
 
-    public Long getObject_entity_id() {
+    /*public Long getObject_entity_id() {
         return object_entity_id;
     }
 
     public void setObject_entity_id(Long object_entity_id) {
         this.object_entity_id = object_entity_id;
-    }
+    }*/
 
     public Integer getBound_id() {
         return bound_id;

@@ -116,17 +116,17 @@ public class ObjectTest{
 
             CatalogItem ci = catalogService.getCatalogItem(61, 3);
 
-            opr.setOperType(ci);
+            opr.setOperType(ci.getCode_id());
 
 
             ci = catalogService.getCatalogItem(62, 4);
 
-            opr.setOperSubtype(ci);
+            opr.setOperSubtype(ci.getCode_id());
 
 
             ci = catalogService.getCatalogItem(63, 1170);
 
-            opr.setReason(ci);
+            opr.setReason(ci.getCode_id());
 
 
             ode.setOoper(opr);
@@ -219,7 +219,7 @@ public class ObjectTest{
 
         CatalogItem ci = catalogService.getCatalogItem(cp);                         // формирование
 
-        oper.setOperType(ci);
+        oper.setOperType(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
@@ -230,7 +230,7 @@ public class ObjectTest{
 
         ci = catalogService.getCatalogItem(cp);
 
-        oper.setOperSubtype(ci);
+        oper.setOperSubtype(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
@@ -241,7 +241,7 @@ public class ObjectTest{
 
         ci = catalogService.getCatalogItem(cp);
 
-        oper.setReason(ci);
+        oper.setReason(ci.getCode_id());
 
         baseServiceImp.getBaseDao().getSession().evict(ci);
 
@@ -254,7 +254,7 @@ public class ObjectTest{
         Person prs = ops.get(0);
 
 
-        oper.setExecutor(prs);
+        oper.setExecutor(prs.getSubjectId());
 
         oper.setStatus(1);
 
