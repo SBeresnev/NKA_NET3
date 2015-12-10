@@ -94,6 +94,7 @@ public class RightTest {
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
         baseClean.RightClean();
+
         /*
         baseClean.RightClean();
 
