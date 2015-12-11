@@ -128,6 +128,17 @@ public class AddressController {
 
       }
 
+    @RequestMapping(value = {"/findDestAddress"}, method = {RequestMethod.GET})
+    public Address_dest findDestAddress(Long address_id, Long adr_num ) throws ServiceDaoException {
+
+        logger.info("root - /address/findDestAddress");
+
+        Address_dest ret_val = addressServiceImp.getdestbyIDs(address_id, adr_num);
+
+        return ret_val;
+
+    }
 
 
-  }
+
+}
