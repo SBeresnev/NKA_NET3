@@ -30,7 +30,7 @@ public class ObjectController {
     private CatalogServiceImp catalogService;
 
     @RequestMapping(value = "/find_by_address", method = {RequestMethod.GET})
-    public List<? extends nla.local.pojos.object.Object> find_by_address(Long address_id) throws ServiceDaoException, ServiceException {
+    public List<Object_dest> find_by_address(Long address_id) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /object/find_by_address");
 
@@ -39,7 +39,7 @@ public class ObjectController {
     }
 
     @RequestMapping(value = "/find_by_inv", method = {RequestMethod.GET})
-    public List<? extends nla.local.pojos.object.Object> findObjectbyInventoryNumCommon(Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException, ServiceException {
+    public List<Object_dest> findObjectbyInventoryNumCommon(Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /object/find_by_inv");
 
@@ -48,7 +48,7 @@ public class ObjectController {
     }
 
     @RequestMapping(value = "/find_by_cadastr", method = {RequestMethod.GET})
-    public List<? extends nla.local.pojos.object.Object> findObjectbyCadastreNumCommon(String cadastre_number) throws ServiceDaoException, ServiceException {
+    public List<Object_dest> findObjectbyCadastreNumCommon(String cadastre_number) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /object/find_by_cadastr");
 
