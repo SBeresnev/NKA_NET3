@@ -113,7 +113,7 @@ public class CatalogController {
     @RequestMapping(value = "get_catalogs_by_type", method = {RequestMethod.GET})
     public List<CatalogItem> getByType(int type) throws ServiceDaoException {
         logger.info("root - catalog/get_catalogs_by_type");
-        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.OPERATION_BASE));
+        return this.catalogServiceImpl.getCatalogItemsByTyp(type);
     }
 
     @RequestMapping(value = "get_catalog_by_id", method = {RequestMethod.GET})
@@ -223,5 +223,28 @@ public class CatalogController {
         catalogDependencyService.add(dependencyData);
         return catalogServiceImpl.getDependedCatalogItems(catalogDependencyService.findByParentCodeAndDependencyId(dependencyDataPk.getDependencyId(), dependencyDataPk.getParentAnalyticCode()));
     }
+
+    @RequestMapping(value = "get_catalog_dependency_by_child_id", method = {RequestMethod.POST})
+    public List<CatalogDependency> getDependencyByChildId (Integer childId) throws ServiceDaoException {
+
+        List<CatalogDependency> ret_val = catalogDependencyService.getDependencyByChildId(childId);
+
+        return ret_val;
+
+    }
+
+
+    @RequestMapping(value = {"/childCodeAndType"}, method = {RequestMethod.GET})
+    public List<DependencyData> operSubTypeDep(Integer id, Integer childType, Integer parentType ) throws ServiceDaoException {
+
+        logger.info("root - /catalog/childCodeAndType");
+
+        List<DependencyData> ret_val = catalogDependencyService.findByChildCodeAndTypes(id, childType, parentType);
+
+        return ret_val;
+
+    }
+
     //endregion
+
 }

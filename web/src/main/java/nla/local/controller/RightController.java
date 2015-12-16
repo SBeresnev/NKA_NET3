@@ -2,7 +2,10 @@ package nla.local.controller;
 
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
+import nla.local.pojos.dict.CatalogConstants;
+import nla.local.pojos.dict.DependencyData;
 import nla.local.pojos.rights.RightOwner;
+import nla.local.services.ICatalogDependencyService;
 import nla.local.services.IRightService;
 import nla.local.util.Converter;
 import org.apache.log4j.Logger;

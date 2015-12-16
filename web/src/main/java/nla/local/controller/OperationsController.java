@@ -1,8 +1,12 @@
 package nla.local.controller;
 
 import nla.local.dao.exceptions.DaoException;
+import nla.local.exception.ServiceDaoException;
+import nla.local.pojos.dict.CatalogConstants;
+import nla.local.pojos.dict.DependencyData;
 import nla.local.pojos.operations.EntityType;
 import nla.local.pojos.operations.Operation;
+import nla.local.services.ICatalogDependencyService;
 import nla.local.services.impl.OperationsServiceImp;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +28,9 @@ public class OperationsController {
 
     @Autowired
     private OperationsServiceImp operationsService;
+
+    @Autowired
+    private ICatalogDependencyService catalogDependencyService;
 
 
     @RequestMapping(value={"/get_all"}, method={org.springframework.web.bind.annotation.RequestMethod.GET})
@@ -63,4 +70,8 @@ public class OperationsController {
 
         operationsService.delete(operationsService.get(ooperId));
     }
+
+
+
+
 }
