@@ -189,7 +189,7 @@ public class RightTest {
 
         rgt.setRight_type(rightType.getCode_id());
 
-        rgt.setRight_entyty_type(directType.getCode_id());
+        rgt.setRight_entity_type(directType.getCode_id());
 
         rgt.setRight_count_type(rightCountType.getCode_id());
 
@@ -306,7 +306,7 @@ public class RightTest {
 
         rgt.setRight_type(rightType.getCode_id());
 
-        rgt.setRight_entyty_type(directType.getCode_id());
+        rgt.setRight_entity_type(directType.getCode_id());
 
         rgt.setRight_count_type(rightCountType.getCode_id());
 
@@ -438,7 +438,7 @@ public class RightTest {
 
         rgt.setRight_type(rightType.getCode_id());
 
-        rgt.setRight_entyty_type(directType.getCode_id());
+        rgt.setRight_entity_type(directType.getCode_id());
 
         rgt.setRight_count_type(rightCountType.getCode_id());
 
@@ -551,7 +551,7 @@ public class RightTest {
 
         rgt.setRight_type(rightType.getCode_id());
 
-        rgt.setRight_entyty_type(directType.getCode_id());
+        rgt.setRight_entity_type(directType.getCode_id());
 
         rgt.setRight_count_type(rightCountType.getCode_id());
 
@@ -643,7 +643,7 @@ public class RightTest {
 
         rght.setRight_count_type(null);
 
-        rght.setRight_entyty_type(directType.getCode_id()); //200
+        rght.setRight_entity_type(directType.getCode_id()); //200
 
         CatalogItem  rightType = CollectionUtils.find(rightTypeList, new Predicate() {
             public boolean evaluate(Object o) {

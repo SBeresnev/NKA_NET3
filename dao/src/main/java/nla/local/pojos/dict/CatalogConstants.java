@@ -31,7 +31,7 @@ public interface CatalogConstants {
 
     public static final String RIGHT_TYPE = "20";
 
-    public static final String RIGHT_ENTYTY_TYPE = "1";
+    public static final String RIGHT_ENTITY_TYPE = "1";
 
     public static final String RIGHT_COUNT_TYPE = "21";
 

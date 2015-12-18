@@ -52,7 +52,7 @@ public class Right implements Serializable {
             )
     })*/
     @Column(name = "RIGHT_ENTITY_TYPE")
-    private Integer right_entyty_type;
+    private Integer right_entity_type;
 
 
     /*@ManyToOne
@@ -153,12 +153,12 @@ public class Right implements Serializable {
         this.right_type = right_type;
     }
 
-    public Integer getRight_entyty_type() {
-        return right_entyty_type;
+    public Integer getRight_entity_type() {
+        return right_entity_type;
     }
 
-    public void setRight_entyty_type(Integer right_entyty_type) {
-        this.right_entyty_type = right_entyty_type;
+    public void setRight_entity_type(Integer right_entyty_type) {
+        this.right_entity_type = right_entyty_type;
     }
 
     /*public Long getObject_entity_id() {

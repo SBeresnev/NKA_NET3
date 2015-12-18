@@ -43,10 +43,10 @@ public class CatalogController {
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.RIGHT_COUNT_TYPE));
     }
 
-    @RequestMapping(value = {"/rightEntytyType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    @RequestMapping(value = {"/rightEntityType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
     public List<CatalogItem> getRightEntytyType() throws DaoException {
-        logger.info("root - /catalog/rightEntytyType");
-        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.RIGHT_ENTYTY_TYPE));
+        logger.info("root - /catalog/rightEntityType");
+        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.RIGHT_ENTITY_TYPE));
     }
 
     @RequestMapping(value = {"/rightType"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
