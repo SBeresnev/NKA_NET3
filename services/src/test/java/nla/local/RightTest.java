@@ -520,12 +520,6 @@ public class RightTest {
             }
         });
 
-        CatalogItem   rightCountType = CollectionUtils.find(rightCountTypeList, new Predicate() {
-            public boolean evaluate(Object o) {
-                CatalogItem c = (CatalogItem) o;
-                return c.getCode_name().toLowerCase().contains("долевое право");
-            }
-        });
 
         Operation opr = getOperField(61,10,62,1,63,3100);
 
@@ -553,7 +547,7 @@ public class RightTest {
 
         rgt.setRight_entity_type(directType.getCode_id());
 
-        rgt.setRight_count_type(rightCountType.getCode_id());
+        rgt.setRight_count_type(countType.getCode_id());
 
         rgt.setBegin_date(cal.getTime());
 
