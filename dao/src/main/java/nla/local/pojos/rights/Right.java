@@ -34,70 +34,37 @@ public class Right implements Serializable {
     @Column(name="RIGHT_ID", unique=true, nullable=false )
     private Long right_id;
 
-
-    /*@ManyToOne
-    @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column=@JoinColumn(name = "RIGHT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.RIGHT_TYPE,referencedColumnName="ANALYTIC_TYPE")
-            )
-    })*/
     @Column(name = "RIGHT_TYPE")
     private Integer right_type;
 
-
-    /*@ManyToOne
-    @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column=@JoinColumn(name = "RIGHT_ENTITY_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.RIGHT_ENTYTY_TYPE,referencedColumnName="ANALYTIC_TYPE")
-            )
-    })*/
     @Column(name = "RIGHT_ENTITY_TYPE")
     private Integer right_entity_type;
 
-
-    /*@ManyToOne
-    @JoinColumnsOrFormulas({
-            @JoinColumnOrFormula(column=@JoinColumn(name = "RIGHT_COUNT_TYPE", nullable = false, referencedColumnName = "ANALYTIC_CODE")),
-            @JoinColumnOrFormula( formula=@JoinFormula(value= CatalogConstants.RIGHT_COUNT_TYPE,referencedColumnName="ANALYTIC_TYPE")
-            )
-    })*/
     @Column(name = "RIGHT_COUNT_TYPE")
     private Integer right_count_type;
-
-
-    //@Column(name = "OBJECT_ENTITY_ID")
-    //private Long object_entity_id;               //  object refrence
-
 
     @Column(name = "LIMIT_RIGHT_ID",nullable = true)
     private Long limit_righ;                    //  right refrence указатель на ограниченное право
 
-
     @Column(name = "BOUND_ID")
     private Integer bound_id;
 
-
     @Column(name = "COMMENTS")
     private String comments;
-
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn( name = "OOPER_ID")
     private Operation ooper;
 
-
     @Column(name = "IS_NEEDED")
     private Integer is_needed;
-
 
     @Column(name = "STATUS")
     private Integer status;
 
-
     @Column(name = "BEGIN_DATE")
     @JsonSerialize(using=DateSerializer.class)
     private Date begin_date;
-
 
     @Column(name = "END_DATE")
     @JsonSerialize(using=DateSerializer.class)
@@ -160,14 +127,6 @@ public class Right implements Serializable {
     public void setRight_entity_type(Integer right_entyty_type) {
         this.right_entity_type = right_entyty_type;
     }
-
-    /*public Long getObject_entity_id() {
-        return object_entity_id;
-    }
-
-    public void setObject_entity_id(Long object_entity_id) {
-        this.object_entity_id = object_entity_id;
-    }*/
 
     public Integer getBound_id() {
         return bound_id;
