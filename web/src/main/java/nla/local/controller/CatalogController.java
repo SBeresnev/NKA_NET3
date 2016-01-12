@@ -55,6 +55,14 @@ public class CatalogController {
         return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.RIGHT_TYPE));
     }
 
+    ////////////////////////////////////////objects///////////////////////////////////////////////////////////////////
+
+    @RequestMapping(value = {"/objecttype"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})
+    public List<CatalogItem> getObjectType() throws DaoException {
+        logger.info("root - /catalog/objecttype");
+        return this.catalogServiceImpl.getCatalogItemsByTyp(Integer.decode(CatalogConstants.OBJECT_TYP));
+    }
+
     ////////////////////////////////////////subjects///////////////////////////////////////////////////////////////////
 
     @RequestMapping(value = {"/states"}, method = {org.springframework.web.bind.annotation.RequestMethod.GET})

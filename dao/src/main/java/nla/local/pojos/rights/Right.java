@@ -101,8 +101,6 @@ public class Right implements Serializable {
 
     public void setBindedObj(Object_dest bindedObj) {
 
-       // this.setObject_entity_id(bindedObj.getObj_id());
-
         this.bindedObj = bindedObj;
 
     }
