@@ -74,9 +74,10 @@ public class Right implements Serializable {
     @JoinColumn( name = "OBJECT_ENTITY_ID",updatable = false, nullable = false)
     private Object_dest bindedObj;
 
-    /*
     @OneToMany(mappedBy = "right", fetch = FetchType.EAGER ,orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<RightOwner> rightOwners;
+
+
 
     public Set<RightOwner> getRightOwners() {
         return rightOwners;
@@ -84,8 +85,7 @@ public class Right implements Serializable {
 
     public void setRightOwners(Set<RightOwner> rightOwners) {
         this.rightOwners = rightOwners;
-    }*/
-
+    }
 
     public Long getLimit_righ() {
         return limit_righ;

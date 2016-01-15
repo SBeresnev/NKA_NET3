@@ -494,6 +494,12 @@ public class RightTest {
 
     }
 
+    //////////// Получаем право //////////////////
+    public void getRight(){
+
+
+    }
+
     //////////// Соединяем много прав в один //////////////////
     public void passsharedRight()  throws ServiceDaoException, ServiceException {
 
