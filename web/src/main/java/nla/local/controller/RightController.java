@@ -89,10 +89,10 @@ public class RightController {
         return ret_val;
     }
 
-    @RequestMapping(value = {"/getRight"}, method = {RequestMethod.GET})
+    @RequestMapping(value = {"/getRightOwn"}, method = {RequestMethod.GET})
     public RightOwner getRightOwn(Long right_own_id ) throws ServiceDaoException, ServiceException {
 
-        logger.info("root - /right/getRight");
+        logger.info("root - /right/getRightOwn");
 
         RightOwner ret_val = irs.getRightOwner(right_own_id);
 

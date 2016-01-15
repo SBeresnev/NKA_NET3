@@ -1,6 +1,5 @@
 package nla.local.controller.forms;
 
-import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.subjects.JPerson;
 import nla.local.pojos.subjects.PPerson;
@@ -130,6 +129,7 @@ public class SubjectForm {
     }
 
     public void setSubjectType(Integer type) {
+
         if (type < SubjectClass.toInt(SubjectClass.JUR))
             setSubjectClass(SubjectClass.PRV);
         else {
@@ -139,6 +139,7 @@ public class SubjectForm {
                 setSubjectClass(SubjectClass.OFC);
         }
         this.subjectType = type;
+
     }
 
     public SubjectClass getSubjectClass() {
@@ -166,6 +167,7 @@ public class SubjectForm {
     }
 
     public String getFullname() {
+
         return fullname;
     }
 
@@ -271,4 +273,5 @@ public class SubjectForm {
 
         }
     }
+
 }

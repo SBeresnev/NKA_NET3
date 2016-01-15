@@ -1,14 +1,10 @@
 package nla.local.pojos.subjects;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import org.minustserv.SubjectData;
 
-import javax.security.auth.Subject;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 

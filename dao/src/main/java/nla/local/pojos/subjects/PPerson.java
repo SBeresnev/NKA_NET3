@@ -42,6 +42,7 @@ public class PPerson extends Person implements Serializable{
     @Column(name = "REMARK")
     public String remark;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
