@@ -247,6 +247,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
     }
 
     public List<? extends Object>  findObjectbyCadastreNum(Class<? extends Object> cobj, String cadastre_number) throws ServiceDaoException  {
+
         List<? extends Object> ret_val = null;
 
         DetachedCriteria query_ = DetachedCriteria.forClass(cobj);

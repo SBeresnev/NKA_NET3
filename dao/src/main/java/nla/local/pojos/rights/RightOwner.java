@@ -1,5 +1,6 @@
 package nla.local.pojos.rights;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.operations.Operation;
@@ -30,6 +31,7 @@ public class RightOwner implements Serializable {
     @JoinColumn(name = "OWNER_ID",nullable = false)
     private Person owner;
 
+    @JsonIgnore
     @ManyToOne(cascade = javax.persistence.CascadeType.ALL)
     @JoinColumn(name = "RIGHT_ID",nullable = false)
     private Right right;

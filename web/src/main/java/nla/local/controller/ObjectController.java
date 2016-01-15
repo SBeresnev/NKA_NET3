@@ -52,7 +52,6 @@ public class ObjectController {
 
         logger.info("root - /object/find_by_cadastr");
 
-
         return objectServiceImp.findObjectbyCadastreNumCommon(cadastre_number);
 
     }
