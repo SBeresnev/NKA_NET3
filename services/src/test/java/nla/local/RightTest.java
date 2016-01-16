@@ -58,10 +58,6 @@ public class RightTest {
     @Autowired
     public BaseClean baseClean;
 
-    @Qualifier("baseServiceImp")
-    @Autowired
-    public BaseServiceImp bsi;
-
     @Autowired
     public IRightService rsi;
 
@@ -93,7 +89,9 @@ public class RightTest {
     @Test
     public void RightTestController() throws ServiceDaoException, ServiceException {
 
-        baseClean.RightClean();
+        getRightTest();
+
+        //baseClean.RightClean();
 
         /*
         baseClean.RightClean();
@@ -102,7 +100,7 @@ public class RightTest {
 
         baseClean.OperationsClean();
         */
-
+        /*
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
         rightCountTypeList = catalogService.getCatalogItemsByTyp(21);
@@ -125,7 +123,7 @@ public class RightTest {
 
         long duration = (endTime - startTime) / 1000000;
 
-        System.out.println("That took " + duration + " milliseconds");
+        System.out.println("That took " + duration + " milliseconds"); */
 
     }
 
@@ -369,7 +367,7 @@ public class RightTest {
 
     }
 
-    //////////// Соединяем один ко многим //////////////////
+    //////////// Соединяем один ко многим //////////////////////////////////////////////
     public void splitsharedRight()  throws ServiceDaoException, ServiceException {
 
         CatalogItem   countType = CollectionUtils.find(rightCountTypeList, new Predicate() {
@@ -494,13 +492,7 @@ public class RightTest {
 
     }
 
-    //////////// Получаем право //////////////////
-    public void getRight(){
-
-
-    }
-
-    //////////// Соединяем много прав в один //////////////////
+    //////////// Соединяем много прав в один ///////////////////////////////////////////
     public void passsharedRight()  throws ServiceDaoException, ServiceException {
 
 
@@ -616,6 +608,7 @@ public class RightTest {
 
     }
 
+    /////////// Создать ограничение/обременение прав ///////////////////////////////////
     public void generateLimitations() throws ServiceDaoException, ServiceException {
 
         Operation opr = getOperField(61,10,62,1,63,3100);
@@ -668,12 +661,13 @@ public class RightTest {
 
     }
 
-    /////////// Поиск прав //////////////////////////////////////
+    /////////// Поиск прав /////////////////////////////////////////////////////////////
     public void findbySubjectId() throws ServiceDaoException {
 
         List<RightOwner> lrt_own_ = rsi.getRightbyObjectAddr("минск, авиации 14", null);
 
-        lrt_own_ = rsi.getRightbyObjectPerson(new Long[]{Long.valueOf(255)}, null);
+        lrt_own_ = rsi.getRighOwnbyObjectPerson(new Long[]{Long.valueOf(255)}, null);
+
 
     }
 
@@ -759,5 +753,20 @@ public class RightTest {
 
         return oper ;
     }
+
+    public void getRightTest() throws ServiceDaoException, ServiceException {
+
+        Long[] rtv = {911L};
+
+        List<nla.local.pojos.rights.RightTest> rtu = rsi.getRightOwnerTest(rtv);
+
+        //session.createQuery("select distinct rt from nla.local.pojos.rights.RightTest as rt inner join fetch rt.rightOwnerTest").list();
+
+        String hql = "from RightTest where ";
+
+       // baseServiceImp.getSessionFactory().getCurrentSession().createQuery();
+
+    }
+
 
 }

@@ -3,10 +3,10 @@ package nla.local.services.impl;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.address.Address_dest;
-import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
+import nla.local.pojos.rights.RightTest;
 import nla.local.services.IAddressService;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -76,7 +77,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     @Override
     public RightOwner addRightOwner(RightOwner rght_own) throws ServiceDaoException, ServiceException {
 
-
         if(rght_own.getRight() != null && rght_own.getRight().getRight_id() == null)
         {
             this.addRight(rght_own.getRight());
@@ -93,7 +93,9 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     /*************************************finds***************************************************************************/
     @Override
     public Right getRight(Long id) throws ServiceDaoException  {
+
         return (Right) super.get(Right.class,id);
+
     }
 
     @Override
@@ -150,7 +152,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
                 obj_ids[i] = object_list.get(i).getObj_id();
             }
 
-            ret_val.addAll(getRightbyObjectPerson(obj_ids, null));
+            ret_val.addAll(getRighOwnbyObjectPerson(obj_ids, null));
 
         }
 
@@ -159,7 +161,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     @Override
-    public List<RightOwner> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException {
+    public List<RightOwner> getRighOwnbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException {
 
         boolean lakmus = false;
 
@@ -226,8 +228,78 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+    public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException {
+
+        boolean lakmus = false;
+
+        List<Right> ret_val = new ArrayList<Right>();
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
+
+        if( obj_ids != null && obj_ids.length > 0 )
+        {
+            lakmus = true;
+
+            query_ = query_.add(Restrictions.in("object_entity_id",obj_ids));
+
+        }
+
+        if(person_id != null) {
+
+            lakmus = true;
+
+            query_.createCriteria("rightOwners").add(Restrictions.eq("owner.subjectId", person_id)).add(Restrictions.eq("status", 1)).add(Restrictions.isNull("date_out")) ;
+        }
+
+        ret_val = lakmus ? super.getCriterion(query_): null;
+
+        return ret_val;
+
+    }
+
+    @Override
+    public List<Right> getRightbyRightOwner(Long[] right_own_ids) throws ServiceDaoException {
+
+        List<Right> val_rgt = null;
+
+        List<Right> ret_val_rgt = new ArrayList<Right>();
+
+        DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
+
+        query_ = query_.add(Restrictions.eq("status", 1));
+
+        query_ = query_.add(Restrictions.isNull("end_date"));
+
+        query_ = query_.createCriteria("rightOwners").add(Restrictions.in("right_owner_id", right_own_ids));
+
+        query_ = query_.add(Restrictions.eq("status", 1));
+
+        val_rgt =  super.getCriterion(query_);
+
+        ////////// find needed elements ////////////////////////////////////////////////////////////////////////////////
+        /*
+         for (Right right : val_rgt){
+
+            for (RightOwner rightown : right.getRightOwners() ){
+
+                if (!Arrays.asList(right_own_ids).contains(rightown.getRight_owner_id())) {
+
+                    right.getRightOwners().remove(rightown);
+                }
+
+            }
+
+            ret_val_rgt.add(right);
+          }
+         */
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        return val_rgt;
+
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////
-    //    все проводки по правам в случае дробления прав предполагают, что можно захрдкодить и опреацию закрытия того это право (часть прав) передается      //
+    //    все проводки по правам в случае дробления прав предполагают, что можно захрдкодить и опреацию закрытия от кого это право (часть прав) передается      //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
@@ -285,5 +357,26 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public List<RightTest> getRightOwnerTest(Long[] right_own_ids) throws ServiceDaoException, ServiceException {
+
+        List<RightTest> val_rgt = null;
+
+        List<RightTest> ret_val_rgt = new ArrayList<RightTest>();
+
+        DetachedCriteria query_ =  DetachedCriteria.forClass(RightTest.class,"rightTest").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
+        query_ = query_.add(Restrictions.eq("status", 1));
+
+        query_ = query_.add(Restrictions.isNull("end_date"));
+
+        query_ = query_.createCriteria("rightOwnerTest").add(Restrictions.in("right_owner_id", right_own_ids));
+
+        val_rgt =  super.getCriterion(query_);
+
+        return val_rgt;
+
+
+    }
 
 }

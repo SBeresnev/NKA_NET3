@@ -1,11 +1,8 @@
 package nla.local.pojos.rights;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-import nla.local.pojos.dict.CatalogConstants;
-import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.operations.Operation;
 import org.hibernate.annotations.*;
@@ -76,8 +73,7 @@ public class Right implements Serializable {
     @JoinColumn( name = "OBJECT_ENTITY_ID",updatable = false, nullable = false)
     private Object_dest bindedObj;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "right", fetch = FetchType.EAGER ,orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "right_id", fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     private Set<RightOwner> rightOwners;
 
 

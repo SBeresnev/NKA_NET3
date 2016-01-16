@@ -5,6 +5,7 @@ import nla.local.exception.ServiceException;
 import nla.local.pojos.dict.CatalogItem;
 import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
+import nla.local.pojos.rights.RightTest;
 
 
 import java.util.HashMap;
@@ -42,9 +43,13 @@ public interface IRightService extends IService {
 
     /*************************Serch function block***********************************************************************************/
 
+    public List<RightOwner> getRighOwnbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException;
+
     public List<RightOwner> getRightbyObjectAddr(String Adr, String soato ) throws ServiceDaoException;
 
-    public List<RightOwner> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException;
+    public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException;
+
+    public List<Right> getRightbyRightOwner(Long[] right_own_ids) throws ServiceDaoException;
 
     /************************* Only for Test *****************************************************************************************/
     @Deprecated
@@ -53,12 +58,6 @@ public interface IRightService extends IService {
     @Deprecated
     public List<RightOwner> getRightOwnersbyRight (Long[] right_ids) throws ServiceDaoException, ServiceException;
 
-
-    //public List<Right> getlimitationsRight (Long[] right_ids) throws ServiceDaoException, ServiceException;
-
-    //public List<Right> getRightbySubject(Integer person_id) throws ServiceDaoException;
-
-    //public List<Right> getRightbyObject(Long obj_id) throws ServiceDaoException;
-
-    //public List<Right> getRightbyObject(String Adr, String soato ) throws ServiceDaoException;
+    @Deprecated
+    public List<RightTest> getRightOwnerTest(Long[] right_own_ids) throws ServiceDaoException, ServiceException ;
 }

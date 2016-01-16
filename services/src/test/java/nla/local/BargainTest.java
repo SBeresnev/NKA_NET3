@@ -113,7 +113,7 @@ public class BargainTest {
 
         Long[] obj_ids = obj_id_list.toArray(new Long[obj_id_list.size()] ) ;
 
-        List<RightOwner> lor = rsi.getRightbyObjectPerson(obj_ids, null);
+        List<RightOwner> lor = rsi.getRighOwnbyObjectPerson(obj_ids, null);
 
         long obj_id = lor.get(0).getRight().getBindedObj().getObj_id();
 

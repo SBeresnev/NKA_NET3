@@ -1,6 +1,7 @@
 package nla.local.pojos.rights;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.operations.Operation;
@@ -60,15 +61,21 @@ public class RightOwner implements Serializable {
     @JoinColumn( name = "OOPER_ID")
     private Operation ooper;
 
-    /*
-    public Integer getRight_id() {
-        return right_id;
+    @Column(name = "RIGHT_ID",nullable = false, insertable = false, updatable = false)
+    private Long right_id;
+
+
+    public Long getRight_id() {
+
+        return right.getRight_id();
+
     }
 
-    public void setRight_id(Integer right_id) {
-        this.right_id = right_id;
-    }*/
+    public void setRight_id(Long right_id) {
 
+        this.right_id = right_id;
+
+    }
 
     public Right getRight() {
         return right;
