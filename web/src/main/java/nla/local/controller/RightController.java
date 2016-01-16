@@ -4,6 +4,7 @@ import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.dict.CatalogConstants;
 import nla.local.pojos.dict.DependencyData;
+import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
 import nla.local.services.ICatalogDependencyService;
 import nla.local.services.IRightService;
@@ -69,12 +70,23 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/getRightObjectPerson"}, method = {RequestMethod.GET})
-    public List<RightOwner> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
+    @RequestMapping(value = {"/getRightOwnObjectPerson"}, method = {RequestMethod.GET})
+    public List<RightOwner> getRightOwnbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
 
         logger.info("root - /right/getRightObjectPerson");
 
-        List<RightOwner> ret_val = irs.getRightbyObjectPerson(obj_ids, person_id);
+        List<RightOwner> ret_val = irs.getRighOwnbyObjectPerson(obj_ids, person_id);
+
+        return ret_val;
+
+    }
+
+    @RequestMapping(value = {"/getRightObjectPerson"}, method = {RequestMethod.GET})
+    public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
+
+        logger.info("root - /right/getRightObjectPerson");
+
+        List<Right> ret_val = irs.getRightbyObjectPerson(obj_ids, person_id);
 
         return ret_val;
 
@@ -99,12 +111,43 @@ public class RightController {
         return ret_val;
     }
 
-    @RequestMapping(value = {"/updRight"}, method = {RequestMethod.PUT})
+    @RequestMapping(value = {"/updRightOwn"}, method = {RequestMethod.PUT})
     public void updateRightOwn(RightOwner right_own ) throws ServiceDaoException, ServiceException {
 
           logger.info("root - /right/updRight");
 
           irs.updateRightOwner(right_own);
+
+    }
+
+    @RequestMapping(value = {"/updRight"}, method = {RequestMethod.PUT})
+    public void updateRight(Right right ) throws ServiceDaoException, ServiceException {
+
+        logger.info("root - /right/updRight");
+
+        irs.updateRight(right);
+
+    }
+
+    @RequestMapping(value = {"/addRight"}, method = {RequestMethod.PUT})
+    public void addRight(Right right ) throws ServiceDaoException, ServiceException {
+
+        logger.info("root - /right/addRight");
+
+        irs.addRight(right);
+
+    }
+
+    @RequestMapping(value = {"/getRightbyRightOwner"}, method = {RequestMethod.GET})
+    public List<Right> getRightbyRightOwner(Long[] right_own_ids) throws ServiceDaoException, ServiceException {
+
+        List<Right> ret_val = new ArrayList<Right>();
+
+        logger.info("root - /right/getRightbyRightOwner");
+
+        ret_val = irs.getRightbyRightOwner(right_own_ids);
+
+        return ret_val;
 
     }
 
