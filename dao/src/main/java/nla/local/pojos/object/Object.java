@@ -66,11 +66,11 @@ public  class Object implements Serializable{
     private CatalogItem land_category;
 
 
-    public String getCadaster_number() {
+    public String getCadastre_number() {
         return cadastre_number;
     }
 
-    public void setCadaster_number(String cadaster_number) {
+    public void setCadastre_number(String cadaster_number) {
         this.cadastre_number = cadaster_number;
     }
 

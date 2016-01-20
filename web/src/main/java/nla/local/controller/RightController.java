@@ -129,7 +129,7 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/addRight"}, method = {RequestMethod.PUT})
+    @RequestMapping(value = {"/addRight"}, method = {RequestMethod.POST})
     public void addRight(Right right ) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /right/addRight");

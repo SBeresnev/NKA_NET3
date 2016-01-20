@@ -1,5 +1,6 @@
 package nla.local.controller;
 
+import nla.local.controller.forms.ObjectForm;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.object.Object_dest;
@@ -7,6 +8,7 @@ import nla.local.services.IObjectService;
 import nla.local.services.impl.CatalogServiceImp;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,12 +58,16 @@ public class ObjectController {
 
     }
 
-    @RequestMapping(value = "/bindObject", method = {RequestMethod.GET})
-    public Object_dest bindObject(Object_dest obj_dest) throws ServiceDaoException, ServiceException {
+    @RequestMapping(value = "/bindObject", method = {RequestMethod.POST})
+    public Object_dest bindObject(@RequestBody Object_dest bind_obj) throws ServiceDaoException, ServiceException {
+
+        Object_dest ret_val = null ;
 
         logger.info("root - /object/bindObject");
 
-        return objectServiceImp.bindObject(obj_dest);
+        ret_val = objectServiceImp.bindObject(bind_obj);
+
+        return ret_val;
 
     }
 

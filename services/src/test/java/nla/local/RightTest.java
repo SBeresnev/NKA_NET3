@@ -10,6 +10,7 @@ import nla.local.pojos.operations.Operation;
 import nla.local.pojos.orders.Decl;
 import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
+import nla.local.pojos.rights.RightOwnerTest;
 import nla.local.pojos.subjects.OPerson;
 import nla.local.pojos.subjects.PPerson;
 import nla.local.pojos.subjects.Person;
@@ -25,6 +26,7 @@ import nla.local.util.BaseClean;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.SerializationUtils;
+import org.hibernate.Query;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
@@ -730,7 +732,7 @@ public class RightTest {
 
         // cp.setCode_id(ReasonCode);
 
-        //ci = catalogService.getCatalogItem(cp);
+        // ci = catalogService.getCatalogItem(cp);
 
         ci = catalogService.getCatalogItem(63,3100);
 
@@ -758,13 +760,40 @@ public class RightTest {
 
         Long[] rtv = {911L};
 
-        List<nla.local.pojos.rights.RightTest> rtu = rsi.getRightOwnerTest(rtv);
+        List<Right> ret = rsi.getRightbyRightOwner(rtv);
 
-        //session.createQuery("select distinct rt from nla.local.pojos.rights.RightTest as rt inner join fetch rt.rightOwnerTest").list();
+       //  Long[] rtv = {911L};
 
-        String hql = "from RightTest where ";
+       //String hql = "SELECT DISTINCT a FROM nla.local.pojos.rights.RightTest a INNER JOIN a.rightOwnerTest b WHERE b.right_owner_id = 911";
 
-       // baseServiceImp.getSessionFactory().getCurrentSession().createQuery();
+       // Query qr =  baseServiceImp.getSessionFactory().getCurrentSession().createQuery(hql);
+
+       // List<nla.local.pojos.rights.RightTest> ret_val = baseServiceImp.getSessionFactory().getCurrentSession().createQuery(hql).list();
+
+       // for (RightOwnerTest ele : rtu.get(0).getRightOwners()) {  System.out.println(ele.getRight_owner_id());  }
+
+        /*
+        *   List<RightTest> val_rgt = null;
+
+        List<RightTest> ret_val_rgt = new ArrayList<RightTest>();
+
+        DetachedCriteria query_ =  DetachedCriteria.forClass(RightTest.class,"rightTest");//.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
+        query_.createAlias("rightTest.rightOwnerTest", "rightOwnerTest"); // inner join by default
+
+        query_.add(Restrictions.eq("rightOwnerTest.right_owner_id", right_own_ids[0]));
+
+        //query_ = query_.add(Restrictions.eq("status", 1));
+
+        //query_ = query_.add(Restrictions.isNull("end_date"));
+
+        //query_ = query_.createCriteria("rightOwnerTest").add(Restrictions.in("right_owner_id", right_own_ids));
+
+        val_rgt =  super.getCriterion(query_);
+
+        return val_rgt;
+        *
+        * */
 
     }
 

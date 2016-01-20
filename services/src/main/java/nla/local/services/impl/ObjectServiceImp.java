@@ -83,7 +83,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         ret_val.setObj_id_inv(obj_src.getObj_id());
 
-        ret_val.setCadaster_number(obj_src.getCadaster_number());
+        ret_val.setCadastre_number(obj_src.getCadastre_number());
 
         ret_val.setOrg_id(obj_src.getOrg_id());
 

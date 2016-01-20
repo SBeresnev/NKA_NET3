@@ -6,10 +6,11 @@ import nla.local.pojos.address.Address_dest;
 import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
-import nla.local.pojos.rights.RightTest;
 import nla.local.services.IAddressService;
 import nla.local.services.IObjectService;
 import nla.local.services.IRightService;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.Predicate;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
@@ -19,10 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -277,21 +275,22 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         val_rgt =  super.getCriterion(query_);
 
         ////////// find needed elements ////////////////////////////////////////////////////////////////////////////////
-        /*
+
+         final List<Long> in_list = Arrays.asList(right_own_ids);
+
          for (Right right : val_rgt){
 
-            for (RightOwner rightown : right.getRightOwners() ){
+             List<RightOwner> righttorem = (List<RightOwner>) CollectionUtils.select(right.getRightOwners(), new Predicate() {
+                 public boolean evaluate(Object o) {
+                     RightOwner ret_ = (RightOwner) o;
+                     return in_list.contains(ret_.getRight_owner_id());
+                 }
+             });
 
-                if (!Arrays.asList(right_own_ids).contains(rightown.getRight_owner_id())) {
+             right.setRightOwners(righttorem);
 
-                    right.getRightOwners().remove(rightown);
-                }
-
-            }
-
-            ret_val_rgt.add(right);
           }
-         */
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return val_rgt;
@@ -357,26 +356,5 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public List<RightTest> getRightOwnerTest(Long[] right_own_ids) throws ServiceDaoException, ServiceException {
-
-        List<RightTest> val_rgt = null;
-
-        List<RightTest> ret_val_rgt = new ArrayList<RightTest>();
-
-        DetachedCriteria query_ =  DetachedCriteria.forClass(RightTest.class,"rightTest").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-        query_ = query_.add(Restrictions.eq("status", 1));
-
-        query_ = query_.add(Restrictions.isNull("end_date"));
-
-        query_ = query_.createCriteria("rightOwnerTest").add(Restrictions.in("right_owner_id", right_own_ids));
-
-        val_rgt =  super.getCriterion(query_);
-
-        return val_rgt;
-
-
-    }
 
 }

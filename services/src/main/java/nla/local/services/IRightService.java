@@ -58,6 +58,4 @@ public interface IRightService extends IService {
     @Deprecated
     public List<RightOwner> getRightOwnersbyRight (Long[] right_ids) throws ServiceDaoException, ServiceException;
 
-    @Deprecated
-    public List<RightTest> getRightOwnerTest(Long[] right_own_ids) throws ServiceDaoException, ServiceException ;
 }

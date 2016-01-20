@@ -13,7 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.CascadeType;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
+
 
 /**
  * Created by beresnev on 22.06.2015.
@@ -74,15 +75,15 @@ public class Right implements Serializable {
     private Object_dest bindedObj;
 
     @OneToMany(mappedBy = "right_id", fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    private Set<RightOwner> rightOwners;
+    private List<RightOwner> rightOwners;
 
 
 
-    public Set<RightOwner> getRightOwners() {
+    public List<RightOwner> getRightOwners() {
         return rightOwners;
     }
 
-    public void setRightOwners(Set<RightOwner> rightOwners) {
+    public void setRightOwners(List<RightOwner> rightOwners) {
         this.rightOwners = rightOwners;
     }
 

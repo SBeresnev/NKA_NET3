@@ -1,4 +1,5 @@
 package nla.local.pojos.object;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import nla.local.pojos.address.Address_dest;
 import nla.local.pojos.operations.Operation;
@@ -41,13 +42,12 @@ public class Object_dest extends Object  {
      private Long address_id;
 
     @Transient
-    @JsonSerialize
+    @JsonProperty("adr_num")
     private Long adr_num;
 
     @Transient
-    @JsonSerialize
+    @JsonProperty("address_dest")
     private Address_dest address_dest;
-
 
     public Long getAdr_num() {
         return adr_num;
@@ -55,6 +55,14 @@ public class Object_dest extends Object  {
 
     public void setAdr_num(Long adr_num) {
         this.adr_num = adr_num;
+    }
+
+    public Address_dest getAddress_dest() {
+        return address_dest;
+    }
+
+    public void setAddress_dest(Address_dest address_dest) {
+        this.address_dest = address_dest;
     }
 
     public Long getObj_dest_id() {
@@ -71,14 +79,6 @@ public class Object_dest extends Object  {
 
     public void setAddress_id(Long address_id) {
         this.address_id = address_id;
-    }
-
-    public Address_dest getAddress_dest() {
-        return address_dest;
-    }
-
-    public void setAddress_dest(Address_dest address_dest) {
-        this.address_dest = address_dest;
     }
 
     public Long getObj_id_inv() {
