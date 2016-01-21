@@ -73,7 +73,7 @@ public class RightController {
     @RequestMapping(value = {"/getRightOwnObjectPerson"}, method = {RequestMethod.GET})
     public List<RightOwner> getRightOwnbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
 
-        logger.info("root - /right/getRightObjectPerson");
+        logger.info("root - /right/getRightOwnObjectPerson");
 
         List<RightOwner> ret_val = irs.getRighOwnbyObjectPerson(obj_ids, person_id);
 
@@ -130,11 +130,13 @@ public class RightController {
     }
 
     @RequestMapping(value = {"/addRight"}, method = {RequestMethod.POST})
-    public void addRight(Right right ) throws ServiceDaoException, ServiceException {
+    public Right addRight(@RequestBody Right right ) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /right/addRight");
 
-        irs.addRight(right);
+        Right ret_val = irs.addRight(right);
+
+        return ret_val;
 
     }
 

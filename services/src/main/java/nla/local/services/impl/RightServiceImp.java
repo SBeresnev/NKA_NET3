@@ -8,6 +8,7 @@ import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IAddressService;
 import nla.local.services.IObjectService;
+import nla.local.services.IOperationsService;
 import nla.local.services.IRightService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Predicate;
@@ -34,7 +35,11 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     private IObjectService ios;
 
     @Autowired
+    private IOperationsService iopers;
+
+    @Autowired
     private IAddressService ias;
+
 
     private static Logger log = Logger.getLogger(RightServiceImp.class);
 
@@ -60,14 +65,20 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     @Override
     public Right addRight(Right rght) throws ServiceDaoException, ServiceException {
 
-        //////////////////////////// set parent operations by binding ////////////////////////////////////////////////////////
-        if(rght.getRight_id() == null)
-        {
-            rght.getOoper().setParent_id_order(rght.getBindedObj().getOoper().getOoperId());
+        //////////////////////////// set parent operations by binding //////////////////////////////////////
 
-            super.add(rght);
+        rght.getOoper().setParent_id_order(rght.getBindedObj().getOoper().getOoperId());
 
-        }
+        iopers.add(rght.getOoper());
+
+        //////////////////////////// add operation ////////////////////////////////////////////////////////
+
+        for(RightOwner rght_own : rght.getRightOwners())
+         {
+                rght_own.getOoper().setParent_id_order(rght.getOoper().getOoperId());
+         }
+
+          super.add(rght);
 
         return rght;
     }
@@ -75,12 +86,12 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     @Override
     public RightOwner addRightOwner(RightOwner rght_own) throws ServiceDaoException, ServiceException {
 
-        if(rght_own.getRight() != null && rght_own.getRight().getRight_id() == null)
+        /*if(rght_own.getRight() != null && rght_own.getRight().getRight_id() == null)
         {
             this.addRight(rght_own.getRight());
         }
-
         rght_own.getOoper().setParent_id_order(rght_own.getRight().getOoper().getOoperId());
+        */
 
         super.add(rght_own);
 
@@ -238,7 +249,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         {
             lakmus = true;
 
-            query_ = query_.add(Restrictions.in("object_entity_id",obj_ids));
+            query_ = query_.add(Restrictions.in("bindedObj.obj_id",obj_ids));
 
         }
 

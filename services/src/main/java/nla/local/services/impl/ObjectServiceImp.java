@@ -42,12 +42,9 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
 
         object_dest.setAddress_id( object_dest.getAddress_dest() == null ? null : object_dest.getAddress_dest().getAddress_id() );
 
+        //if( object_dest.getObj_id() != null ) { this.update(object_dest);}
 
-        if( object_dest.getObj_id() != null )
-        {
-            this.update(object_dest);
-
-        } else {
+        if( object_dest.getObj_id() == null ) {
 
             Long objid = Long.valueOf(scg.generate("SEQ_OBJECTS_ID.NEXTVAL").toString());
 

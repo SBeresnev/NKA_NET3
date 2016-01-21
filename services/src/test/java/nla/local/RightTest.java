@@ -102,7 +102,7 @@ public class RightTest {
 
         baseClean.OperationsClean();
         */
-        /*
+
         rightTypeList = catalogService.getCatalogItemsByTyp(20);
         rightEntytyTypeList = catalogService.getCatalogItemsByTyp(1);
         rightCountTypeList = catalogService.getCatalogItemsByTyp(21);
@@ -125,7 +125,7 @@ public class RightTest {
 
         long duration = (endTime - startTime) / 1000000;
 
-        System.out.println("That took " + duration + " milliseconds"); */
+        System.out.println("That took " + duration + " milliseconds");
 
     }
 

@@ -1,5 +1,6 @@
 package nla.local.pojos.rights;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -29,13 +30,14 @@ public class RightOwner implements Serializable {
     private Long right_owner_id;
 
     @ManyToOne
-    @JoinColumn(name = "OWNER_ID",nullable = false)
+    @JoinColumn(name = "OWNER_ID", nullable = false)
     private Person owner;
 
-    @JsonIgnore
-    @ManyToOne(cascade = javax.persistence.CascadeType.ALL)
-    @JoinColumn(name = "RIGHT_ID",nullable = false)
-    private Right right;
+     @JsonIgnore
+     //@ManyToOne(cascade = javax.persistence.CascadeType.ALL)
+     //@JoinColumn(name = "RIGHT_ID", nullable = false)
+     @Transient
+     private Right right;
 
     @Column(name="NUMERATOR_PART")
     private Integer numerator_part;
@@ -61,20 +63,15 @@ public class RightOwner implements Serializable {
     @JoinColumn( name = "OOPER_ID")
     private Operation ooper;
 
-    @Column(name = "RIGHT_ID",nullable = false, insertable = false, updatable = false)
+    @JsonBackReference
+    @Column(name = "RIGHT_ID")
     private Long right_id;
 
-
-    public Long getRight_id() {
-
-        return right.getRight_id();
-
-    }
+    public Long getRight_id() { return right.getRight_id(); }
 
     public void setRight_id(Long right_id) {
 
         this.right_id = right_id;
-
     }
 
     public Right getRight() {

@@ -1,6 +1,7 @@
 package nla.local.pojos.rights;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.object.Object_dest;
@@ -74,7 +75,8 @@ public class Right implements Serializable {
     @JoinColumn( name = "OBJECT_ENTITY_ID",updatable = false, nullable = false)
     private Object_dest bindedObj;
 
-    @OneToMany(mappedBy = "right_id", fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToMany( mappedBy = "right_id", fetch = FetchType.EAGER ,orphanRemoval = true, cascade = CascadeType.ALL )
     private List<RightOwner> rightOwners;
 
 

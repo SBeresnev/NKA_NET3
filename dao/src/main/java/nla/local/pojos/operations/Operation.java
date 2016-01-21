@@ -41,7 +41,7 @@ public class Operation implements Serializable {
     @Column(name = "REASON")
     private Integer reason;         //CatalogConstants.OPERATION_BASE
 
-    @Column(name = "EXECUTOR", nullable = false)
+    @Column(name = "EXECUTOR")
     private Integer executor;
 
     @Column( name = "REG_DATE", nullable = false)

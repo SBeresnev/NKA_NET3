@@ -13,27 +13,49 @@ import java.util.Date;
  * Created by belonovich on 05.02.2015.
  */
 public class SubjectForm {
+
     private Integer subjectId;
+
     private String firstname;
+
     private String surname;
+
     private String fathername;
+
     private Date bothRegDate;
+
     private String personalNumber;
+
     private Date datestart;
+
     private String reestrdataID;
+
     private Integer actual;
+
     private String address;
+
     private Integer subjectType;
+
     private SubjectClass subjectClass;
+
     private Integer sitizens;
+
     private String remark;
+
     private String fullname;
+
     private String shortname;
+
     private String regNumber;
+
     private String unp;
+
     private CatalogItem orgRightForm;
+
     private String isOwner;
+
     private String dtype;
+
     private String subjectdataid;
 
     public Integer getSubjectId() {
