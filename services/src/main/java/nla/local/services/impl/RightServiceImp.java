@@ -257,7 +257,8 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
             lakmus = true;
 
-            query_.createCriteria("rightOwners").add(Restrictions.eq("owner.subjectId", person_id)).add(Restrictions.eq("status", 1)).add(Restrictions.isNull("date_out")) ;
+            query_.createCriteria("rightOwners").add(Restrictions.eq("owner.subjectId", person_id));
+
         }
 
         ret_val = lakmus ? super.getCriterion(query_): null;
