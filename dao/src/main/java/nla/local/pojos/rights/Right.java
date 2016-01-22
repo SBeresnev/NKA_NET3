@@ -76,7 +76,7 @@ public class Right implements Serializable {
     private Object_dest bindedObj;
 
     @JsonManagedReference
-    @OneToMany( mappedBy = "right_id", fetch = FetchType.EAGER ,orphanRemoval = true, cascade = CascadeType.ALL )
+    @OneToMany( mappedBy = "right_id", fetch = FetchType.EAGER , cascade = CascadeType.ALL )
     private List<RightOwner> rightOwners;
 
 
