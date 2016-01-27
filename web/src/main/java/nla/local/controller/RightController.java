@@ -11,6 +11,7 @@ import nla.local.services.IRightService;
 import nla.local.util.Converter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -129,7 +130,7 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/addRight"}, method = {RequestMethod.POST})
+    @RequestMapping(value = {"/addRight"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Right addRight(@RequestBody Right right ) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /right/addRight");

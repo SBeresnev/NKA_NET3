@@ -3,6 +3,7 @@ package nla.local.util;
 import nla.local.pojos.orders.Decl;
 import nla.local.pojos.orders.Declarant;
 import nla.local.pojos.rights.Right;
+import nla.local.pojos.rights.RightOwner;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
@@ -64,12 +65,16 @@ public class CodeGenerator implements IdentifierGenerator, Configurable {
 
         }
 
-        /*
+
         if(object instanceof Right) {
 
-            ((Right)object).fillRightId(id);
 
-        }*/
+            for (RightOwner rOwn : ((Right)object).getRightOwners())
+            {
+                rOwn.setRight_id(id);
+            }
+
+        }
 
     }
 

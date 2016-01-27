@@ -1,8 +1,6 @@
 package nla.local.pojos.rights;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.operations.Operation;
@@ -21,6 +19,7 @@ import java.util.Date;
 
 @Entity
 @Table( name = "V_RIGHTOWNERS", schema = "NKA_NET3_DEV")
+//@JsonIdentityInfo(scope=RightOwner.class, property="@id", generator=ObjectIdGenerators.PropertyGenerator.class)
 public class RightOwner implements Serializable {
 
     @Id
@@ -33,10 +32,11 @@ public class RightOwner implements Serializable {
     @JoinColumn(name = "OWNER_ID", nullable = false)
     private Person owner;
 
-     @JsonIgnore
-     //@ManyToOne(cascade = javax.persistence.CascadeType.ALL)
-     //@JoinColumn(name = "RIGHT_ID", nullable = false)
-     @Transient
+    //@ManyToOne(cascade = javax.persistence.CascadeType.ALL)
+    //@JoinColumn(name = "RIGHT_ID", nullable = false)
+
+    @JsonIgnore
+    @Transient
      private Right right;
 
     @Column(name="NUMERATOR_PART")
@@ -63,16 +63,8 @@ public class RightOwner implements Serializable {
     @JoinColumn( name = "OOPER_ID")
     private Operation ooper;
 
-    @JsonBackReference
     @Column(name = "RIGHT_ID")
     private Long right_id;
-
-    public Long getRight_id() { return right.getRight_id(); }
-
-    public void setRight_id(Long right_id) {
-
-        this.right_id = right_id;
-    }
 
     public Right getRight() {
         return right;
@@ -80,6 +72,14 @@ public class RightOwner implements Serializable {
 
     public void setRight(Right right) {
         this.right = right;
+    }
+
+    public Long getRight_id() {
+        return right_id;
+    }
+
+    public void setRight_id(Long right_id) {
+        this.right_id = right_id;
     }
 
     public Long getRight_owner_id() {

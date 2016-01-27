@@ -109,7 +109,9 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     @Override
     public RightOwner getRightOwner(Long id) throws ServiceDaoException {
+
         return (RightOwner) super.get(RightOwner.class,id);
+
     }
 
     @Deprecated
@@ -221,15 +223,18 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val_own;
     }
 
-    public List<Right> getlimitationsObject (Long[] obj_ids)  throws ServiceDaoException, ServiceException {
+    public List<Right> getlimitationsObject (Long right_id, Long right_owner_id)  throws ServiceDaoException, ServiceException {
 
         List<Right> ret_val = null;
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
 
-        query_ = query_.add(Restrictions.in("object_entity_id", obj_ids));
+        query_ = query_.add(Restrictions.eq("limit_right", right_id));
 
-        query_ = query_.add(Restrictions.between("right_type", 200, 499));
+        query_ = query_.add(Restrictions.between("right_type", 200, 400)); //// ограничения, обреминения
+
+        query_ = query_.createCriteria("rightOwners").add(Restrictions.eq("parent_owner", right_owner_id));
+
 
         ret_val = super.getCriterion(query_);
 

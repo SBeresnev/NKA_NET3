@@ -1,7 +1,9 @@
 package nla.local.pojos.rights;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.object.Object_dest;
@@ -23,6 +25,7 @@ import java.util.List;
 
 @Entity
 @Table( name = "V_RIGHT")
+//@JsonIdentityInfo(scope=Right.class, property="@id", generator=ObjectIdGenerators.PropertyGenerator.class)
 public class Right implements Serializable {
 
 
@@ -45,7 +48,7 @@ public class Right implements Serializable {
     private Integer right_count_type;
 
     @Column(name = "LIMIT_RIGHT_ID",nullable = true)
-    private Long limit_righ;                    //  right refrence указатель на ограниченное право
+    private Long limit_right;                    //  right refrence указатель на ограниченное право
 
     @Column(name = "BOUND_ID")
     private Integer bound_id;
@@ -75,11 +78,17 @@ public class Right implements Serializable {
     @JoinColumn( name = "OBJECT_ENTITY_ID",updatable = false, nullable = false)
     private Object_dest bindedObj;
 
-    @JsonManagedReference
     @OneToMany( mappedBy = "right_id", fetch = FetchType.EAGER , cascade = CascadeType.ALL )
     private List<RightOwner> rightOwners;
 
 
+    public Long getLimit_right() {
+        return limit_right;
+    }
+
+    public void setLimit_right(Long limit_right) {
+        this.limit_right = limit_right;
+    }
 
     public List<RightOwner> getRightOwners() {
         return rightOwners;
@@ -87,14 +96,6 @@ public class Right implements Serializable {
 
     public void setRightOwners(List<RightOwner> rightOwners) {
         this.rightOwners = rightOwners;
-    }
-
-    public Long getLimit_righ() {
-        return limit_righ;
-    }
-
-    public void setLimit_righ(Long limit_righ) {
-        this.limit_righ = limit_righ;
     }
 
     public Object_dest getBindedObj() {

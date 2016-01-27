@@ -655,7 +655,7 @@ public class RightTest {
 
         List<Right> all_right = rsi.getCriterion(dc);
 
-        rght.setLimit_righ(all_right.get(0).getRight_id());
+        rght.setLimit_right(all_right.get(0).getRight_id());
 
         rght.setBindedObj(all_right.get(0).getBindedObj());//setObject_entity_id(all_right.get(0).getObject_entity_id());
 
