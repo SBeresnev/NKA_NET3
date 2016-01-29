@@ -1,9 +1,7 @@
 package nla.local.pojos.rights;
 
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import nla.local.pojos.object.Object_dest;
@@ -25,7 +23,6 @@ import java.util.List;
 
 @Entity
 @Table( name = "V_RIGHT")
-//@JsonIdentityInfo(scope=Right.class, property="@id", generator=ObjectIdGenerators.PropertyGenerator.class)
 public class Right implements Serializable {
 
 
@@ -81,6 +78,18 @@ public class Right implements Serializable {
     @OneToMany( mappedBy = "right_id", fetch = FetchType.EAGER , cascade = CascadeType.ALL )
     private List<RightOwner> rightOwners;
 
+    @Transient
+    @JsonProperty("limit_rights")
+    private List<Right> limit_rights;
+
+
+    public List<Right> getLimit_rights() {
+        return limit_rights;
+    }
+
+    public void setLimit_rights(List<Right> limit_rights) {
+        this.limit_rights = limit_rights;
+    }
 
     public Long getLimit_right() {
         return limit_right;

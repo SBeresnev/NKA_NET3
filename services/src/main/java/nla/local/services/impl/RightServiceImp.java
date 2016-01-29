@@ -67,7 +67,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         //////////////////////////// set parent operations by binding //////////////////////////////////////
 
-        rght.getOoper().setParent_id_order(rght.getBindedObj().getOoper().getOoperId());
+        if(rght.getBindedObj().getOoper() != null) {  rght.getOoper().setParent_id_order(rght.getBindedObj().getOoper().getOoperId());}
 
         iopers.add(rght.getOoper());
 

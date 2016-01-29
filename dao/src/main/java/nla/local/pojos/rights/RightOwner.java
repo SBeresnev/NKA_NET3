@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by beresnev on 23.06.2015.
@@ -19,7 +20,6 @@ import java.util.Date;
 
 @Entity
 @Table( name = "V_RIGHTOWNERS", schema = "NKA_NET3_DEV")
-//@JsonIdentityInfo(scope=RightOwner.class, property="@id", generator=ObjectIdGenerators.PropertyGenerator.class)
 public class RightOwner implements Serializable {
 
     @Id
@@ -65,6 +65,19 @@ public class RightOwner implements Serializable {
 
     @Column(name = "RIGHT_ID")
     private Long right_id;
+
+    @Transient
+    @JsonProperty("limit_rights")
+    private List<Right> limit_rights;
+
+
+    public List<Right> getLimit_rights() {
+        return limit_rights;
+    }
+
+    public void setLimit_rights(List<Right> limit_rights) {
+        this.limit_rights = limit_rights;
+    }
 
     public Right getRight() {
         return right;

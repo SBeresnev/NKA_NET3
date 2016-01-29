@@ -1,16 +1,12 @@
 package nla.local.pojos.operations;
 
-import nla.local.pojos.dict.CatalogConstants;
-import nla.local.pojos.dict.CatalogItem;
-import nla.local.pojos.subjects.Person;
-import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+
 
 /**
  * Created by belonovich on 08.04.2015.
