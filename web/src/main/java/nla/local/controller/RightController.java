@@ -112,7 +112,7 @@ public class RightController {
         return ret_val;
     }
 
-    @RequestMapping(value = {"/updRightOwn"}, method = {RequestMethod.PUT})
+    @RequestMapping(value = {"/updRightOwn"}, method = {RequestMethod.POST})
     public void updateRightOwn(RightOwner right_own ) throws ServiceDaoException, ServiceException {
 
           logger.info("root - /right/updRight");
@@ -121,8 +121,8 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/updRight"}, method = {RequestMethod.PUT})
-    public void updateRight(Right right ) throws ServiceDaoException, ServiceException {
+    @RequestMapping(value = {"/updRight"}, method = {RequestMethod.POST})
+    public void updateRight(@RequestBody Right right ) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /right/updRight");
 
@@ -154,5 +154,17 @@ public class RightController {
 
     }
 
+    @RequestMapping(value = {"/addRightOwnerPart"}, method = {RequestMethod.POST})
+    public RightOwner addRightOwnerPart(@RequestBody RightOwner right_own) throws ServiceDaoException, ServiceException {
+
+        RightOwner ret_val = null;
+
+        logger.info("root - /right/addRightOwnerPart");
+
+        ret_val = irs.addRightOwner(right_own);
+
+        return ret_val;
+
+    }
 
 }

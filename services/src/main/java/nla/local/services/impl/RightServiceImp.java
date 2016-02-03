@@ -86,13 +86,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     @Override
     public RightOwner addRightOwner(RightOwner rght_own) throws ServiceDaoException, ServiceException {
 
-        /*if(rght_own.getRight() != null && rght_own.getRight().getRight_id() == null)
-        {
-            this.addRight(rght_own.getRight());
-        }
-        rght_own.getOoper().setParent_id_order(rght_own.getRight().getOoper().getOoperId());
-        */
-
         super.add(rght_own);
 
         return rght_own;
