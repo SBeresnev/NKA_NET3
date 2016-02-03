@@ -165,7 +165,7 @@ public class RightTest {
         ret_val_dest.get(0).setStatus(1);
 
 
-        Operation opr = getOperField(61,1,62,1,63,1010);
+        Operation opr = getOperField(61, 1, 62, 1, 63, 1010);
 
 
         if(ret_val_dest.get(0).getObj_id() == null) {
@@ -195,7 +195,7 @@ public class RightTest {
 
         rgt.setIs_needed(0);
 
-        rgt.setComments("Object number" );
+        rgt.setComments("Object number");
 
         rgt.setBindedObj(ret_val_dest.get(0));
 
@@ -664,16 +664,18 @@ public class RightTest {
     /////////// Поиск прав /////////////////////////////////////////////////////////////
     public void findbySubjectId() throws ServiceDaoException {
 
-        List<RightOwner> lrt_own_ = rsi.getRightbyObjectAddr("минск, авиации 14", null);
+       /*
+       List<RightOwner> lrt_own_ = rsi.getRightbyObjectAddr("минск, авиации 14", null);
 
         lrt_own_ = rsi.getRighOwnbyObjectPerson(new Long[]{Long.valueOf(255)}, null);
 
+        */
 
     }
 
     public void getRightbyObject() {
+        /*
         try {
-
 
             Set<RightOwner> lr = new HashSet<RightOwner>(rsi.getRightbyObjectAddr("минск, авиации 14", null));
 
@@ -682,6 +684,7 @@ public class RightTest {
         } catch (ServiceDaoException e) {
             e.printStackTrace();
         }
+        */
 
     }
 

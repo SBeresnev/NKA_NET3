@@ -105,7 +105,7 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
 
         List<BargainContent> ret_val = new ArrayList<BargainContent>();
 
-        List<RightOwner> rown_list = irs.getRightbyObjectAddr(Adr, soato);
+        List<RightOwner> rown_list = null;//irs.getRightbyObjectAddr(Adr, soato);
 
         Long[] obj_ids = new Long[rown_list.size()];
 
@@ -126,7 +126,7 @@ public class BargainServiceImp extends BaseServiceImp implements IBargainService
 
          List<BargainContent> ret_val = new ArrayList<BargainContent>();
 
-         List<RightOwner> rown_list = irs.getRighOwnbyObjectPerson(obj_id, person_id);
+         List<RightOwner> rown_list = null;//irs.getRighOwnbyObjectPerson(obj_id, person_id);
 
          Long[] obj_ids = new Long[rown_list.size()];
 

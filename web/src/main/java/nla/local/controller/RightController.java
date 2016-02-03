@@ -71,16 +71,6 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/getRightOwnObjectPerson"}, method = {RequestMethod.GET})
-    public List<RightOwner> getRightOwnbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
-
-        logger.info("root - /right/getRightOwnObjectPerson");
-
-        List<RightOwner> ret_val = irs.getRighOwnbyObjectPerson(obj_ids, person_id);
-
-        return ret_val;
-
-    }
 
     @RequestMapping(value = {"/getRightObjectPerson"}, method = {RequestMethod.GET})
     public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
@@ -93,14 +83,6 @@ public class RightController {
 
     }
 
-    @RequestMapping(value = {"/getRightbyObjectAddr"}, method = {RequestMethod.GET})
-    public List<RightOwner> getRightbyObjectAddr(String adr, String soato ) throws ServiceDaoException {
-        logger.info("root - /right/getRightbyObjectAddr");
-
-        List<RightOwner> ret_val = irs.getRightbyObjectAddr(adr, soato);
-
-        return ret_val;
-    }
 
     @RequestMapping(value = {"/getRightOwn"}, method = {RequestMethod.GET})
     public RightOwner getRightOwn(Long right_own_id ) throws ServiceDaoException, ServiceException {

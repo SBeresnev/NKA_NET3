@@ -40,9 +40,7 @@ public interface IRightService extends IService {
 
     /*************************Serch function block***********************************************************************************/
 
-    public List<RightOwner> getRighOwnbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException;
-
-    public List<RightOwner> getRightbyObjectAddr(String Adr, String soato ) throws ServiceDaoException;
+    public List<RightOwner> getRighOwnPerson(Integer person_id, Long right_id) throws ServiceDaoException;
 
     public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException;
 

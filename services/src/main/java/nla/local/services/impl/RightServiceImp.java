@@ -130,42 +130,10 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val;
     }
 
-    @Override
-    public List<RightOwner> getRightbyObjectAddr(String Adr, String soato ) throws ServiceDaoException {
 
-        List<RightOwner> ret_val = new ArrayList<RightOwner>();
-
-        List<Address_dest> addr_list  = ias.findAddressDest(Adr, soato);
-
-        if(!addr_list.isEmpty())
-        {
-            List<Long> adr_ids = new ArrayList<Long>();
-
-            for (Address_dest addr : addr_list ) {
-
-                adr_ids.add(addr.getAddress_id());
-
-            }
-
-            List<Object_dest> object_list = (List<Object_dest>) ios.findObjectbyAddress(Object_dest.class,adr_ids);
-
-            Long[] obj_ids = new Long[object_list.size()];
-
-            for (int i =0 ; i < object_list.size() ; i++) {
-
-                obj_ids[i] = object_list.get(i).getObj_id();
-            }
-
-            ret_val.addAll(getRighOwnbyObjectPerson(obj_ids, null));
-
-        }
-
-        return ret_val;
-
-    }
 
     @Override
-    public List<RightOwner> getRighOwnbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException {
+    public List<RightOwner> getRighOwnPerson(Integer person_id, Long right_id) throws ServiceDaoException {
 
         boolean lakmus = false;
 
@@ -175,20 +143,13 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         query_ = query_.add(Restrictions.eq("status", 1));
 
-        query_ = query_.add(Restrictions.isNull("date_out"));
-
         if(person_id != null) {
 
             lakmus = true;
 
-            query_.add(Restrictions.eq("owner.subjectId", person_id)) ;
-        }
+            query_.add(Restrictions.eq("right_id",right_id));
 
-        if( obj_ids != null && obj_ids.length > 0 )
-        {
-            lakmus = true;
-
-            query_ = query_.createCriteria("right").add(Restrictions.in("object_entity_id",obj_ids));
+            query_.add(Restrictions.eq("owner.subjectId", person_id)).add(Restrictions.or(Restrictions.ge("date_out", new Date()), Restrictions.isNull("date_out")));
 
         }
 
@@ -239,9 +200,13 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         boolean lakmus = false;
 
+        final Date curDate = new Date();
+
         List<Right> ret_val = new ArrayList<Right>();
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
+
+        query_ = query_.add(Restrictions.or(Restrictions.ge("end_date", curDate), Restrictions.isNull("end_date")));
 
         if( obj_ids != null && obj_ids.length > 0 )
         {
@@ -251,15 +216,28 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
         }
 
-        if(person_id != null) {
+
+        if (person_id != null) {
 
             lakmus = true;
 
-            query_.createCriteria("rightOwners").add(Restrictions.eq("owner.subjectId", person_id));
+            query_ = query_.createCriteria("rightOwners").add(Restrictions.eq("owner.subjectId", person_id)).add(Restrictions.or(Restrictions.ge("date_out", curDate), Restrictions.isNull("date_out")));
 
         }
 
         ret_val = lakmus ? super.getCriterion(query_): null;
+
+        for (Right right : ret_val){
+
+         CollectionUtils.filter(right.getRightOwners(), new Predicate() {
+                public boolean evaluate(Object o) {
+                    RightOwner ret_ = (RightOwner) o;
+                    return ret_.getDate_out()!=null? ret_.getDate_out().after(curDate): true;
+                }
+            });
+
+        }
+
 
         return ret_val;
 
