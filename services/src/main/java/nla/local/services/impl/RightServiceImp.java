@@ -1,5 +1,7 @@
 package nla.local.services.impl;
 
+import nla.local.dao.exceptions.DaoErrorCode;
+import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
 import nla.local.pojos.address.Address_dest;
@@ -49,18 +51,26 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
 
     /******************************************Operation block**********************************************************************/
 
+
     public void updateRight(Right right) throws ServiceDaoException {
 
         super.update(right);
 
     }
 
+    @Override
+    public void refreshRight(Right t) throws ServiceDaoException    {
+
+            super.refresh(t);
+
+    };
+
+    @Override
     public void updateRightOwner(RightOwner right_own) throws ServiceDaoException {
 
         super.update(right_own);
 
     }
-
 
     @Override
     public Right addRight(Right rght) throws ServiceDaoException, ServiceException {

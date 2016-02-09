@@ -104,15 +104,17 @@ public class RightController {
     }
 
     @RequestMapping(value = {"/updRight"}, method = {RequestMethod.POST})
-    public void updateRight(@RequestBody Right right ) throws ServiceDaoException, ServiceException {
+    public Right updateRight(@RequestBody Right right ) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /right/updRight");
 
         irs.updateRight(right);
 
+        return right;
+
     }
 
-    @RequestMapping(value = {"/addRight"}, method = {RequestMethod.POST}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = {"/addRight"}, method = {RequestMethod.POST})
     public Right addRight(@RequestBody Right right ) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /right/addRight");

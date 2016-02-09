@@ -31,6 +31,8 @@ public interface IRightService extends IService {
 
     public void updateRightOwner(RightOwner rightowner) throws ServiceDaoException ;
 
+    public void refreshRight(Right t) throws ServiceDaoException;
+
     /*************************Main operations***********************************************************************************/
     public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException ;
 
