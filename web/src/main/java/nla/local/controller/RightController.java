@@ -110,6 +110,8 @@ public class RightController {
 
         irs.updateRight(right);
 
+        irs.refreshRight(right);
+
         return right;
 
     }
