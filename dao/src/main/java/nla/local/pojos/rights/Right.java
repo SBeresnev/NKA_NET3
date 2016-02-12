@@ -78,6 +78,7 @@ public class Right implements Serializable {
     @OneToMany( mappedBy = "right_id", fetch = FetchType.EAGER , cascade = CascadeType.ALL )
     private List<RightOwner> rightOwners;
 
+    /*
     @Transient
     @JsonProperty("limit_rights")
     private List<Right> limit_rights;
@@ -90,6 +91,7 @@ public class Right implements Serializable {
     public void setLimit_rights(List<Right> limit_rights) {
         this.limit_rights = limit_rights;
     }
+    */
 
     public Long getLimit_right() {
         return limit_right;
