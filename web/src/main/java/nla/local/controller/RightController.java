@@ -71,7 +71,6 @@ public class RightController {
 
     }
 
-
     @RequestMapping(value = {"/getRightObjectPerson"}, method = {RequestMethod.GET})
     public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
 
@@ -81,6 +80,16 @@ public class RightController {
 
         return ret_val;
 
+    }
+
+    @RequestMapping(value = {"/getLimitObject"}, method = {RequestMethod.GET})
+    public List<Right> getLimitObject (Long right_id, Long right_owner_id)  throws ServiceDaoException, ServiceException{
+
+        logger.info("root - /right/getLimitObject");
+
+        List<Right> ret_val = irs.getlimitationsObject(right_id, right_owner_id);
+
+        return ret_val;
     }
 
 
@@ -97,7 +106,7 @@ public class RightController {
     @RequestMapping(value = {"/updRightOwn"}, method = {RequestMethod.POST})
     public void updateRightOwn(RightOwner right_own ) throws ServiceDaoException, ServiceException {
 
-          logger.info("root - /right/updRight");
+          logger.info("root - /right/updRightOwn");
 
           irs.updateRightOwner(right_own);
 

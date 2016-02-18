@@ -48,6 +48,8 @@ public interface IRightService extends IService {
 
     public List<Right> getRightbyRightOwner(Long[] right_own_ids) throws ServiceDaoException;
 
+    public List<Right> getlimitationsObject (Long right_id, Long right_owner_id)  throws ServiceDaoException, ServiceException;
+
     /************************* Only for Test *****************************************************************************************/
     @Deprecated
     public List<RightOwner> findbyrightCountType( Integer countType) throws ServiceDaoException ;

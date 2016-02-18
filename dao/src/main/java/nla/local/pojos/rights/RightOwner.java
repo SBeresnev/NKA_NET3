@@ -63,20 +63,6 @@ public class RightOwner implements Serializable {
     @Column(name = "RIGHT_ID")
     private Long right_id;
 
-    /*
-    @Transient
-    @JsonProperty("limit_rights")
-    private List<Right> limit_rights;
-
-
-    public List<Right> getLimit_rights() {
-        return limit_rights;
-    }
-
-    public void setLimit_rights(List<Right> limit_rights) {
-        this.limit_rights = limit_rights;
-    } */
-
     public Right getRight() {
         return right;
     }

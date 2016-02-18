@@ -1,11 +1,7 @@
 package nla.local.services.impl;
 
-import nla.local.dao.exceptions.DaoErrorCode;
-import nla.local.dao.exceptions.DaoException;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
-import nla.local.pojos.address.Address_dest;
-import nla.local.pojos.object.Object_dest;
 import nla.local.pojos.rights.Right;
 import nla.local.pojos.rights.RightOwner;
 import nla.local.services.IAddressService;
@@ -42,7 +38,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     @Autowired
     private IAddressService ias;
 
-
     private static Logger log = Logger.getLogger(RightServiceImp.class);
 
     private DetachedCriteria query_Right = DetachedCriteria.forClass(Right.class,"rght").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
@@ -59,7 +54,7 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     }
 
     @Override
-    public void refreshRight(Right t) throws ServiceDaoException    {
+    public void refreshRight(Right t) throws ServiceDaoException {
 
             super.refresh(t);
 
@@ -140,8 +135,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val;
     }
 
-
-
     @Override
     public List<RightOwner> getRighOwnPerson(Integer person_id, Long right_id) throws ServiceDaoException {
 
@@ -187,18 +180,26 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         return ret_val_own;
     }
 
+    ////Здесь нужно использовать или для поиска прав /////////////////////////////////////////////////////////////////////////
+    @Override
     public List<Right> getlimitationsObject (Long right_id, Long right_owner_id)  throws ServiceDaoException, ServiceException {
 
         List<Right> ret_val = null;
 
         DetachedCriteria query_ = (DetachedCriteria) SerializationUtils.clone(query_Right);
 
-        query_ = query_.add(Restrictions.eq("limit_right", right_id));
-
         query_ = query_.add(Restrictions.between("right_type", 200, 400)); //// ограничения, обреминения
 
-        query_ = query_.createCriteria("rightOwners").add(Restrictions.eq("parent_owner", right_owner_id));
+        if( right_id != null) {
 
+            query_ = query_.add(Restrictions.eq("limit_right", right_id));
+
+        }
+
+        if( right_owner_id != null) {
+
+            query_ = query_.createCriteria("rightOwners").add(Restrictions.eq("parent_owner", right_owner_id));
+        }
 
         ret_val = super.getCriterion(query_);
 

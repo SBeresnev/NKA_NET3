@@ -23,8 +23,8 @@
         <property name="defaultCatalog" value="NKA_NET3_DEV"/>
         <property name="username" value="NKA_NET3_DEV"/>
         <property name="password" value="123123"/>
-        <property name="initialSize" value="5"/>
-        <property name="maxActive" value="10"/>
+        <property name="initialSize" value="20"/>
+        <property name="maxActive" value="20"/>
         <property name="maxWait" value="10000"/>
         <property name="validationQueryTimeout" value="30"/>
     </bean>
