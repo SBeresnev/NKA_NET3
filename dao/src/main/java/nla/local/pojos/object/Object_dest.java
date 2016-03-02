@@ -38,7 +38,7 @@ public class Object_dest extends Object  {
     @Column (name = "OBJECT_ID_INV")
     private Long obj_dest_id;
 
-    @Column( name = "ADDRESS_ID")
+    @Column(name = "ADDRESS_ID")
      private Long address_id;
 
     @Transient

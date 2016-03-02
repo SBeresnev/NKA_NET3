@@ -12,7 +12,7 @@ import java.util.List;
  * Created by beresnev on 29.07.2015.
  */
 
-public interface IBargainService {
+public interface IBargainService extends IService  {
 
     public BargainContent getBargain(Long bar_cont_id) throws ServiceDaoException;
 

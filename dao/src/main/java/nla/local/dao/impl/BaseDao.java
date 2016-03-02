@@ -86,8 +86,11 @@ public class BaseDao<T> implements Dao<T> {
     @Override
     public void update(T t) throws DaoException{
         try{
+
             getSession().update(t);
+
             log.info("Update:" + t) ;
+
         } catch (HibernateException e) {
 
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_003, t);
@@ -103,9 +106,13 @@ public class BaseDao<T> implements Dao<T> {
     @Override
     public List<T> getAll(Class<T> clazz) throws DaoException {
         try {
+
             List<T> list = getSession().createCriteria(clazz).list();
+
             log.debug(String.format("Got %d products", list == null ? 0 : list.size()));
+
             return list;
+
         } catch (HibernateException e) {
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_001, typeName);
             log.error(dEx.getMessage()) ;
@@ -115,11 +122,17 @@ public class BaseDao<T> implements Dao<T> {
 
     @Override
     public T get(Class clazz, Serializable id) throws DaoException{
+
         log.info("Get:" + id.toString());
+
         try {
+
             log.debug(String.format("Get %s with id=%s.", clazz.getCanonicalName() , id));
+
             T obj = (T) getSession().get(clazz, id);
+
             return obj;
+
         } catch (HibernateException e) {
             DaoException dEx = new DaoException(e, DaoErrorCode.NKANET_DAO_000, clazz.getCanonicalName() , id);
             log.error(dEx.getMessage());
