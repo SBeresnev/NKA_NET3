@@ -88,7 +88,7 @@ public class DeclTest {
 
          // AddNewDecl();
 
-         //  GetDecl();
+         // GetDecl();
 
          // GetJournal();
 
