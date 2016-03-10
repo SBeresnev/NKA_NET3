@@ -47,10 +47,26 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     /******************************************Operation block**********************************************************************/
 
 
+    public void rightOwnerbyDateFilter(List<Right> rights) throws ServiceDaoException {
+
+        final Date curDate = new Date();
+
+        for (Right right : rights) {
+
+            CollectionUtils.filter(right.getRightOwners(), new Predicate() {
+                public boolean evaluate(Object o) {
+                    RightOwner ret_ = (RightOwner) o;
+                    return ret_.getDate_out() != null ? ret_.getDate_out().after(curDate) : true;
+                }
+            });
+
+        }
+
+    }
+
     public void updateRight(Right right) throws ServiceDaoException {
 
         super.update(right);
-
     }
 
     @Override
@@ -237,18 +253,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         }
 
         ret_val = lakmus ? super.getCriterion(query_): null;
-
-        for (Right right : ret_val){
-
-         CollectionUtils.filter(right.getRightOwners(), new Predicate() {
-                public boolean evaluate(Object o) {
-                    RightOwner ret_ = (RightOwner) o;
-                    return ret_.getDate_out()!=null? ret_.getDate_out().after(curDate): true;
-                }
-            });
-
-        }
-
 
         return ret_val;
 

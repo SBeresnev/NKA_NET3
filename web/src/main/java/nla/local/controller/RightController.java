@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -72,11 +73,13 @@ public class RightController {
     }
 
     @RequestMapping(value = {"/getRightObjectPerson"}, method = {RequestMethod.GET})
-    public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException{
+    public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException, ServiceException {
 
         logger.info("root - /right/getRightObjectPerson");
 
         List<Right> ret_val = irs.getRightbyObjectPerson(obj_ids, person_id);
+
+        irs.rightOwnerbyDateFilter(ret_val);
 
         return ret_val;
 
@@ -120,6 +123,8 @@ public class RightController {
         irs.updateRight(right);
 
         irs.refreshRight(right);
+
+        irs.rightOwnerbyDateFilter(Arrays.asList(right));
 
         return right;
 

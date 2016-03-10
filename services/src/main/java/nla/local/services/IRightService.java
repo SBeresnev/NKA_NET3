@@ -40,6 +40,8 @@ public interface IRightService extends IService {
 
     public void splitSharedRight(List<RightOwner> child_owners, RightOwner parent_owner) throws ServiceDaoException, ServiceException ;
 
+    public void rightOwnerbyDateFilter(List<Right> rights) throws ServiceDaoException, ServiceException ;
+
     /*************************Serch function block***********************************************************************************/
 
     public List<RightOwner> getRighOwnPerson(Integer person_id, Long right_id) throws ServiceDaoException;
