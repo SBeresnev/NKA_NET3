@@ -47,9 +47,18 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
     /******************************************Operation block**********************************************************************/
 
 
-    public void rightOwnerbyDateFilter(List<Right> rights) throws ServiceDaoException {
+    public List<Right> rightOwnerbyDateFilter(List<Right> rights) throws ServiceDaoException {
 
         final Date curDate = new Date();
+
+        List<Right> right_to_remove = (List<Right>) CollectionUtils.select(rights, new Predicate() {
+            public boolean evaluate(Object o) {
+                Right ret_ = (Right) o;
+                return ret_.getEnd_date() != null ? !ret_.getEnd_date().after(curDate) : false;
+            }
+        });
+
+        rights = (List<Right>) CollectionUtils.subtract(rights,right_to_remove);
 
         for (Right right : rights) {
 
@@ -61,6 +70,8 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
             });
 
         }
+
+        return rights;
 
     }
 
@@ -297,65 +308,6 @@ public class RightServiceImp extends BaseServiceImp implements IRightService {
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return val_rgt;
-
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////// /////////////////////////////////////////////
-    //    все проводки по правам в случае дробления прав предполагают, что можно захрдкодить и опреацию закрытия от кого это право (часть прав) передается      //
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    @Override
-    public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException {
-
-        this.addRightOwner(rght_own);
-
-    }
-
-    @Override
-    public void passSharedRight(HashMap<RightOwner,RightOwner> right_own) throws ServiceDaoException, ServiceException {
-
-        /***************************** update parent owner **********************************************************/
-
-        Right main_right =  right_own.get(right_own.keySet().iterator().next()).getRight();
-
-        this.addRight(main_right);
-
-        for (RightOwner parent_owner : right_own.keySet() )  {
-
-            RightOwner child_own = right_own.get(parent_owner);
-
-            this.updateRightOwner(parent_owner);
-
-            child_own.setParent_owner(parent_owner.getRight_owner_id());
-
-            child_own.getOoper().setParent_id_hist(parent_owner.getOoper().getOoperId());
-
-            child_own.setRight(main_right);
-
-            this.addRightOwner(child_own);
-
-        }
-
-    }
-
-    @Override
-    public void splitSharedRight(List<RightOwner> child_owners, RightOwner parent_owner) throws ServiceDaoException, ServiceException {
-
-        /***************************** update parent owner **********************************************************/
-
-        this.updateRightOwner(parent_owner);
-
-        /**************************************************************************************************************/
-
-        for (RightOwner child_owner : child_owners )
-        {
-            child_owner.setParent_owner(parent_owner.getRight_owner_id());
-
-            child_owner.getOoper().setParent_id_hist(parent_owner.getOoper().getOoperId());
-
-            this.addRightOwner(child_owner);
-        }
-
 
     }
 

@@ -43,4 +43,6 @@ public interface CatalogConstants {
 
     public static final String PROP_TYPE = "2";
 
+    public static final String DOC_TYPE = "60";
+
 }

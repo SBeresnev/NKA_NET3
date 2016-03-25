@@ -107,6 +107,7 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
         return ret_val;
     }
 
+
     public List<Object_dest> findObjectbyInventoryNumCommon(Integer inventory_number, Integer object_type, Integer org_id) throws ServiceDaoException {
 
         List<Object_dest> ret_val = new ArrayList<Object_dest>();
@@ -154,6 +155,8 @@ public class ObjectServiceImp extends BaseServiceImp implements IObjectService{
         return ret_val;
 
     }
+
+
 
     public List<Object_dest> findObjectbyCadastreNumCommon(String cadastre_number) throws ServiceDaoException {
 

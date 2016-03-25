@@ -35,42 +35,6 @@ public class RightController {
     @Autowired
     private IRightService irs;
 
-    @RequestMapping(value = {"/addSingleRight"}, method = {RequestMethod.GET})
-    public RightOwner passSingleRight(@RequestBody RightOwner rght_own) throws Exception {
-
-        logger.info("root - /right/addSingleRight");
-
-        irs.passSingleRight(rght_own);
-
-        return rght_own ;
-
-    }
-
-    @RequestMapping(value = {"/addSharedRight"}, method = {RequestMethod.GET})
-    public  ArrayList<RightOwner> passSharedRight(@RequestBody ArrayList<RightOwner> rght_key, ArrayList<RightOwner> rght_val ) throws Exception {
-
-            logger.info("root - /right/addSharedRight");
-
-            HashMap<RightOwner, RightOwner> right_own = new HashMap<RightOwner, RightOwner>();
-
-            right_own = Converter.getCastHash(rght_key,rght_val);
-
-            irs.passSharedRight(right_own);
-
-        return rght_val;
-
-    }
-
-    @RequestMapping(value = {"/splitSharedRight"}, method = {RequestMethod.GET})
-    public RightOwner splitSharedRight(List<RightOwner> child_owners, RightOwner parent_owner) throws ServiceDaoException, ServiceException {
-
-        logger.info("root - /right/splitSharedRight");
-
-        irs.splitSharedRight(child_owners, parent_owner);
-
-        return parent_owner;
-
-    }
 
     @RequestMapping(value = {"/getRightObjectPerson"}, method = {RequestMethod.GET})
     public List<Right> getRightbyObjectPerson(Long[] obj_ids, Integer person_id) throws ServiceDaoException, ServiceException {
@@ -79,7 +43,7 @@ public class RightController {
 
         List<Right> ret_val = irs.getRightbyObjectPerson(obj_ids, person_id);
 
-        irs.rightOwnerbyDateFilter(ret_val);
+        ret_val = irs.rightOwnerbyDateFilter(ret_val);
 
         return ret_val;
 
@@ -118,15 +82,17 @@ public class RightController {
     @RequestMapping(value = {"/updRight"}, method = {RequestMethod.POST})
     public Right updateRight(@RequestBody Right right ) throws ServiceDaoException, ServiceException {
 
+        List<Right> ret_val = new ArrayList<Right>();
+
         logger.info("root - /right/updRight");
 
         irs.updateRight(right);
 
         irs.refreshRight(right);
 
-        irs.rightOwnerbyDateFilter(Arrays.asList(right));
+        ret_val = irs.rightOwnerbyDateFilter(Arrays.asList(right));
 
-        return right;
+        return ret_val.size() != 0 ? ret_val.get(0): null;
 
     }
 

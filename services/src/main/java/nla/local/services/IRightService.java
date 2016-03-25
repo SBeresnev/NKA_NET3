@@ -34,13 +34,9 @@ public interface IRightService extends IService {
     public void refreshRight(Right t) throws ServiceDaoException;
 
     /*************************Main operations***********************************************************************************/
-    public void passSingleRight(RightOwner rght_own) throws ServiceDaoException, ServiceException ;
 
-    public void passSharedRight(HashMap<RightOwner,RightOwner> right_own) throws ServiceDaoException, ServiceException ;
 
-    public void splitSharedRight(List<RightOwner> child_owners, RightOwner parent_owner) throws ServiceDaoException, ServiceException ;
-
-    public void rightOwnerbyDateFilter(List<Right> rights) throws ServiceDaoException, ServiceException ;
+    public List<Right> rightOwnerbyDateFilter(List<Right> rights) throws ServiceDaoException, ServiceException ;
 
     /*************************Serch function block***********************************************************************************/
 
