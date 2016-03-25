@@ -1,13 +1,9 @@
 package nla.local.pojos.docs;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.context.annotation.Lazy;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.Table;
-import java.sql.Blob;
+
 import java.util.Date;
 
 /**

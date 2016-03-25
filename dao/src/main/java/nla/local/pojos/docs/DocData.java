@@ -1,31 +1,19 @@
 package nla.local.pojos.docs;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Blob;
 
 /**
  * Created by beresnev on 25.03.2016.
  */
 @Entity
+@MappedSuperclass
 @Table(name = "V_DOCS", schema = "NKA_NET3_DEV")
-public class Docdata {
-
-    @Id
-    private Long doc_id;
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public class Docdata extends Document{
 
     @Lob
     private Blob doc_content;
-
-    public Long getDoc_id() {
-        return doc_id;
-    }
-
-    public void setDoc_id(Long doc_id) {
-        this.doc_id = doc_id;
-    }
 
     public Blob getDoc_content() {
         return doc_content;
