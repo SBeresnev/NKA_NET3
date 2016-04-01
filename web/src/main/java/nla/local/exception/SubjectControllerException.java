@@ -8,9 +8,9 @@ public class SubjectControllerException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-    public SubjectControllerException(String villageName) {
+    public SubjectControllerException(String message) {
 
-        super(villageName);
+        super(message);
 
     }
 

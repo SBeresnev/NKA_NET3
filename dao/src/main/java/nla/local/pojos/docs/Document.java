@@ -1,9 +1,7 @@
 package nla.local.pojos.docs;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -11,16 +9,19 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "V_DOCS", schema = "NKA_NET3_DEV")
-public class Document {
+public class Document implements Serializable {
 
     @Id
+    @Column(name="DOC_ID", unique=true, nullable=false )
+    @SequenceGenerator(name="doc_seq", sequenceName="SEQ_DOCUMENTS_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO ,generator="doc_seq")
     private Long doc_id;
 
     private Long entity_id;
 
     private Integer doc_type;
 
-    private Integer document_number;
+    private String document_number;
 
     private Date document_date;
 
@@ -31,7 +32,6 @@ public class Document {
     private String description_doc;
 
     private Integer num;
-
 
     public Long getDoc_id() {
         return doc_id;
@@ -57,11 +57,11 @@ public class Document {
         this.doc_type = doc_type;
     }
 
-    public Integer getDocument_number() {
+    public String getDocument_number() {
         return document_number;
     }
 
-    public void setDocument_number(Integer document_number) {
+    public void setDocument_number(String document_number) {
         this.document_number = document_number;
     }
 

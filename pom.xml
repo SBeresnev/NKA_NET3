@@ -38,7 +38,7 @@
         <nka_net3.service>1.0</nka_net3.service>
         <nka_net3.web>1.0</nka_net3.web>
 
-        <spring.version>4.0.5.RELEASE</spring.version>
+        <spring.version>4.1.5.RELEASE</spring.version>
     </properties>
 
 

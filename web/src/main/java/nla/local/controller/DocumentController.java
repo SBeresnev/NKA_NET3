@@ -1,16 +1,34 @@
 package nla.local.controller;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import nla.local.exception.ServiceDaoException;
 import nla.local.exception.ServiceException;
+import nla.local.pojos.docs.Docdata;
 import nla.local.pojos.docs.Document;
 
 import nla.local.services.IDocumentService;
+import org.apache.commons.io.IOUtils;
+import org.springframework.http.HttpStatus;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,53 +56,107 @@ public class DocumentController {
     }
 
     @RequestMapping(value = {"/getDocs"}, method = {RequestMethod.GET})
-    public List<Document> getDocs (Long entyti_id, Long doc_id)  throws ServiceDaoException, ServiceException{
+    public ResponseEntity<InputStreamResource> getDocs (Long doc_id) throws ServiceDaoException, SQLException {
 
         logger.info("root - /doc/getDocs");
 
-        List<Document> ret_val = documentService.getDocuments(entyti_id, doc_id);
+        HttpHeaders headers = new HttpHeaders();
 
-        return ret_val;
+        headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+
+        headers.add("Pragma", "no-cache");
+
+        headers.add("Expires", "0");
+
+        Docdata ret_val = documentService.getDocument(doc_id);
+
+        InputStreamResource isr = new InputStreamResource(ret_val.getDoc_content().getBinaryStream());
+
+        return new ResponseEntity<InputStreamResource>(isr, headers, HttpStatus.OK);
+
+    }
+
+
+    @RequestMapping(value = "/getFile", method = RequestMethod.GET)
+    public void getFile( Long doc_id,  HttpServletResponse response) throws ServiceDaoException, SQLException, IOException {
+
+            Docdata ret_val = documentService.getDocument(doc_id);
+
+            InputStream is = ret_val.getDoc_content().getBinaryStream();
+
+            IOUtils.copy(is, response.getOutputStream());
+
+            response.flushBuffer();
+
+    }
+
+
+    @RequestMapping(value = "/uploadDocuments", method = RequestMethod.POST)
+    public void uploadDocuments(@RequestParam("descs") List<Document> Docdescs,  @RequestParam("file") MultipartFile[] files) throws IOException, SQLException, ServiceDaoException {
+
+        String fileName = null;
+
+        List<Docdata> doc_data_list = new ArrayList<Docdata>();
+
+        if (files != null && files.length >0) { return ;}
+
+            for(int i =0; i< files.length; i++){
+
+                Docdata doc_data = new Docdata();
+
+                Blob docContent = new SerialBlob(files[i].getBytes());
+
+                doc_data.setDoc_content(docContent);
+
+                doc_data_list.add(doc_data);
+
+            }
+
+            documentService.addDocuments(Docdescs,doc_data_list);
+
+        }
+
+
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public @ResponseBody void upload(  HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        Part file = request.getPart("file");
+
+        response.setContentType("text/plain");
+
+        response.setCharacterEncoding("UTF-8");
+
 
 
     }
 
-    @RequestMapping(value = "/uploadDocument", method = RequestMethod.POST)
-    public void uploadDocument(@RequestParam("name") String[] names, @RequestParam("file") MultipartFile[] files) {
 
-        if (files.length != names.length) return ;
+    @RequestMapping(value = "/uploadDocument", method = RequestMethod.POST, headers = "Content-Type=multipart/form-data")
+    public void uploadDocument(@RequestBody String doc_desc, MultipartFile file) throws IOException, SQLException, ServiceDaoException {
 
-        /*
-        String message = "";
-        for (int i = 0; i < files.length; i++) {
-            MultipartFile file = files[i];
-            String name = names[i];
-            try {
-                byte[] bytes = file.getBytes();
+        Document docDesc = new ObjectMapper().readValue(doc_desc, Document.class);
 
-                // Creating the directory to store file
-                String rootPath = System.getProperty("catalina.home");
-                File dir = new File(rootPath + File.separator + "tmpFiles");
-                if (!dir.exists())
-                    dir.mkdirs();
+        docDesc.setDocument_date(new Date());
 
-                // Create the file on server
-                File serverFile = new File(dir.getAbsolutePath()
-                        + File.separator + name);
-                BufferedOutputStream stream = new BufferedOutputStream(
-                        new FileOutputStream(serverFile));
-                stream.write(bytes);
-                stream.close();
+        Docdata doc_data = new Docdata();
 
-                logger.info("Server File Location="
-                        + serverFile.getAbsolutePath());
+        Blob docContent = new SerialBlob(file.getBytes());
 
-                message = message + "You successfully uploaded file=" + name
-                        + "<br />";
-            } catch (Exception e) {
-                return null; //"You failed to upload " + name + " => " + e.getMessage();
-            } */
+        doc_data.setDoc_content(docContent);
 
-        }
+        documentService.addDocument(docDesc, doc_data);
+
+    }
+
+    @RequestMapping(value = "/uploadDoc", method = RequestMethod.POST, headers = "Content-Type=multipart/form-data")
+    public void uploadDoc( @RequestParam("file") MultipartFile file) throws IOException, SQLException, ServiceDaoException {
+
+        Docdata doc_data = new Docdata();
+
+        Blob docContent = new SerialBlob(file.getBytes());
+
+        doc_data.setDoc_content(docContent);
+
+    }
 
 }
